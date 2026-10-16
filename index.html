@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>無盡之門</title>
+<style>/* 防白閃：第一幀即深色 */html,body{background:#0a0a0c}</style>
 <style>
 /* ===== Reset & Base ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1987,9 +1988,9 @@ body.gm-open #gm-bar .gm-arrow{transform:rotate(180deg);}
 .loading-bar-fill{
   height:100%;width:0;background:var(--accent);
   box-shadow:0 0 10px rgba(201,169,110,.6);
-  animation:loadingProgress 2s ease-out forwards;
+  transition:width .45s cubic-bezier(.4,0,.2,1);
 }
-@keyframes loadingProgress{from{width:0}to{width:100%}}
+/* 進度條由 JS 按真實初始化階段推進，不再用固定 CSS 動畫 */
 .loading-tip{
   margin-top:1.4rem;font-family:var(--font-serif);font-size:.82rem;
   color:var(--text-dim);letter-spacing:.2em;
@@ -3353,22 +3354,63 @@ window.addEventListener('unhandledrejection',function(ev){
 
 /* ============================================================
  * D類：加載骨架屏淡出
+ * 原則：進度條按真實初始化階段推進，loading 一直覆蓋到
+ *       V4/V5 模組全部就緒、split-overlay 已 active 後才淡出，
+ *       中間不出現「loading 已關、主畫面未到」的空白窗。
  * ============================================================ */
 (function(){
+  var ls=document.getElementById('loading-screen');
+  var fill=document.querySelector('.loading-bar-fill');
+  var tip=document.querySelector('.loading-tip');
+  var progress=0;
+  var hidden=false;
+
+  function setProgress(pct,label){
+    if(pct<progress)pct=progress;
+    if(pct>100)pct=100;
+    progress=pct;
+    if(fill)fill.style.width=pct+'%';
+    if(label&&tip)tip.textContent=label;
+  }
+  window.__setLoadingProgress=setProgress;
+
   function hideLoading(){
-    var ls=document.getElementById('loading-screen');
-    if(!ls||ls.classList.contains('hide'))return;
+    if(hidden)return;hidden=true;
+    if(!ls)return;
     ls.classList.add('hide');
     setTimeout(function(){ls.classList.add('done');},900);
   }
-  function schedule(){
-    if(document.readyState==='complete'){setTimeout(hideLoading,500);}
-    else{window.addEventListener('load',function(){setTimeout(hideLoading,500);});}
-    /* 保險：無論 load 是否觸發，最多 3.5 秒後隱藏，避免卡住 */
-    setTimeout(hideLoading,3500);
+  window.__hideLoading=hideLoading;
+
+  /* 輪詢就緒信號：V4.boot、V5.setupDone、split-overlay active */
+  var poll=setInterval(function(){
+    var v4ok=!!(window.V4&&V4.__booted);
+    var v5ok=!(window.V5)||!!(window.V5&&V5.__setupDone);
+    var so=document.getElementById('split-overlay');
+    var soOk=!!(so&&so.classList.contains('active'));
+    if(v4ok&&v5ok&&soOk){
+      setProgress(100,'就緒');
+      clearInterval(poll);
+      setTimeout(hideLoading,350);
+    }else if(v4ok&&!v5ok){
+      setProgress(80,'載入第五副本……');
+    }else if(v4ok){
+      setProgress(60,'啟動遊戲引擎……');
+    }else{
+      setProgress(35,'解析劇本與系統……');
+    }
+  },120);
+
+  /* 初始階段 */
+  setProgress(10,'載入資源……');
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',function(){setProgress(30,'就緒開始……');});
+  }else{
+    setProgress(30,'就緒開始……');
   }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',schedule);}
-  else{schedule();}
+
+  /* 兜底：最多 8 秒後無論如何淡出，避免卡死 */
+  setTimeout(hideLoading,8000);
 })();
 
 /* ============================================================
