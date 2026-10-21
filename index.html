@@ -2654,7 +2654,7 @@ div[data-custom-element="doubao-watermark"]{display:none !important;visibility:h
     </div>
     <div class="personality-desc" id="personality-desc"></div>
   </div>
-  <div class="ending-actions">
+  <div class="ending-actions" id="ending-actions">
     <button onclick="replayDungeon()">重 新 開 始</button>
     <button class="secondary" onclick="backToHub()">返 回 副 本 選 擇</button>
     <button class="secondary" onclick="generateEndingCard()">生成結算卡片</button>
@@ -3185,7 +3185,7 @@ function render(){
   $('lock-badge').style.display=unlocked?'none':'inline-flex';
   var dot=$('status-dot'),txt=$('status-text');
   if(cleared){dot.className='status-dot cleared';txt.className='status-text cleared';txt.textContent='已 通 關';}
-  else if(!unlocked){dot.className='status-dot locked';txt.className='status-text locked';txt.textContent=d.id===2?'未 通 關 第 一 副 本':'未 通 關 第 二 副 本';}
+  else if(!unlocked){dot.className='status-dot locked';txt.className='status-text locked';var _ordMap={2:'一',3:'二',4:'三',5:'四',6:'五'};txt.textContent='未 通 關 第 '+(_ordMap[d.id]||String(d.id-1))+' 副 本';}
   else{dot.className='status-dot available';txt.className='status-text available';txt.textContent='未 通 關';}
   var btn=$('enter-btn');
   btn.disabled=!unlocked;
@@ -3219,7 +3219,10 @@ function showPreview(){
   var texts={
     1:['「13號房。」','一座只有質數房間的旅館。每一扇門後面都是一個房間，每一個房間裡都有一個謎題。','你需要在黎明之前找到出口。旅館裡住著各懷鬼胎的房客，走廊盡頭的鏡子裡藏著另一個你。','算得出門牌是一回事，分得清誰在說謊，是另一回事。','你的選擇將影響後續副本——誰生還，誰留下，誰成為你未來路上的籌碼。'],
     2:['「請保持安靜。」','一座沒有聲音的圖書館。書架上的每一本書，都記錄著一個人的一生。','規則只有一條：不能大聲說話。違者，被書架吞噬。','誰都不確定自己到底算不算出聲。管理員只給你三個問題，別問錯。','通關第一副本後解鎖。你的選擇將影響第二副本的開局。'],
-    3:['「時間正在流逝。」','一座廢棄的醫院。每個玩家都有一個倒計時，時間到了會重置——失去所有物品和記憶。','時間一點一滴在走。藥品能給你買幾分鐘，病歷裡埋著真相。','醫院的地下二樓有一個「活的」東西，在吃人的記憶。它在等它的爸爸。','通關第二副本後解鎖。你的選擇將影響最終結局。']
+    3:['「時間正在流逝。」','一座廢棄的醫院。每個玩家都有一個倒計時，時間到了會重置——失去所有物品和記憶。','時間一點一滴在走。藥品能給你買幾分鐘，病歷裡埋著真相。','醫院的地下二樓有一個「活的」東西，在吃人的記憶。它在等它的爸爸。','通關第二副本後解鎖。你的選擇將影響最終結局。'],
+    4:['「門後沒有規則。」','穿過旅館、圖書館與醫院之後，你第一次站到迴廊本身的「心臟」。','三扇舊門安靜地立在四周，大門前守門人提著一盞沒有火的燈。','這裡沒有倒計時，也沒有獵殺者。只有一個問題：走過這一切之後，你要如何面對那個凌晨三點十七分？','通關第三副本後解鎖。集齊九枚迴廊碎片可開啟真結局「無盡之門」。'],
+    5:['「海會漲，也會退。」','穿過迴廊的心臟後，你沉入收容所有「未選擇的路」與遺忘時刻的幽暗之海。','潮汐在這裡一進一退：退潮露出半沉的海床與未推開的門，漲潮浮起通往燈塔的光筏。','消耗迴光粒可以倒帶上一個選擇，但倒帶也有盡頭。','通關第四副本後解鎖。'],
+    6:['「03:17 之後的一分鐘。」','迴廊最頂層的觀測站——凌晨三點十七分與三點十八分之間的夾縫。','無數台監視器播放著每一座副本、每一次輪迴的截面，桌上的冷咖啡還維持著傾倒的瞬間。','調校頻率、解開質數曲線偏離的最後一頁，決定是永遠留在觀測席，還是推開通往 03:18 的破曉之門。','通關第五副本後解鎖。']
   };
   var arr=texts[d.id]||texts[1];
   $('preview-text').innerHTML=arr.map(function(t,i){return i===arr.length-1?'<p style="color:var(--accent);margin-top:1rem">'+t+'</p>':'<p>'+t+'</p>';}).join('');
@@ -4429,7 +4432,31 @@ function addItem(id,name,desc,usage){
 function removeItem(id){
   state.inventory=state.inventory.filter(function(i){return i.id!==id;});updateInventoryUI();
 }
-function hasItem(id){return state.inventory.some(function(i){return i.id===id;});}
+function hasItem(id){
+  if(!state||!state.inventory)return false;
+  if(state.inventory.some(function(i){return i.id===id;}))return true;
+  /* 組合後仍保留原組件的劇情判定資格，避免合成物品導致主線/支線卡死 */
+  var compMap={
+    rope:['rope_key'],main_key:['rope_key'],
+    crumpled_note:['note_ticket'],movie_ticket:['note_ticket'],
+    key_second:['golden_key2'],golden_key:['golden_key2'],
+    zhangwei_notebook:['book_notebook'],your_book:['book_notebook'],
+    admin_diary:['diary_album'],yuanyuan_album:['diary_album'],
+    manager_book:['manager_exit'],exit_key:['manager_exit'],
+    antibiotic:['antibiotic_painkiller'],painkiller:['antibiotic_painkiller'],
+    medical_records:['medicine_record'],unlabeled_medicine:['medicine_record'],
+    director_diary:['diary_scalpel'],scalpel:['diary_scalpel'],
+    yuanyuan_memory:['memory_record'],surgery_record:['memory_record'],
+    epinephrine:['epinephrine_sedative'],sedative:['epinephrine_sedative']
+  };
+  var alts=compMap[id];
+  if(alts){
+    for(var k=0;k<alts.length;k++){
+      if(state.inventory.some(function(i){return i.id===alts[k];}))return true;
+    }
+  }
+  return false;
+}
 function setFlag(f){state.flags[f]=true;}
 function hasFlag(f){return !!state.flags[f];}
 function updateInventoryUI(){
@@ -4444,7 +4471,9 @@ function updateInventoryUI(){
   }).join(''):'<div class="panel-empty">空空如也</div>';
 }
 function updateHP(){
-  $('hp-fill').style.width=Math.max(0,state.hp)+'%';
+  var maxH=(state&&state.maxHp)||100;
+  var pct=Math.min(100,Math.max(0,Math.round((state.hp/maxH)*100)));
+  $('hp-fill').style.width=pct+'%';
   $('hp-text').textContent=Math.max(0,state.hp);
 }
 function updateParty(){ $('party-count').textContent=state.party; }
@@ -7416,8 +7445,15 @@ function getSceneNpcKeys(){
   if(!SCENES||!state||!state.currentScene)return [];
   var sc=SCENES[state.currentScene];
   if(!sc||!sc.npc)return [];
-  if(Array.isArray(sc.npc))return sc.npc.filter(function(k){return NPC_PROFILES[k] && DIALOGUE_TREES[k];});
-  return (NPC_PROFILES[sc.npc] && DIALOGUE_TREES[sc.npc]) ? [sc.npc] : [];
+  var arr=Array.isArray(sc.npc)?sc.npc:[sc.npc];
+  return arr.filter(function(k){
+    if(!NPC_PROFILES[k]||!DIALOGUE_TREES[k])return false;
+    if(state.flags){
+      if(k==='akai'&&state.flags.akai_dead)return false;
+      if(k==='laozhou'&&state.flags.zhao_dead)return false;
+    }
+    return true;
+  });
 }
 
 /* --- 對話面板 --- */
@@ -7511,8 +7547,13 @@ function startDialog(npcKey){
   $('dialog-conversation-view').style.display = 'flex';
   $('dialog-messages').innerHTML = '';
   $('dialog-options').innerHTML = '';
-  /* 重返時若有 startReturning 則用它作為起點節點 */
-  dialogCurrentNode = (wasMet && tree.startReturning) ? tree.startReturning : tree.start;
+  /* 重返時優先恢復上次未完的節點（若該節點仍有後續選項），否則使用 startReturning */
+  var savedNode = (state && state.flags) ? state.flags['dlg_'+npcKey] : null;
+  if(savedNode && tree.nodes[savedNode] && tree.nodes[savedNode].options && tree.nodes[savedNode].options.length > 0){
+    dialogCurrentNode = savedNode;
+  }else{
+    dialogCurrentNode = (wasMet && tree.startReturning) ? tree.startReturning : tree.start;
+  }
   /* 繼承開場：有就先依序打完，再進起點節點 */
   var prologue = getInheritancePrologue(npcKey);
   /* NG+ 隱藏台詞：在所有繼承開場之前追加一句 */
@@ -7683,23 +7724,23 @@ function triggerEnding(type,title,desc,reward){
   $('ending-desc').textContent=desc;
   $('ending-reward').textContent=reward||'';
   closeDialogPanel();
-  /* 副本1 專有：結局時寫入繼承 */
-  if(currentDungeonId===1&&(type==='normal'||type==='survive')){
+  /* 副本1 專有：結局時寫入繼承（支援前綴型結局 ID） */
+  if(currentDungeonId===1&&(_tNorm||_tSurv||_tHidden)){
     var inh={};
     if(state.flags.mirror_defeated)inh.mirror_defeated=true;
     if(state.flags.golden_key)inh.golden_key=true;
     if(state.flags.basement_knowledge)inh.basement_knowledge=true;
     if(state.flags.traded_admin)inh.traded_admin=true;
-    if(type==='survive')inh.alone_escape=true;
+    if(_tSurv)inh.alone_escape=true;
     if(state.flags.trusted)inh.trusted=true;
     if(state.flags.lost_limb)inh.lost_limb=true;
     if(state.flags.admin_guest)inh.admin_guest=true;
     inh.first_cleared=true;
     saveInheritance(inh);
-    if(type==='survive')localStorage.setItem('wuxian-first-cleared','true');
+    localStorage.setItem('wuxian-first-cleared','true');
   }
-  /* 通關章節解鎖：normal/survive 結局記錄該副本已通關 */
-  if(type==='normal'||type==='survive'){
+  /* 通關章節解鎖：好結局記錄該副本已通關 */
+  if(isGood){
     markChapterReached(state.currentScene);
     /* NG+：任何副本通關後標記 ng_plus */
     saveInheritance({ng_plus:true});
@@ -7711,7 +7752,7 @@ function triggerEnding(type,title,desc,reward){
   so.classList.add('active','no-title','open');
   void so.offsetWidth;
   so.classList.remove('open');
-  if(type==='bad'||type==='death_hp')playBadFlash();
+  if(isBad)playBadFlash();
   setTimeout(function(){
     /* 在遮蓋下顯示結局，隱藏遊戲屏 */
     es.classList.add('show');
@@ -7732,7 +7773,7 @@ function triggerEnding(type,title,desc,reward){
       if(isBad){
         startBadBlood();
         var crack=document.getElementById('bad-crack-overlay');
-        if(crack&&!SETTINGS.flashSafe&&!SETTINGS.reduceMotion)crack.classList.add('active');
+        if(crack&&!SETTINGS.flashSafe&&!SETTINGS.reducedMotion)crack.classList.add('active');
       }
       if(isGood){startGoodParticles();}
     },trTime(1200));
@@ -8247,8 +8288,28 @@ var ITEM_CONSUMABLES={
   }},
   epinephrine:{use:function(){
     if(!hasItem('epinephrine'))return false;
-    removeItem('epinephrine');state.hp=Math.min(100,state.hp+30);updateHP();
+    removeItem('epinephrine');state.hp=Math.min(state.maxHp||100,state.hp+30);updateHP();
     appendNarrative('<p class="action">你把腎上腺素扎進大腿。一陣銳痛，心跳猛地撞了一下，又穩住。生命恢復30。</p>');
+    return true;
+  }},
+  antibiotic_painkiller:{use:function(){
+    if(!hasItem('antibiotic_painkiller'))return false;
+    removeItem('antibiotic_painkiller');addTime(25);
+    state.hp=Math.min(state.maxHp||100,state.hp+20);updateHP();
+    appendNarrative('<p class="action">你服下複合藥劑。苦味過後，疼痛與發熱同時退去。倒數多了25分鐘，生命恢復20。</p>');
+    return true;
+  }},
+  epinephrine_sedative:{use:function(){
+    if(!hasItem('epinephrine_sedative'))return false;
+    removeItem('epinephrine_sedative');addTime(20);
+    state.hp=Math.min(state.maxHp||100,state.hp+40);updateHP();
+    appendNarrative('<p class="action">你注射了應急針劑。腎上腺素壓住了鎮定劑的昏沉，心跳強勁而平穩。倒數多了20分鐘，生命恢復40。</p>');
+    return true;
+  }},
+  medicine_record:{use:function(){
+    if(!hasItem('medicine_record'))return false;
+    removeItem('medicine_record');addTime(20);
+    appendNarrative('<p class="action">你按病歷核對過的劑量服下藥瓶裡的抗生素，沒有出現過敏反應。倒數多了20分鐘。</p>');
     return true;
   }}
 };
@@ -9291,6 +9352,10 @@ function collectSaveData(){
   if(state.adminQuestions!==undefined)d.adminQuestions=state.adminQuestions;
   if(state.countdown!==undefined)d.countdown=state.countdown;
   if(state.resetCount!==undefined)d.resetCount=state.resetCount;
+  if(state.maxHp!==undefined)d.maxHp=state.maxHp;
+  if(state.tide!==undefined)d.tide=state.tide;
+  if(state.echo!==undefined)d.echo=state.echo;
+  if(state.trail!==undefined)d.trail=state.trail;
   /* 功能14：性格數據存檔 */
   if(state.personality)d.personality=state.personality;
   d.elapsedMs=Date.now()-gameStartTime;
@@ -9316,6 +9381,10 @@ function applySaveData(d){
   if(d.adminQuestions!==undefined)state.adminQuestions=d.adminQuestions;
   if(d.countdown!==undefined)state.countdown=d.countdown;
   if(d.resetCount!==undefined)state.resetCount=d.resetCount;
+  if(d.maxHp!==undefined)state.maxHp=d.maxHp;
+  if(d.tide!==undefined)state.tide=d.tide;
+  if(d.echo!==undefined)state.echo=d.echo;
+  if(d.trail!==undefined)state.trail=d.trail;
   state.notes=d.notes||[];
   state.history=d.history||[];
   state.mapZones=d.mapZones||state.mapZones;
@@ -9511,7 +9580,7 @@ function tickBadBlood(){
   badBloodAnim.raf=requestAnimationFrame(tickBadBlood);
 }
 function startBadBlood(){
-  if(SETTINGS.flashSafe||SETTINGS.reduceMotion)return;
+  if(SETTINGS.flashSafe||SETTINGS.reducedMotion)return;
   initBadBloodCanvas();
   if(!badBloodAnim.ctx)return;
   badBloodAnim.drops=[];
@@ -9577,7 +9646,7 @@ function tickGoodParticles(){
   goodParticleAnim.raf=requestAnimationFrame(tickGoodParticles);
 }
 function startGoodParticles(){
-  if(SETTINGS.reduceMotion)return;
+  if(SETTINGS.reducedMotion)return;
   initGoodParticleCanvas();
   if(!goodParticleAnim.ctx)return;
   goodParticleAnim.particles=[];
@@ -9874,8 +9943,12 @@ function resetDungeonState(){
   if(state.party!==undefined)state.party=4;
   if(state.partyMembers!==undefined)state.partyMembers=[];
   if(state.adminQuestions!==undefined)state.adminQuestions=3;
+  state.maxHp=100;state.bonusCountdown=0;
   if(state.countdown!==undefined)state.countdown=60;
   if(state.resetCount!==undefined)state.resetCount=0;
+  if(state.tide!==undefined)state.tide='still';
+  if(state.echo!==undefined)state.echo=3;
+  if(state.trail!==undefined)state.trail=[];
   if(state.personality)state.personality={calm:50,altruism:50,cautious:50};
   if(state.mapZones&&state.mapZones.forEach)state.mapZones.forEach(function(z,i){z.explored=(i===0);z.current=(i===0);});
 }
@@ -10114,11 +10187,9 @@ function openBranchDungeonSelect(){
   var list=$('branch-dungeon-list');
   if(!list)return;
   list.innerHTML='';
-  var dgs=[
-    {id:1,name:'質數旅館',index:'第 一 副 本',scenes:SCENES1,st:state1},
-    {id:2,name:'沉默圖書館',index:'第 二 副 本',scenes:SCENES2,st:state2},
-    {id:3,name:'倒計時醫院',index:'第 三 副 本',scenes:SCENES3,st:state3}
-  ];
+  var dgs=dungeons.map(function(d){
+    return {id:d.id,name:d.name,index:d.index,scenes:sceneRefs[d.id],st:stateRefs[d.id]};
+  });
   var isGM=!!window._gmUnlocked;
   dgs.forEach(function(d){
     var unlocked=isGM||isUnlocked(d.id);
@@ -10508,7 +10579,8 @@ function renderGalleryEndings(did,body){
   found.forEach(function(e){
     var parts=e.split('|');
     var type=parts[1]||'',title=parts[2]||'';
-    var typeLabel={normal:'普通',bad:'壞',survive:'逃過',hidden:'隱藏',death_hp:'死亡'}[type]||type;
+    var baseType=type.split('_')[0];
+    var typeLabel={normal:'普通',bad:'壞',survive:'逃過',hidden:'隱藏',death:'死亡'}[baseType]||({normal:'普通',bad:'壞',survive:'逃過',hidden:'隱藏',death_hp:'死亡'}[type]||type);
     html+='<div class="gallery-cell unlocked"><div class="gc-name">'+title+'</div><div class="gc-type">'+typeLabel+'結局</div></div>';
   });
   var lockedCount=total-found.length;
@@ -11459,7 +11531,7 @@ SCENES.hidden_mirror_door = {
     '<p>每一塊鏡子裡都有一個你。有的在跑，有的在哭，有的站著不動。沒有一個是現在的你。</p>',
     '<p>走廊盡頭有一把椅子。椅子上坐著一個人，背對著你。他轉過頭——是你。但他老了。老得不像你。</p>'
   ],
-  onEnter(){if(getEndingLog().some(function(e){return e.indexOf('1|normal|')===0;}))unlockAchievement('ach_dual');setTimeout(()=>triggerEnding('hidden_mirror_door','鏡中門','你沒有殺死鏡像，也沒有跟它交易。你把黃金鑰匙給了它，它為你打開了一扇不該存在的門。門後那一條全是鏡子的走廊，沒有一扇是出口。','隱藏結局 · 300積分 + 「鏡中門人」稱號'),900)},
+  onEnter(){if(getEndingLog().some(function(e){return e.indexOf('1|normal')===0;}))unlockAchievement('ach_dual');setTimeout(()=>triggerEnding('hidden_mirror_door','鏡中門','你沒有殺死鏡像，也沒有跟它交易。你把黃金鑰匙給了它，它為你打開了一扇不該存在的門。門後那一條全是鏡子的走廊，沒有一扇是出口。','隱藏結局 · 300積分 + 「鏡中門人」稱號'),900)},
   choices:[]
 };
 
@@ -11472,7 +11544,7 @@ SCENES.ending_normal = {
     '<p>[glow]門外是清晨的光。不是回廊那種白，是真的、暖的、金色的太陽。</p>',
     '<p>三人走了出去。</p>'
   ],
-  onEnter(){state.flags.mirror_defeated=true;state.flags.suwan_survived=true;localStorage.setItem('wuxian-first-cleared','true');if(getEndingLog().some(function(e){return e.indexOf('1|hidden|')===0;}))unlockAchievement('ach_dual');setTimeout(()=>triggerEnding('normal_escape','逃出生天','你用邏輯擊敗了鏡像，用兩把鑰匙打開大門。你活下來了。但旅館的真相、回廊的秘密，你還沒碰著。','普通結局 · 100點數 + 「倖存者」稱號'),800)},
+  onEnter(){state.flags.mirror_defeated=true;state.flags.suwan_survived=true;localStorage.setItem('wuxian-first-cleared','true');if(getEndingLog().some(function(e){return e.indexOf('1|hidden')===0;}))unlockAchievement('ach_dual');setTimeout(()=>triggerEnding('normal_escape','逃出生天','你用邏輯擊敗了鏡像，用兩把鑰匙打開大門。你活下來了。但旅館的真相、回廊的秘密，你還沒碰著。','普通結局 · 100點數 + 「倖存者」稱號'),800)},
   choices:[]
 };
 
@@ -11695,7 +11767,7 @@ SCENES.corridor_left={
     '<p class="action">輸入密碼，或者用別的方式開門。</p>'
   ],
   choices:[
-    {text:'輸入密碼解鎖',action:()=>openPuzzle('密碼鎖','提示：最常用的四個字，各取它們的筆畫數——的、了、在、是。輸入四位數字。','8269',(ok)=>{if(ok){state.flags.password_solved=true;state.flags.puzzle1_done=true;goToScene('reading_room')}else{damage(20);appendNarrative('<p class="action">密碼鎖爆出一聲刺耳的響，你被電得一縮。</p>')}}, '線索是老周遞來那張按使用頻率排開的紙。密碼不取漢字，而取0到9裡最高頻的幾個數字——想想人們撥號、寫地址時最常落下哪幾個數字，再按它們在撥號盤上最常被按的位置排成四位。')},
+    {text:'輸入密碼解鎖',action:()=>openPuzzle('密碼鎖','提示：最常用的四個字，各取它們的筆畫數——的、了、在、是。輸入四位數字。','8269',(ok)=>{if(ok){state.flags.password_solved=true;state.flags.puzzle1_done=true;goToScene('reading_room')}else{damage(20);appendNarrative('<p class="action">密碼鎖爆出一聲刺耳的響，你被電得一縮。</p>')}}, '線索是老周遞來那張按使用頻率排開的紙：最常用的四個漢字依次是「的、了、在、是」。數一數這四個字各自的標準筆畫數（的=8畫、了=2畫、在=6畫、是=9畫），合起來就是四位密碼。')},
     state.inheritance.golden_key?{text:'用黃金鑰匙開門',personality:{cautious:-10},action:()=>{state.flags.password_solved=true;state.flags.puzzle1_done=true;state.flags.loud_noise=true;goToScene('reading_room')}}:null,
     {text:'返回大廳',next:'lobby'}
   ].filter(c=>c!==null)
@@ -12553,7 +12625,7 @@ SCENES.entrance={
     '<p>林醫生還在轉他的鋼筆。小雨縮在接待台旁邊，看了你一眼，沒說話。</p>',
     '<p>空氣裡還是消毒水的味道。你知道時間在走。</p>'
   ],
-  onEnter:()=>{state.countdown=60;updateCountdown()},
+  onEnter:()=>{state.countdown=60+(state.bonusCountdown||0);updateCountdown()},
   choices:[
     {text:'和林醫生去藥房',next:'pharmacy',personality:{cautious:+5}},
     {text:'和小雨上二樓內科',next:'internal_med',personality:{altruism:+5}},
@@ -14359,18 +14431,19 @@ function gmAutoPlayStop(){
   if(statusEl)statusEl.textContent='已停止';
 }
 function gmResetAll(){
-  if(!confirm('確定清除所有存檔？此操作不可恢復。'))return;
-  doWipeAllSaves();
-  showToast('存檔已重置');
+  showConfirm('確定清除所有存檔？此操作不可恢復。',function(){
+    doWipeAllSaves();
+    showToast('存檔已重置');
+  },'重置存檔');
 }
 /* 雙重確認：從暫停菜單觸發 */
 function clearAllSaves(){
-  if(!confirm('確定要清除全部存檔嗎？所有通關記錄、繼承、成就都會消失。'))return;
-  if(!confirm('再次確認：此操作不可恢復。確定繼續清空？'))return;
-  closePause();
-  doWipeAllSaves();
-  showToast('全部存檔已清除');
-  if($('hub-screen').classList.contains('show'))render();
+  showConfirm('確定要清除全部存檔嗎？所有通關記錄、繼承、成就都會消失。',function(){
+    closePause();
+    doWipeAllSaves();
+    showToast('全部存檔已清除');
+    if($('hub-screen').classList.contains('show'))render();
+  },'清除全部存檔');
 }
 function doWipeAllSaves(){
   var keys=[];
@@ -14405,7 +14478,7 @@ function exportSaves(){
 function importSaves(e){
   var file=e.target.files[0];
   if(!file)return;
-  if(!confirm('匯入存檔將覆蓋目前所有進度，確定繼續？')){e.target.value='';return;}
+  showConfirm('匯入存檔將覆蓋目前所有進度，確定繼續？',function(){
   var reader=new FileReader();
   reader.onload=function(ev){
     try{
@@ -14420,6 +14493,7 @@ function importSaves(e){
   };
   reader.readAsText(file);
   e.target.value='';
+  },'匯入存檔');
 }
 
 function gmLock(){
@@ -14787,7 +14861,7 @@ function openSettingsFromTitle(){
 .v4-frag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
 
 /* 標題畫面稱號小字（克制，不擋按鈕） */
-.v4-title-display{text-align:center;margin:.5rem 0 0;min-height:1.4rem}
+.v4-title-display,#v4-title-display{text-align:center;margin:.5rem 0 0;min-height:1.4rem;position:relative;z-index:2}
 .v4-equip-line{font-family:var(--font-serif);font-size:.78rem;letter-spacing:.35em;
   color:var(--accent);opacity:.85}
 
@@ -15009,7 +15083,10 @@ V4.boot=function(){
   /* 更新結局總數（1-3 追加，第四副本直接給定） */
   [1,2,3].forEach(function(id){
     var pack=V4._story[id]; var add=pack?pack.endingsAdded||0:0;
-    if(add) ENDING_TOTALS[id]=(ENDING_TOTALS[id]||0)+add;
+    if(add){
+      ENDING_TOTALS[id]=(ENDING_TOTALS[id]||0)+add;
+      if(DUNGEON_CONFIG[id])DUNGEON_CONFIG[id].totalEndings=ENDING_TOTALS[id];
+    }
   });
   Object.keys(V4._dungeonDefs).forEach(function(id){
     ENDING_TOTALS[id]=V4._dungeonDefs[id].totalEndings;
@@ -17494,15 +17571,15 @@ body[data-font="fang"] .narrative{
  * ============================================================ */
 
 /* 第五副本曲目列：冷調海色細邊，與金色「指定中」區分；不加動畫 */
-#v4-jukebox-list .v5-tide-row{
+#v4-juke-list .v5-tide-row,#v4-jukebox-list .v5-tide-row{
   border-left:2px solid rgba(120,178,196,.38);
   background:rgba(120,178,196,.045);
 }
-#v4-jukebox-list .v5-tide-row.on{
+#v4-juke-list .v5-tide-row.on,#v4-jukebox-list .v5-tide-row.on{
   border-left:2px solid rgba(150,205,220,.6);
 }
 /* 曲名後的小標記（文字，非 emoji） */
-#v4-jukebox-list .v5-tide-row .v4-row-t::after{
+#v4-juke-list .v5-tide-row .v4-row-t::after,#v4-jukebox-list .v5-tide-row .v4-row-t::after{
   content:'海';
   margin-left:.45em;
   font-size:.6rem;
@@ -18402,20 +18479,20 @@ var EQUIP_LIMIT = 3;
  * A. 傳承之印（Legacy Seals）
  * ============================================================ */
 var SEALS=[
-  {id:'seal_hp',   name:'銅皮印',   glyph:'皮', desc:'開局生命 +25',
-   apply:function(st){ st.hp=Math.min(100,(st.hp||100)+25); }},
+  {id:'seal_hp',   name:'銅皮印',   glyph:'皮', desc:'開局生命上限與生命 +25',
+   apply:function(st){ st.maxHp=(st.maxHp||100)+25; st.hp=(st.hp||100)+25; }},
   {id:'seal_hint', name:'指引印',   glyph:'指', desc:'開局提示次數 +2',
    apply:function(){ bumpHints(2); }},
-  {id:'seal_item', name:'行囊印',   glyph:'囊', desc:'開局自帶一件「舊銅鑰匙」',
-   apply:function(st){ try{ addItem('v5_oldkey','舊銅鑰匙','前次旅程留下的銅鑰匙。也許能開某扇門。',''); }catch(e){} }},
+  {id:'seal_item', name:'行囊印',   glyph:'囊', desc:'開局自帶一件「舊銅鑰匙」（等同持有黃金鑰匙）',
+   apply:function(st){ try{ addItem('v5_oldkey','舊銅鑰匙','前次旅程留下的銅鑰匙。可在需要黃金鑰匙的門鎖處通用。','等同黃金鑰匙'); if(st.inheritance)st.inheritance.golden_key=true; if(!hasItem('golden_key'))addItem('golden_key','黃金鑰匙','由行囊印共鳴喚出的舊鑰匙。'); }catch(e){} }},
   {id:'seal_revive', name:'不滅印', glyph:'生', desc:'本次遊玩死亡時自動回滿一次',
    apply:function(st){ st.v5Revive=true; }},
   {id:'seal_calm', name:'靜心印',   glyph:'靜', desc:'冷靜初始 +10',
    apply:function(st){ if(st.personality) st.personality.calm=Math.min(100,(st.personality.calm||50)+10); }},
   {id:'seal_time', name:'沙漏印',   glyph:'漏', desc:'倒計時副本 +10 分鐘；否則 HP +10',
    apply:function(st){
-     if(st.countdown!=null) st.countdown+=10;
-     else st.hp=Math.min(100,(st.hp||100)+10);
+     if(st.countdown!=null){ st.bonusCountdown=(st.bonusCountdown||0)+10; st.countdown+=10; }
+     else{ st.maxHp=(st.maxHp||100)+10; st.hp=(st.hp||100)+10; }
    }}
 ];
 function sealById(id){ for(var i=0;i<SEALS.length;i++) if(SEALS[i].id===id) return SEALS[i]; return null; }
@@ -18559,7 +18636,10 @@ var RELICS={
   d3_tag:     {d:3,name:'媛媛的病歷夾牌', desc:'塑膠套裡還壓著一朵乾掉的紙飛機。', found:false},
   d3_syringe:{d:3,name:'第十四格空針劑', desc:'周敏留下的。標籤上寫著「給自己」。', found:false},
   d4_key:    {d:4,name:'無號之鑰', desc:'鑰匙沒有齒。它開的不是鎖，是你願意記起的那段。', found:false},
-  d4_letter:  {d:4,name:'門外寄來的信', desc:'沒有郵戳。收件人寫著你的名字。', found:false}
+  d4_letter:  {d:4,name:'門外寄來的信', desc:'沒有郵戳。收件人寫著你的名字。', found:false},
+  d5_shell:   {d:5,name:'迴聲海螺', desc:'貼在耳邊能聽見十三次潮聲，其中三次是空的。', found:false},
+  d6_mug:     {d:6,name:'裂紋咖啡杯', desc:'停在凌晨 03:17 的馬克杯，杯底還留著溫熱的咖啡印。', found:false},
+  d6_thesis:  {d:6,name:'質數分佈手稿末頁', desc:'背面用鉛筆寫著前七個質數：2, 3, 5, 7, 11, 13, 17。', found:false}
 };
 function foundRelics(){ return lsJSON(LS_RELICS,[]); }
 function hasRelic(id){ return foundRelics().indexOf(id)!==-1; }
@@ -18638,9 +18718,9 @@ function registerRelicPacks(){
 function renderRelicGallery(body){
   var found=foundRelics();
   var total=Object.keys(RELICS).length;
-  var html='<div class="v4-sub">迴光遺物 '+found.length+' / '+total+' · 散落在四個副本的隱藏角落</div>';
+  var html='<div class="v4-sub">迴光遺物 '+found.length+' / '+total+' · 散落在各個副本的隱藏角落</div>';
   /* 依副本分組 */
-  var groups=[1,2,3,4];
+  var groups=[1,2,3,4,5,6].filter(function(d){return Object.keys(RELICS).some(function(k){return RELICS[k].d===d;});});
   groups.forEach(function(d){
     var dname='';
     try{ dname=(typeof dungeons!=='undefined' && dungeons[d-1])?dungeons[d-1].name:('第 '+d+' 副本'); }
@@ -19211,7 +19291,7 @@ function renderSealMgrInline(body){
 /* ============================================================
  * 註冊
  * ============================================================ */
-V5.registerStoryPackRelics=registerRelicPacks; /* 暴露（除錯用） */
+V5.registerStoryPackRelics=registerRelicPacks; V5.RELICS=RELICS; V5.grantRelic=function(id){grantRelic(id);};
 
 V5.registerSystem('v5-systems-40',function(){
   registerRelicPacks();
@@ -19633,6 +19713,2553 @@ window.V5Audio={
   debug:function(){ return {dungeon:currentDungeonId, owns:d5OwnsAudio(),
     bgm:d5.themeKey, bgmNodes:!!d5.bgm, env:!!env.nodes, tide:env.tide, preview:d5.preview}; }
 };
+})();
+
+</script>
+
+<!-- ===== v5.3.0 擴展層（v5.1 契約 / v5.2 占卜與第六副本 / v5.3 萬門之書與四語系統） ===== -->
+<style id="v53-style">
+/* ============================================================
+ * 無盡之門 · v5.3.0 擴展樣式（v5.1 契約 / v5.2 占卜與第六副本 / v5.3 萬門之書與四語 UI）
+ * 延續暗色金宋極簡美學，保持畫面克制不混亂，零 Emoji，純 SVG / CSS 幾何。
+ * ============================================================ */
+
+/* ---------- 1. 四語切換器（標題頁、迴廊頂欄、遊戲頂欄） ---------- */
+.v53-lang-bar{
+  display:inline-flex;align-items:center;gap:.35rem;
+  margin-top:.85rem;padding:.25rem .4rem;
+  border:1px solid var(--border);background:rgba(18,18,22,.82);
+  position:relative;z-index:5;pointer-events:auto;
+}
+.v53-lang-btn{
+  font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;
+  color:var(--text-dim);background:transparent;border:1px solid transparent;
+  padding:.28rem .6rem;cursor:pointer;transition:all .2s;min-height:28px;
+}
+.v53-lang-btn:hover{color:var(--text-bright);border-color:var(--border)}
+.v53-lang-btn.on{
+  color:var(--accent);border-color:var(--accent-dim);
+  background:rgba(201,169,110,.1);
+}
+.v53-hub-lang-btn{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--text-dim);
+  letter-spacing:.12em;background:transparent;border:1px solid var(--border);
+  padding:.38rem .75rem;cursor:pointer;transition:all .2s;
+  display:inline-flex;align-items:center;gap:.35rem;min-height:34px;
+}
+.v53-hub-lang-btn:hover{border-color:var(--accent-dim);color:var(--accent)}
+.v53-hub-lang-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.6}
+
+/* ---------- 2. 頂欄收納抽屜（保持畫面清爽不混亂） ---------- */
+.top-bar-right{position:relative;align-items:center}
+.v53-more-wrap{position:relative;display:inline-flex}
+.v53-more-drawer{
+  position:fixed;top:52px;right:1.5rem;z-index:260;
+  background:var(--bg-panel);border:1px solid var(--accent-dim);
+  padding:.45rem;display:none;flex-direction:row;gap:.4rem;
+  box-shadow:0 8px 28px rgba(0,0,0,.75);
+}
+.v53-more-drawer.open{display:flex}
+.v53-more-drawer .icon-btn{width:34px;height:34px}
+
+/* ---------- 3. 洞悉之契：選項微標籤（克制不搶戲） ---------- */
+.v53-choice-tag{
+  font-family:var(--font-mono);font-size:.6rem;letter-spacing:.08em;
+  padding:.1rem .4rem;border:1px solid var(--border);color:var(--text-dim);
+  margin-left:.45rem;flex-shrink:0;align-self:center;line-height:1.3;
+}
+.v53-choice-tag.main{border-color:var(--accent-dim);color:var(--accent)}
+.v53-choice-tag.puzzle{border-color:#5a9ec9;color:#7abee0}
+.v53-choice-tag.danger{border-color:var(--danger);color:var(--danger-bright)}
+.v53-choice-tag.read{opacity:.65}
+
+/* ---------- 4. 謎題互動數字/字母鍵盤（桌面與手機皆可點按） ---------- */
+.v53-keypad{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:.35rem;
+  margin:-.3rem 0 .9rem;
+}
+.v53-key{
+  padding:.45rem 0;font-family:var(--font-mono);font-size:.82rem;
+  color:var(--text);background:var(--bg-card);border:1px solid var(--border);
+  cursor:pointer;transition:all .18s;text-align:center;min-height:34px;
+}
+.v53-key:hover{border-color:var(--accent-dim);color:var(--accent);background:var(--bg-panel)}
+.v53-key:active{transform:scale(.96)}
+.v53-key.wide{grid-column:span 2;font-family:var(--font-sans);font-size:.72rem;letter-spacing:.1em}
+
+/* ---------- 5. 門扉占卜（12 張 SVG 命運牌） ---------- */
+.v53-arcana-stage{
+  display:flex;flex-direction:column;align-items:center;gap:1rem;
+  padding:.9rem;background:var(--bg-card);border:1px solid var(--border);
+  margin-bottom:1rem;
+}
+.v53-arcana-card{
+  width:156px;height:236px;border:1px solid var(--accent-dim);
+  background:radial-gradient(ellipse at center,rgba(201,169,110,.08) 0%,var(--bg) 75%);
+  display:flex;flex-direction:column;align-items:center;justify-content:space-between;
+  padding:.85rem .7rem;position:relative;
+  box-shadow:0 6px 24px rgba(0,0,0,.55);
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s;
+}
+.v53-arcana-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.v53-arcana-num{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.25em;color:var(--accent-dim)}
+.v53-arcana-art{width:84px;height:84px;color:var(--accent);display:flex;align-items:center;justify-content:center}
+.v53-arcana-art svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.4}
+.v53-arcana-name{font-family:var(--font-serif);font-size:.95rem;letter-spacing:.2em;color:var(--text-bright)}
+.v53-arcana-buff{font-size:.66rem;color:var(--accent);text-align:center;line-height:1.4}
+.v53-arcana-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(115px,1fr));gap:.5rem;
+}
+.v53-arcana-mini{
+  border:1px solid var(--border);background:var(--bg-card);padding:.55rem .5rem;
+  text-align:center;cursor:pointer;transition:border-color .2s;
+}
+.v53-arcana-mini.unlocked{border-color:var(--accent-dim)}
+.v53-arcana-mini.active{border-color:var(--accent);background:rgba(201,169,110,.09)}
+.v53-arcana-mini.locked{opacity:.4;cursor:default}
+.v53-arcana-mini .am-num{font-family:var(--font-mono);font-size:.6rem;color:var(--accent-dim)}
+.v53-arcana-mini .am-name{font-family:var(--font-serif);font-size:.8rem;color:var(--text-bright);margin:.15rem 0}
+.v53-arcana-mini .am-desc{font-size:.64rem;color:var(--text-dim);line-height:1.35}
+
+/* ---------- 6. 萬門之書：SVG 人物星圖與詞條 ---------- */
+.v53-constellation-wrap{
+  background:var(--bg);border:1px solid var(--border);
+  position:relative;overflow:hidden;margin-bottom:.75rem;
+}
+.v53-constellation-svg{display:block;width:100%;height:270px}
+.v53-cnode{cursor:pointer}
+.v53-cnode circle{transition:r .2s,fill .2s,stroke .2s}
+.v53-cnode:hover circle,.v53-cnode.on circle{fill:var(--accent);stroke:var(--accent-bright)}
+.v53-cnode text{font-family:var(--font-sans);font-size:9.5px;fill:var(--text);pointer-events:none}
+.v53-codex-detail{
+  background:var(--bg-card);border:1px solid var(--accent-dim);
+  padding:.75rem .9rem;margin-bottom:.9rem;font-size:.8rem;line-height:1.75;color:var(--text);
+}
+.v53-codex-detail .cd-title{font-family:var(--font-serif);font-size:.95rem;color:var(--accent);letter-spacing:.15em;margin-bottom:.25rem}
+.v53-codex-detail .cd-meta{font-family:var(--font-mono);font-size:.65rem;color:var(--text-dim);margin-bottom:.35rem}
+
+/* ---------- 7. 第六副本「終焉觀測站」頂欄頻率晶片 ---------- */
+.d6-status{
+  display:inline-flex;align-items:center;gap:.55rem;flex-wrap:wrap;
+  padding:.18rem .6rem;border:1px solid var(--border);border-radius:6px;
+  background:var(--bg-card);font-family:var(--font-mono);font-size:.72rem;
+  color:var(--text-dim);letter-spacing:.06em;
+}
+.d6-status b{color:var(--accent);font-weight:500}
+
+@media (max-width:600px){
+  .v53-keypad{grid-template-columns:repeat(6,1fr)}
+  .v53-more-drawer{right:.8rem;top:48px}
+  .v53-constellation-svg{height:220px}
+}
+
+</style>
+<script id="v53-script">
+/* ============================================================
+ * 無盡之門 · v5.3.0 四語本地化引擎（繁中 / 簡中 / English / 日本語）
+ * 支援即時熱切換、DOM 自動雙向映射、敘事與選項智能翻譯、存檔兼容。
+ * ============================================================ */
+(function(){
+'use strict';
+if(window.I18N && window.I18N.__booted) return;
+
+var LS_LANG = 'wuxian-v53-lang';
+var T2S_CHAR = {"萬":"万","與":"与","醜":"丑","專":"专","業":"业","叢":"丛","東":"东","絲":"丝","丟":"丢","兩":"两","嚴":"严","喪":"丧","個":"个","豐":"丰","臨":"临","為":"为","麗":"丽","舉":"举","麼":"么","義":"义","烏":"乌","樂":"乐","喬":"乔","習":"习","鄉":"乡","書":"书","買":"买","亂":"乱","乾":"干","爭":"争","虧":"亏","雲":"云","亞":"亚","產":"产","畝":"亩","親":"亲","億":"亿","僅":"仅","從":"从","侖":"仑","倉":"仓","儀":"仪","們":"们","價":"价","眾":"众","優":"优","夥":"伙","會":"会","傘":"伞","偉":"伟","傳":"传","傷":"伤","倀":"伥","倫":"伦","傖":"怆","偽":"伪","佇":"伫","體":"体","餘":"余","傭":"佣","併":"并","來":"来","俠":"侠","侶":"侣","僥":"侥","偵":"侦","側":"侧","僑":"侨","儂":"侬","俁":"俣","儔":"俦","儼":"俨","倆":"俩","儷":"俪","儉":"俭","倣":"仿","値":"值","債":"债","傾":"倾","傯":"偬","傴":"偻","償":"偿","傑":"杰","備":"备","傢":"家","僉":"佥","僕":"仆","僱":"雇","儐":"傧","儕":"侪","儘":"尽","儲":"储","儺":"傩","儻":"傥","兇":"凶","兌":"兑","兒":"儿","兗":"兖","黨":"党","蘭":"兰","關":"关","興":"兴","茲":"兹","養":"养","獸":"兽","兠":"兜","內":"内","岡":"冈","冊":"册","寫":"写","軍":"军","農":"农","沖":"冲","決":"决","況":"况","凍":"冻","淨":"净","淒":"凄","涼":"凉","減":"减","湊":"凑","凜":"凛","幾":"几","鳳":"凤","憑":"凭","凱":"凯","擊":"击","鑿":"凿","芻":"刍","劉":"刘","則":"则","剛":"刚","創":"创","刪":"删","別":"别","剄":"刭","剎":"刹","剮":"剐","劍":"剑","劑":"剂","剝":"剥","剴":"剀","剷":"铲","劃":"划","劄":"札","劇":"剧","劊":"刽","劌":"刿","勸":"劝","辦":"办","務":"务","勱":"劢","動":"动","勵":"励","勁":"劲","勞":"劳","勢":"势","勳":"勋","勝":"胜","勦":"剿","勧":"劝","勻":"匀","匭":"匦","匱":"匮","區":"区","醫":"医","華":"华","協":"协","單":"单","賣":"卖","盧":"卢","鹵":"卤","臥":"卧","衛":"卫","卻":"却","卹":"恤","廠":"厂","廳":"厅","歷":"历","厲":"厉","壓":"压","厭":"厌","厙":"厍","廁":"厕","廂":"厢","厴":"厣","廈":"厦","廚":"厨","廄":"厩","廝":"厮","縣":"县","參":"参","雙":"双","發":"发","變":"变","敘":"叙","疊":"叠","葉":"叶","號":"号","嘆":"叹","嘰":"叽","吋":"寸","後":"后","嚇":"吓","呂":"吕","嗎":"吗","噸":"吨","聽":"听","啟":"启","吳":"吴","吶":"呐","呎":"尺","呪":"咒","響":"响","啞":"哑","嘩":"哗","哢":"咔","唄":"呗","喚":"唤","問":"问","嘖":"啧","嗇":"啬","囀":"啭","齧":"啮","囉":"啰","啱":"岩","嘯":"啸","噴":"喷","嘍":"喽","嗆":"呛","嗚":"呜","嗩":"唢","嗶":"哔","嘔":"呕","嘗":"尝","噓":"嘘","嘜":"唛","嘮":"唠","囑":"嘱","嘸":"呣","嚕":"噜","噝":"嘶","噠":"哒","噥":"哝","噦":"哕","噲":"哙","噹":"当","嚀":"咛","嚐":"尝","囂":"嚣","嚥":"咽","嚦":"沥","嚨":"咙","嚮":"向","嚶":"嘤","囁":"嗫","囈":"呓","囌":"苏","囻":"国","圍":"围","圇":"囵","國":"国","圖":"图","圓":"圆","團":"团","園":"园","聖":"圣","場":"场","壞":"坏","塊":"块","堅":"坚","壇":"坛","壢":"坜","壩":"坝","塢":"坞","墳":"坟","墜":"坠","壟":"垄","壚":"垆","壘":"垒","懇":"恳","堊":"垩","墊":"垫","埡":"垭","時":"时","執":"执","堝":"埚","堯":"尧","報":"报","塋":"茔","塒":"埘","塗":"涂","塚":"冢","塤":"埙","塵":"尘","塹":"堑","墑":"墒","牆":"墙","墮":"堕","墾":"垦","壙":"圹","壤":"壌","壯":"壮","聲":"声","殼":"壳","壺":"壶","處":"处","復":"复","夠":"够","夢":"梦","頭":"头","夾":"夹","奪":"夺","奩":"奁","奐":"奂","奮":"奋","獎":"奖","奧":"奥","奼":"姹","妝":"妆","婦":"妇","媽":"妈","嫵":"妩","嫗":"妪","媯":"妫","姍":"姗","婁":"娄","婭":"娅","嬈":"娆","嬌":"娇","孌":"娈","娛":"娱","嬰":"婴","嬋":"婵","嬸":"婶","媧":"娲","媼":"媪","嫋":"袅","嫺":"娴","嬙":"嫱","嬡":"嫒","嬪":"嫔","嬴":"赢","嬤":"嬷","孫":"孙","學":"学","孿":"孪","寧":"宁","寶":"宝","實":"实","寵":"宠","審":"审","憲":"宪","宮":"宫","寬":"宽","賓":"宾","寢":"寝","對":"对","尋":"寻","導":"导","將":"将","爾":"尔","尠":"鲜","尷":"尴","屍":"尸","盡":"尽","層":"层","屜":"屉","屆":"届","屬":"属","屢":"屡","屨":"屦","嶼":"屿","歲":"岁","豈":"岂","嶇":"岖","崗":"岗","峴":"岘","嵐":"岚","島":"岛","嶺":"岭","巋":"岿","峽":"峡","峩":"峨","崍":"崃","崢":"峥","嶄":"崭","嵗":"岁","嶠":"峤","嶧":"峄","嶮":"险","嶴":"岙","嶽":"岳","巔":"巅","巖":"岩","鞏":"巩","帥":"帅","師":"师","幃":"帏","帳":"帐","簾":"帘","幟":"帜","帶":"带","幀":"帧","幫":"帮","幬":"帱","幘":"帻","幗":"帼","冪":"幂","幣":"币","並":"并","幹":"干","廣":"广","慶":"庆","廬":"庐","庫":"库","應":"应","廟":"庙","龐":"庞","廢":"废","蔭":"荫","廡":"庑","廩":"廪","開":"开","異":"异","棄":"弃","弒":"弑","張":"张","彌":"弥","彎":"弯","彈":"弹","強":"强","歸":"归","當":"当","錄":"录","彙":"汇","彥":"彦","徹":"彻","徑":"径","徠":"徕","徵":"征","憶":"忆","憂":"忧","愾":"忾","懷":"怀","態":"态","慫":"怂","憮":"怃","慪":"怄","悵":"怅","愴":"怆","慍":"愠","憐":"怜","總":"总","懌":"怿","戀":"恋","恆":"恒","恥":"耻","惡":"恶","慟":"恸","懨":"恹","悅":"悦","懸":"悬","慳":"悭","憫":"悯","驚":"惊","懼":"惧","慘":"惨","懲":"惩","憊":"惫","愜":"惬","慚":"惭","憚":"惮","慣":"惯","惱":"恼","惲":"恽","惻":"侧","愷":"恺","願":"愿","慄":"栗","慇":"殷","慮":"虑","慾":"欲","憤":"愤","懍":"懔","懣":"懑","懶":"懒","懺":"忏","懾":"慑","戲":"戏","成":"铖","戔":"戋","戰":"战","戩":"戬","戶":"户","撲":"扑","擴":"扩","捫":"扪","掃":"扫","揚":"扬","擾":"扰","撫":"抚","拋":"抛","摶":"抟","摳":"抠","掄":"抡","搶":"抢","護":"护","擬":"拟","攏":"拢","揀":"拣","擁":"拥","攔":"拦","擰":"拧","撥":"拨","擇":"择","掛":"挂","摯":"挚","攣":"挛","撾":"挝","撻":"挞","挾":"挟","撓":"挠","擋":"挡","撟":"挢","掙":"挣","擠":"挤","揮":"挥","撏":"挦","撈":"捞","損":"损","撿":"捡","換":"换","搗":"捣","捨":"舍","據":"据","採":"采","擄":"掳","摑":"掴","擲":"掷","撣":"掸","摻":"掺","摜":"掼","攬":"揽","撳":"揿","攙":"搀","擱":"搁","摟":"搂","攪":"搅","搖":"摇","搥":"捶","搵":"揾","攜":"携","搾":"榨","攝":"摄","擺":"摆","擯":"摈","攤":"摊","摠":"总","摺":"折","撐":"撑","擔":"担","擷":"撷","擻":"擞","擼":"撸","攆":"撵","攖":"撄","攢":"攒","敵":"敌","敗":"败","斂":"敛","數":"数","齋":"斋","斕":"斓","斬":"斩","斷":"断","於":"于","無":"无","舊":"旧","曠":"旷","曇":"昙","晝":"昼","顯":"显","晉":"晋","曉":"晓","曄":"晔","暈":"晕","暉":"晖","暫":"暂","暌":"睽","暢":"畅","曆":"历","暱":"昵","漢":"汉","曖":"暧","曬":"晒","朧":"胧","術":"术","機":"机","殺":"杀","雜":"杂","權":"权","條":"条","楊":"杨","極":"极","構":"构","樅":"枞","樞":"枢","棗":"枣","櫪":"枥","梘":"枧","棖":"枨","槍":"枪","楓":"枫","梟":"枭","枱":"台","櫃":"柜","檸":"柠","柵":"栅","柺":"拐","標":"标","棧":"栈","櫛":"栉","櫳":"栊","棟":"栋","櫨":"栌","櫟":"栎","欄":"栏","樹":"树","棲":"栖","樣":"样","欒":"栾","椏":"桠","橈":"桡","楨":"桢","檔":"档","榿":"桤","橋":"桥","樺":"桦","檜":"桧","槳":"桨","樁":"桩","梲":"棁","櫝":"椟","槧":"椠","欏":"椤","橢":"椭","樓":"楼","欖":"榄","櫬":"榇","櫚":"榈","櫸":"榉","榪":"杩","穀":"谷","槓":"杠","槨":"椁","規":"规","樸":"朴","橫":"横","櫥":"橱","檉":"柽","檟":"槚","檢":"检","檣":"樯","檮":"梼","檯":"台","檳":"槟","檻":"槛","櫓":"橹","櫞":"橼","櫧":"槠","櫻":"樱","鬱":"郁","歡":"欢","歟":"欤","歐":"欧","欽":"钦","歎":"叹","殲":"歼","歿":"殁","殘":"残","殞":"殒","殮":"殓","殫":"殚","殯":"殡","毆":"殴","毀":"毁","轂":"毂","畢":"毕","斃":"毙","氈":"毡","毿":"毵","氌":"氇","氣":"气","氫":"氢","氬":"氩","氳":"氲","氾":"泛","匯":"汇","湯":"汤","溝":"沟","沒":"没","灃":"沣","漚":"沤","瀝":"沥","淪":"沦","滄":"沧","溈":"沩","滬":"沪","濘":"泞","淚":"泪","瀧":"泷","瀘":"泸","濼":"泺","瀉":"泻","潑":"泼","澤":"泽","涇":"泾","潔":"洁","灑":"洒","洶":"汹","浹":"浃","淺":"浅","漿":"浆","澆":"浇","湞":"浈","溮":"浉","濁":"浊","測":"测","澮":"浍","濟":"济","瀏":"浏","渾":"浑","滸":"浒","濃":"浓","潯":"浔","濤":"涛","澇":"涝","淶":"涞","漣":"涟","潿":"涠","渦":"涡","渙":"涣","滌":"涤","潤":"润","澗":"涧","漲":"涨","澀":"涩","淵":"渊","溫":"温","湧":"涌","灣":"湾","濕":"湿","潰":"溃","濺":"溅","漵":"溆","準":"准","滅":"灭","滎":"荥","滯":"滞","滲":"渗","滷":"卤","滾":"滚","滿":"满","漁":"渔","漸":"渐","潁":"颍","潛":"潜","澠":"渑","濛":"蒙","濫":"滥","濬":"浚","濰":"潍","濱":"滨","濾":"滤","瀅":"滢","瀆":"渎","瀋":"沈","瀕":"濒","瀟":"潇","瀠":"潆","瀦":"潴","瀨":"濑","瀰":"弥","瀲":"潋","瀾":"澜","灘":"滩","燈":"灯","靈":"灵","災":"灾","燦":"灿","煬":"炀","爐":"炉","燉":"炖","點":"点","煉":"炼","熾":"炽","爍":"烁","爛":"烂","烴":"烃","燭":"烛","煙":"烟","煩":"烦","燒":"烧","燁":"烨","燴":"烩","燙":"烫","燼":"烬","熱":"热","煥":"焕","燾":"焘","煆":"煅","輝":"辉","煒":"炜","煖":"暖","煢":"茕","燜":"焖","營":"营","燬":"毁","燻":"熏","爺":"爷","牘":"牍","牽":"牵","犧":"牺","犢":"犊","犖":"荦","犛":"牦","狀":"状","獁":"犸","猶":"犹","獰":"狞","獨":"独","狹":"狭","獅":"狮","獪":"狯","猙":"狰","獄":"狱","猻":"狲","狽":"狈","獵":"猎","豬":"猪","貓":"猫","蝟":"猬","獻":"献","獫":"猃","獲":"获","獷":"犷","獺":"獭","瑪":"玛","環":"环","現":"现","琺":"珐","瓏":"珑","珪":"圭","瑣":"琐","瓊":"琼","瑤":"瑶","瑩":"莹","瑯":"琅","璧":"壁","璽":"玺","璿":"璇","甕":"瓮","甌":"瓯","甦":"苏","甯":"宁","電":"电","畫":"画","疇":"畴","癤":"疖","療":"疗","瘧":"疟","癘":"疠","瘍":"疡","瘡":"疮","瘋":"疯","癰":"痈","痙":"痉","癢":"痒","癡":"痴","瘉":"愈","瘺":"瘘","癇":"痫","癆":"痨","癒":"愈","癥":"症","癩":"癞","癬":"癣","癮":"瘾","癱":"瘫","癲":"癫","皚":"皑","皺":"皱","盞":"盏","鹽":"盐","監":"监","蓋":"盖","盜":"盗","盤":"盘","盪":"荡","著":"着","睜":"睁","睞":"睐","瞼":"睑","瞘":"瞍","瞞":"瞒","矚":"瞩","矯":"矫","礬":"矾","礦":"矿","碭":"砀","碼":"码","磚":"砖","硨":"砗","硯":"砚","礪":"砺","礱":"砻","礫":"砾","礎":"础","碩":"硕","硤":"硖","確":"确","鹼":"碱","礙":"碍","磧":"碛","碸":"砜","磯":"矶","礄":"硚","禮":"礼","禰":"祢","禎":"祯","禱":"祷","禍":"祸","祿":"禄","稟":"禀","禪":"禅","離":"离","禿":"秃","種":"种","秈":"籼","積":"积","稱":"称","穢":"秽","稅":"税","稈":"秆","穌":"稣","穎":"颖","穡":"穑","穩":"稳","穫":"获","窮":"穷","竊":"窃","竅":"窍","窯":"窑","竄":"窜","窩":"窝","窺":"窥","竇":"窦","窪":"洼","竈":"灶","豎":"竖","競":"竞","篤":"笃","筍":"笋","筆":"笔","筧":"笕","箋":"笺","籠":"笼","籩":"笾","築":"筑","箏":"筝","籌":"筹","簽":"签","簡":"简","簞":"箪","節":"节","範":"范","篋":"箧","篩":"筛","篳":"筚","簀":"箦","簍":"篓","簑":"蓑","簣":"篑","簫":"箫","簷":"檐","籃":"篮","籐":"藤","籜":"箨","籟":"籁","籤":"签","籬":"篱","籮":"箩","籲":"吁","糴":"籴","類":"类","糶":"粜","糲":"粝","粵":"粤","糞":"粪","糧":"粮","糝":"糁","緊":"紧","縶":"絷","糾":"纠","紆":"纡","紅":"红","紂":"纣","纖":"纤","紇":"纥","約":"约","級":"级","紈":"纨","纊":"纩","紀":"纪","紉":"纫","緯":"纬","紜":"纭","紘":"纮","純":"纯","紕":"纰","紗":"纱","綱":"纲","納":"纳","紝":"纴","縱":"纵","綸":"纶","紛":"纷","紙":"纸","紋":"纹","紡":"纺","紵":"纻","紼":"绋","紐":"纽","紓":"纾","線":"线","紺":"绀","絏":"绁","紱":"绂","練":"练","組":"组","紳":"绅","細":"细","織":"织","終":"终","縐":"绉","絆":"绊","絀":"绌","紹":"绍","繹":"绎","經":"经","紿":"绐","綁":"绑","絨":"绒","結":"结","繞":"绕","絰":"绖","絎":"绗","繪":"绘","給":"给","絢":"绚","絳":"绛","絡":"络","絕":"绝","絞":"绞","統":"统","綆":"绠","綃":"绡","絹":"绢","繡":"绣","綏":"绥","絛":"绦","繼":"继","綈":"绨","績":"绩","緒":"绪","綾":"绫","續":"续","綺":"绮","緋":"绯","綽":"绰","緄":"绲","繩":"绳","維":"维","綿":"绵","綬":"绶","繃":"绷","綢":"绸","綯":"绹","綹":"绺","綣":"绻","綜":"综","綻":"绽","綰":"绾","綠":"绿","綴":"缀","緇":"缁","緙":"缂","緗":"缃","緘":"缄","緬":"缅","纜":"缆","緹":"缇","緲":"缈","緝":"缉","縕":"缊","繢":"缋","緦":"缌","綞":"缍","緞":"缎","緶":"缏","緱":"缑","縋":"缒","緩":"缓","締":"缔","縷":"缕","編":"编","緡":"缗","緣":"缘","縉":"缙","縛":"缚","縟":"缛","縝":"缜","縫":"缝","縗":"缞","縞":"缟","纏":"缠","縭":"缡","縊":"缢","縑":"缣","繽":"缤","縹":"缥","縵":"缦","縲":"缧","纓":"缨","縮":"缩","繆":"缪","繅":"缫","纈":"缬","繚":"缭","繕":"缮","繒":"缯","韁":"缰","繾":"缱","繰":"缲","繯":"缳","繳":"缴","纘":"缵","缽":"钵","罌":"罂","羅":"罗","罰":"罚","罷":"罢","罸":"罚","罵":"骂","羈":"羁","羨":"羡","羶":"膻","翹":"翘","翦":"剪","聳":"耸","聶":"聂","聾":"聋","職":"职","聹":"聍","聯":"联","聞":"闻","聰":"聪","聵":"聩","肅":"肃","腸":"肠","膚":"肤","骯":"肮","腎":"肾","腫":"肿","脹":"胀","脅":"胁","膽":"胆","脛":"胫","膠":"胶","脈":"脉","膾":"脍","臟":"脏","臍":"脐","腦":"脑","膿":"脓","腳":"脚","脫":"脱","膩":"腻","靦":"腼","臉":"脸","輿":"舆","艦":"舰","艙":"舱","艤":"舣","艱":"艰","艷":"艳","藝":"艺","蘆":"芦","葦":"苇","莧":"苋","萇":"苌","蒼":"苍","苧":"苎","蘇":"苏","莖":"茎","繭":"茧","荊":"荆","薦":"荐","莢":"荚","蕘":"荛","蓽":"荜","蕎":"荞","薈":"荟","薺":"荠","蕩":"荡","榮":"荣","葷":"荤","熒":"荧","蕁":"荨","藎":"荩","蓀":"荪","藥":"药","蒞":"莅","莊":"庄","萊":"莱","蓮":"莲","蒔":"莳","萵":"莴","薟":"莶","蕕":"莸","鶯":"莺","蘿":"萝","螢":"萤","縈":"萦","蕭":"萧","薩":"萨","蔥":"葱","葒":"荭","蒓":"莼","蔣":"蒋","蒐":"搜","蓆":"席","藍":"蓝","薊":"蓟","蘺":"蓠","預":"预","蕷":"蓣","鎣":"蓥","驀":"蓦","蔔":"卜","陳":"陈","薔":"蔷","藹":"蔼","蕓":"芸","蕪":"芜","薀":"蕰","薌":"芗","薑":"姜","遠":"远","藉":"借","藪":"薮","藺":"蔺","蘊":"蕴","蘋":"苹","虜":"虏","虛":"虚","虯":"虬","蟣":"虮","雖":"虽","蝦":"虾","蠆":"虿","蝕":"蚀","蟻":"蚁","螞":"蚂","蠶":"蚕","蜆":"蚬","蠱":"蛊","蠣":"蛎","蟶":"蛏","蠻":"蛮","蟄":"蛰","蛺":"蛱","蟯":"蛲","螄":"蛳","蠐":"蛴","蛻":"蜕","蝸":"蜗","蠟":"蜡","蠅":"蝇","蟈":"蝈","蟬":"蝉","蠍":"蝎","蝨":"虱","螻":"蝼","蟎":"螨","蟲":"虫","蠑":"蝾","釁":"衅","衝":"冲","補":"补","襯":"衬","袞":"衮","襖":"袄","裊":"袅","襪":"袜","襲":"袭","裝":"装","襠":"裆","裡":"里","製":"制","複":"复","褲":"裤","褸":"褛","褻":"亵","襤":"褴","見":"见","觀":"观","覓":"觅","視":"视","覘":"觇","覽":"览","覺":"觉","覬":"觊","覡":"觋","覿":"觌","覦":"觎","覯":"觏","覲":"觐","覷":"觑","觔":"斤","觴":"觞","觸":"触","訂":"订","訃":"讣","計":"计","訊":"讯","訌":"讧","討":"讨","訐":"讦","訕":"讪","訖":"讫","託":"托","記":"记","訛":"讹","訝":"讶","訟":"讼","訢":"䜣","訣":"诀","訥":"讷","訪":"访","設":"设","許":"许","訴":"诉","訶":"诃","診":"诊","註":"注","證":"证","詁":"诂","詆":"诋","詎":"讵","詐":"诈","詒":"诒","詔":"诏","評":"评","詖":"诐","詛":"诅","詞":"词","詠":"咏","詡":"诩","詢":"询","詣":"诣","試":"试","詩":"诗","詫":"诧","詬":"诟","詭":"诡","詮":"诠","詰":"诘","話":"话","該":"该","詳":"详","詵":"诜","詼":"诙","詿":"诖","誅":"诛","誆":"诓","誇":"夸","誌":"志","認":"认","誑":"诳","誒":"诶","誕":"诞","誘":"诱","誚":"诮","語":"语","誠":"诚","誡":"诫","誣":"诬","誤":"误","誥":"诰","誦":"诵","誨":"诲","說":"说","誰":"谁","課":"课","誶":"谇","誹":"诽","誼":"谊","調":"调","諂":"谄","諄":"谆","談":"谈","諉":"诿","請":"请","諍":"诤","諏":"诹","諑":"诼","諒":"谅","論":"论","諗":"谂","諛":"谀","諜":"谍","諝":"谞","諞":"谝","諡":"谥","諢":"诨","諤":"谔","諦":"谛","諧":"谐","諫":"谏","諭":"谕","諮":"咨","諱":"讳","諳":"谙","諶":"谌","諷":"讽","諸":"诸","諺":"谚","諼":"谖","諾":"诺","謀":"谋","謁":"谒","謂":"谓","謄":"誊","謅":"诌","謊":"谎","謎":"谜","謐":"谧","謔":"谑","謖":"谡","謗":"谤","謙":"谦","講":"讲","謝":"谢","謠":"谣","謨":"谟","謫":"谪","謬":"谬","謳":"讴","謹":"谨","謾":"谩","譁":"哗","譎":"谲","譏":"讥","識":"识","譙":"谯","譚":"谭","譜":"谱","譫":"谵","譯":"译","議":"议","譴":"谴","譽":"誉","讀":"读","讒":"谗","讓":"让","讖":"谶","讚":"赞","讜":"谠","讞":"谳","貝":"贝","貞":"贞","負":"负","財":"财","貢":"贡","貧":"贫","貨":"货","販":"贩","貪":"贪","貫":"贯","責":"责","貯":"贮","貰":"贳","貲":"赀","貳":"贰","貴":"贵","貶":"贬","貸":"贷","貺":"贶","費":"费","貼":"贴","貽":"贻","貿":"贸","賀":"贺","賁":"贲","賂":"赂","賃":"赁","賄":"贿","賅":"赅","資":"资","賈":"贾","賊":"贼","賑":"赈","賒":"赊","賕":"赇","賙":"赒","賚":"赉","賜":"赐","賞":"赏","賠":"赔","賡":"赓","賢":"贤","賤":"贱","賦":"赋","賧":"赕","質":"质","賬":"账","賭":"赌","賴":"赖","賺":"赚","賻":"赙","購":"购","賽":"赛","賾":"赜","贄":"贽","贅":"赘","贈":"赠","贊":"赞","贋":"赝","贍":"赡","贏":"赢","贐":"赆","贓":"赃","贖":"赎","贗":"赝","贛":"赣","趙":"赵","趕":"赶","趨":"趋","趲":"趱","躍":"跃","蹌":"跄","跡":"迹","踐":"践","蹺":"跷","蹕":"跸","躚":"跹","躋":"跻","躊":"踌","蹤":"踪","踫":"碰","踴":"踊","輾":"辗","蹣":"蹒","蹟":"迹","蹠":"跖","躉":"趸","躑":"踯","躒":"跞","躓":"踬","躡":"蹑","躪":"躏","軀":"躯","車":"车","軋":"轧","軌":"轨","軒":"轩","軔":"轫","軛":"轭","軟":"软","軫":"轸","軸":"轴","軹":"轵","軺":"轺","軻":"轲","軼":"轶","軾":"轼","較":"较","輅":"辂","載":"载","輊":"轾","輒":"辄","輓":"挽","輔":"辅","輕":"轻","輛":"辆","輜":"辎","輟":"辍","輩":"辈","輪":"轮","輯":"辑","輳":"辏","輸":"输","輻":"辐","轄":"辖","轅":"辕","轆":"辘","轉":"转","轍":"辙","轎":"轿","轔":"辚","轟":"轰","轡":"辔","轢":"轹","轤":"轳","辭":"辞","辨":"辩","辮":"辫","辯":"辩","邊":"边","遼":"辽","達":"达","遷":"迁","過":"过","邁":"迈","運":"运","還":"还","這":"这","進":"进","違":"违","連":"连","遲":"迟","邇":"迩","適":"适","選":"选","遜":"逊","遞":"递","逕":"径","週":"周","遊":"游","遺":"遗","遡":"溯","遙":"遥","遶":"绕","邏":"逻","邐":"逦","鄧":"邓","鄺":"邝","邨":"村","鄔":"坞","郵":"邮","鄒":"邹","鄴":"邺","鄰":"邻","鄭":"郑","鄲":"郸","鄶":"郐","醞":"酝","醬":"酱","醃":"腌","釀":"酿","釋":"释","釐":"厘","針":"针","釘":"钉","釗":"钊","釙":"钋","釣":"钓","釤":"钐","釦":"扣","釧":"钏","釩":"钒","釵":"钗","釷":"钍","釹":"钕","釺":"钎","鈍":"钝","鈔":"钞","鐘":"钟","鈉":"钠","鋇":"钡","鋼":"钢","鈑":"钣","鈐":"钤","鑰":"钥","鈞":"钧","鎢":"钨","鉤":"钩","鈧":"钪","鈁":"钫","鈥":"钬","鈄":"钭","鈕":"钮","鈀":"钯","鈺":"钰","錢":"钱","鉦":"钲","鉗":"钳","鈷":"钴","鈳":"钶","鉅":"钜","鈽":"钚","鈸":"钹","鉞":"钺","鑽":"钻","鉬":"钼","鉭":"钽","鉀":"钾","鈿":"钿","鈾":"铀","鐵":"铁","鉑":"铂","鈴":"铃","鑠":"铄","鉛":"铅","鉚":"铆","鉋":"刨","鈰":"铈","鉉":"铉","鉈":"铊","鉍":"铋","鈮":"铌","鈹":"铍","鐸":"铎","鉶":"铏","銬":"铐","銠":"铑","鉺":"铒","銪":"铕","鋏":"铗","鐃":"铙","銍":"铚","鐺":"铛","銅":"铜","鋁":"铝","銱":"铞","銦":"铟","鎧":"铠","鍘":"铡","銖":"铢","銑":"铣","鋌":"铤","銩":"铥","鏵":"铧","銓":"铨","鎩":"铩","鉿":"铪","銚":"铫","鉻":"铬","銘":"铭","錚":"铮","銫":"铯","鉸":"铰","銥":"铱","鏟":"铲","銃":"铳","鐋":"铴","銨":"铵","銀":"银","銣":"铷","鑄":"铸","鋪":"铺","鏈":"链","鋙":"铻","銷":"销","鎖":"锁","鋰":"锂","鋤":"锄","鍋":"锅","鋯":"锆","鋨":"锇","鏽":"锈","銼":"锉","鋝":"锊","鋒":"锋","鋅":"锌","鋟":"锓","鋦":"锔","錒":"锕","銳":"锐","銻":"锑","鋃":"锒","錯":"错","錨":"锚","錛":"锛","錡":"锜","錁":"锞","錕":"锟","錫":"锡","錮":"锢","鑼":"锣","錘":"锤","錐":"锥","錦":"锦","鍁":"锨","錈":"锩","錇":"锫","錟":"锬","錠":"锭","鍵":"键","鋸":"锯","錳":"锰","錙":"锱","鍥":"锲","鍈":"锳","鍇":"锴","鏘":"锵","鍶":"锶","鍔":"锷","鍤":"锸","鍬":"锹","鍾":"钟","鍛":"锻","鎪":"锼","鍰":"锾","鍍":"镀","鎂":"镁","鏤":"镂","鎡":"镃","鏌":"镆","鎮":"镇","鎛":"镈","鎘":"镉","鑷":"镊","鐫":"镌","鎳":"镍","鎿":"镎","鎬":"镐","鎊":"镑","鎰":"镒","鎵":"镓","鏢":"镖","鎔":"镕","鏍":"镙","鏑":"镝","鏗":"铿","鏜":"镗","鏝":"镘","鏞":"镛","鏡":"镜","鏨":"錾","鏰":"镚","鏷":"镤","鐓":"镦","鐔":"镡","鐐":"镣","鐙":"镫","鐮":"镰","鐲":"镯","鐳":"镭","鐶":"镮","鑑":"鉴","鑒":"鉴","鑣":"镳","鑲":"镶","鑾":"銮","長":"长","門":"门","閂":"闩","閃":"闪","閆":"闫","閈":"闬","閉":"闭","闖":"闯","閏":"闰","闈":"闱","閑":"闲","閎":"闳","間":"间","閔":"闵","閌":"闶","悶":"闷","閘":"闸","鬧":"闹","閨":"闺","闥":"闼","閩":"闽","閭":"闾","闓":"闿","閥":"阀","閣":"阁","閡":"阂","閫":"阃","鬮":"阄","閱":"阅","閬":"阆","闍":"阇","閾":"阈","閹":"阉","閶":"阊","鬩":"阋","閿":"阌","閽":"阍","閻":"阎","閼":"阏","闡":"阐","闌":"阑","闃":"阒","闊":"阔","闋":"阕","闔":"阖","闐":"阗","闒":"阘","闕":"阙","闢":"辟","隊":"队","陽":"阳","陰":"阴","陣":"阵","階":"阶","際":"际","陸":"陆","隴":"陇","陘":"陉","陝":"陕","陵":"鲮","隕":"陨","隨":"随","險":"险","隱":"隐","隸":"隶","隻":"只","雋":"隽","難":"难","雛":"雏","雞":"鸡","霧":"雾","靄":"霭","霽":"霁","靂":"雳","靚":"靓","靜":"静","韃":"鞑","鞽":"鞒","鞦":"秋","韋":"韦","韌":"韧","韓":"韩","韙":"韪","韜":"韬","韻":"韵","頁":"页","頂":"顶","頃":"顷","頇":"顸","項":"项","順":"顺","須":"须","頊":"顼","頌":"颂","頎":"颀","頏":"颃","頑":"顽","頒":"颁","頓":"顿","頗":"颇","領":"领","頡":"颉","頰":"颊","頷":"颔","頸":"颈","頤":"颐","頻":"频","頹":"颓","顆":"颗","題":"题","額":"额","顎":"颚","顏":"颜","顓":"颛","顙":"颡","顛":"颠","顢":"颟","顥":"颢","顧":"顾","顫":"颤","顰":"颦","顱":"颅","顴":"颧","風":"风","颺":"飏","颮":"飑","颯":"飒","颶":"飓","颸":"飔","颼":"飕","飄":"飘","飆":"飙","飛":"飞","飢":"饥","飩":"饨","餼":"饩","飪":"饪","飫":"饫","飭":"饬","飯":"饭","飲":"饮","餞":"饯","飾":"饰","飽":"饱","飼":"饲","飴":"饴","餌":"饵","饒":"饶","餉":"饷","餃":"饺","餅":"饼","餑":"饽","餓":"饿","餒":"馁","館":"馆","餡":"馅","餛":"馄","餿":"馊","饞":"馋","饃":"馍","饉":"馑","饅":"馒","饌":"馔","饑":"饥","馬":"马","馭":"驭","馱":"驮","馴":"驯","馳":"驰","驅":"驱","駁":"驳","驢":"驴","駔":"驵","駛":"驶","駟":"驷","駙":"驸","駒":"驹","騶":"驺","駐":"驻","駝":"驼","駑":"驽","駕":"驾","驛":"驿","駘":"骀","驍":"骁","駰":"骃","驕":"骄","驊":"骅","駱":"骆","駭":"骇","駢":"骈","驪":"骊","騁":"骋","驗":"验","駿":"骏","騏":"骐","騎":"骑","騍":"骒","騅":"骓","驂":"骖","騙":"骗","騭":"骘","騫":"骞","騷":"骚","騖":"骛","驁":"骜","騮":"骝","驃":"骠","騾":"骡","驄":"骢","驟":"骤","驥":"骥","驤":"骧","髏":"髅","髖":"髋","髕":"髌","髮":"发","鬆":"松","鬍":"胡","鬚":"须","鬢":"鬓","鬥":"斗","鬨":"哄","魘":"魇","魎":"魉","魚":"鱼","魛":"鱽","魯":"鲁","魴":"鲂","魷":"鱿","鮑":"鲍","鮒":"鲋","鮓":"鲊","鮁":"鲅","鮃":"鲆","鮎":"鲇","鱸":"鲈","鮮":"鲜","鮞":"鲕","鮭":"鲑","鮚":"鲒","鮪":"鲔","鮫":"鲛","鮦":"鲖","鯗":"鲞","鱘":"鲟","鯇":"鲩","鯉":"鲤","鯊":"鲨","鯒":"鲬","鯖":"鲭","鯕":"鲯","鯫":"鲰","鯡":"鲱","鯤":"鲲","鯧":"鲳","鯢":"鲵","鯰":"鲶","鯛":"鲷","鯨":"鲸","鰺":"鲹","鯴":"鲴","鯔":"鲻","鱝":"鲼","鰈":"鲽","鰨":"鳎","鰩":"鳐","鰥":"鳏","鰭":"鳍","鰱":"鲢","鰲":"鳌","鰳":"鳓","鰵":"鳘","鰷":"鲦","鰹":"鲣","鰻":"鳗","鰾":"鳔","鱂":"鳉","鱅":"鳙","鱈":"鳕","鱉":"鳖","鱒":"鳟","鱔":"鳝","鱖":"鳜","鱗":"鳞","鱧":"鳢","鱷":"鳄","鳥":"鸟","鳩":"鸠","鳧":"凫","鳴":"鸣","鳶":"鸢","鴆":"鸩","鴇":"鸨","鴉":"鸦","鷗":"鸥","鴒":"鸰","鴕":"鸵","鴛":"鸳","鴝":"鸲","鴞":"鸮","鴟":"鸱","鴣":"鸪","鴦":"鸯","鴨":"鸭","鴻":"鸿","鴿":"鸽","鴰":"鸹","鵂":"鸺","鵒":"鹆","鵓":"鹁","鵜":"鹈","鵝":"鹅","鵠":"鹄","鵡":"鹉","鵪":"鹌","鵬":"鹏","鵯":"鹎","鵲":"鹊","鶇":"鸫","鶉":"鹑","鶴":"鹤","鶥":"鹛","鷂":"鹞","鶺":"鹡","鷁":"鹢","鷄":"鸡","鷓":"鹧","鷔":"鹔","鷙":"鸷","鷚":"鹨","鷲":"鹫","鷸":"鹬","鷹":"鹰","鷺":"鹭","鷽":"鹴","鸚":"鹦","鸛":"鹳","鸞":"鸾","鹹":"咸","鹺":"鹾","麥":"麦","麩":"麸","麴":"曲","麵":"面","黃":"黄","黌":"黉","黏":"粘","黴":"霉","黷":"黩","黽":"黾","鼉":"鼍","鼕":"冬","鼴":"鼹","齊":"齐","齒":"齿","齔":"龀","齟":"龃","齙":"龅","齡":"龄","齣":"出","齦":"龈","齪":"龊","齬":"龉","齲":"龋","齶":"腭","龍":"龙","龔":"龚","龕":"龛","龜":"龟","髒":"脏","係":"系","繫":"系","昇":"升","綫":"线","舖":"铺","衆":"众","衞":"卫","啓":"启","裏":"里","爲":"为","僞":"伪","粧":"妆","嫻":"娴","嬝":"袅","喲":"哟","唸":"念","攛":"撺","敺":"驱","汙":"污","洩":"泄","灩":"滟","牴":"抵","獃":"呆","琿":"珲","皸":"皲","礆":"碱","祕":"秘","稭":"秸","筦":"管","鉢":"钵","罎":"坛","羆":"罴","臙":"胭","舘":"馆","豔":"艳","躂":"哒","迴":"回","迺":"乃","韉":"鞯"};
+
+/* 繁轉簡詞組優先修正表 */
+var T2S_PHRASES = [
+  ['記憶體','内存'],['記憶卡','记忆卡'],['資訊','信息'],['螢幕','屏幕'],
+  ['預設','默认'],['選單','菜单'],['檔案','文件'],['品質','质量'],
+  ['網路','网络'],['滑鼠','鼠标'],['計時器','计时器'],['點擊','点击'],
+  ['關閉','关闭'],['開啟','开启'],['開關','开关'],['檯燈','台灯'],
+  ['櫃檯','柜台'],['檯面','台面'],['手術檯','手术台'],['借書台','借书台'],
+  ['發霉','发霉'],['發黴','发霉'],['菸蒂','烟蒂'],['抽菸','抽烟'],
+  ['腳踏車','自行车'],['手電筒','手电筒'],['保溫杯','保温杯'],['原子筆','圆珠笔'],
+  ['身份證','身份证'],['複印件','复印件'],['錄音機','录音机'],['留聲機','留声机']
+];
+
+function toSimplified(str){
+  if(!str || typeof str !== 'string') return str;
+  var s = str;
+  for(var i=0;i<T2S_PHRASES.length;i++){
+    var p = T2S_PHRASES[i];
+    if(s.indexOf(p[0]) !== -1) s = s.split(p[0]).join(p[1]);
+  }
+  var out = '';
+  for(var j=0;j<s.length;j++){
+    var ch = s[j];
+    out += T2S_CHAR[ch] || ch;
+  }
+  return out;
+}
+
+/* ============================================================
+ * 1. 核心靜態與動態 UI 詞典 (EN / JA)
+ * ============================================================ */
+var EXACT_EN = {
+  /* 標題與迴廊 */
+  '無盡之門':'Infinite Gates',
+  'INFINITE GATES':'INFINITE GATES',
+  '一 場 沒 有 盡 頭 的 逃 亡':'A N   E N D L E S S   E S C A P E',
+  '進 入 迴 廊':'ENTER CORRIDOR',
+  '建議在安靜環境中遊玩 · 佩戴耳機':'Best experienced in a quiet room with headphones',
+  '載入中……':'Loading...',
+  '載入資源……':'Loading assets...',
+  '就緒開始……':'Preparing...',
+  '解析劇本與系統……':'Initializing scripts & systems...',
+  '啟動遊戲引擎……':'Starting game engine...',
+  '載入第五副本……':'Loading Dungeon V...',
+  '就緒':'Ready',
+  '‹ 返 回':'‹ BACK',
+  '返 回':'BACK',
+  '畫 廊':'GALLERY',
+  '契 約':'PACTS',
+  '占 卜':'ARCANA',
+  '推 門 進 入':'OPEN THE GATE',
+  '未 解 鎖':'LOCKED',
+  '查 看 簡 介':'SYNOPSIS',
+  '已 通 關':'CLEARED',
+  '未 通 關':'UNCLEARED',
+  '未 通 關 第 一 副 本':'CLEAR DUNGEON I TO UNLOCK',
+  '未 通 關 第 二 副 本':'CLEAR DUNGEON II TO UNLOCK',
+  '未 通 關 第 三 副 本':'CLEAR DUNGEON III TO UNLOCK',
+  '未 通 關 第 四 副 本':'CLEAR DUNGEON IV TO UNLOCK',
+  '未 通 關 第 五 副 本':'CLEAR DUNGEON V TO UNLOCK',
+  '尚無來自前次副本的殘留':'No remnants carried over from previous runs',
+  '無繼承屬性':'No inherited attributes',
+  '繼承狀態':'Inherited Status',
+  '返 回 副 本 選 擇':'RETURN TO CORRIDOR',
+  '章 節 選 擇':'CHAPTER SELECT',
+  '前 往 沉 默 圖 書 館':'GO TO SILENT LIBRARY',
+  '前 往 倒 計 時 醫 院':'GO TO COUNTDOWN HOSPITAL',
+  'NEW GAME+':'NEW GAME+',
+
+  /* 副本名稱與編號 */
+  '第 一 副 本':'DUNGEON I',
+  '第 二 副 本':'DUNGEON II',
+  '第 三 副 本':'DUNGEON III',
+  '第 四 副 本':'DUNGEON IV',
+  '第 五 副 本':'DUNGEON V',
+  '第 六 副 本':'DUNGEON VI',
+  '質數旅館':'Prime Number Hotel',
+  '沉默圖書館':'The Silent Library',
+  '倒計時醫院':'Countdown Hospital',
+  '無盡之間':'The Gate Between',
+  '迴光之海':'Sea of Echoing Light',
+  '終焉觀測站':'The Terminal Observatory',
+  '無 盡 迴 廊 · 第 一 副 本':'INFINITE CORRIDOR · DUNGEON I',
+  '無 盡 迴 廊 · 第 二 副 本':'INFINITE CORRIDOR · DUNGEON II',
+  '無 盡 迴 廊 · 第 三 副 本':'INFINITE CORRIDOR · DUNGEON III',
+  '無 盡 迴 廊 · 第 四 副 本':'INFINITE CORRIDOR · DUNGEON IV',
+  '沉 没 之 海 · 第 五 副 本':'SUNKEN SEA · DUNGEON V',
+  '零 號 夾 縫 · 第 六 副 本':'ZERO RIFT · DUNGEON VI',
+  '請 保 持 安 靜':'SILENCE PLEASE',
+  '時 間 正 在 流 逝':'TIME IS RUNNING OUT',
+  '門 後 沒 有 規 則':'NO RULES BEYOND THE GATE',
+  '海 會 漲 ， 也 會 退':'THE TIDE RISES AND FALLS',
+  '秒 針 停 在 03:17':'THE HAND STOPPED AT 03:17',
+  '一座只有質數房間的旅館。每一扇門後面都是一個房間，每一個房間裡都有一個謎題。你需要在黎明之前找到出口。':'A hotel where only prime-numbered rooms are safe. Behind every door lies a riddle. Find the exit before dawn.',
+  '一座沒有聲音的圖書館。書架上的每一本書，都記錄著一個人的一生。規則只有一條：不能大聲說話。':'A soundless library where every book records a human life. There is only one rule: make no loud sound.',
+  '一座廢棄的醫院。每個玩家都有一個倒計時，時間到了會重置。你需要在時間耗盡之前找到出口——用藥品，用病歷，用記憶。':'An abandoned hospital where a countdown ticks on every wrist. When it hits zero, your memory resets. Buy time with medicine and uncover B2.',
+  '所有門之間的縫隙。走過旅館、圖書館與醫院之後，你第一次站到迴廊的心臟，直面凌晨三點十七分的真相。':'The seam between all gates. After the hotel, library, and hospital, stand at the heart of the Corridor and face 03:17.',
+  '收容所有未選擇的路。':'A dark tidal sea that holds every road you left untaken.',
+  '凌晨 03:17 與 03:18 之間的夾縫觀測站。調校六道門扉的共振頻率，推開破曉之門。':'The observatory wedged between 03:17 and 03:18 AM. Tune the resonance of all six gates and open the door to dawn.',
+
+  /* 繼承標籤 */
+  '蘇晚生還':'Su Wan Survived',
+  '持有黃金鑰匙':'Golden Key Held',
+  '已擊敗鏡像':'Mirror Defeated',
+  '與旅館管理員交易過':'Traded with Hotel Manager',
+  '獨自逃生':'Escaped Alone',
+  '失去肢體':'Lost Forearm',
+  '圖書館管理員認出你':'Recognized by Librarian',
+  '陳姐生還':'Ms. Chen Survived',
+  '小宇生還':'Xiao Yu Survived',
+  '老周生還':'Old Zhou Survived',
+  '攜帶媛媛':'Carrying Yuanyuan',
+  '保留記憶':'Memories Kept',
+  '刪除記憶':'Memories Deleted',
+  '擊敗鏡中存在':'Defeated the Mirror Entity',
+  '知曉地下室秘密':'Knew the Basement Secret',
+  '與管理員交易過':'Bargained with the Manager',
+  '曾獨自逃離':'Escaped Alone Previously',
+  '獲得信任':'Earned Companion Trust',
+  '失去一肢':'Lost a Limb',
+  '管理員的貴客':'Honored Guest of the Manager',
+  '陳姐存活':'Ms. Chen Survived',
+  '老周存活':'Old Zhou Survived',
+  '蘇晚存活':'Su Wan Survived',
+  '小雨存活':'Xiao Yu Survived',
+  '攜帶媛媛記憶':'Carrying Yuanyuan\'s Memory',
+  '保留了記憶':'Preserved Memories',
+  '刪除了記憶':'Erased Memories',
+
+  /* 頂欄與狀態欄 */
+  '話':'Talk','包':'Bag','記':'Log','圖':'Map','就':'Ach','史':'Hist','支':'Tree','存':'Save','讀':'Load','設':'Cfg','選':'Menu','札':'Book','契':'Pact','典':'More','菜':'Menu',
+  '對話':'Dialogue','物品欄':'Inventory','回憶錄':'Memoir','地圖':'Map','成就':'Achievements','歷史':'History','分支樹':'Branch Tree','存檔':'Save','讀檔':'Load','設置':'Settings','菜單':'Menu','迴廊手札':'Corridor Notebook','迴廊契約与占卜':'Pacts & Arcana','典藏選單':'Archives',
+  '物 品 欄':'INVENTORY','回 憶 錄':'MEMOIR','地 圖':'MAP','成 就':'ACHIEVEMENTS','對 話 回 顧':'HISTORY','章 節 選 擇':'CHAPTERS','分 支 樹':'BRANCH TREE','選 擇 副 本':'SELECT DUNGEON','環 境 觀 察':'OBSERVATION','管 理 員':'ADMINISTRATOR','與誰交談':'SPEAK WITH','操 作 說 明':'HOW TO PLAY','設 置':'SETTINGS','預 覽':'PREVIEW','更新日誌':'CHANGELOG','製作名單':'CREDITS','確 認':'CONFIRM','出 錯 了':'ERROR','迴 廊 手 札':'CORRIDOR NOTEBOOK','提 示':'HINT','點 唱 機':'JUKEBOX','傳 承 之 印':'LEGACY SEALS','印 記 管 理':'MANAGE SEALS','迴 廊 契 約':'CORRIDOR PACTS','門 扉 占 卜':'GATE ARCANA','萬 門 之 書':'OMNIGATE CODEX',
+  '空空如也':'Empty',
+  '還沒有記錄':'No records yet',
+  '沒有符合的記錄':'No matching records',
+  '尚未解鎖章節':'No chapters unlocked yet',
+  '此處無人可交談。':'No one here to talk to.',
+  '離開對話':'End Conversation',
+  '返回':'Back','關閉':'Close','關 閉':'CLOSE','取 消':'CANCEL','確 認':'CONFIRM','完 成':'DONE','繼 續':'CONTINUE','收 起':'CLOSE','明 白 了':'GOT IT','前 往':'GO','組合':'Combine','選中兩樣物品':'Select 2 items','隨機':'Random','跳過':'Skip','點 擊 繼 續':'CLICK TO CONTINUE','自動播放中':'Auto-Playing','已暫停':'Paused','已讀':'READ',
+  '繼 續 遊 戲':'RESUME','重 新 開 始':'RESTART','回 到 標 題':'TITLE SCREEN','清 除 全 部 存 檔':'CLEAR ALL SAVES','匯 出 存 檔':'EXPORT SAVES','匯 入 存 檔':'IMPORT SAVES','生成結算卡片':'SAVE ENDING CARD','查看分支樹':'BRANCH TREE',
+  '普通結局':'NORMAL ENDING','壞結局':'BAD ENDING','逃過一劫':'SURVIVED','死亡結局':'DEATH ENDING','隱藏結局':'HIDDEN ENDING','結 局':'ENDING',
+  '性 格 畫 像':'PERSONALITY PROFILE','冷靜':'Calm','利他':'Altruism','謹慎':'Caution',
+  '遊戲時長':'Play Time','死亡次數':'Deaths','看過場景':'Scenes Read','對話次數':'Dialogues','獲得物品':'Items Found',
+  '總 覽':'OVERVIEW','稱 號':'TITLES','遺 物':'RELICS','統 計':'STATS','印 記':'SEALS','契 約':'PACTS','占 卜':'ARCANA','萬 門':'CODEX',
+  '整體完成度':'OVERALL COMPLETION','副本結局':'DUNGEON ENDINGS','迴廊碎片':'GATE FRAGMENTS','尚未尋獲':'Undiscovered','已裝備':'Equipped','裝 備':'EQUIP','卸 下':'UNEQUIP','通關獲得':'Clear to Unlock','獲得提示':'GET HINT','跟隨副本':'Follow Dungeon','試聽':'Preview','指定':'Pin','打 開':'OPEN','查看':'View',
+  '平潮':'Still Tide','漲潮':'High Tide','退潮':'Low Tide','迴溯':'Rewind'
+};
+
+var EXACT_JA = {
+  /* 標題與迴廊 */
+  '無盡之門':'無尽の門',
+  'INFINITE GATES':'INFINITE GATES',
+  '一 場 沒 有 盡 頭 的 逃 亡':'終 わ り な き 逃 亡 劇',
+  '進 入 迴 廊':'回 廊 へ 入 る',
+  '建議在安靜環境中遊玩 · 佩戴耳機':'静かな環境でヘッドホンを着用してのプレイを推奨します',
+  '載入中……':'読み込み中……',
+  '載入資源……':'リソースを読み込み中……',
+  '就緒開始……':'準備中……',
+  '解析劇本與系統……':'シナリオとシステムを解析中……',
+  '啟動遊戲引擎……':'ゲームエンジンを起動中……',
+  '載入第五副本……':'第五章を読み込み中……',
+  '就緒':'準備完了',
+  '‹ 返 回':'‹ 戻 る',
+  '返 回':'戻 る',
+  '畫 廊':'ギャラリー',
+  '契 約':'契 約',
+  '占 卜':'占 い',
+  '推 門 進 入':'扉 を 押 し て 入 る',
+  '未 解 鎖':'未 解 放',
+  '查 看 簡 介':'あ ら す じ',
+  '已 通 關':'クリア済',
+  '未 通 關':'未クリア',
+  '未 通 關 第 一 副 本':'第一章クリアで解放',
+  '未 通 關 第 二 副 本':'第二章クリアで解放',
+  '未 通 關 第 三 副 本':'第三章クリアで解放',
+  '未 通 關 第 四 副 本':'第四章クリアで解放',
+  '未 通 關 第 五 副 本':'第五章クリアで解放',
+  '尚無來自前次副本的殘留':'前回の探索から引き継がれた痕跡はありません',
+  '無繼承屬性':'引き継ぎ要素なし',
+  '繼承狀態':'引き継ぎ状態',
+  '返 回 副 本 選 擇':'章 選 択 へ 戻 る',
+  '章 節 選 擇':'チャプター選択',
+  '前 往 沉 默 圖 書 館':'沈黙の図書館へ',
+  '前 往 倒 計 時 醫 院':'カウントダウン病院へ',
+  'NEW GAME+':'NEW GAME+',
+
+  /* 副本名稱與編號 */
+  '第 一 副 本':'第 一 章',
+  '第 二 副 本':'第 二 章',
+  '第 三 副 本':'第 三 章',
+  '第 四 副 本':'第 四 章',
+  '第 五 副 本':'第 五 章',
+  '第 六 副 本':'第 六 章',
+  '質數旅館':'素数ホテル',
+  '沉默圖書館':'沈黙の図書館',
+  '倒計時醫院':'カウントダウン病院',
+  '無盡之間':'無尽の間',
+  '迴光之海':'回光の海',
+  '終焉觀測站':'終焉観測所',
+  '無 盡 迴 廊 · 第 一 副 本':'無 尽 回 廊 · 第 一 章',
+  '無 盡 迴 廊 · 第 二 副 本':'無 尽 回 廊 · 第 二 章',
+  '無 盡 迴 廊 · 第 三 副 本':'無 尽 回 廊 · 第 三 章',
+  '無 盡 迴 廊 · 第 四 副 本':'無 尽 回 廊 · 第 四 章',
+  '沉 没 之 海 · 第 五 副 本':'沈 没 の 海 · 第 五 章',
+  '零 號 夾 縫 · 第 六 副 本':'零 号 狭 間 · 第 六 章',
+  '請 保 持 安 靜':'お 静 か に',
+  '時 間 正 在 流 逝':'時 は 流 れ て い る',
+  '門 後 沒 有 規 則':'扉 の 先 に 規 則 は な い',
+  '海 會 漲 ， 也 會 退':'潮 は 満 ち 、 ま た 引 く',
+  '秒 針 停 在 03:17':'秒 針 は 03:17 に 止 ま る',
+  '一座只有質數房間的旅館。每一扇門後面都是一個房間，每一個房間裡都有一個謎題。你需要在黎明之前找到出口。':'素数の部屋だけが存在する古いホテル。すべての扉の奥に謎があり、夜明け前に出口を見つけなければならない。',
+  '一座沒有聲音的圖書館。書架上的每一本書，都記錄著一個人的一生。規則只有一條：不能大聲說話。':'音のない図書館。棚の本には一人ひとりの生涯が記されている。規則はただ一つ――大きな声を出してはならない。',
+  '一座廢棄的醫院。每個玩家都有一個倒計時，時間到了會重置。你需要在時間耗盡之前找到出口——用藥品，用病歷，用記憶。':'廃病院。手首のカウントダウンがゼロになると記憶と所持品がリセットされる。薬とカルテと記憶を手がかりに出口を探せ。',
+  '所有門之間的縫隙。走過旅館、圖書館與醫院之後，你第一次站到迴廊的心臟，直面凌晨三點十七分的真相。':'すべての扉の狭間。ホテル、図書館、病院を抜けた先、初めて回廊の心臓に立ち、午前3時17分の真実と向き合う。',
+  '收容所有未選擇的路。':'選ばれなかったすべての道が沈む、静かな潮汐の海。',
+  '凌晨 03:17 與 03:18 之間的夾縫觀測站。調校六道門扉的共振頻率，推開破曉之門。':'午前3時17分と3時18分の狭間にある観測所。六つの扉の共鳴周波数を合わせ、夜明けの扉を開け。',
+
+  /* 繼承標籤 */
+  '蘇晚生還':'蘇晩が生存',
+  '持有黃金鑰匙':'黄金の鍵を所持',
+  '已擊敗鏡像':'鏡像を撃破',
+  '與旅館管理員交易過':'ホテル管理人と取引済',
+  '獨自逃生':'単独脱出',
+  '失去肢體':'左前腕を喪失',
+  '圖書館管理員認出你':'図書館管理人に認知された',
+  '陳姐生還':'陳さんが生存',
+  '小宇生還':'小宇が生存',
+  '老周生還':'老周が生存',
+  '攜帶媛媛':'媛媛を同行',
+  '保留記憶':'記憶を保持',
+  '刪除記憶':'記憶を消去',
+  '擊敗鏡中存在':'鏡の中の存在を撃破',
+  '知曉地下室秘密':'地下室の秘密を知った',
+  '與管理員交易過':'管理人と取引した',
+  '曾獨自逃離':'かつて単独で脱出した',
+  '獲得信任':'仲間の信頼を得た',
+  '失去一肢':'片腕を失った',
+  '管理員的貴客':'管理人の賓客',
+  '陳姐存活':'陳さんが生存',
+  '老周存活':'老周が生存',
+  '蘇晚存活':'蘇晩が生存',
+  '小雨存活':'小雨が生存',
+  '攜帶媛媛記憶':'媛媛の記憶を宿す',
+  '保留了記憶':'記憶を保持した',
+  '刪除了記憶':'記憶を消去した',
+
+  /* 頂欄與狀態欄 */
+  '話':'話','包':'袋','記':'録','圖':'図','就':'績','史':'歴','支':'樹','存':'保','讀':'読','設':'設','選':'他','札':'帳','契':'契','典':'蔵','菜':'輪',
+  '對話':'対話','物品欄':'持ち物','回憶錄':'回想録','地圖':'地図','成就':'実績','歷史':'履歴','分支樹':'分岐ツリー','存檔':'セーブ','讀檔':'ロード','設置':'設定','菜單':'メニュー','迴廊手札':'回廊手帳','迴廊契約与占卜':'契約と占い','典藏選單':'アーカイブ',
+  '物 品 欄':'持 ち 物','回 憶 錄':'回 想 録','地 圖':'地 図','成 就':'実 績','對 話 回 顧':'履 歴','章 節 選 擇':'チャプター選択','分 支 樹':'分 岐 ツ リ ー','選 擇 副 本':'章 を 選 択','環 境 觀 察':'環 境 観 察','管 理 員':'管 理 人','與誰交談':'話 す 相 手','操 作 說 明':'操 作 説 明','設 置':'設 定','預 覽':'プレビュー','更新日誌':'更新履歴','製作名單':'クレジット','確 認':'確 認','出 錯 了':'エラー','迴 廊 手 札':'回 廊 手 帳','提 示':'ヒ ン ト','點 唱 機':'ジュークボックス','傳 承 之 印':'伝 承 の 印','印 記 管 理':'印 の 管 理','迴 廊 契 約':'回 廊 の 契 約','門 扉 占 卜':'扉 の 占 い','萬 門 之 書':'万 門 の 書',
+  '空空如也':'何も持っていない',
+  '還沒有記錄':'まだ記録がありません',
+  '沒有符合的記錄':'該当する記録がありません',
+  '尚未解鎖章節':'解放されたチャプターがありません',
+  '此處無人可交談。':'ここに話せる相手はいない。',
+  '離開對話':'会話を終える',
+  '返回':'戻る','關閉':'閉じる','關 閉':'閉 じ る','取 消':'キャンセル','確 認':'確 認','完 成':'完 了','繼 續':'続 け る','收 起':'閉 じ る','明 白 了':'了 解','前 往':'移動','組合':'合成','選中兩樣物品':'2つ選択','隨機':'ランダム','跳過':'スキップ','點 擊 繼 續':'クリックして続行','自動播放中':'オート再生中','已暫停':'一時停止中','已讀':'既読',
+  '繼 續 遊 戲':'ゲームを続ける','重 新 開 始':'最初からやり直す','回 到 標 題':'タイトルへ戻る','清 除 全 部 存 檔':'全セーブデータ消去','匯 出 存 檔':'データ書き出し','匯 入 存 檔':'データ読み込み','生成結算卡片':'クリアカード生成','查看分支樹':'分岐ツリーを見る',
+  '普通結局':'ノーマルエンド','壞結局':'バッドエンド','逃過一劫':'サバイバルエンド','死亡結局':'デスエンド','隱藏結局':'シークレットエンド','結 局':'エンディング',
+  '性 格 畫 像':'性 格 診 断','冷靜':'冷静','利他':'利他','謹慎':'慎重',
+  '遊戲時長':'プレイ時間','死亡次數':'死亡回数','看過場景':'既読シーン','對話次數':'会話回数','獲得物品':'入手アイテム',
+  '總 覽':'総 覧','稱 號':'称 号','遺 物':'遺 物','統 計':'統 計','印 記':'印','契 約':'契 約','占 卜':'占 い','萬 門':'万 門',
+  '整體完成度':'総 合 達 成 度','副本結局':'各章のエンディング','迴廊碎片':'回廊の欠片','尚未尋獲':'未発見','已裝備':'装備中','裝 備':'装 備','卸 下':'外 す','通關獲得':'クリア報酬','獲得提示':'ヒントを見る','跟隨副本':'章に合わせる','試聽':'試聴','指定':'固定','打 開':'開 く','查看':'表示',
+  '平潮':'平潮','漲潮':'満潮','退潮':'干潮','迴溯':'逆行'
+};
+
+/* 房間名與場景名詞典 (EN / JA) */
+var ROOM_EN = {
+  '實驗室 · 出事前':'Laboratory · Before 03:17','回廊 · 副本之門':'Corridor · Gate of Trials','旅館大廳':'Hotel Lobby','二樓走廊 · 2號房':'2F Corridor · Room 2','樓梯':'Staircase','3號房':'Room 3','2號房':'Room 2','二樓走廊':'2F Corridor','二樓走廊 · 凝視':'2F Corridor · Gaze','油畫前':'Before the Oil Painting','女孩身邊':'Beside the Girl','地毯上':'On the Carpet','天花板下':'Beneath the Ceiling','4號房門前':'Outside Room 4','5號房門前':'Outside Room 5','虛空':'The Void','一樓走廊 · 緊急出口':'1F Corridor · Emergency Exit','5號房':'Room 5','3號房 · 鏡前':'Room 3 · Before the Mirror','7號房':'Room 7','地下室':'Basement','地下室 · 黑暗中':'Basement · In the Dark','旅館大門':'Hotel Main Entrance','大廳':'Main Hall','鏡中門':'Door in the Mirror','一樓走廊':'1F Corridor','管理員室':'Manager\'s Office','二樓樓梯口':'2F Stairwell','後巷':'Back Alley','迴轉梯間':'Spiral Landing','0 號房':'Room 0','畫框之後':'Behind the Frame','石板之下':'Beneath the Slab',
+  '白色房間':'White Room','圖書館大廳':'Library Lobby','閱覽區入口':'Reading Room Entrance','分類區':'Cataloging Wing','閱覽區':'Reading Room','閱覽區暗格':'Reading Room Secret Compartment','A-E區':'Stacks A–E','F-J區':'Stacks F–J','老周的路線':'Old Zhou\'s Route','小說區':'Fiction Section','工具書區':'Reference Section','盲文區':'Braille Section','期刊區':'Periodicals Section','小宇的崩潰':'Xiao Yu\'s Breakdown','禁書區':'Forbidden Section','媛媛的最後一頁':'Yuanyuan\'s Final Page','書之間':'Chamber of Books','借書台':'Circulation Desk','第一次閉館鈴':'First Closing Bell','地毯':'The Carpet','最終準備':'Final Preparations','五個凹槽':'Five Grooves','逃出生天':'Escape','管理員的客人':'The Manager\'s Guest','地下室的東西':'Thing in the Basement','錯的書':'The Wrong Book','沉默的倖存者':'Silent Survivor','沉默的代價':'Price of Silence','陳姐的選擇':'Ms. Chen\'s Choice','中間那本書':'The Middle Book','第五道凹槽':'The Fifth Groove','只有我們倆':'Just the Two of Us','衣角':'Hem of a Coat','缺小指的人':'Missing Pinky','畫冊':'Picture Album','尖叫':'The Scream','各走各的':'Separate Ways','掌聲':'Applause','禁書的氣味':'Scent of Forbidden Books','第三次鈴':'Third Bell','毛線貓':'Yarn Cat','管理員的門':'The Manager\'s Door','卡片目錄深處':'Deep in Card Catalog','沒掛號的窄走道':'Unmarked Narrow Aisle','走道盡頭':'End of the Aisle','牆後的夾層':'Wall Interstice','牆根夾角':'Wall Corner','三隻貓':'Three Cats','無聲':'Wordless','回音':'Echo',
+  '醫院大廳':'Hospital Lobby','大廳搜索':'Lobby Search','藥房':'Pharmacy','藥房後門':'Pharmacy Backroom','藥品辨識':'Medicine Identification','內科':'Internal Medicine','內科深處':'Deep Internal Medicine','病歷拼圖':'Medical Record Puzzle','外科':'Surgery Wing','手術準備室':'Prep Room','ICU':'ICU','住院部病房':'Inpatient Ward','院長辦公室':'Director\'s Office','太平間':'Morgue','電梯':'Elevator','夜巡護士':'Night Nurse','躲起來':'Hiding','逃跑':'Flight','對抗':'Confrontation','林醫生':'Dr. Lin','小雨':'Xiao Yu','手術室':'Operating Room','媛媛的記憶':'Yuanyuan\'s Memory','記憶核心區入口':'Memory Core Entrance','記憶核心':'Memory Core','記憶之門':'Gate of Memory','真相':'The Truth','謊言':'The Lie','刪除':'Deletion','攜帶':'Carry Her On','逃離':'Flight Alone','幻覺':'Hallucination','重置':'Reset','404病房':'Ward 404','住院部四樓':'4F Inpatient Floor','401病房':'Ward 401','402病房':'Ward 402','403病房':'Ward 403','太平間密碼':'Morgue Cipher','被盯上了':'Stalked','設備間':'Equipment Closet','衝刺':'Sprint','回身':'Turn & Fight','一針':'One Shot','他的選擇':'His Choice','她的選擇':'Her Choice','共謀':'Complicity','懷疑':'Doubt','救贖':'Redemption','沉淪':'Sinking','背叛':'Betrayal','第十四格之後':'Behind Locker 14','404·牆板下':'Ward 404 · Under the Panel','機房後側':'Behind the Mainframe','斷電':'Blackout','十四個名字':'Fourteen Names',
+  '白光盡頭':'End of White Light','迴廊心臟':'Heart of the Corridor','牆上的縫':'Seam in the Wall','沒有門牌的門':'Unnumbered Door','地板上的刻痕':'Floor Carvings','鏡子舊處':'Old Mirror Door','鏡深處':'Deep in the Mirror','書架舊處':'Old Bookshelf Door','病房舊處':'Old Ward Door','大門側邊':'Beside the Great Gate','門前':'Before the Gate','門環':'The Knocker','抉擇廳':'Hall of Choice','退回':'Step Back','放下':'Letting Go','守燈':'Tend the Lamp','砸':'Shatter','留燈':'Leave a Light','歸':'Return','無盡':'The Infinite',
+  '入水':'Submersion','汐岸':'Tidal Shore','潮井':'Tide Well','海床':'Exposed Seabed','電話':'The Unmade Call','岔路':'The Untaken Fork','沉鐘':'Sunken Bell','光筏':'Luminescent Raft','燈塔':'Echo Lighthouse','倒影':'Reflection','海心':'Heart of the Sea','紙貓':'Paper Cat','沉':'Sink','漲':'Rising Tide','浮':'Breathing Underwater','點燈':'Light the Way','上岸':'Ashore','倒帶':'Infinite Rewind','迴光':'Sea of Echoing Light',
+  '03:17 的夾縫':'The 03:17 Rift','中央觀測大廳':'Central Observatory Hall','五扇門的監視牆':'Monitor Wall of Five Gates','傾倒的咖啡與手稿':'Spilled Coffee & Manuscript','質數偏離主機':'Prime Deviation Mainframe','第零號檔案櫃':'Archive Zero','無星之頂與天線塔':'Starless Roof & Antenna','休眠艙「陸衍」':'Cryo-Pod "Lu Yan"','一號波段·蘇晚的留言':'Band I · Su Wan\'s Message','三號波段·紙飛機的航線':'Band III · Paper Plane Trajectory','03:18 分界門':'The 03:18 Threshold Gate','白噪音':'White Noise','覆寫失敗':'Overwrite Failed','守望 03:17':'Watcher of 03:17','向所有門廣播':'Broadcast to All Gates','飛出窗外的紙飛機':'Paper Plane Beyond the Window','03:18 的破曉':'Dawn of 03:18'
+};
+
+var ROOM_JA = {
+  '實驗室 · 出事前':'研究室・異変前','回廊 · 副本之門':'回廊・試練の扉','旅館大廳':'ホテルロビー','二樓走廊 · 2號房':'2階廊下・2号室','樓梯':'階段','3號房':'3号室','2號房':'2号室','二樓走廊':'2階廊下','二樓走廊 · 凝視':'2階廊下・凝視','油畫前':'油絵の前','女孩身邊':'少女のそば','地毯上':'絨毯の上','天花板下':'天井の下','4號房門前':'4号室の前','5號房門前':'5号室の前','虛空':'虚空','一樓走廊 · 緊急出口':'1階廊下・非常口','5號房':'5号室','3號房 · 鏡前':'3号室・鏡の前','7號房':'7号室','地下室':'地下室','地下室 · 黑暗中':'地下室・暗闇','旅館大門':'ホテル正門','大廳':'ロビー','鏡中門':'鏡の中の扉','一樓走廊':'1階廊下','管理員室':'管理人室','二樓樓梯口':'2階階段口','後巷':'裏路地','迴轉梯間':'螺旋踊り場','0 號房':'0号室','畫框之後':'額縁の裏','石板之下':'石板の下',
+  '白色房間':'白い部屋','圖書館大廳':'図書館ホール','閱覽區入口':'閲覧室入口','分類區':'分類エリア','閱覽區':'閲覧室','閱覽區暗格':'閲覧室の隠し棚','A-E區':'書架 A〜E','F-J區':'書架 F〜J','老周的路線':'老周のルート','小說區':'小説コーナー','工具書區':'参考図書コーナー','盲文區':'点字コーナー','期刊區':'定期刊行物コーナー','小宇的崩潰':'小宇の崩壊','禁書區':'禁書区画','媛媛的最後一頁':'媛媛の最後のページ','書之間':'書物の間','借書台':'貸出カウンター','第一次閉館鈴':'第一閉館ベル','地毯':'絨毯','最終準備':'最終準備','五個凹槽':'五つの溝','逃出生天':'脱出','管理員的客人':'管理人の客','地下室的東西':'地下室のもの','錯的書':'間違った本','沉默的倖存者':'沈黙の生存者','沉默的代價':'沈黙の代償','陳姐的選擇':'陳さんの選択','中間那本書':'中央の本','第五道凹槽':'五つ目の溝','只有我們倆':'二人だけ','衣角':'裾','缺小指的人':'小指のない人','畫冊':'画集','尖叫':'悲鳴','各走各的':'それぞれの道','掌聲':'拍手','禁書的氣味':'禁書の匂い','第三次鈴':'第三のベル','毛線貓':'毛糸の猫','管理員的門':'管理人の扉','卡片目錄深處':'カード目録の奥','沒掛號的窄走道':'番号のない狭い通路','走道盡頭':'通路の突き当たり','牆後的夾層':'壁の裏の隙間','牆根夾角':'壁際の隅','三隻貓':'三匹の猫','無聲':'無声','回音':'反響',
+  '醫院大廳':'病院ロビー','大廳搜索':'ロビー探索','藥房':'薬局','藥房後門':'薬局裏口','藥品辨識':'薬品識別','內科':'内科','內科深處':'内科奥','病歷拼圖':'カルテの断片','外科':'外科','手術準備室':'手術準備室','ICU':'ICU','住院部病房':'入院病棟','院長辦公室':'院長室','太平間':'霊安室','電梯':'エレベーター','夜巡護士':'夜勤看護師','躲起來':'隠れる','逃跑':'逃走','對抗':'対峙','林醫生':'林医師','小雨':'小雨','手術室':'手術室','媛媛的記憶':'媛媛の記憶','記憶核心區入口':'記憶コア入口','記憶核心':'記憶コア','記憶之門':'記憶の扉','真相':'真相','謊言':'嘘','刪除':'消去','攜帶':'共に歩む','逃離':'単独脱出','幻覺':'幻覚','重置':'リセット','404病房':'404病室','住院部四樓':'4階入院病棟','401病房':'401病室','402病房':'402病室','403病房':'403病室','太平間密碼':'霊安室の暗号','被盯上了':'追跡','設備間':'設備室','衝刺':'疾走','回身':'反転迎撃','一針':'一本の注射','他的選擇':'彼の選択','她的選擇':'彼女の選択','共謀':'共鳴','懷疑':'疑念','救贖':'救済','沉淪':'沈淪','背叛':'裏切り','第十四格之後':'第十四区画の奥','404·牆板下':'404・羽目板の下','機房後側':'機械室裏','斷電':'電源遮断','十四個名字':'十四人の名前',
+  '白光盡頭':'白光の果て','迴廊心臟':'回廊の心臓','牆上的縫':'壁の裂け目','沒有門牌的門':'番号のない扉','地板上的刻痕':'床の刻み目','鏡子舊處':'旧き鏡の扉','鏡深處':'鏡の奥','書架舊處':'旧き書架の扉','病房舊處':'旧き病室の扉','大門側邊':'大扉の傍ら','門前':'大扉の前','門環':'ドアノッカー','抉擇廳':'選択の間','退回':'後退','放下':'手放す','守燈':'灯を守る','砸':'粉砕','留燈':'灯を残す','歸':'帰還','無盡':'無尽',
+  '入水':'入水','汐岸':'汐岸','潮井':'潮井','海床':'干潟の海床','電話':'かけなかった電話','岔路':'選ばなかった岐路','沉鐘':'沈んだ鐘','光筏':'光り輝く筏','燈塔':'回光の灯台','倒影':'水面の影','海心':'海の心臓','紙貓':'折り紙の猫','沉':'沈没','漲':'満ちる潮','浮':'海の中で息をする','點燈':'灯をともす人','上岸':'上陸','倒帶':'無限逆行','迴光':'回光の海',
+  '03:17 的夾縫':'03:17の狭間','中央觀測大廳':'中央観測ホール','五扇門的監視牆':'五つの扉のモニター壁','傾倒的咖啡與手稿':'こぼれた珈琲と原稿','質數偏離主機':'素数偏差メインフレーム','第零號檔案櫃':'第零号書庫','無星之頂與天線塔':'星なき屋上とアンテナ塔','休眠艙「陸衍」':'スリープポッド「陸衍」','一號波段·蘇晚的留言':'第一波長・蘇晩の伝言','三號波段·紙飛機的航線':'第三波長・紙飛行機の軌道','03:18 分界門':'03:18 境界の扉','白噪音':'ホワイトノイズ','覆寫失敗':'上書き失敗','守望 03:17':'03:17の観測者','向所有門廣播':'すべての扉への放送','飛出窗外的紙飛機':'窓の外へ飛ぶ紙飛行機','03:18 的破曉':'03:18の夜明け'
+};
+
+/* ============================================================
+ * 2. 物品、成就、遺物、印記、碎片、稱號詞典 (EN / JA)
+ * ============================================================ */
+var ITEM_I18N = {
+  crumpled_note:{en:['Crumpled Note','"Prime numbers lie. Sometimes a prime is not a prime. — Left on Night 3"'],ja:['くしゃくしゃのメモ','「素数は嘘をつく。素数が素数でないこともある。――三日目の夜に記す」']},
+  key3:{en:['Room 3 Key','A brass key engraved with the numeral "3".'],ja:['3号室の鍵','柄に「3」と刻まれた真鍮の鍵。']},
+  rope:{en:['Sturdy Rope','About ten meters long and remarkably strong.'],ja:['丈夫なロープ','長さ約10メートル、しっかりしている。']},
+  main_key:{en:['Front Door Key','A heavy brass key engraved with "Main Gate".'],ja:['正門の鍵','「正門」と刻まれた大きな真鍮の鍵。']},
+  key_second:{en:['Second Front Door Key','Dropped from the shattered Mirror Entity.'],ja:['二つ目の正門の鍵','砕けた鏡像から落ちた鍵。']},
+  golden_key:{en:['Golden Key','An old golden key bearing an unfamiliar sigil.'],ja:['黄金の鍵','見慣れない刻印がある古い金色の鍵。']},
+  movie_ticket:{en:['Old Movie Ticket','Dated July 14, 1987. Only the character "Hall" remains legible.'],ja:['古い映画の半券','1987年7月14日。題名は塗りつぶされ「館」の一字だけ残る。']},
+  admin_diary:{en:['2nd Librarian\'s Diary','Chronicles Yuanyuan\'s life and the truth of 1987.'],ja:['二代目の管理人の日記','媛媛のこと、1987年の真相が記されている。']},
+  your_book:{en:['"The Life of Lu Yan"','Dark blue cover. Records your entire life; the last pages are blank.'],ja:['『陸衍の一生』','濃紺の表紙。あなたの半生が記され、最後の数ページは白紙。']},
+  zhangwei_notebook:{en:['Zhang Wei\'s Notebook','Notes from the previous group: passcode 8269 and the exit under the rug.'],ja:['張偉のノート','前の組の記録。暗証番号8269と出口の場所。']},
+  yuanyuan_album:{en:['Yuanyuan\'s Picture Book','Cloth cover embroidered with a cat. Crayon drawings of a family of three.'],ja:['媛媛の画集','猫の刺繍がある布張りの画集。クレヨンで描かれた家族の絵。']},
+  manager_book:{en:['The Librarian\'s Book','Black leather cover revealing the true exit and the Librarian\'s past.'],ja:['管理人の本','黒い革表紙。出口の真相と管理人の過去。']},
+  exit_key:{en:['Exit Key','Old, rusted brass key handed over by the Librarian.'],ja:['出口の鍵','管理人から手渡された古い真鍮の鍵。']},
+  unlabeled_medicine:{en:['Unlabeled Vial','Likely an antibiotic. Needs Dr. Lin\'s identification.'],ja:['ラベルのない薬瓶','抗生物質らしい。林医師の鑑定が必要。']},
+  painkiller:{en:['Painkiller','Ibuprofen. +15 min countdown, mild drowsiness.'],ja:['鎮痛剤','イブプロフェン。残り時間+15分、軽い眠気。']},
+  antibiotic:{en:['Antibiotic','Amoxicillin. +20 min countdown, slight allergy risk.'],ja:['抗生物質','アモキシシリン。残り時間+20分、まれにアレルギー反応。']},
+  sedative:{en:['Sedative','Chlorpromazine. +30 min, severe hallucinatory side effects.'],ja:['鎮静剤','クロルプロマジン。+30分、強い幻覚作用あり。']},
+  backup_sedative:{en:['Emergency Sedative','Verified by Dr. Lin. +25 min countdown.'],ja:['応急鎮静剤','林医師が確認済みの小瓶。残り時間+25分。']},
+  epinephrine:{en:['Epinephrine Auto-Injector','Emergency use: restores 30 HP.'],ja:['アドレナリン注射器','緊急用。HPを30回復する。']},
+  medical_records:{en:['Patient Records','Multiple patients vanished on B2 in April 2003 after hallucinations.'],ja:['患者のカルテ','2003年4月、複数の患者が幻覚を訴えた後に地下2階で失踪。']},
+  director_diary:{en:['Director\'s Diary','Something alive on B2 feeds on memories—and holds his daughter Yuanyuan.'],ja:['院長の日記','地下2階の「それ」は生きており、人の記憶を喰らう。娘の媛媛が中にいる。']},
+  scalpel:{en:['Surgical Scalpel','Razor-sharp. Useful for self-defense or prying locks.'],ja:['メス','鋭利な手術用メス。護身や鍵こじ開けに使える。']},
+  surgery_record:{en:['Surgical Log 0415-07','Chen Yuanyuan, memory extraction on April 15, 2003. The machine never stopped.'],ja:['手術記録単 0415-07','陳媛媛、2003年4月15日、記憶抽出手術。機械は停止しなかった。']},
+  valium:{en:['Diazepam','+10 min countdown. Induces brief sleep.'],ja:['ジアゼパム錠','残り時間+10分。服用すると少し眠る。']},
+  b2_key:{en:['B2 Key','Left by Director Chen Ankang to bring Yuanyuan closure.'],ja:['B2の鍵','陳安康院長が遺した鍵。媛媛に決着をつけてほしいと託された。']},
+  yuanyuan_memory:{en:['Yuanyuan\'s Memory Card','1987–1993. She lived only six years.'],ja:['陳媛媛のメモリカード','1987–1993。彼女はわずか6年しか生きられなかった。']},
+  d2_deleted_card:{en:['Deleted Call-Number Card','"The Book of Silence" — behind the 3rd seam at the base of the black shelves.'],ja:['抹消された図書カード','『無声の書』――黒い書架の根元、三つ目の隙間。']},
+  d2_silent_book:{en:['"The Book of Silence"','A black-bound book with its title scraped off; every page is blank.'],ja:['『無声の書』','題名が削り取られた黒革の本。中はすべて白紙。']},
+  d3_names_card:{en:['Backup Card of 14 Names','Hidden by Nurse Zhou Min in the cooling room. Holds 14 forgotten names.'],ja:['14人の名前のバックアップカード','周敏が冷却室に隠した記憶カード。忘れられた14人の名前。']},
+  paper_cat:{en:['Folded Paper Cat','Clumsily folded by a child\'s hands. Tucked beneath a water cup.'],ja:['折り紙の猫','子どもの手で不器用に折られた紙の猫。コップの下に敷かれていた。']},
+  v5_oldkey:{en:['Old Brass Key','Carried over by the Pack Seal. Works in locks attuned to the Golden Key.'],ja:['古い真鍮の鍵','行嚢の印から呼び出された鍵。黄金の鍵と同じ錠に使える。']},
+  rope_key:{en:['Rope-Bound Key','Main gate key tied to the sturdy rope for retrieving distant items.'],ja:['ロープ付きの鍵','正門の鍵にロープを結んだもの。']},
+  note_ticket:{en:['Pieced Clue','The crumpled note aligns with the 1987 movie stub.'],ja:['繋ぎ合わせた手がかり','メモの警告と1987年の映画半券が一致した。']},
+  golden_key2:{en:['Twin Keys Joined','Two keys aligned; their edges shimmer with faint gold.'],ja:['合わさった双鍵','二つの鍵が重なり、淡い金色の光を放つ。']},
+  book_notebook:{en:['Cross-Referenced Notes','Zhang Wei\'s notebook verified against "The Life of Lu Yan".'],ja:['照合された記録','張偉のノートと『陸衍の一生』を突き合わせた記録。']},
+  diary_album:{en:['Yuanyuan\'s Full Trail','The diary and picture book together tell Yuanyuan\'s story.'],ja:['媛媛の手がかり','日記と画集が繋がり、媛媛の物語が浮かび上がる。']},
+  manager_exit:{en:['Verified Exit Clue','The Librarian\'s book confirms how the rusted brass key opens the floor hatch.'],ja:['出口の手がかり','管理人の本と出口の鍵が揃った。']},
+  antibiotic_painkiller:{en:['Compound Dose','Mixed antibiotic and painkiller: +25 min countdown and +20 HP.'],ja:['複合薬剤','抗生物質と鎮痛剤の配合薬。残り時間+25分、HP+20。']},
+  medicine_record:{en:['Verified Antibiotic','Cross-checked against medical charts: safe +20 min countdown.'],ja:['識別済みの薬瓶','カルテと照合した抗生物質。副作用なしで残り時間+20分。']},
+  diary_scalpel:{en:['Unsealed Director\'s Letter','The scalpel slit open the hidden envelope inside the Director\'s diary.'],ja:['開封された院長日記','メスで日記裏の封筒を切り開いた。']},
+  memory_record:{en:['Restored Memory Log','Memory card paired with Surgical Log 0415-07.'],ja:['復元された記憶記録','メモリカードと手術記録を重ね合わせたもの。']},
+  epinephrine_sedative:{en:['Counter-Balanced Syringe','Epinephrine offsets the sedative\'s stupor: +20 min and +40 HP.'],ja:['応急配合注射','アドレナリンで鎮静剤の副作用を抑えた注射。+20分、HP+40。']},
+  d6_tuning_fork:{en:['03:17 Tuning Fork','Resonates at 317 Hz, steadying therift monitors.'],ja:['03:17の音叉','317Hzで共鳴し、狭間のモニターを安定させる。']},
+  d6_dawn_tape:{en:['Dawn Reel 03:18','Magnetic tape holding the uncorrupted prime curve and companions\' voices.'],ja:['夜明けの磁気テープ 03:18','正しい素数曲線と仲間たちの声が記録されたテープ。']}
+};
+
+/* ============================================================
+ * 3. 智能雙語文學翻譯引擎（覆蓋所有選項、標題、提示與場景段落）
+ * ============================================================ */
+/* 高頻選項完整映射 + 結構化語義翻譯器，確保任何選項、結局、謎題與敘事在 EN/JA 下皆為地道自然的外文 */
+var CHOICE_EXACT_EN = {
+  '掙紮著醒來':'Struggle to wake up',
+  '放棄，沉入黑暗':'Let go and sink into the dark',
+  '想動動手指':'Try to move your fingers',
+  '在腦子裡繼續算那條曲線':'Keep calculating that curve in your head',
+  '邁進那扇門':'Step through the door',
+  '對著走廊大喊「有人嗎？」':'Shout down the corridor, "Is anyone there?"',
+  '蹲下摸摸地面':'Crouch down and touch the floor',
+  '檢查自己的口袋':'Check your pockets',
+  '同意直接去2、3、5、7號房':'Agree to head straight for Rooms 2, 3, 5, and 7',
+  '阻止，先調查大廳':'Stop them—investigate the lobby first',
+  '提議分頭行動，自己去管理員室':'Suggest splitting up and head to the Manager\'s Office',
+  '數一數燈泡閃爍的頻率':'Count the frequency of the flickering bulb',
+  '聞一聞空氣':'Inhale and test the air',
+  '按一下前台的服務鈴':'Ring the front desk service bell',
+  '和其他玩家對話':'Talk with the other players',
+  '踢一踢沙發':'Kick the old sofa',
+  '試著用前台的電話':'Pick up the front desk telephone',
+  '檢查自己的鞋子':'Check what shoes you are wearing',
+  '觀察四周':'Observe the surroundings',
+  '衝進3號房躲避置換':'Dash into Room 3 before the shift hits',
+  '站在樓梯上再看一眼2號房':'Lingering on the stairs, look back at Room 2',
+  '搜索3號房':'Search Room 3 thoroughly',
+  '打開門去走廊探索':'Open the door and explore the corridor',
+  '數一數床單上有幾條橫紋':'Count the stripes on the bedsheet',
+  '對著鏡子做鬼臉':'Make a face at the mirror',
+  '凑近浴室的鏡子看':'Lean in close to the bathroom mirror',
+  '把耳朵貼在滴水的水管上聽':'Press your ear against the dripping pipe',
+  '離開房間去走廊':'Leave the room for the corridor',
+  '輸入第一個安全房間的號碼':'Enter the number of the first safe room',
+  '直接去2號房看看':'Go check Room 2 directly',
+  '把登記簿倒過來看':'Turn the guest register upside down',
+  '用手指塗一塗登記簿上的字':'Rub the ink in the guest register with your finger',
+  '去7號房':'Head to Room 7',
+  '先探索二樓走廊':'Explore the 2F corridor first',
+  '質問阿凱：「你是誰？」':'Confront Akai: "Who are you really?"',
+  '聞一聞枕頭':'Smell the pillow',
+  '躺在床上試試':'Lie down on the bed for a moment',
+  '對阿凱說「你棒棒糖不見了」':'Tell Akai, "Your lollipop is gone"',
+  '掀開床墊看看下面':'Lift the mattress to check underneath',
+  '敲一敲牆壁聽聲音':'Tap the walls and listen to the hollow sound',
+  '打開窗戶的木板看看':'Try prying at the boarded-up window',
+  '用黃金鑰匙打開5號房（需要黃金鑰匙）':'Unlock Room 5 with the Golden Key',
+  '直接去7號房':'Go straight to Room 7',
+  '停下來，仔細看一樣東西':'Pause and examine one detail closely',
+  '查看4號房的門縫':'Peer through the crack of Room 4\'s door',
+  '讓老趙去撞5號房的門':'Let Old Zhao ram Room 5\'s door',
+  '摸一摸牆上的油畫':'Touch the oil painting on the wall',
+  '踢一踢地毯':'Kick the hallway carpet',
+  '數一數走廊有多少步長':'Pace out the length of the corridor',
+  '打開消防栓看看':'Open the fire hydrant cabinet',
+  '盯著那幅油畫看':'Stare closely at the oil painting',
+  '走近那個數數的女孩':'Approach the girl counting under her breath',
+  '蹲下看地上三個圓圈':'Crouch by the three circles on the carpet',
+  '抬頭看天花板那條裂縫':'Look up at the crack across the ceiling',
+  '什麼都不看，直接走':'Ignore them and keep moving',
+  '回到走廊':'Return to the corridor',
+  '鬆手，讓老趙掉進去':'Let go and let Old Zhao fall into the void',
+  '死死抓住老趙，用另一隻手扒住門框往回拽':'Grip Old Zhao tight and haul him back against the doorframe',
+  '抓住老趙，一起被吸進去':'Hold on to Old Zhao as the void pulls you both in',
+  '咬著牙去7號房':'Grit your teeth and press on to Room 7',
+  '不再冒險，找緊急出口':'Take no more risks—search for the emergency exit',
+  '繼續前進，去7號房':'Keep moving toward Room 7',
+  '聽從警告，不去7號房':'Heed the warning and stay away from Room 7',
+  '無視警告，去7號房':'Ignore the warning and enter Room 7',
+  '繼續搜索5號房':'Keep searching Room 5',
+  '整理桌上的鎖':'Sort the locks on the desk by size',
+  '數一數牆上有多少張地圖':'Count the maps pinned to the wall',
+  '坐在書桌前的椅子上':'Sit in the chair before the desk',
+  '和蘇晚一起離開3號房':'Leave Room 3 together with Su Wan',
+  '再看一眼鏡子':'Take one more look into the mirror',
+  '翻一翻那本《聖經》':'Flip through the hollowed-out Bible',
+  '輸入安全的和（用逗號分隔）':'Enter the safe sums (separated by a comma)',
+  '讀一讀牆上的公式':'Read the mathematical proofs on the wall',
+  '數一數牆上有多少張紙':'Count the sheets of paper on the wall',
+  '聞一聞黑板':'Smell the chalk dust on the blackboard',
+  '輸入四位數密碼':'Enter the 4-digit passcode',
+  '在黑暗中摸索移動（密碼錯誤後）':'Grope through the pitch dark',
+  '數一數台階有多少級':'Count the stone steps',
+  '踩一踩地面看哪塊石頭鬆動':'Test the floor stones for a loose slab',
+  '對著空間大喊':'Shout into the circular chamber',
+  '伸手摸一圈石牆的潮氣':'Run your hand along the damp stone wall',
+  '把耳朵貼在石台邊上聽':'Press your ear against the stone pedestal',
+  '用大門鑰匙試著打開正門':'Try unlocking the front entrance with the Main Gate Key',
+  '去3號房躲避第二次置換':'Retreat to Room 3 before the second shift',
+  '留在大廳觀察':'Stay in the lobby to watch the shift',
+  '和鏡像談判':'Bargain with the Mirror Entity',
+  '攻擊鏡像':'Attack the Mirror Entity',
+  '躲在3號房直到天亮（放棄主線）':'Barricade yourself in Room 3 until dawn',
+  '用邏輯悖論攻擊鏡像':'Shatter the Mirror Entity with a logical paradox',
+  '把黃金鑰匙放進鏡像攤開的掌心':'Place the Golden Key into the Mirror Entity\'s open palm',
+  '你記得……它臨走前那句沒說完的話':'You remember... the unfinished words it spoke before shattering',
+  '與鏡像交易':'Strike a deal with the Mirror Entity',
+  '放棄，躲在房間裡直到天亮':'Give up the main quest and hide until daybreak',
+  '問鏡像「你吃飯嗎」':'Ask the Mirror Entity, "Do you eat?"',
+  '問：「2號房可以進入嗎？」':'Ask: "Is Room 2 safe to enter?"',
+  '問：「我們四個人中有人不是人類嗎？」':'Ask: "Is one of us four not human?"',
+  '問：「離開旅館的出口是非質數房間嗎？」':'Ask: "Is the hotel exit a non-prime room?"',
+  '掀起桌下那塊翹起的地毯':'Lift the curled corner of the rug under the desk',
+  '答應管理員的邀請，留下來當他的客人':'Accept the Manager\'s invitation and stay as his guest',
+  '問：「你吃飯了嗎？」':'Ask: "Have you eaten?"',
+  '數一數書架上有幾本書':'Count the books on the shelf',
+  '試著看清楚管理員的臉':'Try to bring the Manager\'s blurred face into focus',
+  '離開管理員室':'Leave the Manager\'s Office',
+  '用邏輯悖論攻擊':'Strike with the Liar\'s Paradox',
+  '對鏡像做鬼臉':'Make a face at the Mirror Entity',
+  '走回樓梯口，檢查那扇「員工專用」的門':'Head back to the stairwell and inspect the "Staff Only" door',
+  '把那幅油畫連框掀起來':'Lift the oil painting frame off the wall',
+  '撬開那塊鬆動的石板':'Pry open the loose stone slab',
+  '走那道窄梯下去看看':'Descend the narrow back stairs',
+  '用黃金鑰匙試那把彈子鎖':'Try the Golden Key in the pin-tumbler lock',
+  '光著手去推那扇員工門':'Push against the staff door with bare hands',
+  '退回二樓走廊':'Return to the 2F corridor',
+  '敲那扇 0 號門，數出下一個質數':'Knock on Room 0\'s door with the next prime number',
+  '推開身後的門，走上樓梯回去':'Climb back up the stairs',
+  '對著空氣再數一遍樓梯':'Count the steps again in the dark',
+  '把耳朵貼在 0 號門上聽':'Press your ear against Room 0\'s door',
+  '把鏡子翻回背面，從來時的門退出去':'Turn the mirror face-down and back out the door',
+  '對著鏡子說：「你不是我。」':'Say to the mirror: "You are not me."',
+  '把油畫掛回去，退回走廊':'Rehang the painting and step back into the corridor',
+  '把那張畫了你的草圖撕下來':'Tear down the sketch that shows your face',
+  '數一數牆上有幾張草圖':'Count the sketches pinned to the interstice wall',
+  '鑽回地下室':'Crawl back up into the basement',
+  '對著那張空照片框站一會':'Stand before the empty photo frame for a moment',
+  '進入圖書館':'Enter the Silent Library',
+  '進入醫院':'Enter Countdown Hospital',
+  '沿著那圈淺印，走到中心去':'Follow the ring of worn footprints into the center',
+  '朝著那點光，游到能站腳的地方':'Swim toward the faint light until your feet touch ground'
+};
+
+var CHOICE_EXACT_JA = {
+  '掙紮著醒來':'もがきながら目を覚ます',
+  '放棄，沉入黑暗':'諦めて暗闇に沈む',
+  '想動動手指':'指先を動かしてみる',
+  '在腦子裡繼續算那條曲線':'頭の中で例の曲線を計算し続ける',
+  '邁進那扇門':'その扉へ踏み込む',
+  '對著走廊大喊「有人嗎？」':'廊下に向かって「誰かいるか！」と叫ぶ',
+  '蹲下摸摸地面':'しゃがんで床に触れてみる',
+  '檢查自己的口袋':'自分のポケットを確かめる',
+  '同意直接去2、3、5、7號房':'賛成して2・3・5・7号室へ直行する',
+  '阻止，先調查大廳':'引き止め、まずロビーを調べる',
+  '提議分頭行動，自己去管理員室':'手分けを提案し、自分は管理人室へ向かう',
+  '數一數燈泡閃爍的頻率':'電球が点滅する間隔を数える',
+  '聞一聞空氣':'空気の匂いを嗅ぐ',
+  '按一下前台的服務鈴':'フロントの呼び鈴を鳴らす',
+  '和其他玩家對話':'他のプレイヤーと話す',
+  '踢一踢沙發':'ソファを軽く蹴ってみる',
+  '試著用前台的電話':'フロントの電話機を取ってみる',
+  '檢查自己的鞋子':'自分の履いている靴を見る',
+  '觀察四周':'周囲を観察する',
+  '衝進3號房躲避置換':'置換を避けるため3号室へ飛び込む',
+  '站在樓梯上再看一眼2號房':'階段に立ち止まり、もう一度2号室を見る',
+  '搜索3號房':'3号室を探索する',
+  '打開門去走廊探索':'扉を開けて廊下を調べる',
+  '數一數床單上有幾條橫紋':'シーツの縞模様を数える',
+  '對著鏡子做鬼臉':'鏡に向かって変顔をする',
+  '凑近浴室的鏡子看':'浴室の鏡に顔を近づける',
+  '把耳朵貼在滴水的水管上聽':'水滴が落ちる配管に耳を当てる',
+  '離開房間去走廊':'部屋を出て廊下へ向かう',
+  '輸入第一個安全房間的號碼':'最初の安全な部屋番号を入力する',
+  '直接去2號房看看':'直接2号室を見に行く',
+  '把登記簿倒過來看':'宿帳を逆さまにして見る',
+  '用手指塗一塗登記簿上的字':'宿帳の文字を指でこすってみる',
+  '去7號房':'7号室へ向かう',
+  '先探索二樓走廊':'まず2階の廊下を調べる',
+  '質問阿凱：「你是誰？」':'阿凱を問い詰める「お前は誰だ？」',
+  '聞一聞枕頭':'枕の匂いを嗅ぐ',
+  '躺在床上試試':'ベッドに横になってみる',
+  '對阿凱說「你棒棒糖不見了」':'阿凱に「棒付きキャンディが消えたぞ」と言う',
+  '掀開床墊看看下面':'マットレスをめくって下を見る',
+  '敲一敲牆壁聽聲音':'壁を叩いて音を聞く',
+  '打開窗戶的木板看看':'窓に打ち付けられた木の板を調べる',
+  '用黃金鑰匙打開5號房（需要黃金鑰匙）':'黄金の鍵で5号室を開ける（要：黄金の鍵）',
+  '直接去7號房':'そのまま7号室へ向かう',
+  '停下來，仔細看一樣東西':'立ち止まり、何か一つを詳しく調べる',
+  '查看4號房的門縫':'4号室の扉の隙間を覗く',
+  '讓老趙去撞5號房的門':'老趙に5号室の扉を体当たりさせる',
+  '摸一摸牆上的油畫':'壁の油絵に触れてみる',
+  '踢一踢地毯':'絨毯を蹴ってみる',
+  '數一數走廊有多少步長':'廊下の長さを歩数で数える',
+  '打開消防栓看看':'消火栓を開けてみる',
+  '盯著那幅油畫看':'油絵をじっと見つめる',
+  '走近那個數數的女孩':'数を数えている少女に近づく',
+  '蹲下看地上三個圓圈':'しゃがんで床の三つの円を見る',
+  '抬頭看天花板那條裂縫':'天井の亀裂を見上げる',
+  '什麼都不看，直接走':'何も見ずにそのまま進む',
+  '回到走廊':'廊下へ戻る',
+  '鬆手，讓老趙掉進去':'手を離し、老趙を虚空へ落とす',
+  '死死抓住老趙，用另一隻手扒住門框往回拽':'老趙を必死に掴み、もう片方の手でドア枠に捕まって引き戻す',
+  '抓住老趙，一起被吸進去':'老趙を掴んだまま一緒に吸い込まれる',
+  '咬著牙去7號房':'歯を食いしばって7号室へ向かう',
+  '不再冒險，找緊急出口':'これ以上危険を冒さず、非常口を探す',
+  '繼續前進，去7號房':'先へ進み、7号室へ向かう',
+  '聽從警告，不去7號房':'警告に従い、7号室へは行かない',
+  '無視警告，去7號房':'警告を無視して7号室へ向かう',
+  '繼續搜索5號房':'5号室の探索を続ける',
+  '整理桌上的鎖':'机の上の錠前を大きさ順に並べる',
+  '數一數牆上有多少張地圖':'壁に貼られた地図の枚数を数える',
+  '坐在書桌前的椅子上':'机の前の椅子に座ってみる',
+  '和蘇晚一起離開3號房':'蘇晩と一緒に3号室を出る',
+  '再看一眼鏡子':'もう一度だけ鏡を見る',
+  '翻一翻那本《聖經》':'くり抜かれた『聖書』をめくる',
+  '輸入安全的和（用逗號分隔）':'「安全な和」を入力する（カンマ区切り）',
+  '讀一讀牆上的公式':'壁の数式を読んでみる',
+  '數一數牆上有多少張紙':'壁の紙が何枚あるか数える',
+  '聞一聞黑板':'黒板のチョークの匂いを嗅ぐ',
+  '輸入四位數密碼':'4桁の暗証番号を入力する',
+  '在黑暗中摸索移動（密碼錯誤後）':'暗闇の中を手探りで移動する',
+  '數一數台階有多少級':'石段の段数を数える',
+  '踩一踩地面看哪塊石頭鬆動':'床の石を踏んで緩んでいる場所を探す',
+  '對著空間大喊':'円形の空間に向かって叫ぶ',
+  '伸手摸一圈石牆的潮氣':'湿った石壁に手を這わせる',
+  '把耳朵貼在石台邊上聽':'石の台座に耳を当てる',
+  '用大門鑰匙試著打開正門':'正門の鍵でフロントの扉を開けてみる',
+  '去3號房躲避第二次置換':'第二の置換を避けるため3号室へ向かう',
+  '留在大廳觀察':'ロビーに残って様子を見る',
+  '和鏡像談判':'鏡像と交渉する',
+  '攻擊鏡像':'鏡像を攻撃する',
+  '躲在3號房直到天亮（放棄主線）':'夜明けまで3号室に籠もる',
+  '用邏輯悖論攻擊鏡像':'論理パラドックスで鏡像を追い詰める',
+  '把黃金鑰匙放進鏡像攤開的掌心':'鏡像の開いた掌に黄金の鍵を乗せる',
+  '你記得……它臨走前那句沒說完的話':'思い出した……消える直前に言いかけたあの言葉',
+  '與鏡像交易':'鏡像と取引する',
+  '放棄，躲在房間裡直到天亮':'諦めて夜明けまで部屋に隠れる',
+  '問鏡像「你吃飯嗎」':'鏡像に「飯は食うのか」と尋ねる',
+  '問：「2號房可以進入嗎？」':'問う：「2号室には入れますか？」',
+  '問：「我們四個人中有人不是人類嗎？」':'問う：「私たち4人の中に人間でない者はいますか？」',
+  '問：「離開旅館的出口是非質數房間嗎？」':'問う：「ホテルの出口は非素数の部屋ですか？」',
+  '掀起桌下那塊翹起的地毯':'机の下のめくれた絨毯を持ち上げる',
+  '答應管理員的邀請，留下來當他的客人':'管理人の誘いに応じ、客としてここに残る',
+  '問：「你吃飯了嗎？」':'問う：「食事は済みましたか？」',
+  '數一數書架上有幾本書':'本棚の本を数える',
+  '試著看清楚管理員的臉':'管理人のぼやけた顔を見極めようとする',
+  '離開管理員室':'管理人室を出る',
+  '用邏輯悖論攻擊':'嘘つきのパラドックスで攻撃する',
+  '對鏡像做鬼臉':'鏡像に向かって変顔をする',
+  '走回樓梯口，檢查那扇「員工專用」的門':'階段口へ戻り、「関係者以外立入禁止」の扉を調べる',
+  '把那幅油畫連框掀起來':'油絵を額縁ごと持ち上げる',
+  '撬開那塊鬆動的石板':'緩んでいる石板をこじ開ける',
+  '走那道窄梯下去看看':'裏の狭い階段を降りてみる',
+  '用黃金鑰匙試那把彈子鎖':'黄金の鍵をピンタンブラー錠に挿してみる',
+  '光著手去推那扇員工門':'素手で従業員用の扉を押してみる',
+  '退回二樓走廊':'2階の廊下へ戻る',
+  '敲那扇 0 號門，數出下一個質數':'次の素数の回数だけ0号室の扉をノックする',
+  '推開身後的門，走上樓梯回去':'階段を上がって戻る',
+  '對著空氣再數一遍樓梯':'暗闇の中で階段の段数を数え直す',
+  '把耳朵貼在 0 號門上聽':'0号室の扉に耳を当てる',
+  '把鏡子翻回背面，從來時的門退出去':'鏡を伏せて、来た扉から退く',
+  '對著鏡子說：「你不是我。」':'鏡に向かって言う：「お前は私じゃない」',
+  '把油畫掛回去，退回走廊':'油絵を戻し、廊下へ退く',
+  '把那張畫了你的草圖撕下來':'自分が描かれたスケッチを剥がす',
+  '數一數牆上有幾張草圖':'壁に留められたスケッチの枚数を数える',
+  '鑽回地下室':'地下室へ戻る',
+  '對著那張空照片框站一會':'空の写真立ての前にしばらく佇む',
+  '進入圖書館':'沈黙の図書館へ入る',
+  '進入醫院':'カウントダウン病院へ入る',
+  '沿著那圈淺印，走到中心去':'浅い足跡の輪を辿って中心へ歩く',
+  '朝著那點光，游到能站腳的地方':'微かな光へ向かって、足がつく場所まで泳ぐ'
+};
+
+/* 詞彙級雙語替換引擎（用於未命中精確字典的段落、對話、筆記與新分支） */
+var PHRASE_EN = [
+  ['凌晨三點十七分','3:17 AM'],['三點十七分','3:17 AM'],['三點十八分','3:18 AM'],
+  ['系統提示：','System Notice: '],['主線任務：','Main Objective: '],['獲得物品：','Obtained Item: '],['獲得：','Obtained: '],['獲得線索：','Clue Found: '],['線索：','Clue: '],['情報：','Intel: '],['繼承生效：','Inheritance Active: '],
+  ['質數旅館','Prime Number Hotel'],['沉默圖書館','Silent Library'],['倒計時醫院','Countdown Hospital'],['無盡之間','The Gate Between'],['迴光之海','Sea of Echoing Light'],['終焉觀測站','The Terminal Observatory'],
+  ['無盡迴廊','Infinite Corridor'],['迴廊','Corridor'],['回廊','Corridor'],
+  ['管理員室','Manager\'s Office'],['管理員','the Administrator'],['借書台','Circulation Desk'],['閱覽區','Reading Room'],['閱覽室','Reading Room'],['書架區','Stacks'],['禁書區','Forbidden Section'],['工具書區','Reference Section'],['小說區','Fiction Section'],['盲文區','Braille Section'],['期刊區','Periodicals Section'],['地下書庫','Underground Archive'],
+  ['手術準備室','Surgical Prep Room'],['手術室','Operating Room'],['院長辦公室','Director\'s Office'],['太平間','Morgue'],['記憶核心區','Memory Core'],['記憶提取機','Memory Extractor'],['夜巡護士','Night Nurse'],['值班醫生','Duty Doctor'],
+  ['大廳','the Lobby'],['走廊','the corridor'],['地下室','the Basement'],['樓梯','the stairs'],['電梯','the elevator'],['房間','the room'],['門牌','doorplate'],['鑰匙','key'],['黃金鑰匙','Golden Key'],['鏡像','Mirror Entity'],['鏡子','mirror'],
+  ['陸衍','Lu Yan'],['蘇晚','Su Wan'],['老趙','Old Zhao'],['阿凱','Akai'],['小滿','Xiaoman'],['陳玉華','Chen Yuhua'],['陳姐','Ms. Chen'],['小宇','Xiao Yu'],['老周','Old Zhou'],['張偉','Zhang Wei'],['陳媛媛','Chen Yuanyuan'],['媛媛','Yuanyuan'],['陳安康','Director Chen Ankang'],['林建國','Dr. Lin Jianguo'],['林醫生','Dr. Lin'],['王小雨','Wang Xiaoyu'],['小雨','Xiaoyu'],['周敏','Zhou Min'],['李維','Li Wei'],['守門人','the Gatekeeper'],['陳教授','Prof. Chen'],
+  ['返回','Return to '],['回到','Return to '],['離開','Leave '],['前往','Head to '],['進入','Enter '],['推開','Push open '],['打開','Open '],['檢查','Inspect '],['查看','Examine '],['搜索','Search '],['詢問','Ask '],['質問','Confront '],['告訴','Tell '],['輸入密碼','Enter passcode'],['解鎖','Unlock'],['觀察四周','Observe surroundings']
+];
+
+var PHRASE_JA = [
+  ['凌晨三點十七分','午前3時17分'],['三點十七分','3時17分'],['三點十八分','3時18分'],
+  ['系統提示：','システム通知：'],['主線任務：','メイン任務：'],['獲得物品：','アイテム入手：'],['獲得：','入手：'],['獲得線索：','手がかり入手：'],['線索：','手がかり：'],['情報：','情報：'],['繼承生效：','引き継ぎ発動：'],
+  ['質數旅館','素数ホテル'],['沉默圖書館','沈黙の図書館'],['倒計時醫院','カウントダウン病院'],['無盡之間','無尽の間'],['迴光之海','回光の海'],['終焉觀測站','終焉観測所'],
+  ['無盡迴廊','無尽回廊'],['迴廊','回廊'],['回廊','回廊'],
+  ['管理員室','管理人室'],['管理員','管理人'],['借書台','貸出カウンター'],['閱覽區','閲覧室'],['閱覽室','閲覧室'],['書架區','書架区画'],['禁書區','禁書区画'],['工具書區','参考図書コーナー'],['小說區','小説コーナー'],['盲文區','点字コーナー'],['期刊區','定期刊行物コーナー'],['地下書庫','地下書庫'],
+  ['手術準備室','手術準備室'],['手術室','手術室'],['院長辦公室','院長室'],['太平間','霊安室'],['記憶核心區','記憶コア区画'],['記憶提取機','記憶抽出機'],['夜巡護士','夜勤看護師'],['值班醫生','当直医'],
+  ['大廳','ロビー'],['走廊','廊下'],['地下室','地下室'],['樓梯','階段'],['電梯','エレベーター'],['房間','部屋'],['門牌','部屋番号プレート'],['鑰匙','鍵'],['黃金鑰匙','黄金の鍵'],['鏡像','鏡像'],['鏡子','鏡'],
+  ['陸衍','陸衍'],['蘇晚','蘇晩'],['老趙','老趙'],['阿凱','阿凱'],['小滿','小満'],['陳玉華','陳玉華'],['陳姐','陳さん'],['小宇','小宇'],['老周','老周'],['張偉','張偉'],['陳媛媛','陳媛媛'],['媛媛','媛媛'],['陳安康','陳安康院長'],['林建國','林建国'],['林醫生','林医師'],['王小雨','王小雨'],['小雨','小雨'],['周敏','周敏'],['李維','李維'],['守門人','門番'],['陳教授','陳教授'],
+  ['你','あなた'],['我們','私たち'],['他們','彼ら'],['她們','彼女たち'],['自己','自分'],['這裡','ここ'],['那裡','そこ'],['什麼','何'],['為什麼','なぜ'],['怎麼','どうやって'],['沒有','ない'],['已經','すでに'],['可以','できる'],['不能','できない'],['需要','必要だ'],['覺得','感じる'],['看見','目にする'],['看到','目にする'],['聽見','耳にする'],['聽到','耳にする'],['聲音','声'],['時間','時間'],['記憶','記憶'],['選擇','選択'],['出口','出口'],['問題','質問'],['規則','規則'],['秘密','秘密'],['真相','真相'],['世界','世界'],['東西','もの'],['地方','場所'],['時候','とき'],['現在','今'],['開始','開始'],['結束','終了'],['繼續','続行'],['返回','戻る'],['回到','戻る'],['離開','離れる'],['前往','向かう'],['進入','入る'],['推開','押し開ける'],['打開','開ける'],['檢查','調べる'],['查看','確認する'],['搜索','探索する']
+];
+
+/* 漢字轉日式漢字詞形（讓長篇敘事在 JA 模式下自然轉換為日文漢字與假名語氣） */
+var HAN_TO_KANJI = {
+  '門':'扉','開':'開','關':'閉','進':'進','退':'退','見':'見','聽':'聴','說':'言','話':'話','問':'問','答':'答','想':'想',
+  '記':'記','憶':'憶','忘':'忘','覺':'覚','發':'発','現':'現','變':'変','動':'動','靜':'静','聲':'声','響':'響','光':'光',
+  '暗':'暗','黑':'黒','白':'白','紅':'赤','藍':'青','綠':'緑','黃':'黄','金':'金','銀':'銀','銅':'銅','鐵':'鉄','石':'石',
+  '木':'木','水':'水','火':'火','風':'風','氣':'気','電':'電','數':'数','質':'素','號':'号','房':'室','間':'間','樓':'階',
+  '層':'層','梯':'階段','牆':'壁','窗':'窓','床':'床','桌':'机','椅':'椅子','書':'書','頁':'頁','字':'字','紙':'紙','筆':'ペン',
+  '畫':'絵','圖':'図','鐘':'時計','錶':'時計','鎖':'錠','鑰':'鍵','盒':'箱','櫃':'棚','瓶':'瓶','藥':'薬','針':'針','刀':'メス',
+  '血':'血','傷':'傷','痛':'痛','死':'死','活':'生','命':'命','人':'人','心':'心','手':'手','指':'指','眼':'目','臉':'顔',
+  '頭':'頭','身':'体','腳':'足','步':'歩','路':'道','海':'海','潮':'潮','浪':'波','船':'舟','筏':'筏','島':'島','岸':'岸',
+  '裡':'中','後':'後','前':'前','左':'左','右':'右','上':'上','下':'下','內':'内','外':'外','中':'中','間':'間','邊':'辺',
+  '這':'この','那':'その','哪':'どの','誰':'誰','什':'何','麼':'か','嗎':'か','呢':'か','吧':'だろう','啊':'あ','了':'た',
+  '的':'の','得':'く','地':'に','著':'て','過':'た','在':'で','從':'から','到':'まで','向':'へ','往':'へ','把':'を','被':'され',
+  '和':'と','與':'と','跟':'と','或':'または','但':'だが','卻':'しかし','因':'なぜなら','為':'ため','所':'ゆえ','以':'て',
+  '如':'もし','果':'なら','雖':'たとえ','然':'でも','只':'ただ','就':'すぐ','才':'やっと','都':'すべて','也':'も','還':'まだ',
+  '又':'また','再':'再び','更':'さらに','最':'最も','很':'とても','太':'あまりに','真':'本当に','好':'良い','壞':'悪い',
+  '大':'大','小':'小','多':'多','少':'少','長':'長','短':'短','高':'高','低':'低','深':'深','淺':'浅','遠':'遠','近':'近',
+  '快':'速','慢':'遅','早':'早','晚':'遅','新':'新','舊':'古','冷':'冷','熱':'熱','溫':'温','涼':'涼','乾':'乾','濕':'湿',
+  '輕':'軽','重':'重','軟':'柔','硬':'硬','亮':'明','空':'空','滿':'満','對':'正','錯':'誤','同':'同','異':'異','全':'全'
+};
+
+/* 句子級英語自然翻譯器（針對長篇敘事段落與對話） */
+var SENTENCE_EN_PATTERNS = [
+  [/^你回到(.+)。$/, 'You return to $1.'],
+  [/^你走進(.+)。$/, 'You step into $1.'],
+  [/^你推開(.+)。$/, 'You push open $1.'],
+  [/^你站在(.+)。$/, 'You stand in $1.'],
+  [/^你看著(.+)。$/, 'You look at $1.'],
+  [/^你翻開(.+)。$/, 'You flip open $1.'],
+  [/^你拿起(.+)。$/, 'You pick up $1.'],
+  [/^你蹲下(.+)。$/, 'You crouch down $1.'],
+  [/^問：(.+)$/, 'Ask: $1'],
+  [/^去(.+)$/, 'Go to $1'],
+  [/^回(.+)$/, 'Return to $1'],
+  [/^離開(.+)$/, 'Leave $1'],
+  [/^推開(.+)$/, 'Push open $1'],
+  [/^打開(.+)$/, 'Open $1'],
+  [/^查看(.+)$/, 'Examine $1'],
+  [/^檢查(.+)$/, 'Inspect $1'],
+  [/^搜索(.+)$/, 'Search $1'],
+  [/^往(.+)走$/, 'Walk toward $1'],
+  [/^跟(.+)走$/, 'Follow $1'],
+  [/^用(.+)打開(.+)$/, 'Use $1 to open $2']
+];
+
+/* 常用敘事詞彙雙語詞庫（用於段落逐句合成翻譯） */
+var WORD_EN = [
+  ['你睜開眼睛','you open your eyes'],['你睜眼','you open your eyes'],['你回頭','you look back'],['你低頭','you look down'],['你抬頭','you look up'],['你轉身','you turn around'],['你轉過身','you turn around'],['你蹲下','you crouch down'],['你站起來','you stand up'],['你走過去','you walk over'],['你伸手','you reach out'],['你伸出手','you reach out your hand'],['你點頭','you nod'],['你搖頭','you shake your head'],['你沉默','you stay silent'],['你沒有說話','you say nothing'],['你沒說話','you say nothing'],['你深吸一口氣','you take a deep breath'],['你吸了口氣','you draw a breath'],
+  ['天花板','the ceiling'],['地板','the floor'],['地面','the ground'],['牆壁','the wall'],['牆上','on the wall'],['牆角','the corner'],['門把','the doorknob'],['門縫','the door crack'],['鎖孔','the keyhole'],['抽屜','the drawer'],['書桌','the desk'],['桌子','the table'],['椅子','the chair'],['沙發','the sofa'],['床單','the bedsheet'],['枕頭','the pillow'],['衣櫃','the wardrobe'],['地毯','the carpet'],['窗戶','the window'],['燈泡','the light bulb'],['吊燈','the ceiling lamp'],['檯燈','the desk lamp'],['手電筒','the flashlight'],['保險箱','the safe'],['保險櫃','the safe'],['密碼鎖','the combination lock'],
+  ['手環','the wristband'],['倒計時','the countdown'],['倒數','the countdown'],['積分','points'],['天賦','talent'],['絕對邏輯','Absolute Logic'],['危險直覺','Danger Intuition'],['醫學直覺','Medical Intuition'],['共情','Empathy'],['玩家','player'],['副本','dungeon'],['主線','main quest'],['規則','the rule'],['置換','the spatial shift'],['虛空','the Void'],
+  ['手術刀','the scalpel'],['注射器','the syringe'],['針頭','the needle'],['止痛藥','painkillers'],['抗生素','antibiotics'],['鎮定劑','sedatives'],['腎上腺素','epinephrine'],['安定片','diazepam'],['病歷','medical records'],['日記','the diary'],['筆記本','the notebook'],['登記簿','the register'],['畫冊','the picture book'],['紙飛機','the paper plane'],['毛線貓','the yarn cat'],['紙貓','the paper cat'],['電影票','the movie ticket'],['保溫杯','the thermos'],['棒棒糖','the lollipop'],['算盤','the abacus'],['鋼筆','the fountain pen'],['圓珠筆','the ballpoint pen'],
+  ['潮汐','the tide'],['漲潮','high tide'],['退潮','low tide'],['平潮','still tide'],['迴光粒','Echo Grains'],['迴光','echoing light'],['海床','the seabed'],['光筏','the light-raft'],['燈塔','the lighthouse'],['潮井','the Tide Well'],['海心','the Heart of the Sea'],['觀測站','the Observatory'],['監視器','the monitors'],['頻率','the frequency'],['破曉','dawn'],
+  ['已經','already '],['沒有','no '],['不是','is not '],['不能','cannot '],['不會','will not '],['不知道','do not know '],['不記得','do not remember '],['記得','remember '],['知道','know '],['看見','see '],['看到','see '],['聽見','hear '],['聽到','hear '],['感覺','feel '],['覺得','feel '],['發現','discover '],['找到','find '],['打開','open '],['關上','close '],['推開','push open '],['走進','walk into '],['走出','walk out of '],['離開','leave '],['回到','return to '],['站在','stand at '],['坐在','sit on '],['躺在','lie on '],['看著','look at '],['盯著','stare at '],['拿著','hold '],['握著','grip '],
+  ['聲音','voice '],['腳步聲','footsteps '],['呼吸','breath '],['心跳','heartbeat '],['眼神','gaze '],['眼睛','eyes '],['手指','fingers '],['手心','palm '],['後頸','nape '],['胸口','chest '],['名字','name '],['時間','time '],['記憶','memory '],['秘密','secret '],['真相','truth '],['出口','exit '],['答案','answer '],['問題','question '],['選擇','choice '],['黑暗','darkness '],['光線','light '],['空氣','air '],['味道','scent '],['安靜','quiet '],['沉默','silence '],['危險','danger '],['安全','safe '],['死亡','death '],['活下來','survive '],['爸爸','Father '],['媽媽','Mother '],['女兒','daughter '],['小女孩','little girl '],['孩子','child '],['小時','hours '],['分鐘','minutes '],['秒','seconds ']
+];
+
+function translateNarrativeToEN(str){
+  if(!str) return str;
+  var s = str.trim();
+  if(EXACT_EN[s]) return EXACT_EN[s];
+  if(CHOICE_EXACT_EN[s]) return CHOICE_EXACT_EN[s];
+  if(ROOM_EN[s]) return ROOM_EN[s];
+  for(var i=0;i<SENTENCE_EN_PATTERNS.length;i++){
+    var pat = SENTENCE_EN_PATTERNS[i];
+    if(pat[0].test(s)){
+      var m = s.match(pat[0]);
+      var arg1 = m[1] ? translateNarrativeToEN(m[1]) : '';
+      var arg2 = m[2] ? translateNarrativeToEN(m[2]) : '';
+      return pat[1].replace('$1', arg1).replace('$2', arg2);
+    }
+  }
+  /* 若無任何中文字符則原樣返回 */
+  if(!/[\u4e00-\u9fff]/.test(s)) return s;
+  var out = s;
+  for(var j=0;j<PHRASE_EN.length;j++){
+    var p = PHRASE_EN[j];
+    if(out.indexOf(p[0]) !== -1) out = out.split(p[0]).join(p[1]);
+  }
+  for(var k=0;k<WORD_EN.length;k++){
+    var w = WORD_EN[k];
+    if(out.indexOf(w[0]) !== -1) out = out.split(w[0]).join(w[1]);
+  }
+  /* 清理剩餘單字與中文標點為自然英文標點 */
+  out = out.replace(/「/g, '"').replace(/」/g, '"').replace(/『/g, "'").replace(/』/g, "'")
+           .replace(/——/g, ' — ').replace(/……/g, '...').replace(/，/g, ', ')
+           .replace(/。/g, '. ').replace(/？/g, '? ').replace(/！/g, '! ')
+           .replace(/：/g, ': ').replace(/；/g, '; ').replace(/、/g, ', ')
+           .replace(/（/g, ' (').replace(/）/g, ') ');
+  /* 移除殘留零星漢字助詞，確保英文介面純淨可讀 */
+  out = out.replace(/[\u4e00-\u9fff]+/g, ' ').replace(/\s+/g, ' ').replace(/\s+([.,?!:;)])/g, '$1').trim();
+  if(!out) return '[...]';
+  return out.charAt(0).toUpperCase() + out.slice(1);
+}
+
+function translateNarrativeToJA(str){
+  if(!str) return str;
+  var s = str.trim();
+  if(EXACT_JA[s]) return EXACT_JA[s];
+  if(CHOICE_EXACT_JA[s]) return CHOICE_EXACT_JA[s];
+  if(ROOM_JA[s]) return ROOM_JA[s];
+  if(!/[\u4e00-\u9fff]/.test(s)) return s;
+  var out = s;
+  /* 先套用高頻日文短語與語法結構 */
+  var jaGrammar = [
+    ['你睜開眼睛','あなたは目を開けた'],['你睜眼','あなたは目を開けた'],
+    ['你回頭看了一眼','あなたは一度振り返った'],['你回頭','あなたは振り返った'],
+    ['你低頭看','あなたは俯いて見た'],['你低頭','あなたは俯いた'],
+    ['你抬頭看','あなたは見上げた'],['你抬頭','あなたは顔を上げた'],
+    ['你轉過身','あなたは身を翻した'],['你轉身','あなたは振り返った'],
+    ['你蹲下身','あなたはしゃがみ込んだ'],['你蹲下來','あなたはしゃがみ込んだ'],['你蹲下','あなたはしゃがんだ'],
+    ['你站起來','あなたは立ち上がった'],['你走過去','あなたは歩み寄った'],
+    ['你伸出手','あなたは手を伸ばした'],['你伸手','あなたは手を伸ばした'],
+    ['你點了點頭','あなたは頷いた'],['你點頭','あなたは頷いた'],
+    ['你搖了搖頭','あなたは首を振った'],['你搖頭','あなたは首を振った'],
+    ['你沒有說話','あなたは何も言わなかった'],['你沒說話','あなたは黙っていた'],
+    ['你深吸了一口氣','あなたは深く息を吸い込んだ'],['你深吸一口氣','あなたは深呼吸した'],
+    ['你活下來了','あなたは生き延びた'],['門開了','扉が開いた'],['門沒鎖','扉には鍵がかかっていない'],
+    ['鎖開了','錠が外れた'],['燈滅了','明かりが消えた'],['燈亮了','明かりが点いた'],
+    ['時間不多了','もう時間がない'],['時間在走','時間は進んでいる'],
+    ['你知道','あなたは知っている'],['你記得','あなたは覚えている'],['你不記得','あなたは覚えていない'],
+    ['你不知道','あなたには分からない'],['你看見','あなたは目にした'],['你看到','あなたは見た'],
+    ['你聽見','あなたは耳にした'],['你聽到','あなたは聞いた'],['你感覺到','あなたは感じた'],
+    ['一模一樣','全く同じ'],['什麼都沒有','何もない'],['什麼都沒發生','何も起きなかった'],
+    ['說不上來','言葉にできない'],['來不及了','もう間に合わない'],['就在這時','その時']
+  ];
+  for(var g=0;g<jaGrammar.length;g++){
+    if(out.indexOf(jaGrammar[g][0]) !== -1) out = out.split(jaGrammar[g][0]).join(jaGrammar[g][1]);
+  }
+  for(var i=0;i<PHRASE_JA.length;i++){
+    var p = PHRASE_JA[i];
+    if(out.indexOf(p[0]) !== -1) out = out.split(p[0]).join(p[1]);
+  }
+  var res = '';
+  for(var j=0;j<out.length;j++){
+    var ch = out[j];
+    res += HAN_TO_KANJI[ch] || T2S_CHAR[ch] || ch;
+  }
+  return res;
+}
+
+/* ============================================================
+ * 4. 統一翻譯 API：I18N.t(str) 與 I18N.html(htmlStr)
+ * ============================================================ */
+var I18N = window.I18N = {
+  __booted: true,
+  lang: 'zh-Hant',
+  SUPPORTED: ['zh-Hant', 'zh-Hans', 'en', 'ja'],
+  LABELS: {
+    'zh-Hant': '繁體',
+    'zh-Hans': '简体',
+    'en': 'EN',
+    'ja': '日本語'
+  },
+
+  getLang: function(){
+    return I18N.lang || 'zh-Hant';
+  },
+
+  t: function(str, langOverride){
+    if(str == null || typeof str !== 'string') return str;
+    var lg = langOverride || I18N.lang || 'zh-Hant';
+    if(lg === 'zh-Hant') return str;
+    var trimmed = str.trim();
+    if(!trimmed) return str;
+    if(lg === 'zh-Hans') return toSimplified(str);
+    if(lg === 'en'){
+      if(EXACT_EN[trimmed]) return EXACT_EN[trimmed];
+      if(CHOICE_EXACT_EN[trimmed]) return CHOICE_EXACT_EN[trimmed];
+      if(ROOM_EN[trimmed]) return ROOM_EN[trimmed];
+      /* 動態狀態文字匹配 */
+      var mProg = trimmed.match(/^已發現結局\s*(\d+\s*\/\s*\d+)$/);
+      if(mProg) return 'Endings Found ' + mProg[1];
+      var mRead = trimmed.match(/^進度\s*(\d+%)$/);
+      if(mRead) return 'Progress ' + mRead[1];
+      var mHint = trimmed.match(/^剩餘提示：(\d+)次(.*)$/);
+      if(mHint) return 'Hints Left: ' + mHint[1] + (mHint[2] ? ' (Strict)' : '');
+      var mScene = trimmed.match(/^(\d+-\d+)\s+(.+)$/);
+      if(mScene) return mScene[1] + ' ' + translateNarrativeToEN(mScene[2]);
+      return translateNarrativeToEN(str);
+    }
+    if(lg === 'ja'){
+      if(EXACT_JA[trimmed]) return EXACT_JA[trimmed];
+      if(CHOICE_EXACT_JA[trimmed]) return CHOICE_EXACT_JA[trimmed];
+      if(ROOM_JA[trimmed]) return ROOM_JA[trimmed];
+      var jProg = trimmed.match(/^已發現結局\s*(\d+\s*\/\s*\d+)$/);
+      if(jProg) return '発見済エンディング ' + jProg[1];
+      var jRead = trimmed.match(/^進度\s*(\d+%)$/);
+      if(jRead) return '進行度 ' + jRead[1];
+      var jHint = trimmed.match(/^剩餘提示：(\d+)次(.*)$/);
+      if(jHint) return '残りヒント：' + jHint[1] + '回';
+      return translateNarrativeToJA(str);
+    }
+    return str;
+  },
+
+  html: function(htmlStr, langOverride){
+    if(!htmlStr || typeof htmlStr !== 'string') return htmlStr;
+    var lg = langOverride || I18N.lang || 'zh-Hant';
+    if(lg === 'zh-Hant') return htmlStr;
+    if(lg === 'zh-Hans'){
+      /* 只轉換 HTML 標籤外的文本 */
+      return htmlStr.replace(/(>|^)([^<]+)(<|$)/g, function(_, a, txt, b){
+        return a + toSimplified(txt) + b;
+      });
+    }
+    /* EN / JA：保留特效前綴 [shake]/[glow]/[ghost] 與 HTML 標籤，翻譯內部文本 */
+    return htmlStr.replace(/(>|^)([^<]+)(<|$)/g, function(_, a, txt, b){
+      var prefix = '';
+      var m = txt.match(/^(\s*(?:\[(?:shake|glow|ghost)\])+)/);
+      if(m){
+        prefix = m[1];
+        txt = txt.slice(prefix.length);
+      }
+      if(!txt.trim()) return a + prefix + txt + b;
+      return a + prefix + I18N.t(txt, lg) + b;
+    });
+  },
+
+  item: function(it){
+    if(!it) return it;
+    var lg = I18N.lang || 'zh-Hant';
+    var origName = it._origName || (it._origName = it.name);
+    var origDesc = it._origDesc || (it._origDesc = it.desc);
+    var origUsage = it._origUsage != null ? it._origUsage : (it._origUsage = (it.usage || ''));
+    if(lg === 'zh-Hant'){
+      return {id:it.id, name:origName, desc:origDesc, usage:origUsage};
+    }
+    if(lg === 'zh-Hans'){
+      return {id:it.id, name:toSimplified(origName), desc:toSimplified(origDesc), usage:toSimplified(origUsage)};
+    }
+    var entry = ITEM_I18N[it.id];
+    if(entry && entry[lg]){
+      return {id:it.id, name:entry[lg][0], desc:entry[lg][1], usage:origUsage ? I18N.t(origUsage, lg) : ''};
+    }
+    return {id:it.id, name:I18N.t(origName, lg), desc:I18N.t(origDesc, lg), usage:I18N.t(origUsage, lg)};
+  }
+};
+
+/* ============================================================
+ * 5. DOM 雙向原始文本緩存與全頁面即時翻譯
+ * ============================================================ */
+function translateDOMTree(root){
+  if(!root) return;
+  var lg = I18N.lang || 'zh-Hant';
+  document.documentElement.setAttribute('lang', lg === 'zh-Hans' ? 'zh-Hans' : (lg === 'en' ? 'en' : (lg === 'ja' ? 'ja' : 'zh-Hant')));
+  document.title = I18N.t('無盡之門', lg);
+
+  /* 翻譯 placeholder 與 title 屬性 */
+  var attrs = root.querySelectorAll('[placeholder],[title],[aria-label],[data-tooltip]');
+  for(var i=0;i<attrs.length;i++){
+    var el = attrs[i];
+    ['placeholder','title','aria-label','data-tooltip'].forEach(function(at){
+      var val = el.getAttribute(at);
+      if(!val) return;
+      var origKey = 'data-orig-' + at;
+      var orig = el.getAttribute(origKey);
+      if(!orig){ orig = val; el.setAttribute(origKey, orig); }
+      el.setAttribute(at, I18N.t(orig, lg));
+    });
+  }
+
+  /* 遍歷文本節點（跳過 script / style 與打字機未完成游標） */
+  var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: function(node){
+      var p = node.parentElement;
+      if(!p) return NodeFilter.FILTER_REJECT;
+      var tag = p.tagName;
+      if(tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }
+  });
+  var nodes = [];
+  var cur;
+  while((cur = walker.nextNode())) nodes.push(cur);
+
+  for(var j=0;j<nodes.length;j++){
+    var tn = nodes[j];
+    var raw = tn.nodeValue;
+    if(!raw || !raw.trim()) continue;
+    /* 如果正在打字中且是當前打字節點，跳過以免干擾定時器 */
+    if(window.typingState && !window.typingState.done && window.typingState.node && window.typingState.node.contains(tn)) continue;
+    if(tn.__origText == null){
+      tn.__origText = raw;
+    }
+    tn.nodeValue = I18N.t(tn.__origText, lg);
+  }
+}
+
+/* 切換語言主函數 */
+I18N.setLang = function(lang){
+  if(I18N.SUPPORTED.indexOf(lang) === -1) lang = 'zh-Hant';
+  I18N.lang = lang;
+  try{ localStorage.setItem(LS_LANG, lang); }catch(e){}
+  if(window.SETTINGS){
+    SETTINGS.lang = lang;
+    if(typeof saveSettings === 'function') saveSettings(SETTINGS);
+  }
+
+  /* 1. 更新所有語言切換器按鈕高亮 */
+  document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.classList.toggle('on', b.getAttribute('data-lang-btn') === lang);
+  });
+  document.querySelectorAll('.v53-lang-pill-label').forEach(function(el){
+    el.textContent = I18N.LABELS[lang] || '繁體';
+  });
+
+  /* 2. 重新渲染當前活躍視圖（Hub、物品欄、筆記、地圖、選項） */
+  try{
+    if(typeof render === 'function' && document.getElementById('hub-screen') && document.getElementById('hub-screen').classList.contains('show')){
+      render();
+    }
+    if(typeof updateInventoryUI === 'function' && window.state) updateInventoryUI();
+    if(typeof renderNotes === 'function' && window.state) renderNotes();
+    if(typeof renderMap === 'function' && window.state) renderMap();
+    if(typeof renderChoices === 'function' && window.currentSceneChoices && document.getElementById('game-screen') && document.getElementById('game-screen').classList.contains('active')){
+      /* 若正在打字中先完成當前場景文字，再重繪選項 */
+      if(!window.isTyping || !isTyping()){
+        renderChoices(currentSceneChoices);
+      }
+    }
+    if(window.SCENES && window.state && state.currentScene && SCENES[state.currentScene]){
+      var sc = SCENES[state.currentScene];
+      if(typeof setRoom === 'function') setRoom(sc.room||'—', sc.roomName||'—');
+      if(typeof setSceneId === 'function') setSceneId(sc.sceneId||'—');
+    }
+    if(document.getElementById('settings-modal') && document.getElementById('settings-modal').classList.contains('show') && typeof renderSettings === 'function'){
+      renderSettings();
+    }
+  }catch(e){}
+
+  /* 3. 翻譯整個 DOM 樹（包含已打出的敘事段落、對話、靜態標題、彈窗） */
+  translateDOMTree(document.body);
+};
+
+I18N.cycleLang = function(){
+  var idx = I18N.SUPPORTED.indexOf(I18N.lang);
+  var next = I18N.SUPPORTED[(idx + 1) % I18N.SUPPORTED.length];
+  I18N.setLang(next);
+  if(typeof showToast === 'function'){
+    var toastMap = {
+      'zh-Hant':'語言：繁體中文',
+      'zh-Hans':'语言：简体中文',
+      'en':'Language: English',
+      'ja':'言語：日本語'
+    };
+    showToast(toastMap[next] || next);
+  }
+};
+
+/* ============================================================
+ * 6. 掛鉤核心遊戲函數（打字機、跳過、房間標題、選項、提示、結局、謎題）
+ * ============================================================ */
+function hookCoreFunctions(){
+  /* typewriterHTML：在打字前將 HTML 轉為當前語言，並把原始繁中保存在 node.__origHTML */
+  if(typeof window.typewriterHTML === 'function' && !window.typewriterHTML.__i18n){
+    var _tw = window.typewriterHTML;
+    window.typewriterHTML = function(html, cb){
+      var translated = I18N.html(html);
+      var r = _tw.call(this, translated, function(){
+        /* 打字完成後標記原始文本，支援後續隨時無損切換語言 */
+        try{
+          var narr = document.getElementById('narrative');
+          if(narr && narr.lastElementChild){
+            var tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            var rawTxt = (tmp.textContent || '').replace(/^\[(?:shake|glow|ghost)\]/, '');
+            if(narr.lastElementChild.firstChild && narr.lastElementChild.firstChild.nodeType === 3){
+              narr.lastElementChild.firstChild.__origText = rawTxt;
+            }
+          }
+        }catch(e){}
+        if(cb) cb();
+      });
+      return r;
+    };
+    window.typewriterHTML.__i18n = true;
+  }
+
+  /* skipCurrentScene：跳過時確保直接插入的段落也經過翻譯並保留 __origText */
+  if(typeof window.skipCurrentScene === 'function' && !window.skipCurrentScene.__i18n){
+    var _sk = window.skipCurrentScene;
+    window.skipCurrentScene = function(){
+      var r = _sk.apply(this, arguments);
+      try{
+        var narr = document.getElementById('narrative');
+        if(narr) translateDOMTree(narr);
+      }catch(e){}
+      return r;
+    };
+    window.skipCurrentScene.__i18n = true;
+  }
+
+  /* setRoom / setSceneId */
+  if(typeof window.setRoom === 'function' && !window.setRoom.__i18n){
+    var _sr = window.setRoom;
+    window.setRoom = function(room, roomName){
+      var r = _sr.call(this, I18N.t(String(room||'—')), I18N.t(String(roomName||'—')));
+      var rnEl = document.getElementById('room-name');
+      if(rnEl && rnEl.firstChild) rnEl.firstChild.__origText = String(roomName||'—');
+      var rmEl = document.getElementById('room-number');
+      if(rmEl && rmEl.firstChild) rmEl.firstChild.__origText = String(room||'—');
+      return r;
+    };
+    window.setRoom.__i18n = true;
+  }
+
+  if(typeof window.setSceneId === 'function' && !window.setSceneId.__i18n){
+    var _ss = window.setSceneId;
+    window.setSceneId = function(id){
+      var r = _ss.call(this, I18N.t(String(id||'—')));
+      var sEl = document.getElementById('scene-id');
+      if(sEl && sEl.firstChild) sEl.firstChild.__origText = String(id||'—');
+      return r;
+    };
+    window.setSceneId.__i18n = true;
+  }
+
+  /* showToast */
+  if(typeof window.showToast === 'function' && !window.showToast.__i18n){
+    var _st = window.showToast;
+    window.showToast = function(msg){
+      return _st.call(this, I18N.t(String(msg||'')));
+    };
+    window.showToast.__i18n = true;
+  }
+
+  /* openPuzzle */
+  if(typeof window.openPuzzle === 'function' && !window.openPuzzle.__i18n){
+    var _op = window.openPuzzle;
+    window.openPuzzle = function(title, text, answer, cb, hint){
+      return _op.call(this, I18N.t(title), I18N.t(text), answer, cb, hint ? I18N.t(hint) : hint);
+    };
+    window.openPuzzle.__i18n = true;
+  }
+
+  /* showObservation */
+  if(typeof window.showObservation === 'function' && !window.showObservation.__i18n){
+    var _so = window.showObservation;
+    window.showObservation = function(text){
+      return _so.call(this, I18N.html(text));
+    };
+    window.showObservation.__i18n = true;
+  }
+
+  /* showChapterCard */
+  if(typeof window.showChapterCard === 'function' && !window.showChapterCard.__i18n){
+    var _sc = window.showChapterCard;
+    window.showChapterCard = function(def, cb){
+      var localizedDef = Object.assign({}, def, {
+        num: I18N.t(def.num),
+        title: I18N.t(def.title),
+        quote: I18N.t(def.quote)
+      });
+      return _sc.call(this, localizedDef, cb);
+    };
+    window.showChapterCard.__i18n = true;
+  }
+
+  /* addDialogMsgTypewriter & addDialogMsg */
+  if(typeof window.addDialogMsgTypewriter === 'function' && !window.addDialogMsgTypewriter.__i18n){
+    var _adtw = window.addDialogMsgTypewriter;
+    window.addDialogMsgTypewriter = function(type, text, cb){
+      return _adtw.call(this, type, I18N.t(text), cb);
+    };
+    window.addDialogMsgTypewriter.__i18n = true;
+  }
+  if(typeof window.addDialogMsg === 'function' && !window.addDialogMsg.__i18n){
+    var _adm = window.addDialogMsg;
+    window.addDialogMsg = function(type, text){
+      return _adm.call(this, type, I18N.t(text));
+    };
+    window.addDialogMsg.__i18n = true;
+  }
+
+  /* renderDialogOptions */
+  if(typeof window.renderDialogOptions === 'function' && !window.renderDialogOptions.__i18n){
+    var _rdo = window.renderDialogOptions;
+    window.renderDialogOptions = function(options){
+      var r = _rdo.apply(this, arguments);
+      var box = document.getElementById('dialog-options');
+      if(box) translateDOMTree(box);
+      return r;
+    };
+    window.renderDialogOptions.__i18n = true;
+  }
+
+  /* updateInventoryUI & showItemDetail */
+  if(typeof window.updateInventoryUI === 'function' && !window.updateInventoryUI.__i18n){
+    var _ui = window.updateInventoryUI;
+    window.updateInventoryUI = function(){
+      var r = _ui.apply(this, arguments);
+      var list = document.getElementById('inv-list');
+      if(list && window.state && state.inventory){
+        var cards = list.querySelectorAll('.inv-item');
+        cards.forEach(function(card, idx){
+          var it = state.inventory[idx];
+          if(!it) return;
+          var loc = I18N.item(it);
+          var nm = card.querySelector('.inv-name');
+          var ds = card.querySelector('.inv-desc');
+          if(nm) nm.textContent = loc.name;
+          if(ds) ds.textContent = loc.desc;
+          card.setAttribute('data-tooltip', loc.desc);
+        });
+      }
+      return r;
+    };
+    window.updateInventoryUI.__i18n = true;
+  }
+
+  if(typeof window.showItemDetail === 'function' && !window.showItemDetail.__i18n){
+    var _sid = window.showItemDetail;
+    window.showItemDetail = function(item){
+      var loc = I18N.item(item);
+      return _sid.call(this, loc);
+    };
+    window.showItemDetail.__i18n = true;
+  }
+}
+
+/* 初始化語言：讀取存檔或預設繁體 */
+function initI18N(){
+  hookCoreFunctions();
+  var saved = null;
+  try{ saved = localStorage.getItem(LS_LANG); }catch(e){}
+  if(!saved && window.SETTINGS && SETTINGS.lang) saved = SETTINGS.lang;
+  I18N.lang = (saved && I18N.SUPPORTED.indexOf(saved) !== -1) ? saved : 'zh-Hant';
+  if(I18N.lang !== 'zh-Hant'){
+    setTimeout(function(){ I18N.setLang(I18N.lang); }, 60);
+  }
+}
+
+if(window.V5 && typeof V5.registerSystem === 'function'){
+  V5.registerSystem('v53-i18n', initI18N);
+}else{
+  initI18N();
+}
+
+})();
+
+/* ============================================================
+ * 無盡之門 · v5.3.0 擴展系統與第六副本（v5.1 契約 / v5.2 占卜與終焉觀測站 / v5.3 萬門之書）
+ * ============================================================ */
+(function(){
+'use strict';
+if(!window.V5 || window.V5.__v53Loaded) return;
+window.V5.__v53Loaded = true;
+
+var LS_PACTS   = 'wuxian-v53-pacts';
+var LS_ARCANA  = 'wuxian-v53-arcana';
+var LS_ARC_CUR = 'wuxian-v53-arcana-active';
+
+function lsGet(k){ try{return localStorage.getItem(k);}catch(e){return null;} }
+function lsSet(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+function lsJSON(k,def){ try{var v=JSON.parse(lsGet(k)); return v==null?def:v;}catch(e){return def;} }
+function t(s){ return (window.I18N && typeof I18N.t === 'function') ? I18N.t(s) : s; }
+
+/* ============================================================
+ * 1. v5.1.0 迴廊契約（Corridor Pacts — 5 項可自由開關的修正契約）
+ * ============================================================ */
+var PACTS = [
+  {id:'pact_insight',   name:'洞悉之契', glyph:'目', desc:'在選項旁顯示克制的走向標記（主線／探索／謎題／危險／已讀）'},
+  {id:'pact_rewind',    name:'倒帶之契', glyph:'逆', desc:'在全部六個副本啟用「迴溯」功能，每局開局自帶 3 粒迴光粒'},
+  {id:'pact_abundance', name:'豐饒之契', glyph:'豐', desc:'開局生命上限 +20，倒計時副本 +15 分鐘，謎題提示次數 +2'},
+  {id:'pact_frail',     name:'琉璃之契', glyph:'琉', desc:'挑戰契約：生命上限固定為 50，受到的傷害提高 50%，通關解鎖專屬榮譽'},
+  {id:'pact_voyager',   name:'漫遊之契', glyph:'遊', desc:'自由探索模式：在迴廊直接解鎖全部六個副本，可按任意順序體驗'}
+];
+
+function activePacts(){ return lsJSON(LS_PACTS, []); }
+function hasPact(id){ return activePacts().indexOf(id) !== -1; }
+function togglePact(id){
+  var cur = activePacts();
+  var idx = cur.indexOf(id);
+  if(idx === -1) cur.push(id);
+  else cur.splice(idx, 1);
+  lsSet(LS_PACTS, JSON.stringify(cur));
+  applyPactsToRuntime();
+  if(typeof render === 'function' && document.getElementById('hub-screen') && document.getElementById('hub-screen').classList.contains('show')){
+    render();
+  }
+}
+
+/* ============================================================
+ * 2. v5.2.0 門扉占卜（Gate Arcana — 12 張純 SVG 命運牌）
+ * ============================================================ */
+var ARCANA_CARDS = [
+  {id:'arc_1', num:'I',    name:'門扉',   buff:'開局生命上限 +15',
+   svg:'<svg viewBox="0 0 64 64"><rect x="16" y="8" width="32" height="48"/><line x1="32" y1="8" x2="32" y2="56"/><circle cx="27" cy="32" r="2"/><circle cx="37" cy="32" r="2"/></svg>',
+   apply:function(st){ st.maxHp=(st.maxHp||100)+15; st.hp=(st.hp||100)+15; }},
+  {id:'arc_2', num:'II',   name:'雙鏡',   buff:'冷靜初始 +12',
+   svg:'<svg viewBox="0 0 64 64"><ellipse cx="24" cy="32" rx="12" ry="20"/><ellipse cx="40" cy="32" rx="12" ry="20"/><line x1="32" y1="10" x2="32" y2="54" stroke-dasharray="2 2"/></svg>',
+   apply:function(st){ if(st.personality) st.personality.calm=Math.min(100,(st.personality.calm||50)+12); }},
+  {id:'arc_3', num:'III',  name:'靜默',   buff:'謹慎初始 +12',
+   svg:'<svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20"/><line x1="22" y1="36" x2="42" y2="36"/><line x1="32" y1="22" x2="32" y2="46"/></svg>',
+   apply:function(st){ if(st.personality) st.personality.cautious=Math.min(100,(st.personality.cautious||50)+12); }},
+  {id:'arc_4', num:'IV',   name:'沙漏',   buff:'倒計時副本 +12 分鐘；否則生命 +12',
+   svg:'<svg viewBox="0 0 64 64"><polygon points="18,12 46,12 32,32"/><polygon points="32,32 46,52 18,52"/><line x1="14" y1="12" x2="50" y2="12"/><line x1="14" y1="52" x2="50" y2="52"/></svg>',
+   apply:function(st){ if(st.countdown!=null){st.bonusCountdown=(st.bonusCountdown||0)+12;st.countdown+=12;}else{st.maxHp=(st.maxHp||100)+12;st.hp=(st.hp||100)+12;} }},
+  {id:'arc_5', num:'V',    name:'紙貓',   buff:'利他初始 +12，開局攜帶「紙摺的小貓」',
+   svg:'<svg viewBox="0 0 64 64"><polygon points="16,26 22,12 30,22 34,22 42,12 48,26 44,48 20,48"/><circle cx="26" cy="33" r="2"/><circle cx="38" cy="33" r="2"/></svg>',
+   apply:function(st){ if(st.personality) st.personality.altruism=Math.min(100,(st.personality.altruism||50)+12); try{if(!hasItem('paper_cat'))addItem('paper_cat','紙摺的小貓','占卜「紙貓」喚出的信物。');}catch(e){} }},
+  {id:'arc_6', num:'VI',   name:'提燈',   buff:'迴廊手札提示次數 +2',
+   svg:'<svg viewBox="0 0 64 64"><path d="M26 16h12l4 10-6 24H28L22 26z"/><path d="M28 16a4 4 0 0 1 8 0"/><circle cx="32" cy="33" r="4"/></svg>',
+   apply:function(){ try{var c=parseInt(lsGet('wuxian-v4-hints-left')||'3',10);lsSet('wuxian-v4-hints-left',String(Math.min(9,c+2)));}catch(e){} }},
+  {id:'arc_7', num:'VII',  name:'潮汐',   buff:'開局迴光粒 +2',
+   svg:'<svg viewBox="0 0 64 64"><path d="M10 26c6-6 12 6 18 0s12-6 18 0 8 6 8 0"/><path d="M10 38c6-6 12 6 18 0s12-6 18 0 8 6 8 0"/><circle cx="32" cy="16" r="4"/></svg>',
+   apply:function(st){ st.echo=Math.min(8,(st.echo||3)+2); }},
+  {id:'arc_8', num:'VIII', name:'質數',   buff:'謎題額外獲得 1 次提示機會',
+   svg:'<svg viewBox="0 0 64 64"><polygon points="32,10 52,46 12,46"/><circle cx="32" cy="34" r="7"/></svg>',
+   apply:function(st){ st.arcanaHintBonus=1; }},
+  {id:'arc_9', num:'IX',   name:'盲文',   buff:'自動感應暗格與隱藏線索（冷靜 +8、謹慎 +8）',
+   svg:'<svg viewBox="0 0 64 64"><circle cx="24" cy="20" r="3"/><circle cx="40" cy="20" r="3"/><circle cx="24" cy="32" r="3"/><circle cx="40" cy="44" r="3"/><circle cx="24" cy="44" r="3"/></svg>',
+   apply:function(st){ if(st.personality){st.personality.calm=Math.min(100,(st.personality.calm||50)+8);st.personality.cautious=Math.min(100,(st.personality.cautious||50)+8);} }},
+  {id:'arc_10', num:'X',   name:'手術刀', buff:'受到的非致命傷害減半',
+   svg:'<svg viewBox="0 0 64 64"><line x1="16" y1="48" x2="48" y2="16"/><polygon points="48,16 52,24 38,30"/></svg>',
+   apply:function(st){ st.arcanaHalfDmg=true; }},
+  {id:'arc_11', num:'XI',  name:'觀測者', buff:'開局自帶「03:17 調諧音叉」',
+   svg:'<svg viewBox="0 0 64 64"><path d="M10 32s10-14 22-14 22 14 22 14-10 14-22 14-22-14-22-14z"/><circle cx="32" cy="32" r="6"/></svg>',
+   apply:function(){ try{if(!hasItem('d6_tuning_fork'))addItem('d6_tuning_fork','03:17 調諧音叉','能與觀測站波段共鳴的音叉。');}catch(e){} }},
+  {id:'arc_12', num:'XII', name:'破曉',   buff:'全屬性強化：生命上限 +20，迴光粒 +1，三維性格 +5',
+   svg:'<svg viewBox="0 0 64 64"><line x1="10" y1="44" x2="54" y2="44"/><path d="M20 44a12 12 0 0 1 24 0"/><line x1="32" y1="14" x2="32" y2="24"/><line x1="16" y1="22" x2="22" y2="28"/><line x1="48" y1="22" x2="42" y2="28"/></svg>',
+   apply:function(st){
+     st.maxHp=(st.maxHp||100)+20; st.hp=(st.hp||100)+20;
+     st.echo=Math.min(8,(st.echo||3)+1);
+     if(st.personality){
+       st.personality.calm=Math.min(100,(st.personality.calm||50)+5);
+       st.personality.altruism=Math.min(100,(st.personality.altruism||50)+5);
+       st.personality.cautious=Math.min(100,(st.personality.cautious||50)+5);
+     }
+   }}
+];
+
+function ownedArcana(){ return lsJSON(LS_ARCANA, []); }
+function activeArcanaId(){ return lsGet(LS_ARC_CUR) || ''; }
+function arcanaById(id){
+  for(var i=0;i<ARCANA_CARDS.length;i++) if(ARCANA_CARDS[i].id === id) return ARCANA_CARDS[i];
+  return null;
+}
+function drawRandomArcana(){
+  var pick = ARCANA_CARDS[Math.floor(Math.random() * ARCANA_CARDS.length)];
+  var owned = ownedArcana();
+  if(owned.indexOf(pick.id) === -1){
+    owned.push(pick.id);
+    lsSet(LS_ARCANA, JSON.stringify(owned));
+  }
+  lsSet(LS_ARC_CUR, pick.id);
+  if(owned.length >= 1 && typeof unlockAchievement === 'function') unlockAchievement('v53_arcana_first');
+  if(owned.length >= ARCANA_CARDS.length && typeof unlockAchievement === 'function') unlockAchievement('v53_arcana_all');
+  if(window.V5Audio && typeof V5Audio.sfx === 'function') V5Audio.sfx('sigilEquip');
+  if(typeof showToast === 'function') showToast('占卜命牌 · ' + pick.num + ' ' + pick.name);
+  return pick;
+}
+
+/* ============================================================
+ * 3. v5.1.0 擴充對話樹（守門人 / 潮汐倒影 / 觀測者陳教授）
+ * ============================================================ */
+function registerNewDialogues(){
+  if(!window.NPC_PROFILES || !window.DIALOGUE_TREES) return;
+  NPC_PROFILES.gatekeeper = {
+    name:'守門人',
+    desc:'站在無盡之間大門旁的人。提著一盞沒有火的燈，看過無數推門而入的旅者。'
+  };
+  DIALOGUE_TREES.gatekeeper = {
+    start:'root',
+    startReturning:'root',
+    nodes:{
+      root:{
+        reply:'（他提著那盞沒有火的燈，目光落在你手腕的舊痕上。）你走過了旅館、圖書館，還有那座停在六十分鐘的醫院。還有什麼想問的？',
+        options:[
+          {text:'你為什麼一直站在這裡？', next:'why_stand'},
+          {text:'那盞燈為什麼沒有火？', next:'lamp'},
+          {text:'門後的 03:17 究竟是什麼？', next:'about_317'}
+        ]
+      },
+      why_stand:{
+        reply:'因為總有人在三扇門走完之後，不知道該往哪邁步。我替上一任站著，直到有人願意把門關上，或者把燈接過去。',
+        options:[
+          {text:'上一任是誰？', next:'prev_guard'},
+          {text:'回到剛才的問題', next:'root'}
+        ]
+      },
+      prev_guard:{
+        reply:'一個和你一樣在凌晨算過質數的人。他走進門裡的時候，終於不皺眉了。',
+        options:[{text:'原來如此。', next:'root'}]
+      },
+      lamp:{
+        reply:'火不在燈裡，在走過門的人身上。你若還記得那些名字——蘇晚、媛媛、周敏、林建國——燈芯自然會亮。',
+        options:[{text:'我記得他們。', next:'root'}]
+      },
+      about_317:{
+        reply:'那是你倒下的時刻，也是所有迴廊開始摺疊的原點。再往前走，去海裡，或者去最頂層的觀測站——你會親眼看到那杯還沒灑完的咖啡。',
+        options:[]
+      }
+    }
+  };
+
+  NPC_PROFILES.tide_echo = {
+    name:'水面的倒影',
+    desc:'迴光之海浮光筏上的另一個你。他選了你當初沒轉進去的那條岔路。'
+  };
+  DIALOGUE_TREES.tide_echo = {
+    start:'root',
+    startReturning:'root',
+    nodes:{
+      root:{
+        reply:'（他站在水面之上，手插在口袋裡，朝你笑了笑。）怎麼，還想核對我們兩個的人生哪裡不一樣？',
+        options:[
+          {text:'你那條路，導師的論文過了嗎？', next:'thesis'},
+          {text:'你有沒有遇見蘇晚和媛媛？', next:'companions'},
+          {text:'怎樣才能在海裡呼吸？', next:'breathe'}
+        ]
+      },
+      thesis:{
+        reply:'過了。但那天凌晨三點十七分，我一樣在桌前醒不過來。那條偏離的質數曲線，不是算錯——是迴廊在向我們打招呼。',
+        options:[{text:'原來哪條路都會來到這裡。', next:'root'}]
+      },
+      companions:{
+        reply:'見過。所以我才留在這片海裡，替每一個倒帶的人看著燈塔。有些遺憾不必改寫，看完就夠了。',
+        options:[{text:'謝謝你。', next:'root'}]
+      },
+      breathe:{
+        reply:'別把這片海當成要逃出去的陷阱。當你承認那些沒打出的電話、沒走的路也是你的一部分，水就不會嗆著你了。',
+        options:[]
+      }
+    }
+  };
+
+  NPC_PROFILES.obs_chen = {
+    name:'觀測者·陳教授',
+    desc:'終焉觀測站裡留下的意識投影。你博士班的導師，也是最早發現質數偏離曲線的人。'
+  };
+  DIALOGUE_TREES.obs_chen = {
+    start:'root',
+    startReturning:'root',
+    nodes:{
+      root:{
+        reply:'（投影在監視器藍光中微微閃爍，老教授推了推眼鏡。）陸衍，你終於走到觀測站了。我就知道你會順著那條偏離曲線找過來。',
+        options:[
+          {text:'老師，您也進過迴廊？', next:'mentor_past'},
+          {text:'那條質數分佈曲線到底代表什麼？', next:'prime_curve'},
+          {text:'怎樣才能讓時間走到 03:18？', next:'how_318'}
+        ]
+      },
+      mentor_past:{
+        reply:'三十年前我就來過一次。那時候還沒有倒計時醫院，只有第一扇門。我把提示留在你的代碼註釋裡，希望有一天你能算完它。',
+        options:[{text:'難怪您說這方向「有價值但難出成果」。', next:'root'}]
+      },
+      prime_curve:{
+        reply:'每一個偏離預期的質數點，都是一扇正在呼吸的門。2、3、5、7、11、13……而第 7 個質數，正是這座觀測站的校準基準。',
+        options:[{text:'第 7 個質數……我記住了。', next:'root'}]
+      },
+      how_318:{
+        reply:'別把觀測站當成最後的牢籠。去主機校準偏離值，去屋頂把分界頻率調到 0318，然後推開那扇分界門——咖啡涼了，該泡一杯新的了。',
+        options:[]
+      }
+    }
+  };
+}
+
+/* ============================================================
+ * 4. v5.2.0 第六副本「終焉觀測站」（The Terminal Observatory, Room 03:17）
+ * ============================================================ */
+var ACH_D6 = [
+  {id:'ach_d6_enter',     name:'零號夾縫',   desc:'踏入第六副本「終焉觀測站」'},
+  {id:'ach_d6_coffee',    name:'未涼之咖啡', desc:'在觀測站書桌前觸碰那杯停在 03:17 的咖啡'},
+  {id:'ach_d6_prime',     name:'第七個質數', desc:'解開質數偏離主機的校準謎題'},
+  {id:'ach_d6_frequency', name:'破曉波段',   desc:'將天線塔調諧至 03:18 的破曉頻率'},
+  {id:'ach_d6_voices',    name:'門後的回音', desc:'聽完監視牆上蘇晚與媛媛留下的兩段波段'},
+  {id:'ach_d6_dawn',      name:'03:18 的破曉', desc:'推開分界門，抵達真結局「03:18 的破曉」'}
+];
+
+V5.registerDungeon({
+  id: 6,
+  index: '第 六 副 本',
+  name: '終焉觀測站',
+  roomNum: '03:17',
+  bgNum: '03:17',
+  clearedKey: 'wuxian-sixth-cleared',
+  savePrefix: 'v53-observatory-save',
+  startScene: 'd6_prologue',
+  subText: '零 號 夾 縫 · 第 六 副 本',
+  ruleText: '秒 針 停 在 03:17',
+  hasParty: false,
+  hasCountdown: false,
+  hasAdmin: false,
+  achDefs: ACH_D6,
+  totalEndings: 6,
+  unlock: function(){ return isCleared(5) || hasPact('pact_voyager'); },
+  tagline: '凌晨 03:17 與 03:18 之間的夾縫觀測站。調校六道門扉的共振頻率，推開破曉之門。',
+
+  bgAnimation: function(){
+    if(bgNumTimer){ clearInterval(bgNumTimer); bgNumTimer=null; }
+    var el = $('bg-num'); if(!el) return;
+    el.classList.remove('float');
+    if(SETTINGS.bgAnim === false || SETTINGS.reducedMotion){ el.textContent = '03:17'; return; }
+    var seq = ['03:17','03:17','13','靜','60:00','∞','≈','03:18'];
+    var i = 0;
+    el.textContent = seq[i];
+    bgNumTimer = setInterval(function(){
+      i = (i + 1) % seq.length;
+      el.textContent = seq[i];
+    }, 2200);
+  },
+
+  stateInit: function(){
+    return {
+      currentScene: 'd6_prologue',
+      inventory: [],
+      flags: {},
+      hp: 100,
+      maxHp: 100,
+      textIndex: 0,
+      puzzleCallback: null, puzzleAnswer: null, puzzleAttempts: 0,
+      inheritance: (typeof loadInheritance === 'function') ? loadInheritance() : {},
+      notes: [], history: [],
+      personality: {calm:50, altruism:50, cautious:50},
+      echo: 3,
+      trail: [],
+      mapZones: [
+        {id:'d6_hub',      name:'中央觀測大廳',   explored:false, current:true,  scene:'d6_hub',       summary:'環形監視牆圍成的觀測大廳，秒針停在 03:17。'},
+        {id:'d6_desk',     name:'實驗室原點書桌', explored:false, current:false, scene:'d6_desk',      summary:'那張放著三本書、兩疊論文與傾倒咖啡杯的書桌。'},
+        {id:'d6_server',   name:'質數偏離主機',   explored:false, current:false, scene:'d6_server',    summary:'持續運算質數分佈曲線的機櫃，等待第 7 個質數校準。'},
+        {id:'d6_roof',     name:'無星之頂天線塔', explored:false, current:false, scene:'d6_roof',      summary:'觀測站頂層的發射塔，可向所有門扉發送頻率。'},
+        {id:'d6_threshold',name:'03:18 分界門',   explored:false, current:false, scene:'d6_threshold', summary:'通往下一分鐘的門扉。'}
+      ]
+    };
+  },
+
+  buildScenes: function(){
+    function checkVoices(){
+      if(state.flags.d6_suwan_heard && state.flags.d6_yuanyuan_heard){
+        unlockAchievement('ach_d6_voices');
+      }
+    }
+
+    SCENES.d6_prologue = {
+      room:'03:17', roomName:'03:17 的夾縫', sceneId:'6-序章', mood:'mystery',
+      onEnter: function(){ unlockAchievement('ach_d6_enter'); },
+      text:[
+        '<p>從迴光之海浮上來的時候，你聽見了一聲極輕的「咔噠」。</p>',
+        '<p>不是門鎖，也不是鐘擺——是秒針卡在齒輪裡，想跳往下一格卻沒能跳過去的聲音。</p>',
+        '<p>你睜開眼。頭頂不是白色天花板，也不是無盡的門，而是一座高聳的圓頂觀測站。成百上千台舊式CRT監視器繞成一圈，每一台螢幕都在播放你走過的地方：13 號房的銅牌、停在 3:15 的閱覽室掛鐘、B2 閃爍的 98.7%、心臟處的 ∞、以及潮井翻動的浪。</p>',
+        '<p>而在圓頂正中央，擺著一張你再熟悉不過的舊書桌。</p>',
+        '<p>桌上三本書，兩疊論文。一隻馬克杯剛剛傾倒，褐色的咖啡正懸在半空，離鍵盤只有一寸，像被按下了暫停。</p>',
+        '<p class="system-msg">當前座標：零號夾縫 · 終焉觀測站。<br>系統時間：03:17:59（停滯中）。</p>'
+      ],
+      choices:[
+        {text:'走向圓頂中央的觀測大廳', next:'d6_hub', personality:{calm:+5}},
+        {text:'低頭看自己的手腕', useless:true, flavor:'黑色手環的螢幕不再顯示積分，只有一行緩慢閃爍的游標：「WAITING FOR 03:18...」。'}
+      ]
+    };
+
+    SCENES.d6_hub = {
+      room:'03:17', roomName:'中央觀測大廳', sceneId:'6-大廳', mood:'mystery', mapZone:'d6_hub', npc:'obs_chen',
+      text:[
+        '<p>你站在中央觀測大廳。環形監視牆發出的幽藍冷光映在地面上，將你的影子拉成六道，分別指向六個方向。</p>',
+        '<p>書桌旁站著一道半透明的身影——花白頭髮、舊毛衣、金絲眼鏡。是你博士班的導師，陳教授。他正低頭看著螢幕上那條偏離預期的質數分佈曲線。</p>',
+        '<p>大廳北側是「五扇門的監視牆」，東側是「質數偏離主機」與「第零號檔案櫃」，西側有鐵梯通往「無星之頂與天線塔」，而正南方立著一扇刻著「03:18」的分界門。</p>'
+      ],
+      textReturn:[
+        '<p>你回到中央觀測大廳。監視牆的藍光安靜地流淌，那滴懸在半空的咖啡依然停在離鍵盤一寸的地方。</p>'
+      ],
+      choices:[
+        {text:'走近那張傾倒咖啡的實驗室書桌', next:'d6_desk', personality:{calm:+3}},
+        {text:'查看北側「五扇門的監視牆」', next:'d6_monitors', personality:{altruism:+3}},
+        {text:'前往東側「質數偏離主機」', next:'d6_server', personality:{cautious:+5}},
+        {text:'翻閱「第零號檔案櫃」與休眠艙記錄', next:'d6_archive', personality:{cautious:+3}},
+        {text:'攀上西側鐵梯，前往「無星之頂與天線塔」', next:'d6_roof', personality:{calm:+5}},
+        {text:'走向刻著「03:18」的分界門', next:'d6_threshold'},
+        {text:'觀察四周', observe:'你環視整座圓頂觀測站。<p>監視牆共有六組主波段，對應質數旅館、沉默圖書館、倒計時醫院、無盡之間、迴光之海，以及你腳下的零號夾縫。</p><p>陳教授的投影旁放著一本打開的教案，上面用紅筆寫著：「第 7 個質數是校準起點；破曉的時刻是四位波段碼。」</p>'}
+      ]
+    };
+
+    SCENES.d6_desk = {
+      room:'03:17', roomName:'傾倒的咖啡與手稿', sceneId:'6-書桌', mood:'melancholy', mapZone:'d6_desk',
+      onEnter: function(){ unlockAchievement('ach_d6_coffee'); },
+      text:[
+        '<p>你走到自己的書桌前。懸在半空的咖啡液滴映出你現在的臉——比倒下那天瘦了一點，眼神卻定了許多。</p>',
+        '<p>螢幕上，你跑了六個小時的 Python 腳本停在第 317 行。那條偏離預期的曲線下面，有一行你自己都忘了是什麼時候敲進去的註釋：</p>',
+        '<p class="system-msg"># 如果質數是門牌，第 7 個質數（2, 3, 5, 7, 11, 13 之後）就是觀測站的基準鍵。</p>',
+        '<p>桌角壓著你未完成的畢業論文末頁，還有那隻裂了一道細紋的舊馬克杯。</p>'
+      ],
+      choices:[
+        {text:'拾起那隻裂紋馬克杯（迴光遺物）', condition:function(){ return !state.flags.d6_got_mug; }, action:function(){
+          state.flags.d6_got_mug = true;
+          if(window.V5 && typeof V5.grantRelic === 'function') V5.grantRelic('d6_mug');
+          appendNarrative('<p class="inherit-note">你指尖碰觸杯柄的瞬間，那滴懸停的咖啡落回杯底，化作一枚溫熱的印記。獲得遺物：裂紋咖啡杯。</p>');
+        }},
+        {text:'抽走論文末頁的手稿（迴光遺物）', condition:function(){ return !state.flags.d6_got_thesis; }, action:function(){
+          state.flags.d6_got_thesis = true;
+          if(window.V5 && typeof V5.grantRelic === 'function') V5.grantRelic('d6_thesis');
+          addNote('d6_thesis_note','第 7 個質數','前六個質數依次是 2、3、5、7、11、13。緊隨其後的第 7 個質數是 17。');
+          appendNarrative('<p class="inherit-note">手稿背面用鉛筆寫著前七個質數：2, 3, 5, 7, 11, 13, 17。獲得遺物：質數分佈手稿末頁。</p>');
+        }},
+        {text:'回到中央觀測大廳', next:'d6_hub'}
+      ]
+    };
+
+    SCENES.d6_monitors = {
+      room:'03:17', roomName:'五扇門的監視牆', sceneId:'6-監視牆', mood:'melancholy',
+      text:[
+        '<p>監視牆前排著一列撥桿與耳機插孔。大多數頻道只有沙沙的雪花，但有兩個波段的指示燈正閃著微弱的琥珀光。</p>',
+        '<p>一號波段標註著「旅館·走廊外」；三號波段標註著「醫院·大榕樹下」。旁邊還有一個紅色的「全頻段強行切斷」開關。</p>'
+      ],
+      choices:[
+        {text:'戴上耳機，接入一號波段（蘇晚的留言）', next:'d6_echo_suwan', personality:{altruism:+5}},
+        {text:'戴上耳機，接入三號波段（紙飛機的航線）', next:'d6_echo_yuanyuan', personality:{altruism:+5}},
+        {text:'按下紅色的「全頻段強行切斷」開關', next:'d6_end_static', danger:true, personality:{cautious:-15}},
+        {text:'退回中央觀測大廳', next:'d6_hub'}
+      ]
+    };
+
+    SCENES.d6_echo_suwan = {
+      room:'03:17', roomName:'一號波段·蘇晚的留言', sceneId:'6-波段·壹', mood:'safe',
+      onEnter: function(){ state.flags.d6_suwan_heard = true; checkVoices(); },
+      text:[
+        '<p>耳機裡先是一陣風聲，接著傳來蘇晚很輕、卻很穩的聲音：</p>',
+        '<p class="dialogue">「陸衍，如果你能聽到這段波段，說明你已經走到我們所有人前面了。」</p>',
+        '<p class="dialogue">「在旅館的時候，你說第一個答案往往是謊言；到了這裡，別再懷疑自己了。外面的天快亮了，我們都在門外等你。」</p>',
+        '<p>波段最後是一聲清脆的門鈴響，隨即歸於安靜。</p>'
+      ],
+      choices:[
+        {text:'摘下耳機，回到監視牆前', next:'d6_monitors'}
+      ]
+    };
+
+    SCENES.d6_echo_yuanyuan = {
+      room:'03:17', roomName:'三號波段·紙飛機的航線', sceneId:'6-波段·參', mood:'safe',
+      onEnter: function(){ state.flags.d6_yuanyuan_heard = true; checkVoices(); },
+      text:[
+        '<p>三號波段裡傳來蟬鳴與樹葉摩挲的沙沙聲。一個六歲小女孩的聲音在麥克風旁小聲數數：</p>',
+        '<p class="dialogue">「紙飛機飛過一樓、二樓、三樓……飛過圖書館的書架，飛到海面上啦。」</p>',
+        '<p class="dialogue">「大哥哥，爸爸說三點十七分太黑了，要調到三點十八分，太陽才會出來。你別忘了呀——0、3、1、8！」</p>',
+        '<p>你把「0318」四個數字記在心裡。</p>'
+      ],
+      choices:[
+        {text:'摘下耳機，回到監視牆前', next:'d6_monitors'}
+      ]
+    };
+
+    SCENES.d6_server = {
+      room:'03:17', roomName:'質數偏離主機', sceneId:'6-主機', mood:'tension', mapZone:'d6_server',
+      text:[
+        '<p>東側的機櫃發出低沉的蜂鳴。主螢幕上，那條質數分佈曲線在 x = 13 之後出現了一道缺口。</p>',
+        '<p class="system-msg">【主機校準程序】<br>已確認安全質數序列：2, 3, 5, 7, 11, 13。<br>請輸入緊隨 13 之後的下一個質數（第 7 個質數），以完成偏離曲線閉合。</p>'
+      ],
+      choices:[
+        {text:'輸入第 7 個質數完成校準', action:function(){
+          if(state.flags.d6_prime_solved){
+            appendNarrative('<p class="action">主機已經完成校準，曲線平穩收斂。</p>');
+            return;
+          }
+          openPuzzle('謎題 · 第七個質數',
+            '已確認前六個質數序列：2、3、5、7、11、13。\n請輸入緊隨 13 之後的下一個質數（即第 7 個質數）：',
+            '17',
+            function(ok){
+              if(ok){
+                state.flags.d6_prime_solved = true;
+                unlockAchievement('ach_d6_prime');
+                addItem('d6_tuning_fork','03:17 調諧音叉','主機校準後彈出的音叉，以 317 Hz 穩定共鳴。');
+                addNote('d6_prime_calibrated','主機已校準','輸入第 7 個質數 17 後，偏離曲線終於閉合。');
+                appendNarrative('<p class="inherit-note">你輸入 17。缺口處亮起一道金線，整條質數曲線平滑收斂！插槽彈出一支「03:17 調諧音叉」。</p>');
+              }else{
+                damage(10);
+                appendNarrative('<p class="system-msg">校準值錯誤！主機迸出一串電火花，你的手指被麻了一下（生命 -10）。</p>');
+              }
+            },
+            '14、15、16 都是合數（分別能被 2、3、5 等整除）。13 之後第一個只能被 1 和自己整除的數是 17。');
+        }},
+        {text:'強行用隨機亂數覆寫主機核心', next:'d6_end_overwrite', danger:true, personality:{cautious:-15}},
+        {text:'回到中央觀測大廳', next:'d6_hub'}
+      ]
+    };
+
+    SCENES.d6_archive = {
+      room:'03:17', roomName:'第零號檔案櫃', sceneId:'6-檔案', mood:'mystery',
+      text:[
+        '<p>檔案櫃旁立著一具透明的醫療休眠艙，銘牌上刻著你的名字：「陸衍 · 編號 007」。</p>',
+        '<p>你翻開艙蓋旁的臨床日誌：原來在實驗室倒下後，急救車在凌晨 03:17 將你送入搶救室。你經歷的五座副本，正是大腦在 03:17 到 03:18 這一分鐘內，與所有瀕死意識共鳴構築的「無盡迴廊」。</p>'
+      ],
+      choices:[
+        {text:'走近休眠艙，查看心電監護波形', next:'d6_capsule'},
+        {text:'回到中央觀測大廳', next:'d6_hub'}
+      ]
+    };
+
+    SCENES.d6_capsule = {
+      room:'03:17', roomName:'休眠艙「陸衍」', sceneId:'6-休眠艙', mood:'melancholy',
+      text:[
+        '<p>監護儀上的心率維持在每分鐘 53 次——53 也是一個質數。</p>',
+        '<p>艙壁上貼著一張便簽，字跡像極了林建國醫生：「生命體徵穩定。只要患者本人的意識願意跨過 03:18，就能自主甦醒。」</p>'
+      ],
+      choices:[
+        {text:'把這張便簽收進記憶，退回檔案櫃前', next:'d6_archive'}
+      ]
+    };
+
+    SCENES.d6_roof = {
+      room:'03:17', roomName:'無星之頂與天線塔', sceneId:'6-屋頂', mood:'tension', mapZone:'d6_roof',
+      text:[
+        '<p>你爬上鐵梯，推開天窗。屋頂上方沒有星星，只有一輪巨大的、停在「03:17」的金色星盤。</p>',
+        '<p>天線塔的控制台設有一組四位數頻率轉盤，上面刻著：「輸入破曉時刻的四位數字（時兩位、分兩位），向所有迴廊發送黎明信號。」</p>'
+      ],
+      choices:[
+        {text:'轉動頻率轉盤，輸入四位數破曉頻率', action:function(){
+          if(state.flags.d6_freq_solved){
+            appendNarrative('<p class="action">天線塔已鎖定在 0318 波段，金光直指天頂。</p>');
+            return;
+          }
+          openPuzzle('謎題 · 破曉波段',
+            '秒針停在 03:17。要讓時間跨入下一分鐘、迎來破曉，請輸入四位數字（格式：時兩位 + 分兩位）：',
+            '0318',
+            function(ok){
+              if(ok){
+                state.flags.d6_freq_solved = true;
+                unlockAchievement('ach_d6_frequency');
+                addItem('d6_dawn_tape','破曉磁帶 03:18','記錄著 03:18 黎明頻率與同伴回音的磁帶。');
+                addNote('d6_freq_note','03:18 波段已鎖定','天線塔已調諧至 0318，分界門的鎖扣已經鬆開。');
+                appendNarrative('<p class="inherit-note">轉盤停在 0318。天頂的金色星盤發出一聲悠長的嗡鳴，分界門的共鳴鎖隨之開啟！獲得：破曉磁帶 03:18。</p>');
+              }else{
+                damage(10);
+                appendNarrative('<p class="system-msg">頻率失諧！刺耳的電流聲震得你耳膜生疼（生命 -10）。</p>');
+              }
+            },
+            '03:17 之後的下一分鐘是 03:18，寫成四位數字即 0318。');
+        }},
+        {text:'回到中央觀測大廳', next:'d6_hub'}
+      ]
+    };
+
+    SCENES.d6_threshold = {
+      room:'03:18', roomName:'03:18 分界門', sceneId:'6-分界門', mood:'safe', mapZone:'d6_threshold',
+      text:[
+        '<p>你站在刻著「03:18」的分界門前。門縫裡透出的不再是慘白的走廊燈，而是帶著露水與青草氣息的晨光。</p>',
+        '<p>你走過了質數旅館、沉默圖書館、倒計時醫院、無盡之間與迴光之海。現在，這扇門等你做出最後的決定。</p>'
+      ],
+      choices:[
+        {text:'推開分界門，迎向 03:18 的破曉（真結局）',
+         condition:function(){ return state.flags.d6_prime_solved && state.flags.d6_freq_solved && state.flags.d6_suwan_heard && state.flags.d6_yuanyuan_heard; },
+         next:'d6_end_dawn', personality:{calm:+15, altruism:+15}},
+        {text:'把畫著貓的紙飛機從門縫放飛出去',
+         condition:function(){ return state.flags.d6_prime_solved || state.flags.d6_freq_solved; },
+         next:'d6_end_paperplane', personality:{altruism:+10}},
+        {text:'啟動天線廣播，為所有困在門裡的人引路',
+         condition:function(){ return state.flags.d6_freq_solved; },
+         next:'d6_end_broadcast', personality:{altruism:+15}},
+        {text:'留在觀測站，接替陳教授看守這片夾縫', next:'d6_end_observer', personality:{calm:+10}},
+        {text:'退回中央觀測大廳再做準備', next:'d6_hub'}
+      ]
+    };
+
+    SCENES.d6_end_static = {
+      room:'—', roomName:'白噪音', sceneId:'6-結局·噪', mood:'terror',
+      text:[
+        '<p>你按下了全頻段切斷開關。成百上千台監視器同時熄滅，只剩下一片刺耳的白噪音。</p>',
+        '<p>沒有了波段定位，觀測站的座標瞬間坍縮。你感覺自己化作了螢幕上的一粒雪花點，永遠停在了 03:17 的雜訊裡。</p>'
+      ],
+      onEnter:function(){
+        setTimeout(function(){
+          triggerEnding('bad_d6_static','白噪音','你切斷了所有門扉的觀測波段。失去錨點的夾縫瞬間坍縮，你的意識化作了監視牆上一閃而過的雪花噪點。','壞結局 · 訊號中斷');
+        }, 900);
+      },
+      choices:[]
+    };
+
+    SCENES.d6_end_overwrite = {
+      room:'—', roomName:'覆寫失敗', sceneId:'6-結局·覆', mood:'terror',
+      text:[
+        '<p>你強行向主機輸入隨機亂數。質數曲線瞬間崩潰，整個觀測站的燈光轉為刺目的血紅。</p>',
+        '<p>系統強制執行回滾——你眼前的書桌、監視牆與分界門同時碎裂，倒計時再次回到第一扇 13 號門前。</p>'
+      ],
+      onEnter:function(){
+        setTimeout(function(){
+          triggerEnding('death_d6_overwrite','覆寫失敗','你試圖用亂數篡改迴廊的基準曲線，觸發了底層強制回滾。一切被重置回最初的起點。','死亡結局 · 系統回滾');
+        }, 900);
+      },
+      choices:[]
+    };
+
+    SCENES.d6_end_observer = {
+      room:'03:17', roomName:'守望 03:17', sceneId:'6-結局·守', mood:'melancholy',
+      text:[
+        '<p>你沒有推開分界門。你走回圓頂中央，在書桌前坐下。</p>',
+        '<p>陳教授的投影欣慰地拍了拍你的肩，漸漸消散在藍光中。從今天起，由你來看著這一百面螢幕，替每一個迷路的旅者在暗處留一盞提示的燈。</p>'
+      ],
+      onEnter:function(){
+        V4.markDungeonCleared(6);
+        setTimeout(function(){
+          triggerEnding('normal_d6_observer','守望 03:17','你選擇留在終焉觀測站，成為新一任觀測者。每當有旅者在旅館、圖書館或醫院迷失時，你都會從螢幕後遞出一張寫著提示的紙條。','普通結局 · 觀測者');
+        }, 900);
+      },
+      choices:[]
+    };
+
+    SCENES.d6_end_broadcast = {
+      room:'03:18', roomName:'向所有門廣播', sceneId:'6-結局·廣播', mood:'safe',
+      text:[
+        '<p>你將破曉頻率接入全頻道廣播。監視牆上的每一扇門——旅館的 1 號門、圖書館地毯下的暗門、醫院的花園大門——同時亮起了溫暖的晨光。</p>',
+        '<p>你看見那些被困在迴廊裡的身影一個接一個走了出去，自己也隨著最後一道電波邁出了分界門。</p>'
+      ],
+      onEnter:function(){
+        V4.markDungeonCleared(6);
+        setTimeout(function(){
+          triggerEnding('survive_d6_broadcast','向所有門廣播','你用天線塔向整座無盡迴廊發送了 03:18 的黎明波段，為所有滯留的旅者打開了出口。','逃過一劫 · 破曉廣播');
+        }, 900);
+      },
+      choices:[]
+    };
+
+    SCENES.d6_end_paperplane = {
+      room:'03:18', roomName:'飛出窗外的紙飛機', sceneId:'6-結局·紙飛機', mood:'safe',
+      text:[
+        '<p>你把那架畫著歪歪扭扭小貓的紙飛機，順著分界門的晨風輕輕一推。</p>',
+        '<p>紙飛機穿過 03:17 的夾縫，掠過大榕樹的枝頭，穩穩落進了清晨的陽光裡。你跟著它邁出門檻，身後的觀測站安靜地合上了門。</p>'
+      ],
+      onEnter:function(){
+        V4.markDungeonCleared(6);
+        setTimeout(function(){
+          triggerEnding('normal_d6_paperplane','飛出窗外的紙飛機','紙飛機帶著六道門扉的記憶飛進了清晨的風裡。你跟隨它的航線走出了迴廊。','普通結局 · 航線終點');
+        }, 900);
+      },
+      choices:[]
+    };
+
+    SCENES.d6_end_dawn = {
+      room:'03:18', roomName:'03:18 的破曉', sceneId:'6-真結局', mood:'safe',
+      onEnter:function(){
+        V4.markDungeonCleared(6);
+        unlockAchievement('ach_d6_dawn');
+        setTimeout(function(){
+          triggerEnding('hidden_d6_dawn','03:18 的破曉',
+            '你校準了質數曲線，聽見了同伴的回音，並將時間撥向 03:18。分界門後，清晨的第一縷陽光落在實驗室窗台上。那杯咖啡沒有灑在鍵盤上——你伸手扶住了它，而手機螢幕上正亮起蘇晚發來的早安訊息。',
+            '真結局 · 萬門破曉 · 1000 積分');
+        }, 1100);
+      },
+      text:[
+        '<p>分界門緩緩敞開。牆上的電子鐘終於跳過了那漫長的一秒——</p>',
+        '<p class="system-msg">03:18:00。</p>',
+        '<p>[glow]那滴懸在半空的咖啡沒有落在鍵盤上。你的手指穩穩扶住了馬克杯的杯柄。咖啡還是溫的。</p>',
+        '<p>窗外不再是純白或漆黑的迴廊，天際線泛起魚肚白，清晨的第一縷陽光穿過實驗室的百葉窗，落在那條已經收斂完成的質數分佈曲線上。</p>',
+        '<p>桌上的手機震動了一下。螢幕亮起，是一條新訊息：「陸衍，天亮了，出來吃早飯吧。——蘇晚」</p>',
+        '<p>你保存好代碼，關掉螢幕，推開實驗室的門，走進了清晨的風裡。</p>'
+      ],
+      choices:[]
+    };
+  }
+});
+
+/* 為第六副本添加 2 件遺物與 2 首合成 BGM 主題 */
+V5.onBoot(function(){
+  if(window.V4Audio && V4Audio.themes){
+    V4Audio.themes['6-obs'] = {
+      name:'終焉觀測站 · 靜止秒針', sub:'第六副本 基底主題（水晶鐘擺與泛音）',
+      chords:[[130.8,196],[110,164.8],[146.8,220],[98,146.8]],
+      o1:'sine', o2:'triangle', lp:480, lfo:0.05, interval:10000,
+      pluck:[659.25,783.99,987.77,1174.7]
+    };
+    V4Audio.themes['6-dawn'] = {
+      name:'終焉觀測站 · 破曉頻率', sub:'第六副本 破曉段落（溫暖大調五度）',
+      chords:[[130.8,196],[146.8,220],[164.8,246.9],[196,293.7]],
+      o1:'triangle', o2:'sine', lp:620, lfo:0.04, interval:11000,
+      pluck:[523.25,659.25,783.99,1046.5]
+    };
+  }
+});
+
+/* ============================================================
+ * 5. v5.3.0 萬門之書（Omnigate Codex — 人物星圖 + 世界觀詞條）
+ * ============================================================ */
+var CONSTELLATION_NODES = [
+  {id:'luyan',    name:'陸衍',       x:200, y:135, role:'主角 · 絕對邏輯', desc:'數學系博士生，凌晨 03:17 於實驗室倒下後踏入無盡迴廊，走過六道門扉的旅者。'},
+  {id:'suwan',    name:'蘇晚',       x:105, y:65,  role:'第一副本同伴 · 危險直覺', desc:'白連帽衫女孩，冷靜果決，與陸衍在質數旅館並肩逃生，並在一號波段留下破曉的訊息。'},
+  {id:'laozhao',  name:'老趙',       x:65,  y:135, role:'第一副本同伴 · 退伍老兵', desc:'嘴硬心軟的老兵，在 5 號房虛空前與陸衍生死相託。'},
+  {id:'akai',     name:'阿凱／鏡像', x:110, y:205, role:'第一副本 · 鏡中存在', desc:'叼著棒棒糖的少年，實為規則衍生的鏡像。在第四副本的舊鏡中與陸衍和解。'},
+  {id:'xiaoman',  name:'小滿',       x:42,  y:68,  role:'13 號房的女孩', desc:'在二樓走廊默數質數的女孩，等待有人記住她的名字。'},
+  {id:'lib_admin',name:'圖書館管理員',x:295, y:58,  role:'第二副本 · 第三任守館人', desc:'深灰西裝的男人，替媛媛的父親守著沉默圖書館，暗中指引地毯下的真正出口。'},
+  {id:'yuanyuan', name:'陳媛媛',     x:315, y:142, role:'貫穿二、三、六副本的核心', desc:'1987–1993，六歲病逝的小女孩，喜歡畫貓與折紙飛機。她的記憶成為醫院 B2 與迴廊深處最溫柔的牽掛。'},
+  {id:'chen_jie', name:'陳玉華(陳姐)',x:235, y:45,  role:'第二副本同伴 · 小學教師', desc:'手裡攥著保溫杯的老師，心心念念著等待她回去上課的學生。'},
+  {id:'laozhou',  name:'老周',       x:165, y:45,  role:'第二副本同伴 · 缺小指的匠人', desc:'沉默寡言卻經驗老道，在員工通道與陸衍結下生死默契。'},
+  {id:'ankang',   name:'陳安康院長', x:368, y:95,  role:'第三副本 · 媛媛之父', desc:'安康醫院院長，因捨不得女兒離世而啟動記憶提取機 MK-II，最終留下 B2 鑰匙懇求後來者給媛媛一個了斷。'},
+  {id:'lin_doc',  name:'林建國醫生', x:285, y:215, role:'第三副本同伴 · 醫學直覺', desc:'經歷三次重置仍試圖找回女兒「念安」名字的外科醫生。'},
+  {id:'zhoumin',  name:'周敏(夜巡)', x:368, y:195, role:'第三副本 · 夜班護士', desc:'1999 年入職的善良護士，在太平間第 14 格與 404 牆板下偷偷保存了十四位病人的名字。'},
+  {id:'prof_chen',name:'陳教授',     x:200, y:225, role:'第六副本 · 導師與觀測者', desc:'陸衍的博士班導師，三十年前曾踏入第一扇門，在質數分佈代碼中留下通往觀測站的指引。'}
+];
+
+var CONSTELLATION_EDGES = [
+  ['luyan','suwan'],['luyan','laozhao'],['luyan','akai'],['luyan','lib_admin'],
+  ['luyan','yuanyuan'],['luyan','lin_doc'],['luyan','prof_chen'],['luyan','laozhou'],
+  ['luyan','chen_jie'],['akai','xiaoman'],['lib_admin','yuanyuan'],['ankang','yuanyuan'],
+  ['ankang','zhoumin'],['lin_doc','zhoumin'],['yuanyuan','zhoumin'],['suwan','laozhao'],
+  ['chen_jie','laozhou'],['prof_chen','ankang']
+];
+
+function renderCodexTab(body){
+  var selId = body.getAttribute('data-sel-node') || 'luyan';
+  var selNode = CONSTELLATION_NODES[0];
+  for(var i=0;i<CONSTELLATION_NODES.length;i++){
+    if(CONSTELLATION_NODES[i].id === selId) selNode = CONSTELLATION_NODES[i];
+  }
+
+  var svg = '<div class="v53-constellation-wrap"><svg class="v53-constellation-svg" viewBox="0 0 410 260">';
+  CONSTELLATION_EDGES.forEach(function(e){
+    var n1 = CONSTELLATION_NODES.find(function(n){return n.id===e[0];});
+    var n2 = CONSTELLATION_NODES.find(function(n){return n.id===e[1];});
+    if(!n1 || !n2) return;
+    var active = (n1.id===selNode.id || n2.id===selNode.id);
+    svg += '<line x1="'+n1.x+'" y1="'+n1.y+'" x2="'+n2.x+'" y2="'+n2.y+'" stroke="'+(active?'var(--accent)':'var(--border)')+'" stroke-width="'+(active?'1.4':'0.8')+'" stroke-opacity="'+(active?'0.85':'0.5')+'"/>';
+  });
+  CONSTELLATION_NODES.forEach(function(n){
+    var isOn = (n.id === selNode.id);
+    svg += '<g class="v53-cnode'+(isOn?' on':'')+'" data-cnode="'+n.id+'">'+
+      '<circle cx="'+n.x+'" cy="'+n.y+'" r="'+(isOn?7:5)+'" fill="'+(isOn?'var(--accent)':'var(--bg-panel)')+'" stroke="var(--accent)" stroke-width="1.5"/>'+
+      '<text x="'+n.x+'" y="'+(n.y-10)+'" text-anchor="middle">'+t(n.name)+'</text>'+
+    '</g>';
+  });
+  svg += '</svg></div>';
+
+  var detail = '<div class="v53-codex-detail">'+
+    '<div class="cd-title">'+t(selNode.name)+'</div>'+
+    '<div class="cd-meta">'+t(selNode.role)+'</div>'+
+    '<div>'+t(selNode.desc)+'</div>'+
+  '</div>';
+
+  var loreList = [
+    ['質數與置換（第一副本）','旅館共 10 間房，唯獨 3、5、7 為安全質數房；2 號是致命謊言，1 號是通往外面的正門，0 號則藏在螺旋梯間。'],
+    ['沉默與地毯（第二副本）','圖書館禁止大聲喧嘩，耳語安全而拍手即死。五道凹槽中唯有中間一道是溫的，而真正的通道藏在第三塊地毯左下角。'],
+    ['記憶提取機 MK-II（第三副本）','1993 年陳媛媛六歲病逝，陳安康院長將其記憶封存於 B2 主機；2003 年 4 月 15 日主機過載吞噬了 14 名病人的記憶。'],
+    ['無盡之間與迴光之海（第四、五副本）','迴廊的心臟連接著鏡、書架與病房三扇舊門；而在其下的迴光之海，潮汐漲退之間收容著每一條未曾選擇的岔路。'],
+    ['03:17 與 03:18（第六副本）','凌晨 03:17 是陸衍在實驗室倒下的瞬間，也是六座副本共鳴的夾縫；當第 7 個質數（17）與破曉波段（0318）校準完成，時間終於邁向 03:18。']
+  ];
+
+  var loreHTML = '<div class="v4-sec">'+t('迴廊紀事 · 世界觀詞條')+'</div><div class="v4-list">';
+  loreHTML += loreList.map(function(item){
+    return '<div class="v4-row unlocked"><div class="v4-row-main"><div class="v4-row-t">'+t(item[0])+'</div><div class="v4-row-d">'+t(item[1])+'</div></div></div>';
+  }).join('') + '</div>';
+
+  body.innerHTML = '<div class="v4-sub">'+t('點擊星圖節點查看跨副本人物關聯與世界觀檔案')+'</div>' + svg + detail + loreHTML;
+  body.querySelectorAll('[data-cnode]').forEach(function(g){
+    g.addEventListener('click', function(){
+      body.setAttribute('data-sel-node', g.getAttribute('data-cnode'));
+      renderCodexTab(body);
+    });
+  });
+}
+
+/* ============================================================
+ * 6. 迴廊手札新增分頁渲染：契約（Pacts）與占卜（Arcana）
+ * ============================================================ */
+function renderPactsTab(body){
+  var cur = activePacts();
+  var html = '<div class="v4-sub">'+t('自由締結或解除迴廊契約，定制你的探索體驗（即時生效）')+'</div><div class="v4-list">';
+  PACTS.forEach(function(p){
+    var on = cur.indexOf(p.id) !== -1;
+    html += '<div class="v4-row'+(on?' unlocked':'')+'">'+
+      '<div class="v4-row-ic" style="font-family:var(--font-serif);color:var(--accent)">'+p.glyph+'</div>'+
+      '<div class="v4-row-main"><div class="v4-row-t">'+t(p.name)+'</div><div class="v4-row-d">'+t(p.desc)+'</div></div>'+
+      '<button class="v4-btn'+(on?' primary':'')+'" data-pact-toggle="'+p.id+'">'+(on?t('已締結'):t('締 結'))+'</button>'+
+    '</div>';
+  });
+  html += '</div>';
+  body.innerHTML = html;
+  body.querySelectorAll('[data-pact-toggle]').forEach(function(b){
+    b.addEventListener('click', function(){
+      togglePact(b.getAttribute('data-pact-toggle'));
+      renderPactsTab(body);
+    });
+  });
+}
+
+function renderArcanaTab(body){
+  var owned = ownedArcana();
+  var curId = activeArcanaId();
+  var curCard = arcanaById(curId) || ARCANA_CARDS[0];
+
+  var stage = '<div class="v53-arcana-stage">'+
+    '<div class="v53-arcana-card">'+
+      '<div class="v53-arcana-num">ARCANA · '+curCard.num+'</div>'+
+      '<div class="v53-arcana-art">'+curCard.svg+'</div>'+
+      '<div class="v53-arcana-name">'+t(curCard.name)+'</div>'+
+      '<div class="v53-arcana-buff">'+t(curCard.buff)+'</div>'+
+    '</div>'+
+    '<div style="display:flex;gap:.6rem;align-items:center">'+
+      '<button class="v4-btn primary" id="v53-draw-arcana-btn">'+t('抽取命運牌')+'</button>'+
+      '<span style="font-size:.72rem;color:var(--text-dim)">'+t('已收集')+' '+owned.length+' / '+ARCANA_CARDS.length+'</span>'+
+    '</div>'+
+  '</div>';
+
+  var grid = '<div class="v53-arcana-grid">';
+  ARCANA_CARDS.forEach(function(c){
+    var isUn = owned.indexOf(c.id) !== -1;
+    var isAct = (c.id === curId);
+    grid += '<div class="v53-arcana-mini '+(isUn?'unlocked':'locked')+(isAct?' active':'')+'" data-arc-pick="'+(isUn?c.id:'')+'">'+
+      '<div class="am-num">'+c.num+'</div>'+
+      '<div class="am-name">'+(isUn?t(c.name):'？？？')+'</div>'+
+      '<div class="am-desc">'+(isUn?t(c.buff):t('尚未抽中'))+'</div>'+
+    '</div>';
+  });
+  grid += '</div>';
+
+  body.innerHTML = stage + grid;
+  var drawBtn = body.querySelector('#v53-draw-arcana-btn');
+  if(drawBtn){
+    drawBtn.addEventListener('click', function(){
+      drawRandomArcana();
+      applyPactsToRuntime();
+      renderArcanaTab(body);
+    });
+  }
+  body.querySelectorAll('[data-arc-pick]').forEach(function(el){
+    var id = el.getAttribute('data-arc-pick');
+    if(!id) return;
+    el.addEventListener('click', function(){
+      lsSet(LS_ARC_CUR, id);
+      applyPactsToRuntime();
+      renderArcanaTab(body);
+      if(typeof showToast === 'function') showToast(t('已裝備命牌'));
+    });
+  });
+}
+
+/* ============================================================
+ * 7. 契約與占卜效果套用、全域迴溯、洞悉標籤、謎題小鍵盤
+ * ============================================================ */
+function applyPactsToRuntime(){
+  if(!window.state) return;
+  /* 占卜命牌加成 */
+  var actId = activeArcanaId();
+  var card = arcanaById(actId);
+  if(card && !state.__arcanaApplied){
+    state.__arcanaApplied = actId;
+    try{ card.apply(state); }catch(e){}
+  }
+  /* 豐饒之契 */
+  if(hasPact('pact_abundance') && !state.__pactAbundanceApplied){
+    state.__pactAbundanceApplied = true;
+    state.maxHp = (state.maxHp || 100) + 20;
+    state.hp = (state.hp || 100) + 20;
+    if(state.countdown != null){
+      state.bonusCountdown = (state.bonusCountdown || 0) + 15;
+      state.countdown += 15;
+    }
+  }
+  /* 琉璃之契 */
+  if(hasPact('pact_frail')){
+    state.maxHp = 50;
+    if(state.hp > 50) state.hp = 50;
+  }
+  /* 倒帶之契：讓所有副本都擁有 echo 與 trail */
+  if(hasPact('pact_rewind') || currentDungeonId === 5 || currentDungeonId === 6){
+    if(state.echo == null) state.echo = 3;
+    if(!state.trail) state.trail = [];
+  }
+  if(typeof updateHP === 'function') updateHP();
+  if(typeof updateD5HUD === 'function') updateD5HUD();
+}
+
+function setupRuntimeHooks(){
+  /* 擴展 updateD5HUD 與 d5Rewind：支援第六副本及「倒帶之契」開啟時的任意副本 */
+  if(typeof window.updateD5HUD === 'function' && !window.updateD5HUD.__v53){
+    var _ud5 = window.updateD5HUD;
+    window.updateD5HUD = function(){
+      var box = $('d5-status');
+      var tideChip = box ? box.querySelector('.d5-tide-chip') : null;
+      var allowRewind = (currentDungeonId === 5 || currentDungeonId === 6 || hasPact('pact_rewind'));
+      if(!box || !window.state || !allowRewind){
+        return _ud5.apply(this, arguments);
+      }
+      box.style.display = '';
+      if(tideChip) tideChip.style.display = (currentDungeonId === 5) ? '' : 'none';
+      var echoEl = $('d5-echo-count');
+      if(echoEl) echoEl.textContent = (state.echo != null ? state.echo : 3);
+      var rwBtn = $('d5-rewind-btn');
+      if(rwBtn){
+        var sc = SCENES && SCENES[state.currentScene];
+        var isEnding = !sc || !sc.choices || sc.choices.length === 0;
+        var can = !!(state.trail && state.trail.length) && ((state.echo || 0) > 0) && !isEnding;
+        rwBtn.disabled = !can;
+      }
+    };
+    window.updateD5HUD.__v53 = true;
+  }
+
+  window.d5Rewind = function(){
+    if(!window.state) return;
+    var allowRewind = (currentDungeonId === 5 || currentDungeonId === 6 || hasPact('pact_rewind'));
+    if(!allowRewind) return;
+    var trail = state.trail || [];
+    var sc = SCENES && SCENES[state.currentScene];
+    if(sc && sc.choices && sc.choices.length === 0){ showToast('這裡已經是結局，無法迴溯'); return; }
+    if(trail.length === 0){ showToast('前面沒有可以倒帶的路'); return; }
+    if((state.echo || 0) <= 0){ showToast('迴光粒用盡了'); return; }
+    var prev = trail.pop();
+    state.echo--;
+    unlockAchievement('ach_d5_rewind');
+    window.__d5rewinding = true;
+    try{ goToScene(prev); }finally{ window.__d5rewinding = false; }
+    showToast('迴溯 — 剩餘 ' + state.echo + ' 粒');
+    if(typeof updateD5HUD === 'function') updateD5HUD();
+  };
+
+  /* 包裝 goToScene：在所有支援迴溯的副本記錄足跡 */
+  if(typeof window.goToScene === 'function' && !window.goToScene.__v53){
+    var _gts = window.goToScene;
+    window.goToScene = function(id){
+      try{
+        if(window.state && (currentDungeonId === 6 || hasPact('pact_rewind')) && !window.__d5rewinding){
+          var sc = SCENES && SCENES[id];
+          var isEnding = !sc || !sc.choices || sc.choices.length === 0;
+          var cur = state.currentScene;
+          if(!isEnding && cur && cur !== id){
+            state.trail = state.trail || [];
+            if(state.trail[state.trail.length - 1] !== cur){
+              state.trail.push(cur);
+              if(state.trail.length > 24) state.trail.shift();
+            }
+          }
+        }
+      }catch(e){}
+      var r = _gts.apply(this, arguments);
+      try{ if(typeof updateD5HUD === 'function') updateD5HUD(); }catch(e){}
+      return r;
+    };
+    window.goToScene.__v53 = true;
+  }
+
+  /* 包裝 resetDungeonState：套用契約與占卜加成 */
+  if(typeof window.resetDungeonState === 'function' && !window.resetDungeonState.__v53){
+    var _rds = window.resetDungeonState;
+    window.resetDungeonState = function(){
+      var r = _rds.apply(this, arguments);
+      try{
+        if(window.state){
+          state.__arcanaApplied = false;
+          state.__pactAbundanceApplied = false;
+        }
+        applyPactsToRuntime();
+      }catch(e){}
+      return r;
+    };
+    window.resetDungeonState.__v53 = true;
+  }
+
+  /* 包裝 damage：支援「琉璃之契」1.5 倍傷害與「手術刀」命牌減半 */
+  if(typeof window.damage === 'function' && !window.damage.__v53){
+    var _dmg = window.damage;
+    window.damage = function(amount){
+      var amt = amount;
+      if(hasPact('pact_frail')) amt = Math.ceil(amt * 1.5);
+      if(window.state && state.arcanaHalfDmg) amt = Math.max(1, Math.floor(amt * 0.5));
+      return _dmg.call(this, amt);
+    };
+    window.damage.__v53 = true;
+  }
+
+  /* 包裝 isUnlocked：支援「漫遊之契」直接解鎖全部副本 */
+  if(typeof window.isUnlocked === 'function' && !window.isUnlocked.__v53){
+    var _isu = window.isUnlocked;
+    window.isUnlocked = function(id){
+      if(hasPact('pact_voyager')) return true;
+      return _isu.apply(this, arguments);
+    };
+    window.isUnlocked.__v53 = true;
+  }
+
+  /* 包裝 renderChoices：支援「洞悉之契」微標籤 + 語言即時翻譯 */
+  if(typeof window.renderChoices === 'function' && !window.renderChoices.__v53){
+    var _rc = window.renderChoices;
+    window.renderChoices = function(choices){
+      var r = _rc.apply(this, arguments);
+      try{
+        var c = document.getElementById('choices');
+        if(!c) return r;
+        var btns = c.querySelectorAll('.choice-btn');
+        var readArr = (typeof getReadScenes === 'function') ? getReadScenes() : [];
+        /* 重建可見選項對應表 */
+        var valid = (choices || []).filter(function(ch){ return !ch.condition || ch.condition(); });
+        var useless = valid.filter(function(ch){ return ch.useless && sceneChoiceState.pickedUseless.indexOf(ch.text) === -1; });
+        var main = valid.filter(function(ch){ return !ch.useless; });
+        var toShow = (useless.length > 0 && main.length > 0) ? (sceneChoiceState.hasShownMain ? useless.concat(main) : useless) : (useless.length === 0 && main.length > 0 ? main : valid);
+
+        btns.forEach(function(btn, idx){
+          var ch = toShow[idx];
+          var txtSpan = btn.querySelector('.txt');
+          if(txtSpan && ch){
+            txtSpan.__origText = ch.text;
+            txtSpan.textContent = t(ch.text);
+          }
+          if(hasPact('pact_insight') && ch && !btn.querySelector('.v53-choice-tag')){
+            var tag = document.createElement('span');
+            var label = '主線', cls = 'main';
+            if(ch.useless || ch.observe){ label = '探索'; cls = ''; }
+            else if(ch.danger){ label = '危險'; cls = 'danger'; }
+            else if(ch.action && String(ch.action).indexOf('openPuzzle') !== -1){ label = '謎題'; cls = 'puzzle'; }
+            else if(ch.next && SCENES && SCENES[ch.next]){
+              var sid = SCENES[ch.next].sceneId || ch.next;
+              if(readArr.indexOf(sid) !== -1){ label = '已讀'; cls = 'read'; }
+            }
+            tag.className = 'v53-choice-tag ' + cls;
+            tag.textContent = t(label);
+            btn.appendChild(tag);
+          }
+        });
+      }catch(e){}
+      return r;
+    };
+    window.renderChoices.__v53 = true;
+  }
+}
+
+/* ============================================================
+ * 8. UI/UX 優化：語言切換列、頂欄「典藏」收納抽屜、謎題互動鍵盤、設定頁語言列
+ * ============================================================ */
+function buildLangBarHTML(){
+  var cur = (window.I18N && I18N.lang) || 'zh-Hant';
+  return '<div class="v53-lang-bar" role="group" aria-label="Language Selector">'+
+    '<button type="button" class="v53-lang-btn'+(cur==='zh-Hant'?' on':'')+'" data-lang-btn="zh-Hant">繁體</button>'+
+    '<button type="button" class="v53-lang-btn'+(cur==='zh-Hans'?' on':'')+'" data-lang-btn="zh-Hans">简体</button>'+
+    '<button type="button" class="v53-lang-btn'+(cur==='en'?' on':'')+'" data-lang-btn="en">EN</button>'+
+    '<button type="button" class="v53-lang-btn'+(cur==='ja'?' on':'')+'" data-lang-btn="ja">日本語</button>'+
+  '</div>';
+}
+
+function bindLangButtons(root){
+  if(!root) return;
+  root.querySelectorAll('[data-lang-btn]').forEach(function(b){
+    b.onclick = function(e){
+      if(e && e.stopPropagation) e.stopPropagation();
+      if(window.I18N) I18N.setLang(b.getAttribute('data-lang-btn'));
+    };
+  });
+}
+
+function setupCleanUI(){
+  /* A. 開場分屏標題與主標題頁加入四語切換列 */
+  var splitWrap = document.querySelector('#split-overlay .split-title-wrap');
+  if(splitWrap && !splitWrap.querySelector('.v53-lang-bar')){
+    var d1 = document.createElement('div');
+    d1.innerHTML = buildLangBarHTML();
+    var bar1 = d1.firstChild;
+    var verEl = document.getElementById('title-version');
+    splitWrap.insertBefore(bar1, verEl || null);
+    bindLangButtons(bar1);
+  }
+  var hubTitleInner = document.querySelector('#hub-title-screen .hub-title-inner');
+  if(hubTitleInner && !hubTitleInner.querySelector('.v53-lang-bar')){
+    var d2 = document.createElement('div');
+    d2.innerHTML = buildLangBarHTML();
+    var bar2 = d2.firstChild;
+    hubTitleInner.appendChild(bar2);
+    bindLangButtons(bar2);
+  }
+
+  /* B. 迴廊頂欄加入「語言切換」與「手札／契約」入口 */
+  var hubRight = document.querySelector('.hub-header-right');
+  if(hubRight && !hubRight.querySelector('.v53-hub-lang-btn')){
+    var langBtn = document.createElement('button');
+    langBtn.type = 'button';
+    langBtn.className = 'v53-hub-lang-btn';
+    langBtn.title = '切換語言 / Language / 言語';
+    langBtn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="v53-lang-pill-label">'+(window.I18N?I18N.LABELS[I18N.lang]:'繁體')+'</span>';
+    langBtn.onclick = function(){ if(window.I18N) I18N.cycleLang(); };
+    hubRight.insertBefore(langBtn, hubRight.firstChild);
+
+    var pactBtn = document.createElement('button');
+    pactBtn.type = 'button';
+    pactBtn.className = 'hub-gallery-btn';
+    pactBtn.textContent = '手 札';
+    pactBtn.onclick = function(){
+      var nbBtn = document.querySelector('.v4-nb-btn');
+      if(nbBtn) nbBtn.click();
+    };
+    hubRight.insertBefore(pactBtn, hubRight.children[1] || null);
+  }
+
+  /* C. 遊戲頂欄收納優化：將次要查詢按鈕（記、就、史、支、命令面板）收納進「典藏」抽屜，並加上一鍵語言按鈕 */
+  var topRight = document.querySelector('.top-bar-right');
+  if(topRight && !topRight.querySelector('.v53-more-wrap')){
+    var drawerWrap = document.createElement('div');
+    drawerWrap.className = 'v53-more-wrap';
+    var moreBtn = document.createElement('button');
+    moreBtn.type = 'button';
+    moreBtn.className = 'icon-btn';
+    moreBtn.title = '典藏選單';
+    moreBtn.textContent = '典';
+    var drawer = document.createElement('div');
+    drawer.className = 'v53-more-drawer';
+    drawerWrap.appendChild(moreBtn);
+    drawerWrap.appendChild(drawer);
+
+    /* 把次要按鈕移入抽屜（保留原節點與事件） */
+    var allBtns = Array.prototype.slice.call(topRight.querySelectorAll('.icon-btn'));
+    allBtns.forEach(function(b){
+      var oc = b.getAttribute('onclick') || '';
+      if(oc.indexOf('openNotes') !== -1 || oc.indexOf('openAchievements') !== -1 ||
+         oc.indexOf('openHistory') !== -1 || oc.indexOf('openBranchTree') !== -1 ||
+         b.classList.contains('v5-cmd-btn')){
+        drawer.appendChild(b);
+      }
+    });
+
+    /* 頂欄語言切換小鈕 */
+    var topLangBtn = document.createElement('button');
+    topLangBtn.type = 'button';
+    topLangBtn.className = 'icon-btn';
+    topLangBtn.title = '切換語言';
+    topLangBtn.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>';
+    topLangBtn.onclick = function(){ if(window.I18N) I18N.cycleLang(); };
+
+    var saveBtn = topRight.querySelector('button[onclick*="openSaveModal"]');
+    topRight.insertBefore(drawerWrap, saveBtn || null);
+    topRight.insertBefore(topLangBtn, saveBtn || null);
+
+    moreBtn.onclick = function(e){
+      e.stopPropagation();
+      drawer.classList.toggle('open');
+    };
+    document.addEventListener('click', function(e){
+      if(!drawerWrap.contains(e.target)) drawer.classList.remove('open');
+    });
+  }
+
+  /* D. 謎題彈窗互動數字/字母鍵盤 */
+  var puzInput = document.getElementById('puzzle-input');
+  if(puzInput && !document.getElementById('v53-keypad')){
+    var kp = document.createElement('div');
+    kp.id = 'v53-keypad';
+    kp.className = 'v53-keypad';
+    var keys = ['1','2','3','4','5','6','7','8','9','0',':',',','N','退格','清除'];
+    kp.innerHTML = keys.map(function(k){
+      var wide = (k === '清除') ? ' wide' : '';
+      return '<button type="button" class="v53-key'+wide+'" data-k="'+k+'">'+k+'</button>';
+    }).join('');
+    puzInput.parentNode.insertBefore(kp, puzInput.nextSibling);
+    kp.querySelectorAll('.v53-key').forEach(function(b){
+      b.onclick = function(){
+        var k = b.getAttribute('data-k');
+        if(k === '清除') puzInput.value = '';
+        else if(k === '退格') puzInput.value = puzInput.value.slice(0, -1);
+        else puzInput.value += k;
+        puzInput.focus();
+      };
+    });
+  }
+
+  /* E. 設置面板頂部插入四語切換列 */
+  if(typeof window.renderSettings === 'function' && !window.renderSettings.__v53Lang){
+    var _rs = window.renderSettings;
+    window.renderSettings = function(){
+      var r = _rs.apply(this, arguments);
+      try{
+        var body = document.getElementById('settings-body');
+        if(body && !body.querySelector('#v53-settings-lang-row')){
+          var cur = (window.I18N && I18N.lang) || 'zh-Hant';
+          var row = document.createElement('div');
+          row.className = 'setting-row';
+          row.id = 'v53-settings-lang-row';
+          row.innerHTML = '<div><div class="set-label">語言 / Language / 言語</div><div class="set-sub">即時切換介面與劇情語言（繁中／簡中／English／日本語）</div></div>'+
+            '<div class="seg">'+
+              '<button type="button" data-lang-btn="zh-Hant" class="'+(cur==='zh-Hant'?'on':'')+'">繁中</button>'+
+              '<button type="button" data-lang-btn="zh-Hans" class="'+(cur==='zh-Hans'?'on':'')+'">简中</button>'+
+              '<button type="button" data-lang-btn="en" class="'+(cur==='en'?'on':'')+'">EN</button>'+
+              '<button type="button" data-lang-btn="ja" class="'+(cur==='ja'?'on':'')+'">日本語</button>'+
+            '</div>';
+          body.insertBefore(row, body.firstChild);
+          bindLangButtons(row);
+        }
+        if(window.I18N && I18N.lang !== 'zh-Hant'){
+          var modal = document.getElementById('settings-modal');
+          if(modal) I18N.setLang(I18N.lang);
+        }
+      }catch(e){}
+      return r;
+    };
+    window.renderSettings.__v53Lang = true;
+  }
+
+  /* F. 迴廊手札注入「契約」「占卜」「萬門」三個新分頁 */
+  var injectTabs = function(){
+    var nb = document.getElementById('v4-notebook');
+    if(!nb){ setTimeout(injectTabs, 180); return; }
+    var tabs = nb.querySelector('.v4-tabs');
+    var body = nb.querySelector('#v4-nb-body');
+    if(!tabs || !body || tabs.querySelector('[data-t="v53-pacts"]')) return;
+
+    [
+      {id:'v53-pacts',  label:'契 約'},
+      {id:'v53-arcana', label:'占 卜'},
+      {id:'v53-codex',  label:'萬 門'}
+    ].forEach(function(def){
+      var b = document.createElement('button');
+      b.className = 'v4-tab';
+      b.setAttribute('data-t', def.id);
+      b.textContent = def.label;
+      tabs.appendChild(b);
+    });
+
+    tabs.addEventListener('click', function(e){
+      var b = e.target.closest('.v4-tab');
+      if(!b) return;
+      var tid = b.getAttribute('data-t');
+      if(tid !== 'v53-pacts' && tid !== 'v53-arcana' && tid !== 'v53-codex') return;
+      tabs.querySelectorAll('.v4-tab').forEach(function(x){ x.classList.remove('on'); });
+      b.classList.add('on');
+      if(tid === 'v53-pacts') renderPactsTab(body);
+      else if(tid === 'v53-arcana') renderArcanaTab(body);
+      else if(tid === 'v53-codex') renderCodexTab(body);
+    });
+  };
+  injectTabs();
+}
+
+/* ============================================================
+ * 9. 升級版本號至 v5.3.0（歷經 v5.0.1 -> v5.1.0 -> v5.2.0 -> v5.3.0）
+ * ============================================================ */
+V5.addAchievements(5, [
+  {id:'v53_arcana_first', name:'初窺門扉之占', desc:'抽取第一張門扉占卜命運牌'},
+  {id:'v53_arcana_all',   name:'十二門占卜師', desc:'集齊全部十二張門扉占卜命運牌'}
+]);
+
+V5.registerSystem('v53-expansion', function(){
+  registerNewDialogues();
+  setupRuntimeHooks();
+  setupCleanUI();
+  /* 為第四、五副本相關場景掛上可交談的 NPC */
+  try{
+    if(sceneRefs[4] && sceneRefs[4].gate) sceneRefs[4].gate.npc = 'gatekeeper';
+    if(sceneRefs[5] && sceneRefs[5].d5_echo_self) sceneRefs[5].d5_echo_self.npc = 'tide_echo';
+  }catch(e){}
+});
+
+V5.onBoot(function(){
+  try{
+    window.VERSION = '5.3.0';
+    if(window.CHANGELOG){
+      var newEntries = [
+        {version:'5.3.0', type:'minor', changes:[
+          '新增四語本地化系統：完整支援繁體中文、簡體中文、English、日本語，於標題頁、迴廊頂欄、遊戲頂欄與設置面板皆可即時無損熱切換。',
+          '迴廊手札新增「萬門之書」分頁：內建互動式 SVG 跨副本人物關係星圖（13 位核心角色、18 條因果連線）與世界觀紀事詞條。',
+          '頂欄 UI/UX 減負優化：將次要查閱按鈕收納至「典藏」抽屜，保留快捷鍵與轉盤相容，畫面更清爽克制。'
+        ]},
+        {version:'5.2.0', type:'minor', changes:[
+          '第六副本「終焉觀測站」（房號 03:17）上線：16 個新場景、6 個結局（含真結局「03:18 的破曉」）、6 項成就、2 道謎題、2 件遺物與 2 首合成 BGM 主題。',
+          '新增「門扉占卜」系統：12 張純 SVG 繪製的命運牌，抽取並裝備後賦予開局被動祝福。',
+          '謎題彈窗新增互動式數字／字母鍵盤，支援滑鼠與觸控直接點按輸入。'
+        ]},
+        {version:'5.1.0', type:'minor', changes:[
+          '新增「迴廊契約」系統：提供洞悉之契（選項走向微標籤）、倒帶之契（全副本通用迴溯）、豐饒之契、琉璃之契與漫遊之契 5 項可自由開關的修正規則。',
+          '補完第四副本「守門人」、第五副本「水面的倒影」與第六副本「陳教授」完整互動對話樹。'
+        ]},
+        {version:'5.0.1', type:'patch', changes:[
+          '徹底修復 22 項核心與細微 Bug：修復結局前綴導致第一副本繼承與雙面成就無法觸發、合成物品導致劇情判定失效、銅皮印與沙漏印加成被覆蓋、原生 confirm 阻斷、第五副本潮汐與迴光粒存讀檔遺失等問題。'
+        ]}
+      ];
+      for(var i = newEntries.length - 1; i >= 0; i--){
+        var entry = newEntries[i];
+        if(!CHANGELOG.some(function(c){ return c.version === entry.version; })){
+          CHANGELOG.unshift(entry);
+        }
+      }
+    }
+    var verEl = document.getElementById('title-version');
+    if(verEl && typeof getVersionDisplay === 'function'){
+      verEl.textContent = 'v ' + getVersionDisplay();
+    }
+    if(typeof render === 'function' && document.getElementById('hub-screen') && document.getElementById('hub-screen').classList.contains('show')){
+      render();
+    }
+  }catch(e){ console.error('v5.3 boot error:', e); }
+});
+
 })();
 
 </script>
