@@ -1,0 +1,727 @@
+{
+  "d5_prologue": {
+    "id": "d5_prologue",
+    "room": "≈",
+    "roomName": "入水",
+    "sceneId": "5-序章",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你以為推開最後那扇門，會看見一盞燈。</p>",
+      "<p>門後沒有燈。是水。</p>",
+      "<p>不是淹進來的那種水——是你自己，慢慢往下沉。沒有壓力，沒有嗆咳，像終於躺下。四周的黑是溫的，溫得像凌晨三點十七分那間沒人再進來的辦公室。</p>",
+      "<p>你低頭。手裡還攥著點什麼。不是鑰匙，不是門牌——是一些「沒走完的」。一通沒打的電話，一條岔開後沒轉進去的路，一個沒說出口的對不起。它們沒有隨著門關上而消失。它們沉在這裡。</p>",
+      "<p>原來這片海，收容的是所有「你沒選的那條路」。</p>",
+      "<p>上方有光。很遠，一明一暗，像潮汐，也像呼吸。你朝著那光，划了第一下。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "朝著那點光，游到能站腳的地方",
+        "next": "d5_shore",
+        "personality": {
+          "calm": 5
+        }
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_shore": {
+    "id": "d5_shore",
+    "room": "≈",
+    "roomName": "汐岸",
+    "sceneId": "5-汐岸",
+    "mapZone": "d5_shore",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你踩到底。是一道沙。沙的顏色不是黃，是褪色的金，像舊紙張的邊。</p>",
+      "<p>海在你腳邊一進一退。你蹲下，把手貼上去——它是活的。它正在漲，或者正在退。</p>",
+      "<p class=\"system-msg\">現在是「平潮」。潮汐決定哪裡有路：退潮露出海床，漲潮浮起光筏。</p>",
+      "<p>沙的盡頭，一口發著幽光的井。海的正前方，一道半沉在水裡的石階，若隱若現。</p>"
+    ],
+    "textReturn": [
+      "<p>汐岸還是那道褪色的金沙。海在你腳邊，平潮。</p>"
+    ],
+    "choices": [
+      {
+        "text": "走向那口發著幽光的潮井",
+        "next": "d5_well",
+        "personality": {
+          "cautious": 2
+        }
+      },
+      {
+        "text": "走下剛露出水面的海床（退潮才見）",
+        "next": "d5_seabed",
+        "personality": {
+          "cautious": 3
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "登上浮光凝成的筏（漲潮才浮起）",
+        "next": "d5_raft",
+        "personality": {
+          "cautious": 3
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "涉水走向正前方那道半沉的石階（海心）",
+        "next": "d5_deepgate",
+        "personality": {
+          "calm": 3
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "放鬆身子，不再掙扎，任自己往下沉",
+        "next": "d5_end_drown",
+        "danger": true,
+        "personality": {
+          "cautious": -10
+        }
+      },
+      {
+        "text": "蹲下，看平靜無波的水面",
+        "next": null,
+        "observe": "水面映出的不是你的臉。是另一個你，站在一個你沒去過的地方，回頭朝你揮手。你直起身。"
+      },
+      {
+        "text": "疏通汐岸沙下的「迴光水脈石槽」（小遊戲）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_well": {
+    "id": "d5_well",
+    "room": "≈",
+    "roomName": "潮井",
+    "sceneId": "5-潮井",
+    "mapZone": "d5_well",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>井沿是圓的，裡頭沒有水。你往下看，看見的是海的「裡側」——一層一層的潮，像翻開的書頁。</p>",
+      "<p>井壁刻著一行字，被水波磨得發亮：</p>",
+      "<p>「伸手進來。你推一下，海就換一個方向。」</p>",
+      "<p>井沿縫裡，卡著一粒會發光的東西，像凝住的一滴光。</p>"
+    ],
+    "textReturn": [
+      "<p>潮井安靜地等著。海現在是平潮。</p>"
+    ],
+    "choices": [
+      {
+        "text": "把手伸進井裡，推動潮汐",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "解開井壁那道問題（潮井之問）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "拾起井沿縫裡那粒凝住的光",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回汐岸",
+        "next": "d5_shore"
+      },
+      {
+        "text": "轉動潮井內壁的「潮汐導流盤」（小遊戲）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_seabed": {
+    "id": "d5_seabed",
+    "room": "≈",
+    "roomName": "海床",
+    "sceneId": "5-海床",
+    "mapZone": "d5_seabed",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>只有退潮時，這裡才露得出來。</p>",
+      "<p>海床上立著兩扇門。一半還泡在水裡，門牌的位置被海藻吃掉了。它們不是給你走的——是你當初沒走的。</p>",
+      "<p>再往低處，一座淹了一半的禮拜堂，屋頂露出水面，鐘樓歪著。鐘停了。</p>",
+      "<p>沙裡埋著一點光。</p>"
+    ],
+    "textReturn": [
+      "<p>海床還是那兩扇半沉的門。潮水低低地伏著。</p>"
+    ],
+    "choices": [
+      {
+        "text": "推開左邊那扇：沒打出去的那通電話",
+        "next": "d5_door_unspoken",
+        "personality": {
+          "altruism": 3
+        }
+      },
+      {
+        "text": "推開右邊那扇：岔路口沒轉進去的那條路",
+        "next": "d5_door_untaken",
+        "personality": {
+          "calm": 3
+        }
+      },
+      {
+        "text": "走進那座淹了一半的禮拜堂",
+        "next": "d5_chapel",
+        "personality": {
+          "cautious": 2
+        }
+      },
+      {
+        "text": "拾起沙裡埋著的那點光",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "在海床低處坐下，不願回到岸上",
+        "next": "d5_end_tide",
+        "danger": true,
+        "personality": {
+          "cautious": -8
+        }
+      },
+      {
+        "text": "退回汐岸",
+        "next": "d5_shore"
+      },
+      {
+        "text": "【隱藏結局 · 深海歸鄉】順著溫暖的底層洋流潛往最深處，以深海為故鄉",
+        "next": "d5_end_v61_deep_home"
+      },
+      {
+        "text": "從海床石縫裡撿起那枚停擺的舊羅盤（迴光遺物）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "潛入石縫深處的「海心珊瑚密室」（隱藏密室）",
+        "next": "d5_secret_coral"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_door_unspoken": {
+    "id": "d5_door_unspoken",
+    "room": "≈",
+    "roomName": "電話",
+    "sceneId": "5-海床·電話",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>門後不是房間。是一個你認得的傍晚。</p>",
+      "<p>桌上一部老式電話，燈在閃。你知道它是誰——那個你很久沒聯絡的人。你當時拿起話筒，又放下了。</p>",
+      "<p>這次你沒有放下。你撥了號。嘟——嘟——三聲之後，那頭接起來了。沒有責備，沒有抱怨，只是一個很平靜的聲音：「我一直在等你打來。」</p>",
+      "<p>你說了該說的話。掛斷的時候，電話輕輕化進了海裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "回到海床",
+        "next": "d5_seabed"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_door_untaken": {
+    "id": "d5_door_untaken",
+    "room": "≈",
+    "roomName": "岔路",
+    "sceneId": "5-海床·岔路",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>門後是一個岔口。你站在當時猶豫過的那個角上。</p>",
+      "<p>左邊那條，你走了。右邊那條，你沒轉。這次你轉了進去。</p>",
+      "<p>路的盡頭沒有奇蹟，也沒有懲罰。只是另一種尋常：另一間辦公室，另一杯涼掉的咖啡，另一個一樣會累的你。原來選哪條，都會走到某個三點十七分。</p>",
+      "<p>你笑了一下。這次不是苦笑。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "回到海床",
+        "next": "d5_seabed"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_chapel": {
+    "id": "d5_chapel",
+    "room": "≈",
+    "roomName": "沉鐘",
+    "sceneId": "5-海床·鐘",
+    "mapZone": "d5_deep",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>禮拜堂的長椅泡在水裡，聖壇上沒有十字架，掛著一面鏡子。</p>",
+      "<p>鐘樓的鐘垂著，指針隨著海水輕輕晃。你走近——鐘面是溫的，指針停在某個你一輩子不會忘的時刻。</p>",
+      "<p>「把你倒下的那個凌晨，說給海聽。」一個很遠的聲音說，「說對了，海就認得你。」</p>"
+    ],
+    "textReturn": [
+      "<p>鐘還是停在那個時刻。鏡子裡這次是你自己。</p>"
+    ],
+    "choices": [
+      {
+        "text": "把那個時間，輕聲說給鐘聽",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "回到海床",
+        "next": "d5_seabed"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_raft": {
+    "id": "d5_raft",
+    "room": "≈",
+    "roomName": "光筏",
+    "sceneId": "5-光筏",
+    "mapZone": "d5_raft",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>只有漲潮時，這塊光才浮得起來。</p>",
+      "<p>它不是木頭，是凝住的、會發光的浪。你站上去，它輕輕晃，不沉。</p>",
+      "<p>海的盡頭，一座燈塔，一明一暗地掃。更近的地方，水面上站著一個人——看起來很像你。</p>",
+      "<p>浪尖之間，卡著一粒光。</p>"
+    ],
+    "textReturn": [
+      "<p>光筏浮在漲起來的海上。燈塔還在掃。</p>"
+    ],
+    "choices": [
+      {
+        "text": "划向那座一明一暗的燈塔",
+        "next": "d5_lighthouse",
+        "personality": {
+          "calm": 3
+        }
+      },
+      {
+        "text": "走近水面上那個「另一個你」",
+        "next": "d5_echo_self",
+        "personality": {
+          "cautious": 2
+        }
+      },
+      {
+        "text": "拾起浪尖間那粒光",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回汐岸",
+        "next": "d5_shore"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_lighthouse": {
+    "id": "d5_lighthouse",
+    "room": "≈",
+    "roomName": "燈塔",
+    "sceneId": "5-燈塔",
+    "mapZone": "d5_deep",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>燈塔的樓梯鏽了，但還能走。頂上的燈罩是裂的，光從縫裡漏出來，一道一道掃過海面。</p>",
+      "<p>每掃一次，海就回一次聲。你靠在欄杆上數。</p>",
+      "<p>「十三次迴聲。」一個很輕的聲音說，「其中三次是空的——那是你已經走完的路，不會再回頭。真正還在等你的迴聲，有幾次？」</p>"
+    ],
+    "textReturn": [
+      "<p>燈塔還在一明一暗。海的迴聲數過一次了。</p>"
+    ],
+    "choices": [
+      {
+        "text": "把那個數字說出來",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "伸手把那盞裂燈，點得更亮一些",
+        "next": "d5_end_lighthouse",
+        "personality": {
+          "altruism": 15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "回到光筏",
+        "next": "d5_raft"
+      },
+      {
+        "text": "拾起燈塔欄杆下那枚帶鹽霜的海螺（迴光遺物）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_echo_self": {
+    "id": "d5_echo_self",
+    "room": "≈",
+    "roomName": "倒影",
+    "sceneId": "5-光筏·倒影",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>水面上那個人，和你長得一樣。但他站得比你鬆，手插在口袋裡，像沒什麼好輸的。</p>",
+      "<p>他是你在岔路口選了另一條之後，長成的那個人。</p>",
+      "<p>「不用對不起。」他先開口，「也不用羨慕。我那條路，一樣會卡在某個凌晨。只不過——我後來學會了在水裡呼吸。」</p>",
+      "<p>他朝你伸出手，掌心里是一粒迴光粒。「拿著。倒帶的時候，用得上。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "接過那粒光，點點頭",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "回到光筏",
+        "next": "d5_raft"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_deepgate": {
+    "id": "d5_deepgate",
+    "room": "≈",
+    "roomName": "海心",
+    "sceneId": "5-海心",
+    "mapZone": "d5_deep",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>石階把你帶到海最深的地方。水在這裡不動，像一面垂直的鏡。</p>",
+      "<p>鏡子中央有一道縫。縫後面，是所有你沒做完的事沉在一起的重量。</p>",
+      "<p>水面上方，光透下來——那是你最初划向的那點。這裡，你可以選擇怎麼離開。</p>",
+      "<p class=\"system-msg\">你身上還有 3 粒迴光。它能讓你倒帶，也能讓你走進最深的那道縫。</p>"
+    ],
+    "textReturn": [
+      "<p>海心安靜地立著。鏡縫裡，是你所有未說出口的時刻。</p>"
+    ],
+    "choices": [
+      {
+        "text": "深吸一口氣，向上浮，浮向那點光",
+        "next": "d5_end_breath",
+        "personality": {
+          "calm": 5
+        }
+      },
+      {
+        "text": "與兩扇門後的自己和解，踏上石階上岸",
+        "next": "d5_end_return",
+        "personality": {
+          "altruism": 10
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "水面漂來一隻紙貓，把它撈起來",
+        "next": "d5_papercat",
+        "personality": {
+          "altruism": 3
+        }
+      },
+      {
+        "text": "把所有迴光粒倒出來，強行倒回落水前那一刻",
+        "next": "d5_end_loop",
+        "danger": true,
+        "personality": {
+          "cautious": -15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "走進鏡子中央那道最深的縫",
+        "next": "d5_end_true",
+        "personality": {
+          "calm": 15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "退回汐岸，再走一趟",
+        "next": "d5_shore"
+      },
+      {
+        "text": "【隱藏結局 · 深海歸鄉】向最深處的海溝繼續下潛，永遠留在深海不回來",
+        "next": "d5_end_v61_deep_home"
+      },
+      {
+        "text": "【真結局】傾倒「定潮玻璃瓶」，踏著星光海面登岸",
+        "next": "d5_end_true_starlight",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_papercat": {
+    "id": "d5_papercat",
+    "room": "≈",
+    "roomName": "紙貓",
+    "sceneId": "5-海心·紙貓",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>一隻紙摺的小貓，從深處漂上來。摺得很拙劣，角對角，邊對邊——是孩子的手藝。</p>",
+      "<p>你認得它。也許是在某張空床的床腳邊，也許是在某個你以為早就放下的地方。它一路漂到這片海，身上一個角都沒皺。</p>",
+      "<p>你把它從水裡撈起來，瀝乾。它輕輕蹭了蹭你的掌心。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "回到海心",
+        "next": "d5_deepgate"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_drown": {
+    "id": "d5_end_drown",
+    "room": "—",
+    "roomName": "沉",
+    "sceneId": "5-結局·沉",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你放鬆了身子。</p>",
+      "<p>沒有嗆水，沒有恐慌。海溫溫地托著你，一點一點往下。上方那點光越來越遠。</p>",
+      "<p>你想：原來不掙扎，是這樣的安靜。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_tide": {
+    "id": "d5_end_tide",
+    "room": "≈",
+    "roomName": "漲",
+    "sceneId": "5-結局·吞",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在海床低處坐下，不想動。</p>",
+      "<p>然後你感覺到水在漲。開始是漫過膝蓋，接著是腰，是肩。你賴著不走——也許是懶，也許是覺得哪裡都一樣。</p>",
+      "<p>等你想起該起來的時候，海床已經回到了水下。那兩扇門，關上了。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_breath": {
+    "id": "d5_end_breath",
+    "room": "≈",
+    "roomName": "浮",
+    "sceneId": "5-結局·呼吸",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你深吸一口氣——奇怪的是，在水裡，你居然吸得到。</p>",
+      "<p>原來那個「另一個你」說的是真的：人是可以學會在海裡呼吸的。不是逃出去，是學會和這片收容你遺憾的海，一起待著。</p>",
+      "<p>你慢慢上浮，浮到那點光裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_lighthouse": {
+    "id": "d5_end_lighthouse",
+    "room": "≈",
+    "roomName": "點燈",
+    "sceneId": "5-結局·燈",
+    "mapZone": "d5_deep",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你把那盞裂燈，轉得更亮了一些。</p>",
+      "<p>光掃過海面的時候，你看見遠處有好幾個影子，正往下沉。它們看見了光，停住了，開始朝這邊轉。</p>",
+      "<p>你不是為自己點的燈。你是為下一批沉進來、還在慌的人。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_return": {
+    "id": "d5_end_return",
+    "room": "≈",
+    "roomName": "上岸",
+    "sceneId": "5-結局·和",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你走上那道石階。</p>",
+      "<p>那通電話你打過了，那條路你走過了。它們沒有把你的人生改寫——它們只是，終於不再在你背後發出聲音。</p>",
+      "<p>你回頭看了一眼海。海平靜地伏著，像一本闔上的書。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_loop": {
+    "id": "d5_end_loop",
+    "room": "—",
+    "roomName": "倒帶",
+    "sceneId": "5-結局·循環",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你把口袋裡所有的迴光粒，一把倒進了海心。</p>",
+      "<p>水開始往回走。浪退回去，鐘倒著蕩，那通電話自己掛斷了，那條路退回岔口。</p>",
+      "<p>你看見自己，又回到了入水的那一刻。你想：這次我一定不會選錯。</p>",
+      "<p>可是迴光粒用完了。你被困在這一秒裡，無限地、重新往下沉。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_true": {
+    "id": "d5_end_true",
+    "room": "≈",
+    "roomName": "迴光",
+    "sceneId": "5-結局·真",
+    "mapZone": "d5_deep",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你走進鏡子中央那道最深的縫。</p>",
+      "<p>縫後面不是黑暗。是光——所有你沒選的路、沒說的話、沒撈起的紙貓，在這裡全都化成了很淡的光。它們沒有被浪磨掉，只是在等你來看一眼。</p>",
+      "<p>你口袋裡的紙貓輕輕跳下來，落在光裡，安靜地坐下。那個另一個你，也站在光裡，朝你最後一次揮手，然後淡了。</p>",
+      "<p>你學會了在海裡呼吸，也點過一盞燈。這片收容遺憾的海，終於為你漲起一道溫的潮，把你托了起來。</p>",
+      "<p>「原來，未選擇的路，也值得被看完。」那個很遠的聲音說。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_end_v61_deep_home": {
+    "id": "d5_end_v61_deep_home",
+    "room": "淵",
+    "roomName": "萬米海溝 · 深海歸鄉",
+    "sceneId": "5-隱藏·深海歸鄉",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你沒有踏上返航的石階，而是收起迴光粒，朝著迴光之海最深處的發光海溝<strong>繼續下潛，決定不再回來</strong>。</p>",
+      "<p>越往下潛，海水反而越發溫暖明亮。那些曾被你遺落的童年夢境與未說出口的道別，像發光的水母群一樣圍繞著你，迎接遊子歸鄉。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d5_secret_coral": {
+    "id": "d5_secret_coral",
+    "room": "淵",
+    "roomName": "海心珊瑚密室（密室）",
+    "sceneId": "5-隱藏密室",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在退潮海床的石縫深處發現了一座乾燥的「海心珊瑚密室」。石桌上擺著一枚裝滿星光的「定潮玻璃瓶」。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "拾取「定潮玻璃瓶」（迴光粒 +3，解鎖第五扇門新真結局）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回退潮海床",
+        "next": "d5_seabed"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d5_end_true_starlight": {
+    "id": "d5_end_true_starlight",
+    "room": "海",
+    "roomName": "星光海面 · 萬路皆歸",
+    "sceneId": "5-真結局II",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你打開「定潮玻璃瓶」，星光鋪滿了整片迴光之海。所有未曾踏上的岔路都在海面上化作發光的橋樑，送你走回真實的岸邊。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

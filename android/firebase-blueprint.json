@@ -1,0 +1,127 @@
+{
+  "entities": {
+    "CloudSave": {
+      "title": "CloudSave",
+      "description": "Cross-device cloud save snapshot for Infinite Gates storing global progress, settings, active session, chrono anchors, and save slots.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Owner Firebase Auth UID matching request.auth.uid."
+        },
+        "deviceLabel": {
+          "type": "string",
+          "description": "Human-readable name of the Android device that wrote this snapshot."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Optional Google account display name for sync diagnostics."
+        },
+        "clientUpdatedAtMs": {
+          "type": "integer",
+          "description": "Client epoch timestamp in milliseconds used to determine latest save progress."
+        },
+        "clearedDoorsCount": {
+          "type": "integer",
+          "description": "Number of cleared doors (0..14)."
+        },
+        "endingsCount": {
+          "type": "integer",
+          "description": "Number of discovered endings."
+        },
+        "achievementsCount": {
+          "type": "integer",
+          "description": "Number of unlocked achievements."
+        },
+        "memoryShards": {
+          "type": "integer",
+          "description": "Current memory shards balance."
+        },
+        "currentDoorId": {
+          "type": "integer",
+          "description": "Active or most recent door ID (1..14)."
+        },
+        "currentDoorName": {
+          "type": "string",
+          "description": "Display name of the active or most recent door."
+        },
+        "currentSceneId": {
+          "type": "string",
+          "description": "Active or most recent scene identifier."
+        },
+        "currentRoomName": {
+          "type": "string",
+          "description": "Active or most recent room display title."
+        },
+        "currentHp": {
+          "type": "integer",
+          "description": "Current or most recent HP value."
+        },
+        "saveSlotCount": {
+          "type": "integer",
+          "description": "Count of populated manual and autosave slots."
+        },
+        "progressData": {
+          "type": "object",
+          "description": "Native Firestore Map representation of GlobalProgress."
+        },
+        "settingsData": {
+          "type": "object",
+          "description": "Native Firestore Map representation of GameSettings."
+        },
+        "lastSessionData": {
+          "type": "object",
+          "description": "Optional native Firestore Map representation of LastSessionData."
+        },
+        "chronoAnchorsData": {
+          "type": "array",
+          "description": "Native Firestore List of up to 3 ChronoAnchorData maps."
+        },
+        "saveSlotsData": {
+          "type": "array",
+          "description": "Native Firestore List of manual and autosave SaveSlotData maps."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server-assigned creation timestamp via FieldValue.serverTimestamp()."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server-assigned last update timestamp via FieldValue.serverTimestamp()."
+        }
+      },
+      "required": [
+        "userId",
+        "deviceLabel",
+        "displayName",
+        "clientUpdatedAtMs",
+        "clearedDoorsCount",
+        "endingsCount",
+        "achievementsCount",
+        "memoryShards",
+        "currentDoorId",
+        "currentDoorName",
+        "currentSceneId",
+        "currentRoomName",
+        "currentHp",
+        "saveSlotCount",
+        "progressData",
+        "settingsData",
+        "chronoAnchorsData",
+        "saveSlotsData",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/cloud_saves/{saveId}": {
+      "schema": {
+        "$ref": "#/entities/CloudSave"
+      },
+      "description": "User-scoped cloud save snapshots owned exclusively by the authenticated Google user."
+    }
+  }
+}

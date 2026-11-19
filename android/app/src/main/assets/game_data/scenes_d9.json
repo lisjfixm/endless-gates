@@ -1,0 +1,512 @@
+{
+  "d9_prologue": {
+    "id": "d9_prologue",
+    "room": "99",
+    "roomName": "1999 · 盛夏走廊",
+    "sceneId": "9-序章",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p class=\"v60-prologue-why\"><strong>【歸途紀事 · 它為什麼存在】</strong><br>吃飽後沿路走回小時候。你發現主線裡的選擇，其實在十二歲就埋下了。</p>",
+      "<p>蟬鳴聲像潮水一樣灌進耳朵。頭頂的三葉吊扇吱呀吱呀地轉著，空氣裡是粉筆灰、木頭課桌與塑膠墊板的味道。</p>",
+      "<p>黑板報上用彩色粉筆寫著：「迎接西元 2000 年倒數」。你低頭看自己的手——那是一雙十二歲少年的手，手腕上戴著一隻 1999 年的舊式塑膠電子錶。</p>",
+      "<p class=\"system-msg\">迴廊低語：你已踏入第九扇門「小學 1999」。<br>特殊機制【童年選擇偏誤】：你擁有成年後的記憶與理性，但十二歲的身體會抗拒過於世故的「大人答案」。唯有先在福利社、操場與校刊室找回童年的信物，才能說服小時候的自己做出不留遺憾的選擇。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "推開「六年三班」的木門走進教室",
+        "next": "d9_classroom",
+        "personality": {
+          "calm": 5
+        }
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_classroom": {
+    "id": "d9_classroom",
+    "room": "6-3",
+    "roomName": "六年三班教室",
+    "sceneId": "9-教室",
+    "mapZone": "d9_class",
+    "mood": "safe",
+    "npc": [
+      "child_self",
+      "classmate_lin"
+    ],
+    "npcs": [],
+    "text": [
+      "<p>教室後排靠窗的座位上，坐著十二歲的「小陸衍」。他正低頭在一張數學考卷背面折紙飛機，旁邊座位是紮馬尾的同桌林小滿。</p>",
+      "<p>黑板上留著一道期末附加題，而抽屜裡塞著一本沒交出去的交換日記。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【大人視角】直接告訴小陸衍未來的標準答案（觸發童年選擇偏誤）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "解開黑板上的「1999 世紀末質數附加題」",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "下樓前往「紅土操場」",
+        "next": "d9_playground"
+      },
+      {
+        "text": "去一樓轉角的「合作社福利社」",
+        "next": "d9_store"
+      },
+      {
+        "text": "去走廊盡頭的「校刊編輯室」",
+        "next": "d9_magazine"
+      },
+      {
+        "text": "【P6 信物升級 · 記憶碎片】召喚童年自己幫忙直接解開一個謎題",
+        "next": "d9_v61_summon_child_puzzle",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 當大人】微笑著向十二歲的自己道別，選擇「當大人」走出童年",
+        "next": "d9_end_v61_grown_up"
+      },
+      {
+        "text": "前往走廊盡頭的「校刊編輯部」採訪同學撰寫頭版報導",
+        "next": "d9_editorial_club"
+      },
+      {
+        "text": "【支線連貫 8→9】拿出自助餐吃出的「記憶碎片」，與十二歲的自己展開額外對話（並領取小學校刊）",
+        "next": "d9_v60_shard_dialogue",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d9_playground": {
+    "id": "d9_playground",
+    "room": "操場",
+    "roomName": "紅土操場 · 樟樹下",
+    "sceneId": "9-操場",
+    "mapZone": "d9_playground",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>陽光穿過樟樹葉在紅土跑道上灑下碎金。單槓旁，一個叼著棒棒糖的小男孩正蹲在地上畫圈——那是十二歲的阿凱，還不是旅館裡的鏡像。</p>",
+      "<p>而在操場司令台後面，有一扇被藤蔓遮住的「舊體育器材室」鐵門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "用福利社買來的「彈珠汽水」與小阿凱交換「器材室銅鑰匙」",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "進入隱藏密室「舊體育器材室」（需器材室銅鑰匙）",
+        "next": "d9_secret_gym",
+        "hasCondition": true
+      },
+      {
+        "text": "返回六年三班教室",
+        "next": "d9_classroom"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d9_secret_gym": {
+    "id": "d9_secret_gym",
+    "room": "密",
+    "roomName": "舊體育器材室 · 時間膠囊",
+    "sceneId": "9-隱藏密室",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>跳箱後面放著一只生鏽的餅乾鐵盒，上面用奇異筆寫著：「給 2026 年還沒放棄算那條曲線的自己」。</p>",
+      "<p>裡面裝著一張手繪的「迴廊六門草圖」與一枚能消除童年選擇偏誤的「千禧紀念章」。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "收起「千禧紀念章」（徹底化解童年選擇偏誤）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回紅土操場",
+        "next": "d9_playground"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d9_store": {
+    "id": "d9_store",
+    "room": "福利社",
+    "roomName": "合作社福利社",
+    "sceneId": "9-福利社",
+    "mapZone": "d9_store",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>隔著綠色鐵窗，福利社阿姨正在清點冰櫃裡的袋裝冬瓜茶與彈珠汽水。牆上掛著牌子：「今日特價：彈珠汽水 10 元」。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "摸摸口袋裡的零用錢，買一瓶「1999 彈珠汽水」與一袋「冬瓜茶」（HP +15）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "返回六年三班教室",
+        "next": "d9_classroom"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d9_magazine": {
+    "id": "d9_magazine",
+    "room": "校刊",
+    "roomName": "校刊編輯室 · 油印間",
+    "sceneId": "9-校刊室",
+    "mapZone": "d9_magazine",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>校刊編輯室裡擺著一台手搖油印機，桌上攤著《1999 世紀末校刊》的最後一版蠟紙。標題寫著：「五十年後的你，想對現在的自己說什麼？」</p>",
+      "<p>放學鐘聲即將響起，十二歲的你跟了進來，仰頭看著你。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【真結局】出示「千禧紀念章」與「彩色粉筆星」，和小時候的自己一起把紙飛機擲出窗外",
+        "next": "d9_end_true",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局二】在校刊最後一版印下「03:18 記得抬頭休息」，改寫實驗室猝死的宿命",
+        "next": "d9_end_true_magazine",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局三】帶著同桌林小滿與小阿凱一起在夕陽下走出校門",
+        "next": "d9_end_true_friends",
+        "hasCondition": true
+      },
+      {
+        "text": "摸摸十二歲自己的頭，搭上放學路隊離開（普通結局·放學鐘聲）",
+        "next": "d9_end_normal"
+      },
+      {
+        "text": "把未來的論文公式抄在課本最後一頁（普通結局·超前筆記）",
+        "next": "d9_end_notes"
+      },
+      {
+        "text": "躲在福利社後面直到天黑（逃過一劫·夏夜留校）",
+        "next": "d9_end_survive"
+      },
+      {
+        "text": "強迫十二歲的自己背誦高等數學公式，導致認知崩潰（壞結局·童年偏誤反噬）",
+        "next": "d9_end_bad_bias",
+        "danger": true
+      },
+      {
+        "text": "把校刊原稿全部撕毀，困在永遠寫不完的暑假作業裡（壞結局·無盡暑假）",
+        "next": "d9_end_bad_homework",
+        "danger": true
+      },
+      {
+        "text": "進入「校刊編輯部」內室啟動油印機撰寫頭版",
+        "next": "d9_editorial_club"
+      },
+      {
+        "text": "【支線連貫 9→10】將剛印好的《1999年小學校刊》裝進書包帶往放學路上的電影院",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d9_end_true": {
+    "id": "d9_end_true",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>白色紙飛機乘著 1999 年夏末的晚風飛過紅土操場、飛過樟樹頂端，穿過二十七年的光陰，穩穩落在你大學實驗室的書桌上。你終於與童年的自己徹底和解。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_true_magazine": {
+    "id": "d9_end_true_magazine",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>手搖油印機滾過蠟紙，把那句「03:18 記得抬頭休息」印進了你的生命底片。當你再次睜眼時，那個凌晨三點十七分的夜晚不再冰冷。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_true_friends": {
+    "id": "d9_end_true_friends",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>吹著哨子的導護老師揮手放行，你、林小滿與小阿凱並肩走過斑馬線，影子被夕陽拉得很長很長。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_normal": {
+    "id": "d9_end_normal",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>噹——噹——噹——放學鐘聲響起，你背起書包走出校門，夏天的風溫柔地送了你一程。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_notes": {
+    "id": "d9_end_notes",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>小陸衍似懂非懂地看著那串公式，把它當成某種太空密碼收進了鉛筆盒。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_survive": {
+    "id": "d9_end_survive",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在空無一人的走廊聽著蛙鳴，翻過矮牆回到了迴廊。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_bad_bias": {
+    "id": "d9_end_bad_bias",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>十二歲的你拒絕承認眼前的陌生大人是自己，教室的黑板與課桌在尖叫聲中坍塌成粉筆灰。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_bad_homework": {
+    "id": "d9_end_bad_homework",
+    "room": "99",
+    "roomName": "小學 1999 · 終局",
+    "sceneId": "9-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>日曆永遠停在了八月最後一天，桌上堆著永遠寫不完的暑假作業。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_v61_grown_up": {
+    "id": "d9_end_v61_grown_up",
+    "room": "99+",
+    "roomName": "走廊盡頭 · 長大了",
+    "sceneId": "9-隱藏·長大了",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>夕陽斜照進六年三班的教室。十二歲的你抬起頭問：「我們一定要長大，去面對那個有遺憾的未來嗎？」</p>",
+      "<p>你蹲下身，輕輕拍了拍他沾著粉筆灰的肩膀，堅定而溫柔地選擇了<strong>「當大人」</strong>：「嗯，因為長大後的我，已經學會怎麼保護你和大家了。」</p>",
+      "<p>放學鐘聲響起，你邁著大人的步伐走出了 1999 年的校門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_v61_summon_child_puzzle": {
+    "id": "d9_v61_summon_child_puzzle",
+    "room": "解",
+    "roomName": "童年共鳴 · 小陸衍幫忙解謎（記憶碎片升級）",
+    "sceneId": "9-召喚童年解謎",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你舉起從無盡自助餐帶來的<strong>「記憶碎片」</strong>，召喚出十二歲的童年自己！</p>",
+      "<p>小陸衍湊到黑板與考卷前，三兩下就用十二歲特有的直覺幫你把最棘手的奧數與童年謎題全部解開了：「這種題目交給小時候的我就對啦！」</p>",
+      "<p class=\"inherit-note\">【P6 支線信物升級生效：記憶碎片】<br>• 已成功召喚童年自己幫忙解開本關核心謎題（謎題直接破譯，童年偏誤歸零）！<br>• 物品欄中的「自助餐記憶碎片」狀態已更新為【已使用】（反灰）。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "與小陸衍擊掌慶祝，返回六年三班教室",
+        "next": "d9_classroom"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_editorial_club": {
+    "id": "d9_editorial_club",
+    "room": "刊",
+    "roomName": "小學 1999 · 校刊編輯部",
+    "sceneId": "9-校刊編輯部",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>油印機散發著濃郁的油墨香。1999 年的「校刊編輯部」裡，小蘇晚與小阿凱正圍在稿紙前爭論千禧年特刊的頭版主題。</p>",
+      "<p>小蘇晚抬起頭把鋼筆遞給你：「陸衍，你是這期校刊的主編！快去採訪同學並決定我們頭版報導的方向——你寫下的報導，會直接決定大家長大後的命運！」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【採訪與撰稿：溫柔守護篇】採訪小蘇晚與小阿凱，寫下《1999年我們絕不走散的約定》",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【採訪與撰稿：真相調查篇】採訪自然老師與班長，寫下《校園鐘樓與時間迴廊之謎》",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【校刊總編真結局】發刊《千禧年特刊》，與全班同學一起迎接西元 2000 年的第一道鐘聲",
+        "next": "d9_end_chief_editor",
+        "hasCondition": true
+      },
+      {
+        "text": "返回六年三班教室",
+        "next": "d9_classroom"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_end_chief_editor": {
+    "id": "d9_end_chief_editor",
+    "room": "編",
+    "roomName": "印在千禧年前夕的頭版",
+    "sceneId": "9-總編結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你把剛印好的《1999 千禧年校刊》發給走廊上的每一位同學。下課鐘聲響起，紙飛機與校刊在夕陽下飛舞，你改寫了所有人的童年遺憾。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d9_v60_shard_dialogue": {
+    "id": "d9_v60_shard_dialogue",
+    "room": "憶",
+    "roomName": "六年三班 · 記憶碎片的跨時空對話",
+    "sceneId": "9-記憶額外對話",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你從口袋裡取出那枚在無盡自助餐凝結的<strong>「自助餐記憶碎片」</strong>，輕輕放在六年三班靠窗的木頭課桌上。</p>",
+      "<p>十二歲的「小陸衍」與同桌林小滿好奇地湊過頭來。琥珀色的碎片在盛夏的陽光下折射出四幕清晰的倒影——那是你在質數旅館替蘇晚擋下虛空、在沉默圖書館與老周屏息同行、在倒計時醫院守護媛媛病歷、以及在終焉觀測站按下破曉頻率的瞬間。</p>",
+      "<p>小陸衍怔怔地看著碎片裡長大後的自己，突然翻開抽屜裡的《1999 世紀末校刊》原稿，指著自己在作文欄寫下的一行铅筆字：</p>",
+      "<p class=\"narration\">「『如果將來遇到被困在黑夜裡的人，就算計算出逃跑比較安全，我也要留下來幫他們開門。』——六年三班 陸衍，1999年6月。」</p>",
+      "<p>十二歲的你抬起頭對你露出燦爛的笑容：「原來你在主線裡做的每一個選擇，根本不是大人的算計，而是我們十二歲這年就埋下的約定！既然是你，我全部都相信你！」</p>",
+      "<p class=\"inherit-note\">【支線連貫 8→9 額外對話完成】<br>• 十二歲的你徹底放下戒心，「童年選擇偏誤」直接歸零（獲得「千禧紀念章」同等信任效果），生命值 +15！<br>• 小陸衍將親筆寫好的<strong>《1999年小學校刊》</strong>交給你，帶到下一關「潮汐電影院」可換取隱藏場次票（9→10）！</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "收下十二歲自己遞來的《1999年小學校刊》，返回教室",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

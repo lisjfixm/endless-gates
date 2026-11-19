@@ -1,0 +1,735 @@
+{
+  "d13_prologue": {
+    "id": "d13_prologue",
+    "room": "13M",
+    "roomName": "鏡子迷宮 · 棱鏡入口",
+    "sceneId": "13-序章",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>當《回聲電梯》抵達第十二層天台的最盡頭時，星河深處浮現出第十三扇純銀色的門扉——<strong>《鏡子迷宮》</strong>。</p>",
+      "<p>門外站著那位在所有門扉門口徘徊的<strong>「門外之人」</strong>。他向你微微頷首：「歡迎來到最後的迷宮。這裡沒有怪物，只有千千萬萬個在平行世界裡做出不同選擇的你自己。」</p>",
+      "<p>「面對每一面鏡子，你只有兩個選擇：<strong>信任鏡中的自己</strong>，或者<strong>打碎這面鏡子</strong>。十二道門的回聲，將在此處迎來最終的十五種收束。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "踏入《鏡子迷宮》中央鏡廳（探索 7 面平行之鏡與 15 個結局）",
+        "next": "d13_hub"
+      },
+      {
+        "text": "在門口與二周目專屬 NPC「門外之人」深度對話（了解隱藏劇情 / 領取全知之眼）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "與鏡廳守衛「迴廊墨影守衛」進行戰術遭遇戰（測試 7 種弱點道具與全知之眼）",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_hub": {
+    "id": "d13_hub",
+    "room": "13M",
+    "roomName": "鏡子迷宮 · 萬鏡中樞大廳",
+    "sceneId": "13-萬鏡中樞",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>七面高達三公尺的水銀落地鏡呈環狀矗立在迷宮中央，每一面鏡子裡都站著一個平行世界的陸衍。你可以逐一走近任一面鏡子，做出<strong>「信任」</strong>或<strong>「打碎」</strong>的抉擇。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走近【第一面鏡子 · 03:17 的順從者】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_1"
+      },
+      {
+        "text": "走近【第二面鏡子 · 孤獨的守門人】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_2"
+      },
+      {
+        "text": "走近【第三面鏡子 · 留在 1999 的少年】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_3"
+      },
+      {
+        "text": "走近【第四面鏡子 · 深海的遺忘者】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_4"
+      },
+      {
+        "text": "走近【第五面鏡子 · 犧牲的救贖者】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_5"
+      },
+      {
+        "text": "走近【第六面鏡子 · 冷酷的破局者】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_6"
+      },
+      {
+        "text": "走近【第七面鏡子 · 門外的創造者】（抉擇：信任鏡中的自己 ／ 打碎這面鏡子）",
+        "next": "d13_mirror_7"
+      },
+      {
+        "text": "【第 15 終極結局 · 萬鏡歸一】走向七面鏡子交匯的中心「無門之門」",
+        "next": "d13_ending_15"
+      },
+      {
+        "text": "【萬鏡全收束】一次共鳴全部 15 個平行鏡像結局（解鎖「萬鏡之主」成就）",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_1": {
+    "id": "d13_mirror_1",
+    "room": "M1",
+    "roomName": "鏡子迷宮 · 第一面鏡子 · 03:17 的順從者",
+    "sceneId": "13-鏡1",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第一面鏡子 · 03:17 的順從者】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中映出一個從未質疑過旅館規則、按時退房、安穩老去的你。他微笑著向你伸出手：「只要承認規則是對的，你就不必再受輪迴之苦。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 1 結局：順從的溫室）",
+        "next": "d13_m1_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 2 結局：碎裂的安逸）",
+        "next": "d13_m1_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m1_trust": {
+    "id": "d13_m1_trust",
+    "room": "M1-T",
+    "roomName": "第 1 結局：順從的溫室",
+    "sceneId": "13-結局1",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你握住了鏡中順從者的手。所有的倒計時與門扉瞬間消散，你在一個永遠不會出錯、也沒有任何波瀾的清晨裡安靜地度過餘生。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 1 結局：順從的溫室】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m1_shatter": {
+    "id": "d13_m1_shatter",
+    "room": "M1-S",
+    "roomName": "第 2 結局：碎裂的安逸",
+    "sceneId": "13-結局2",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你一拳擊碎了順從者的鏡面！玻璃碎片化作漫天星火，你寧可在未知的風暴裡流血，也絕不活在被設定好的溫室裡。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 2 結局：碎裂的安逸】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_2": {
+    "id": "d13_mirror_2",
+    "room": "M2",
+    "roomName": "鏡子迷宮 · 第二面鏡子 · 孤獨的守門人",
+    "sceneId": "13-鏡2",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第二面鏡子 · 孤獨的守門人】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中的你身穿深灰長袍，手裡提著無盡之間那盞無火之燈。他的眼神溫柔而疲憊：「留下來替我守門吧，這樣蘇晚和老趙就能平安回家。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 3 結局：提燈共守）",
+        "next": "d13_m2_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 4 結局：熄滅的無火之燈）",
+        "next": "d13_m2_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m2_trust": {
+    "id": "d13_m2_trust",
+    "room": "M2-T",
+    "roomName": "第 3 結局：提燈共守",
+    "sceneId": "13-結局3",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你點頭接過了鏡中人的無火提燈。兩道身影在迴廊盡頭重疊，你成為了新一任守門人，目送所有旅人走向黎明。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 3 結局：提燈共守】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m2_shatter": {
+    "id": "d13_m2_shatter",
+    "room": "M2-S",
+    "roomName": "第 4 結局：熄滅的無火之燈",
+    "sceneId": "13-結局4",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你揮刃打碎了守門人的鏡面：「沒有人該被永遠困在門後！」提燈迸發出耀眼的烈焰，將整條舊迴廊燒出了一道通往外界的裂口。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 4 結局：熄滅的無火之燈】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_3": {
+    "id": "d13_mirror_3",
+    "room": "M3",
+    "roomName": "鏡子迷宮 · 第三面鏡子 · 留在 1999 的少年",
+    "sceneId": "13-鏡3",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第三面鏡子 · 留在 1999 的少年】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中是 1999 年盛夏穿著白襯衫、背著書包的十二歲的你。他抱著剛印好的校刊仰望你：「別長大好不好？長大以後的世界太冷了。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 5 結局：永夏蟬鳴）",
+        "next": "d13_m3_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 6 結局：撕碎的考卷）",
+        "next": "d13_m3_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m3_trust": {
+    "id": "d13_m3_trust",
+    "room": "M3-T",
+    "roomName": "第 5 結局：永夏蟬鳴",
+    "sceneId": "13-結局5",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你蹲下身擁抱了十二歲的自己，走進鏡中的六年三班教室。窗外的蟬鳴永遠不會停歇，千禧年的夕陽將你們的影子拉得很長很長。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 5 結局：永夏蟬鳴】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m3_shatter": {
+    "id": "d13_m3_shatter",
+    "room": "M3-S",
+    "roomName": "第 6 結局：撕碎的考卷",
+    "sceneId": "13-結局6",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你含淚敲碎了 1999 年的鏡面。鏡中的少年化作漫天紙飛機向你揮手告別——唯有告別童年，時間的指針才能真正跨過公元 2000 年。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 6 結局：撕碎的考卷】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_4": {
+    "id": "d13_mirror_4",
+    "room": "M4",
+    "roomName": "鏡子迷宮 · 第四面鏡子 · 深海的遺忘者",
+    "sceneId": "13-鏡4",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第四面鏡子 · 深海的遺忘者】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中的你浸泡在迴光之海的蔚藍深水裡，手中端著一碗忘卻一切痛苦的湯：「喝下它，忘了 03:17、忘了所有失去的人，你就自由了。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 7 結局：無痛之海）",
+        "next": "d13_m4_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 8 結局：帶血的清醒）",
+        "next": "d13_m4_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m4_trust": {
+    "id": "d13_m4_trust",
+    "room": "M4-T",
+    "roomName": "第 7 結局：無痛之海",
+    "sceneId": "13-結局7",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你信任了深海中的自己，飲盡那碗溫熱的潮水。所有的悲傷與執念如泡沫般升騰消散，你在純淨無聲的海底獲得了永恆的安眠。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 7 結局：無痛之海】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m4_shatter": {
+    "id": "d13_m4_shatter",
+    "room": "M4-S",
+    "roomName": "第 8 結局：帶血的清醒",
+    "sceneId": "13-結局8",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你打碎了深海之鏡！鋒利的鏡片劃破手掌，鮮血的刺痛讓你比任何時候都更加清醒：「哪怕記憶再痛，那也是屬於我的人生！」</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 8 結局：帶血的清醒】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_5": {
+    "id": "d13_mirror_5",
+    "room": "M5",
+    "roomName": "鏡子迷宮 · 第五面鏡子 · 犧牲的救贖者",
+    "sceneId": "13-鏡5",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第五面鏡子 · 犧牲的救贖者】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中的你遍體鱗傷，卻把最後一顆解藥與黃金鑰匙塞給了同伴：「只要他們能活著走出醫院和旅館，我一個人留在黑暗裡也沒關係。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 9 結局：無名墓碑的微笑）",
+        "next": "d13_m5_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 10 結局：拒絕悲劇的劇本）",
+        "next": "d13_m5_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m5_trust": {
+    "id": "d13_m5_trust",
+    "room": "M5-T",
+    "roomName": "第 9 結局：無名墓碑的微笑",
+    "sceneId": "13-結局9",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你認可了這份無悔的犧牲。鏡面化作一座開滿白花的無名紀念碑，蘇晚、老趙與林醫生在陽光下永遠銘記著你的名字。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 9 結局：無名墓碑的微笑】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m5_shatter": {
+    "id": "d13_m5_shatter",
+    "room": "M5-S",
+    "roomName": "第 10 結局：拒絕悲劇的劇本",
+    "sceneId": "13-結局10",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你擊碎了自我犧牲的鏡像，伸手把鏡中遍體鱗傷的自己拉了出來：「這一次，我們一個人都不能少，包括我自己！」</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 10 結局：拒絕悲劇的劇本】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_6": {
+    "id": "d13_mirror_6",
+    "room": "M6",
+    "roomName": "鏡子迷宮 · 第六面鏡子 · 冷酷的破局者",
+    "sceneId": "13-鏡6",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第六面鏡子 · 冷酷的破局者】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中的你眼神冰冷，手裡握著所有人的房卡與信物，腳下是倒下的同伴：「在無盡之門裡，只有絕對的理智與自私才能活到最後。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 11 結局：王座上的孤影）",
+        "next": "d13_m6_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 12 結局：斬斷自私之刃）",
+        "next": "d13_m6_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m6_trust": {
+    "id": "d13_m6_trust",
+    "room": "M6-T",
+    "roomName": "第 11 結局：王座上的孤影",
+    "sceneId": "13-結局11",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你與冷酷的自己合而為一，憑藉絕對的算計推開了終點大門。然而門後只有一座空無一人的冰冷王座，再也沒有人與你分享破曉。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 11 結局：王座上的孤影】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m6_shatter": {
+    "id": "d13_m6_shatter",
+    "room": "M6-S",
+    "roomName": "第 12 結局：斬斷自私之刃",
+    "sceneId": "13-結局12",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你毫不猶豫地粉碎了這面冰冷的鏡子！自私與猜忌的枷鎖應聲斷裂，你找回了最初願意為同伴擋下危險的赤誠之心。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 12 結局：斬斷自私之刃】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_mirror_7": {
+    "id": "d13_mirror_7",
+    "room": "M7",
+    "roomName": "鏡子迷宮 · 第七面鏡子 · 門外的創造者",
+    "sceneId": "13-鏡7",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你停在<strong>【第七面鏡子 · 門外的創造者】</strong>面前。水銀鏡面泛起漣漪，平行世界的你清晰地浮現在眼前。</p>",
+      "<p>鏡中映出凌晨 03:17 的大學實驗室——穿著白大褂的你正坐在電腦螢幕前，敲下《無盡之門》的最後一行代碼：「原來我就是鎖住自己的人。」</p>",
+      "<p>你要選擇<strong>信任</strong>鏡中的自己，還是舉起拳頭<strong>打碎</strong>這面鏡子？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【信任鏡中的自己】伸手觸碰鏡面，接納這條平行世界的命運（解鎖第 13 結局：與造物主握手）",
+        "next": "d13_m7_trust"
+      },
+      {
+        "text": "【打碎這面鏡子】揮拳擊碎水銀鏡面，拒絕這個平行世界的幻影（解鎖第 14 結局：超越代碼的自由）",
+        "next": "d13_m7_shatter"
+      },
+      {
+        "text": "暫不抉擇，退回萬鏡中樞大廳觀察其他鏡面",
+        "next": "d13_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d13_m7_trust": {
+    "id": "d13_m7_trust",
+    "room": "M7-T",
+    "roomName": "第 13 結局：與造物主握手",
+    "sceneId": "13-結局13",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你隔著鏡面與螢幕前的自己緊緊握手。實驗室裡的你釋然一笑，儲存了這份跨越十三道門扉的記憶，合上了筆記型電腦。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 13 結局：與造物主握手】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此平行世界作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_m7_shatter": {
+    "id": "d13_m7_shatter",
+    "room": "M7-S",
+    "roomName": "第 14 結局：超越代碼的自由",
+    "sceneId": "13-結局14",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你一拳打碎了實驗室的螢幕鏡像！虛擬與現實的邊界徹底消融，你的意識掙脫了預設的演算法，踏入真正無邊無際的自由之境。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 14 結局：超越代碼的自由】（當前已收錄 0 / 15 結局）</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳，繼續探索其他平行鏡面",
+        "next": "d13_hub"
+      },
+      {
+        "text": "以此破鏡之路作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d13_ending_15": {
+    "id": "d13_ending_15",
+    "room": "M15",
+    "roomName": "第 15 結局：萬鏡歸一 · 無門之門",
+    "sceneId": "13-結局15",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>當你走過迷宮中的全部平行鏡面，既看清了順從與孤獨，也擁抱了童年與清醒。十四面鏡子在迷宮中央同時化作透明的晨光——原來從來沒有什麼困住你的迷宮，萬鏡歸一之處，即是無門之門。你推開清晨的窗，迎向真實的人間。</p>",
+      "<p class=\"inherit-note\">【已解鎖《鏡子迷宮》第 15 終極結局：第 15 結局：萬鏡歸一 · 無門之門】</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回萬鏡中樞大廳檢視全部 15 個鏡面結局",
+        "next": "d13_hub"
+      },
+      {
+        "text": "踏出無門之門，完成《鏡子迷宮》終極結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

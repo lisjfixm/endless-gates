@@ -1,0 +1,189 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default-deny safety net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidCloudSave(data) {
+      return data.userId is string &&
+             data.userId.size() >= 1 &&
+             data.userId.size() <= 128 &&
+             data.userId == request.auth.uid &&
+             data.deviceLabel is string &&
+             data.deviceLabel.size() >= 1 &&
+             data.deviceLabel.size() <= 100 &&
+             data.displayName is string &&
+             data.displayName.size() <= 100 &&
+             data.clientUpdatedAtMs is int &&
+             data.clientUpdatedAtMs >= 0 &&
+             data.clearedDoorsCount is int &&
+             data.clearedDoorsCount >= 0 &&
+             data.clearedDoorsCount <= 14 &&
+             data.endingsCount is int &&
+             data.endingsCount >= 0 &&
+             data.endingsCount <= 500 &&
+             data.achievementsCount is int &&
+             data.achievementsCount >= 0 &&
+             data.achievementsCount <= 500 &&
+             data.memoryShards is int &&
+             data.memoryShards >= 0 &&
+             data.memoryShards <= 10000000 &&
+             data.currentDoorId is int &&
+             data.currentDoorId >= 1 &&
+             data.currentDoorId <= 14 &&
+             data.currentDoorName is string &&
+             data.currentDoorName.size() <= 80 &&
+             data.currentSceneId is string &&
+             data.currentSceneId.size() <= 120 &&
+             data.currentRoomName is string &&
+             data.currentRoomName.size() <= 120 &&
+             data.currentHp is int &&
+             data.currentHp >= 0 &&
+             data.currentHp <= 9999 &&
+             data.saveSlotCount is int &&
+             data.saveSlotCount >= 0 &&
+             data.saveSlotCount <= 100 &&
+             data.progressData is map &&
+             data.settingsData is map &&
+             (!('lastSessionData' in data) || data.lastSessionData is map) &&
+             data.chronoAnchorsData is list &&
+             data.chronoAnchorsData.size() <= 3 &&
+             (data.chronoAnchorsData.size() == 0 || data.chronoAnchorsData[0] is map) &&
+             data.saveSlotsData is list &&
+             data.saveSlotsData.size() <= 64 &&
+             (data.saveSlotsData.size() == 0 || data.saveSlotsData[0] is map) &&
+             data.updatedAt is timestamp &&
+             data.updatedAt <= request.time;
+    }
+
+    match /users/{userId}/cloud_saves/{saveId} {
+      allow get: if isOwner(userId) && isValidId(saveId);
+      allow list: if isOwner(userId);
+
+      allow create: if isOwner(userId) &&
+                       isValidId(saveId) &&
+                       incoming().keys().hasAll([
+                         'userId',
+                         'deviceLabel',
+                         'displayName',
+                         'clientUpdatedAtMs',
+                         'clearedDoorsCount',
+                         'endingsCount',
+                         'achievementsCount',
+                         'memoryShards',
+                         'currentDoorId',
+                         'currentDoorName',
+                         'currentSceneId',
+                         'currentRoomName',
+                         'currentHp',
+                         'saveSlotCount',
+                         'progressData',
+                         'settingsData',
+                         'chronoAnchorsData',
+                         'saveSlotsData',
+                         'createdAt',
+                         'updatedAt'
+                       ]) &&
+                       incoming().keys().hasOnly([
+                         'userId',
+                         'deviceLabel',
+                         'displayName',
+                         'clientUpdatedAtMs',
+                         'clearedDoorsCount',
+                         'endingsCount',
+                         'achievementsCount',
+                         'memoryShards',
+                         'currentDoorId',
+                         'currentDoorName',
+                         'currentSceneId',
+                         'currentRoomName',
+                         'currentHp',
+                         'saveSlotCount',
+                         'progressData',
+                         'settingsData',
+                         'lastSessionData',
+                         'chronoAnchorsData',
+                         'saveSlotsData',
+                         'createdAt',
+                         'updatedAt'
+                       ]) &&
+                       incoming().createdAt is timestamp &&
+                       incoming().createdAt <= request.time &&
+                       isValidCloudSave(incoming());
+
+      allow update: if isOwner(userId) &&
+                       isValidId(saveId) &&
+                       isValidCloudSave(incoming()) &&
+                       incoming().userId == existing().userId &&
+                       incoming().createdAt == existing().createdAt &&
+                       incoming().keys().hasOnly([
+                         'userId',
+                         'deviceLabel',
+                         'displayName',
+                         'clientUpdatedAtMs',
+                         'clearedDoorsCount',
+                         'endingsCount',
+                         'achievementsCount',
+                         'memoryShards',
+                         'currentDoorId',
+                         'currentDoorName',
+                         'currentSceneId',
+                         'currentRoomName',
+                         'currentHp',
+                         'saveSlotCount',
+                         'progressData',
+                         'settingsData',
+                         'lastSessionData',
+                         'chronoAnchorsData',
+                         'saveSlotsData',
+                         'createdAt',
+                         'updatedAt'
+                       ]) &&
+                       incoming().diff(existing()).affectedKeys().hasOnly([
+                         'deviceLabel',
+                         'displayName',
+                         'clientUpdatedAtMs',
+                         'clearedDoorsCount',
+                         'endingsCount',
+                         'achievementsCount',
+                         'memoryShards',
+                         'currentDoorId',
+                         'currentDoorName',
+                         'currentSceneId',
+                         'currentRoomName',
+                         'currentHp',
+                         'saveSlotCount',
+                         'progressData',
+                         'settingsData',
+                         'lastSessionData',
+                         'chronoAnchorsData',
+                         'saveSlotsData',
+                         'updatedAt'
+                       ]);
+
+      allow delete: if isOwner(userId) && isValidId(saveId);
+    }
+  }
+}

@@ -1,0 +1,509 @@
+{
+  "d14_prologue": {
+    "id": "d14_prologue",
+    "room": "03:17",
+    "roomName": "第零號觀測室 · 實驗室夾縫",
+    "sceneId": "序幕",
+    "mapZone": "實驗室原點",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>推開第十四扇門的瞬間，預想中的無盡白牆並沒有出現。你聞到了一股極其熟悉的、微苦的冷咖啡味。</p>",
+      "<p>你站在自己的大學實驗室裡。桌上擺著三本書、兩疊論文，以及那杯只剩一半的褐色咖啡。電腦螢幕右下角的時間依然停在 <strong>03:17</strong>，但螢幕中央那條曾讓你徹夜難眠的「質數分佈偏離曲線」，此刻正投射在半空中，化為十三道緩緩旋轉的黃金門扉座標。</p>",
+      "<p class=\"system-msg\">迴廊終焉低語：歡迎來到一切的起點與終點——第十四扇門《第零號觀測室》。你所走過的十三扇門，皆是由這條 03:17 腦波共鳴曲線所鍛造的意識庇護所。</p>",
+      "<p>實驗室深處延伸出三條發光的迴廊：左側通往<strong>「主控演算台」</strong>，中央通往<strong>「同伴殘響長廊」</strong>，右側則是一扇刻著『03:18』的<strong>「破曉天頂門」</strong>。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走向發光的電腦螢幕，檢查【主控演算台】",
+        "next": "d14_console_hub"
+      },
+      {
+        "text": "步入中央的【同伴殘響長廊】，尋找曾並肩作戰的身影",
+        "next": "d14_echo_gallery"
+      },
+      {
+        "text": "前往右側的【時空檔案庫】，翻閱第零號觀測紀錄",
+        "next": "d14_archive_vault"
+      },
+      {
+        "text": "直接強行推開刻著 03:18 的【破曉天頂門】",
+        "next": "d14_premature_gate"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_console_hub": {
+    "id": "d14_console_hub",
+    "room": "CORE-01",
+    "roomName": "主控演算台 · 質數曲線核心",
+    "sceneId": "第一幕",
+    "mapZone": "主控演算台",
+    "mood": "calm",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你坐在自己那張熟悉的實驗室轉椅上。螢幕上跳動著十三組質數參數：從第 1 扇門的房號「13」、第 2 扇門的杜威分類碼「510」、第 3 扇門的倒數「60」，直到第 13 扇門的七重水銀鏡。</p>",
+      "<p>主控台彈出一道金色驗證框：「若要將停滯的 03:17 推進至 03:18，請輸入前四個基本質數（2、3、5、7）連綴而成的四位校準碼，或直接啟動深層邏輯重構。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【解謎校準】輸入前四個基本質數連綴碼（2357）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "將曲線參數鎖定為「無限遞歸」（放棄返回現實，永遠留在推演中）",
+        "next": "d14_end_bad_recursion"
+      },
+      {
+        "text": "強行拔除主機電源線，試圖以物理斷電摧毀迴廊",
+        "next": "d14_end_bad_shortcircuit"
+      },
+      {
+        "text": "返回第零號觀測室中央",
+        "next": "d14_prologue"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d14_console_unlocked": {
+    "id": "d14_console_unlocked",
+    "room": "CORE-01",
+    "roomName": "主控演算台 · 收斂完畢",
+    "sceneId": "第一幕·突破",
+    "mapZone": "主控演算台",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>隨著「2357」四個數字輸入，螢幕上偏離了三個晚上的質數曲線瞬間收斂成一條璀璨的黃金螺旋！</p>",
+      "<p>印表機自動吐出一張溫熱的紙頁，上面印著你昏迷前最後一秒的心電波形，以及一行小字：「所有在迴廊裡相遇的人，都是被同一場凌晨 03:17 的城市磁暴捲入意識夾縫的生還者。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "帶著【03:18 質數原點密鑰】前往【同伴殘響長廊】",
+        "next": "d14_echo_gallery"
+      },
+      {
+        "text": "前往【時空檔案庫】核對磁暴生還者名單",
+        "next": "d14_archive_vault"
+      },
+      {
+        "text": "直接前往【萬門鍛造爐】準備開啟終局之門",
+        "next": "d14_forge_sanctum"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d14_echo_gallery": {
+    "id": "d14_echo_gallery",
+    "room": "ECHO-04",
+    "roomName": "同伴殘響長廊",
+    "sceneId": "第二幕",
+    "mapZone": "同伴殘響長廊",
+    "mood": "eerie",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>長廊兩側懸浮著四座溫暖的光龕。光龕中分別站著你在前十三扇門中最深刻的四位同行者：</p>",
+      "<p>穿著白連帽衫的<strong>蘇晚</strong>、夾著沒點燃香菸的<strong>老趙</strong>、握著保溫杯與紙飛機的<strong>陳姐與媛媛</strong>，以及那位總在門外守候的<strong>門外之人</strong>。</p>",
+      "<p>蘇晚輕聲對你說：「我們每個人都被困在不同的門扉時間裡。如果你願意把我們的名字寫進最終的收斂公式，我們就能一起醒來。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "與蘇晚、老趙、陳姐、門外之人逐一擊掌共鳴（凝聚四重羈絆）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "只喚醒蘇晚一人，立刻從側門緊急通道撤離",
+        "next": "d14_end_survive_suwan_duo"
+      },
+      {
+        "text": "將自己的意識分給所有殘響，獨自留在長廊替他們鎮守",
+        "next": "d14_end_survive_sentinel"
+      },
+      {
+        "text": "前往【時空檔案庫】調查他們的真實身分",
+        "next": "d14_archive_vault"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d14_archive_vault": {
+    "id": "d14_archive_vault",
+    "room": "ARCH-1999",
+    "roomName": "時空檔案庫 · 1999–2026 卷宗",
+    "sceneId": "第三幕",
+    "mapZone": "時空檔案庫",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>檔案庫的書架高聳入雲，每一格都存放著一扇門扉的原始設計圖：</p>",
+      "<p>「1999 年盛夏小學的紙飛機、23:00 閉園的動物園、午夜潮汐電影院的第零號底片、還有倒計時醫院的第 14 號冰櫃……」</p>",
+      "<p>檔案桌中央擺著一座雙層密碼匣，旁邊刻著提示：「開啟終極真相卷宗，需輸入『跨入黎明的分針時刻（0318）』。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【解開檔案密碼匣】輸入黎明分針時刻（0318）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "抹除檔案庫中所有關於痛苦的記憶，只保留無憂的假象",
+        "next": "d14_end_normal_amnesia"
+      },
+      {
+        "text": "將整座檔案庫封存並化身新的首席檔案官",
+        "next": "d14_end_survive_archivist"
+      },
+      {
+        "text": "前往【萬門鍛造爐】核心",
+        "next": "d14_forge_sanctum"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d14_premature_gate": {
+    "id": "d14_premature_gate",
+    "room": "GATE-0",
+    "roomName": "未校準的天頂門前",
+    "sceneId": "分支危機",
+    "mapZone": "萬門鍛造爐",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在尚未完成主控台校準與同伴共鳴的情況下，強行握住了天頂門的青銅把手。</p>",
+      "<p>狂暴的時空亂流從門縫傾瀉而出！未收斂的質數曲線像鋒利的琴弦般切割著空間，你必須立刻做出決斷。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "立刻縮回手，退回【主控演算台】進行正規校準",
+        "next": "d14_console_hub"
+      },
+      {
+        "text": "硬著頭皮撞入未校準的時空裂隙（強行脫出）",
+        "next": "d14_end_survive_scarred"
+      },
+      {
+        "text": "任由時空亂流將自己捲回第一扇門的起點",
+        "next": "d14_end_bad_mobius"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d14_forge_sanctum": {
+    "id": "d14_forge_sanctum",
+    "room": "FORGE-14",
+    "roomName": "萬門鍛造爐 · 終焉審判庭",
+    "sceneId": "第四幕·終局抉擇",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你來到了第零號觀測室的最核心——<strong>萬門鍛造爐</strong>。十四道門扉的微縮星環在穹頂之上交織運轉，中央站著那個與你容貌完全相同、卻身披星辰長袍的「萬門鍛造者」。</p>",
+      "<p>「你終於走到這裡了。」鍛造者微笑著向你伸出手，「當初你在實驗室倒下時，為了不讓你的意識消散，我用那條質數曲線在 03:17 的一秒鐘內展開了十四座門扉世界。現在，決定權回到你手裡了。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【真結局一 · 萬門同歸】同時舉起「質數密鑰」「四重羈絆星盤」與「真名錄」，帶領所有同伴返回 03:18 的現實黎明",
+        "next": "d14_end_true_grand_reunion",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局二 · 03:18 的第一縷晨光】以「03:18 質數原點密鑰」完成論文最後一行證明，在實驗室清晨醒來",
+        "next": "d14_end_true_lab_dawn",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局三 · 萬門星河領航員】接過鍛造者的星辰權杖，將無盡迴廊改造成庇護所有迷途夢境者的溫柔星空",
+        "next": "d14_end_true_star_navigator",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局四 · 破壁執筆人】走出實驗室與螢幕之外，在手札最後一頁簽下自己的名字",
+        "next": "d14_end_true_author"
+      },
+      {
+        "text": "【普通結局 · 獨醒之晨】不攜帶任何迴廊記憶，獨自一人推門回到現實病房",
+        "next": "d14_end_normal_solo_wake"
+      },
+      {
+        "text": "【壞結局 · 零號標本】拒絕做出選擇，化為第零號觀測室裡永恆靜止的琥珀雕像",
+        "next": "d14_end_bad_amber"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_true_grand_reunion": {
+    "id": "d14_end_true_grand_reunion",
+    "room": "03:18",
+    "roomName": "萬門同歸 · 破曉重逢",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>當三件原點信物在鍛造爐中央共鳴，電腦螢幕右下角的時間終於跳過了 03:17，定格在溫暖的 03:18。實驗室的門被推開，晨光灑滿走廊——蘇晚、老趙、陳姐與帶著笑容的媛媛就站在晨曦裡等你。這一次，沒有任何一個人被留在門後。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：萬門同歸 · 破曉重逢</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_true_lab_dawn": {
+    "id": "d14_end_true_lab_dawn",
+    "room": "03:18",
+    "roomName": "03:18 的第一縷晨光",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在實驗室的鍵盤上敲下最後一行收斂證明。窗外東方泛起魚肚白，桌上那杯半涼的咖啡旁多了一枚金色的質數書籤。你伸了個懶腰，帶著十四扇門淬鍊出的堅定意志走向黎明。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：03:18 的第一縷晨光</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_true_star_navigator": {
+    "id": "d14_end_true_star_navigator",
+    "room": "03:18",
+    "roomName": "萬門星河領航員",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你改寫了無盡迴廊的底層法則：所有致命的虛空與倒計時都被轉化為溫柔的試煉星軌。你成為第零號觀測室的新任領航員，為每一位在黑夜裡迷路的旅人點亮歸途。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：萬門星河領航員</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_true_author": {
+    "id": "d14_end_true_author",
+    "room": "03:18",
+    "roomName": "破壁執筆人 · 故事之外",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你合上旅人手札，發現整座第零號觀測室就是你親手書寫的長篇史詩。當你在扉頁簽下真名時，十四扇門化作漫天金粉，成為你靈魂中最閃耀的勳章。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：破壁執筆人 · 故事之外</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_survive_suwan_duo": {
+    "id": "d14_end_survive_suwan_duo",
+    "room": "03:18",
+    "roomName": "雙人晨曦 · 街角重逢",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你緊握著蘇晚的手從觀測室側門躍出。清晨的街道微涼，她在街角的陽春麵攤前轉過身，對你露出了不再恐懼的微笑。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：雙人晨曦 · 街角重逢</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_survive_sentinel": {
+    "id": "d14_end_survive_sentinel",
+    "room": "03:18",
+    "roomName": "第零號守望者",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將生的機會全數推給了長廊裡的同伴，自己坐在主控台前維持著通道穩定。每當現實世界下起雨，他們都會想起那個留在 03:17 替所有人撐傘的人。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：第零號守望者</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_survive_archivist": {
+    "id": "d14_end_survive_archivist",
+    "room": "03:18",
+    "roomName": "永恆檔案官",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你留在時空檔案庫中整理著千萬旅人的記憶卷宗。雖然未能回到原來的早晨，但你的存在讓每一段被遺忘的人生都得到了妥善安放。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：永恆檔案官</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_survive_scarred": {
+    "id": "d14_end_survive_scarred",
+    "room": "03:18",
+    "roomName": "裂隙生還者",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你頂著時空亂流的擦傷強行衝出了未校準的天頂門。你在醫院病床上醒來，雖然失去了部分門扉記憶，但掌心仍緊握著半截實驗室門禁卡。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：裂隙生還者</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_normal_amnesia": {
+    "id": "d14_end_normal_amnesia",
+    "room": "03:18",
+    "roomName": "無夢之晨",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你抹去了迴廊裡所有的驚險記憶，像做了一場無痕的長夢般在實驗室桌上醒來。陽光很暖，你卻總覺得心裡空了一小塊。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：無夢之晨</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_normal_solo_wake": {
+    "id": "d14_end_normal_solo_wake",
+    "room": "03:18",
+    "roomName": "獨醒之晨",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "hope",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你獨自推開天頂門回到現實世界。03:18 的鬧鐘準時響起，你安全地活了下來，只是偶爾經過旅館或圖書館時會莫名駐足。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：獨醒之晨</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_bad_recursion": {
+    "id": "d14_end_bad_recursion",
+    "room": "03:18",
+    "roomName": "無限遞歸之囚",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將質數曲線設為無限遞歸。03:17 的最後一秒被無限拉長，你的意識永遠困在推演公式的死循環裡。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：無限遞歸之囚</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_bad_shortcircuit": {
+    "id": "d14_end_bad_shortcircuit",
+    "room": "03:18",
+    "roomName": "觀測崩塌 · 斷電虛空",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>拔除電源的瞬間，尚未收斂的十四座門扉空間同時向內坍縮，將第零號觀測室化為一片純白的靜電雜訊。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：觀測崩塌 · 斷電虛空</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_bad_mobius": {
+    "id": "d14_end_bad_mobius",
+    "room": "03:18",
+    "roomName": "莫比烏斯起點",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>時空亂流將你拋回了一條純白走廊。正前方，一扇寫著「13」的木門緩緩長出——你忘記了一切，再次邁進了質數旅館。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：莫比烏斯起點</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d14_end_bad_amber": {
+    "id": "d14_end_bad_amber",
+    "room": "03:18",
+    "roomName": "第零號琥珀標本",
+    "sceneId": "終章",
+    "mapZone": "萬門鍛造爐",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你遲遲無法在鍛造爐前做出抉擇，凝滯的時間結晶順著腳踝蔓延全身，將你化為觀測室中央永恆的雕像。</p>",
+      "<p class=\"system-msg\">第十四扇門《第零號觀測室》終局記錄：第零號琥珀標本</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

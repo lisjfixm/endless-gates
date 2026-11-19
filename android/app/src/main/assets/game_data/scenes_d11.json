@@ -1,0 +1,586 @@
+{
+  "d11_prologue": {
+    "id": "d11_prologue",
+    "room": "23:00",
+    "roomName": "市立動物園 · 閉園後的正門",
+    "sceneId": "11-序章",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p class=\"v60-prologue-why\"><strong>【歸途紀事 · 它為什麼存在】</strong><br>電影散場後繞遠路回家。動物園關門了，但動物們還記得你。</p>",
+      "<p>指針指在 <strong>23:00</strong>。生鏽的擴音器裡傳出滋滋作響的閉園廣播：</p>",
+      "<p class=\"narration\">「親愛的遊客，現在是晚上十一點整。園區內的動物已經褪去偽裝開始交談。請注意：與動物過度共情會降低你的『人性值』；而在午夜 24:00 鐘聲敲響前未能回到正門旋轉柵欄的遊客，將自動登記為本園的新展品。」</p>",
+      "<p>你低頭看著手裡那袋「飼育員綜合飼料袋」，遠處的熊貓館與獅子山傳來了低沉的人語聲。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走進園區中央步道（距離午夜 24:00 還有 60 分鐘）",
+        "next": "d11_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_hub": {
+    "id": "d11_hub",
+    "room": "園",
+    "roomName": "動物園 23:00 · 中央噴泉廣場",
+    "sceneId": "11-廣場",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [
+      "zoo_panda",
+      "zoo_lion",
+      "zoo_keeper"
+    ],
+    "text": [
+      "<p>乾涸的海豹噴泉旁立著指向六大展區的木牌。每走訪一個園區都會消耗時間，但餵食動物能喚醒你遺忘的童年記憶碎片（目前已喚醒 <strong>0 / 6</strong> 枚，當前人性值 <strong>100%</strong>）。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "前往【熊貓區】（老熊貓團團 · 餵食脆竹筍）",
+        "next": "d11_panda"
+      },
+      {
+        "text": "前往【獅子區】（獨眼獅王阿斯蘭 · 餵食鮮肉／遭遇戰）",
+        "next": "d11_lion"
+      },
+      {
+        "text": "前往【水族館】（海豚藍月 · 餵食銀鱗小魚）",
+        "next": "d11_aquarium"
+      },
+      {
+        "text": "前往【鳥園】（白鸚鵡雪球 · 餵食葵花籽與節奏謎題）",
+        "next": "d11_aviary"
+      },
+      {
+        "text": "前往【爬行動物區】（百歲陸龜玄武 · 餵食嫩葉與滑動拼圖）",
+        "next": "d11_reptile"
+      },
+      {
+        "text": "前往【鬼屋區】（廢棄標本館 · 夜間飼育員與第 6 枚記憶）",
+        "next": "d11_haunted"
+      },
+      {
+        "text": "走向【正門旋轉柵欄】（查看離園結局與午夜結算）",
+        "next": "d11_gate_exit"
+      },
+      {
+        "text": "【P6 信物升級 · 售票員道具】召喚售票員林默出面說服園區動物",
+        "next": "d11_v61_summon_clerk_persuade",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 成為展品】在午夜 12 點前故意不回入口，留在玻璃展區成為展品",
+        "next": "d11_end_v61_become_exhibit"
+      },
+      {
+        "text": "【支線連貫 10→11】與路燈下等候你的「潮汐電影院售票員林默」交談，收下他的專屬道具",
+        "next": "d11_v60_clerk_gift",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_panda": {
+    "id": "d11_panda",
+    "room": "竹",
+    "roomName": "熊貓區 · 竹林玻璃房",
+    "sceneId": "11-熊貓區",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [
+      "zoo_panda"
+    ],
+    "text": [
+      "<p>老熊貓「團團」正靠著假山石頭嘆氣。看見你走近，牠竟然用蒼老而溫和的嗓音開口：「你長高了啊，小陸衍。1996 年夏天，你手裡的紅豆冰棒融化掉在地上，趴在這塊玻璃前哭了整整半小時。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【餵食脆竹筍 · 保持人性】遞上新鮮竹筍並道謝：「謝謝你還記得七歲的我。」",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【模仿獸語 · 降低人性】趴在玻璃前學熊貓低吼：「做人類太累了，不如當一隻不用思考的熊貓。」（人性值 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回中央噴泉廣場",
+        "next": "d11_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_lion": {
+    "id": "d11_lion",
+    "room": "獅",
+    "roomName": "獅子區 · 荒原獸欄",
+    "sceneId": "11-獅子區",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [
+      "zoo_lion"
+    ],
+    "text": [
+      "<p>獨眼獅王「阿斯蘭」站在高聳的岩石上，金色的豎瞳俯視著你：「當年那個騎在父親肩膀上發抖的小鬼，現在敢獨自站在我的領地前了？」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【餵食鮮肉塊＋理性說服】拋出鮮肉塊，不卑不亢地直視獅王",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【野性共鳴 · 降低人性】撕開飼料袋，用野獸的低吼回應獅王的威壓（人性值 -30）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【遭遇戰】拔出防身武器與午夜狂獅正面交鋒",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【違反規則】翻越鐵欄跳進獅群領地中央",
+        "next": "d11_end_lion_fang"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_aquarium": {
+    "id": "d11_aquarium",
+    "room": "海",
+    "roomName": "水族館 · 深藍海底隧道",
+    "sceneId": "11-水族館",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>幽藍的拱形玻璃隧道裡，海豚「藍月」貼著玻璃游到你面前，吐出一串氣泡：「1999 年校外教學，你把零用錢買的夜光海豚鑰匙圈送給了班上那個穿白外套的女孩，對吧？」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【餵食銀鱗小魚】透過投餵口投入小魚，微笑承認那段青澀記憶",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【渴望深海 · 降低人性】貼著冰冷玻璃低語：「我也想潛入沒有語言的深海。」（人性值 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【危險衝動】打開水族箱頂部維修蓋跳入深水區",
+        "next": "d11_end_drowned"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_aviary": {
+    "id": "d11_aviary",
+    "room": "鳥",
+    "roomName": "鳥園 · 百鳥鐵網穹頂",
+    "sceneId": "11-鳥園",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>數百隻夜鳥停在鐵網穹頂上。白色的葵花鸚鵡「雪球」歪著頭，用你母親當年的聲音重複著：「早點回家，別在外面逗留太晚……」</p>",
+      "<p>只有跟上百鳥拍翅的節奏，並餵食葵花籽，才能讓雪球吐出牠藏在羽翼下的舊車票。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【餵食葵花籽＋節奏謎題】敲擊木欄配合鳥群節拍，喚醒第 4 枚童年記憶",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【放棄人類語言 · 降低人性】跟著夜鳥一起發出尖銳的啼鳴（人性值 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回中央噴泉廣場",
+        "next": "d11_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_reptile": {
+    "id": "d11_reptile",
+    "room": "龜",
+    "roomName": "爬行動物區 · 溫室迷霧",
+    "sceneId": "11-爬蟲館",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>潮濕的熱帶溫室裡，百歲陸龜「玄武」緩緩抬起頭。牠背甲上的九宮格紋路正散發著微光：「人類總是走得太快，把最重要的記憶落在身後。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【餵食晨露嫩葉＋3x3滑動拼圖】拼合龜甲紋路，喚醒第 5 枚童年記憶",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【冷血冬眠 · 降低人性】模仿變色龍融入陰影，不再關心時間（人性值 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回中央噴泉廣場",
+        "next": "d11_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_haunted": {
+    "id": "d11_haunted",
+    "room": "鬼",
+    "roomName": "鬼屋區 · 廢棄動物標本館",
+    "sceneId": "11-鬼屋區",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [
+      "zoo_keeper"
+    ],
+    "text": [
+      "<p>動物園最深處的鬼屋其實是一座舊標本館。<strong>夜間飼育員</strong>提著煤油燈，正在擦拭第 13 號空玻璃櫃，櫃門上貼著一張空白的名牌。</p>",
+      "<p>飼育員轉過頭：「只要把飼料袋裡最後一顆方糖分給門口的小浣熊，你就能拼湊出完整的 1999 年兒童半價票。但如果你更喜歡留在這裡……這座玻璃櫃正好合身。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【餵食最後一顆方糖】喚醒第 6 枚童年記憶，合出「1999年兒童半價票」",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【踏入第 13 號玻璃櫃】自願成為鬼屋區的第十三尊蠟像標本",
+        "next": "d11_end_wax"
+      },
+      {
+        "text": "返回中央噴泉廣場",
+        "next": "d11_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_gate_exit": {
+    "id": "d11_gate_exit",
+    "room": "門",
+    "roomName": "正門旋轉柵欄 · 午夜鐘聲前夕",
+    "sceneId": "11-正門結算",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你站在動物園正門的旋轉柵欄前。大鐘的指針逼近 <strong>24:00</strong>，百獸在月光下靜靜注視著你的背影。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【真結局 · 1999年兒童半價票】出示完整兒童票根並保持高人性（需餵滿 6 區且人性值 ≥ 60）",
+        "next": "d11_end_true_ticket",
+        "hasCondition": true
+      },
+      {
+        "text": "【特殊動物結局 · 化獸之夜】人性值已低於 25%，褪去人類姓名留在第七展區",
+        "next": "d11_end_beast_soul",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 午夜百獸大遊行】用飼育員鑰匙打開所有獸欄大門，與百獸一同衝出街道",
+        "next": "d11_end_ark",
+        "hasCondition": true
+      },
+      {
+        "text": "【普通結局 · 鐘響前的遊客】在 24:00 廣播結束前推開旋轉柵欄走出動物園",
+        "next": "d11_end_normal_exit"
+      },
+      {
+        "text": "【生還結局 · 冷藏貨車】躲進夜間飼育員的飼料配送車離開園區",
+        "next": "d11_end_truck"
+      },
+      {
+        "text": "【生還結局 · 鳥園破網】借道鳥園穹頂裂縫翻牆逃生",
+        "next": "d11_end_aviary_sky"
+      },
+      {
+        "text": "【壞結局 · 24:00 新展品】留在原地等待午夜十二點閉園廣播響起",
+        "next": "d11_end_exhibit"
+      },
+      {
+        "text": "【隱藏結局 · 成為展品】看著午夜 12 點鐘聲敲響卻不踏出正門，轉身成為園區展品",
+        "next": "d11_end_v61_become_exhibit"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d11_end_true_ticket": {
+    "id": "d11_end_true_ticket",
+    "room": "曉",
+    "roomName": "1999 年那張兒童半價票",
+    "sceneId": "11-真結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將蓋滿六枚動物印章的「1999年兒童半價票」放進檢票口。老熊貓團團、獅王阿斯蘭與海豚藍月在月光下向你揮手道別。旋轉柵欄輕輕轉動，你帶著從未遺失的純真與人性，走進了清晨的街道。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_beast_soul": {
+    "id": "d11_end_beast_soul",
+    "room": "獸",
+    "roomName": "化獸之夜：第七展區的自由住民",
+    "sceneId": "11-動物結局",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>當人性值歸於沉寂，你發現自己不再需要人類的語言與煩惱。你躍上月光下的假山，與百獸一同在午夜的森林裡奔跑。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_ark": {
+    "id": "d11_end_ark",
+    "room": "群",
+    "roomName": "午夜百獸大遊行",
+    "sceneId": "11-結局9",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>所有柵欄同時敞開，獅子、熊貓與飛鳥在午夜的城市大道上奔騰而過，你也混在百獸之中重獲自由。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_normal_exit": {
+    "id": "d11_end_normal_exit",
+    "room": "出",
+    "roomName": "鐘響前的最後一名遊客",
+    "sceneId": "11-結局1",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>在 24:00 的鐘聲敲響最後一下前，你跨出了旋轉柵欄。身後的動物們重新變回了安靜的模樣。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_exhibit": {
+    "id": "d11_end_exhibit",
+    "room": "籠",
+    "roomName": "24:00 閉園廣播：新展品",
+    "sceneId": "11-結局2",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>噹——噹——午夜十二點的鐘聲敲響。你腳下的地面升起四面透明玻璃，外頭的動物們正饒有興致地隔著玻璃觀賞你。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_lion_fang": {
+    "id": "d11_end_lion_fang",
+    "room": "牙",
+    "roomName": "荒原獅王的審判",
+    "sceneId": "11-結局3",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>冒然闖入獅群領地的人，沒能看到午夜的月亮。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_drowned": {
+    "id": "d11_end_drowned",
+    "room": "淵",
+    "roomName": "深藍水箱的共眠者",
+    "sceneId": "11-結局4",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在幽藍的水族箱底緩緩閉上眼睛，化作珊瑚間的一抹倒影。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_wax": {
+    "id": "d11_end_wax",
+    "room": "蠟",
+    "roomName": "鬼屋區第十三尊標本",
+    "sceneId": "11-結局5",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>玻璃櫃門鎖上的一刻，你的皮膚漸漸凝固成了光滑的蠟像。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_truck": {
+    "id": "d11_end_truck",
+    "room": "車",
+    "roomName": "飼育員的冷藏貨車",
+    "sceneId": "11-結局6",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你蜷縮在載滿空飼料桶的貨車後車廂，隨著引擎發動駛出了動物園側門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_aviary_sky": {
+    "id": "d11_end_aviary_sky",
+    "room": "翼",
+    "roomName": "鳥園穹頂的夜風",
+    "sceneId": "11-結局7",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>順著白鸚鵡雪球指引的鐵網破口，你攀上樹冠翻出了動物園圍牆。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_end_v61_become_exhibit": {
+    "id": "d11_end_v61_become_exhibit",
+    "room": "00:00",
+    "roomName": "午夜十二點的玻璃櫥窗 · 成為展品",
+    "sceneId": "11-隱藏·成為展品",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>午夜 12 點（24:00）的閉園鐘聲在夜空中迴盪，你<strong>沒有在午夜前回到入口</strong>，而是停在了中央展區的玻璃窗內。</p>",
+      "<p>玻璃門在你身後緩緩合攏，外頭的熊貓、獅子與夜鳥隔著玻璃溫柔地注視著你。展牌上浮現出一行金字：【展品編號 0317：懷揣記憶的人類】。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_v61_summon_clerk_persuade": {
+    "id": "d11_v61_summon_clerk_persuade",
+    "room": "服",
+    "roomName": "售票員助陣 · 溫柔說服動物（售票員道具升級）",
+    "sceneId": "11-召喚售票員說服",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你晃動手中的<strong>「售票員道具（歸途懷錶）」</strong>，潮汐電影院的售票員林默立刻從路燈光影中現身！</p>",
+      "<p>林默走到躁動的獨眼狂獅與夜行動物面前，輕聲放映了一段 1999 年夏天孩子們來動物園郊遊的溫馨膠卷。原本戒備的動物瞬間溫順地趴下，將珍藏的記憶碎片交給了你。</p>",
+      "<p class=\"inherit-note\">【P6 支線信物升級生效：售票員道具】<br>• 已成功召喚售票員林默說服動物（不戰而勝，童年記憶碎片 +2，人性值 +20%）！<br>• 物品欄中的「售票員的歸途懷錶」狀態已更新為【已使用】（反灰）。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "感謝售票員林默的相助，返回動物園中央廣場",
+        "next": "d11_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d11_v60_clerk_gift": {
+    "id": "d11_v60_clerk_gift",
+    "room": "約",
+    "roomName": "中央噴泉廣場 · 散場後的售票員",
+    "sceneId": "11-售票員贈禮",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>乾涸的海豹噴泉旁，昏黃的路燈下站著一道穿著暗紅色戲院制服的熟悉身影——正是你在潮汐電影院認識的<strong>售票員林默</strong>。</p>",
+      "<p>林默摘下售票員制帽，微笑著向你走來：「電影散場後，我看你一個人繞遠路往市立動物園走，就順路跟過來送你一程。23:00 的動物園雖然熱鬧，但動物們的記憶太深，聽久了容易忘記自己身為人類的名字。」</p>",
+      "<p>他將一枚刻著『03:18 · 平安歸途』的黃銅懷錶與一包特製的暖心方糖塞進你手裡：「收下這個吧。它能幫你守住人性與時間——走過這座動物園，前面就是你家的街口了。」</p>",
+      "<p class=\"inherit-note\">【支線連貫 10→11 達成：獲得售票員的專屬道具】<br>• 獲得傳說道具<strong>「售票員的歸途懷錶」</strong>！<br>• 人性值立即提升 +20%，午夜閉園倒計時延長 +15 分鐘，並額外喚醒 1 枚童年記憶共鳴！</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "收下「售票員的歸途懷錶」，向林默揮手道別後繼續探索園區",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

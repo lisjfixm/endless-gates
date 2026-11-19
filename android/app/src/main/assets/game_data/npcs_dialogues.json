@@ -1,0 +1,6680 @@
+{
+  "NPC_PROFILES": {
+    "laozhou": {
+      "name": "老趙",
+      "desc": "當過兩年兵，現在在質數旅館混日子。叼著煙，不愛多說話，但知道這地方的規矩。"
+    },
+    "suwan": {
+      "name": "蘇晚",
+      "desc": "一個人闖進來的女孩。看起來比實際年齡成熟，眼神很警惕。"
+    },
+    "akai": {
+      "name": "阿凱",
+      "desc": "嘴裡永遠叼著棒棒糖。看起來沒心沒肺，其實在偷偷觀察所有人。"
+    },
+    "hotel_landlord": {
+      "name": "旅館管理員",
+      "desc": "坐在櫃檯後面撥算盤。他知道所有房間的秘密，但不會白告訴你。"
+    },
+    "hotel_girl": {
+      "name": "13號房的女孩",
+      "desc": "被鎖在13號房裡的人。她說鏡子裡的東西不是她。"
+    },
+    "library_admin": {
+      "name": "圖書館管理員",
+      "desc": "只給你三個問題。問錯了，他就不再回答。"
+    },
+    "hospital_doctor": {
+      "name": "值班醫生",
+      "desc": "林醫生。在這家醫院待了很久，知道一些關於媛媛的事。"
+    },
+    "night_nurse": {
+      "name": "夜巡護士",
+      "desc": "周敏。每個夜班都巡邏。後來她把自己推進了太平間第14格。"
+    },
+    "gatekeeper": {
+      "name": "守門人",
+      "desc": "站在無盡之間大門旁的人。提著一盞沒有火的燈，看過無數推門而入的旅者。"
+    },
+    "tide_echo": {
+      "name": "水面的倒影",
+      "desc": "迴光之海浮光筏上的另一個你。他選了你當初沒轉進去的那條岔路。"
+    },
+    "obs_chen": {
+      "name": "觀測者·陳教授",
+      "desc": "終焉觀測站裡留下的意識投影。你博士班的導師，也是最早發現質數偏離曲線的人。"
+    },
+    "tram_conductor": {
+      "name": "列車長·沈默",
+      "desc": "第七扇門「鏡像電車」的剪票員。手握打孔鉗，見證過無數與自己擦肩而過的乘客。"
+    },
+    "tram_mirror_you": {
+      "name": "車窗裡的你",
+      "desc": "鏡像電車對向車廂裡的倒影。總是做出與你相反的決定，卻與你性命相連。"
+    },
+    "tram_girl": {
+      "name": "紅圍巾少女·林雙",
+      "desc": "坐在電車第三排的少女。為了找回在上一站弄丟的雙胞胎姊姊而一直搭車。"
+    },
+    "tram_tuner": {
+      "name": "調音師·宋弦",
+      "desc": "戴著舊式監聽耳機的青年。能聽見鐵軌接縫處的質數節拍。"
+    },
+    "tram_oldman": {
+      "name": "抱時刻表的老人",
+      "desc": "雙目失明卻能背出所有站點發車時間的老鐵道員。"
+    },
+    "tram_sleeper": {
+      "name": "沉睡的夜班客",
+      "desc": "靠在車門邊熟睡的西裝男，口袋裡揣著兩張不同日期的車票。"
+    },
+    "tram_vendor": {
+      "name": "月台小販·阿婆",
+      "desc": "提著竹籃在車廂間兜售「記憶車票」與礦泉水的老婦人。"
+    },
+    "buffet_chef": {
+      "name": "主廚·老陳",
+      "desc": "第八扇門「無盡自助餐」的主理人。能把每位客人的悲歡離合熬成一碗熱湯。"
+    },
+    "child_self": {
+      "name": "十二歲的陸衍",
+      "desc": "第九扇門「小學 1999」裡小時候的你。正在課堂上偷折紙飛機。"
+    },
+    "classmate_lin": {
+      "name": "同桌·林小滿",
+      "desc": "1999 年六年三班的同桌女生。總是借給你半塊橡皮擦與彩色粉筆。"
+    },
+    "cinema_seller": {
+      "name": "售票員林默",
+      "title": "第十扇門 · 逆向售票員",
+      "desc": "永遠不會給你原本要的那張票，卻在票根背面藏著生還法則。"
+    },
+    "cinema_cleaner": {
+      "name": "清潔工老陳",
+      "title": "第十扇門 · 銀幕守夜人",
+      "desc": "清掃影廳遺落記憶碎片的老人，知道哪一部電影才是真實。"
+    },
+    "cinema_ghost": {
+      "name": "鄰座觀眾沈影",
+      "title": "第十扇門 · 7排G座幽靈",
+      "desc": "上一場午夜秀未能離開的觀眾，總是小聲提醒你別違反銀幕鐵則。"
+    },
+    "zoo_panda": {
+      "name": "老熊貓團團",
+      "title": "第十一扇門 · 竹林長者",
+      "desc": "記得你七歲那年在玻璃窗外掉了一支紅豆冰棒。"
+    },
+    "zoo_lion": {
+      "name": "獅王阿斯蘭",
+      "title": "第十一扇門 · 荒原獨眼王",
+      "desc": "記得你父親把你舉在肩膀上的模樣，只敬重直視恐懼的人。"
+    },
+    "zoo_keeper": {
+      "name": "夜間飼育員",
+      "title": "第十一扇門 · 午夜守園人",
+      "desc": "提著煤油燈巡視六大展區，在 24:00 準時清點留在園區的遊客。"
+    }
+  },
+  "DIALOGUE_TREES": {
+    "laozhou": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "又來了。他叼著煙，沒看你。有話直說。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_laozhou');}"
+            },
+            {
+              "text": "這裡是什麼地方？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "13號房是怎麼回事？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "你有沒有注意到鏡子裡的東西？",
+              "next": "mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "那個叼棒棒糖的人是誰？",
+              "next": "akai",
+              "conditionCode": null
+            },
+            {
+              "text": "你看起來不像普通旅客。",
+              "next": "background",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "又來一個。老趙叼著煙，上下打量你。自己找地方坐，別亂碰房間的門。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_laozhou');}"
+            },
+            {
+              "text": "這裡是什麼地方？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "13號房是怎麼回事？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "你有沒有注意到鏡子裡的東西？",
+              "next": "mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "那個叼棒棒糖的人是誰？",
+              "next": "akai",
+              "conditionCode": null
+            },
+            {
+              "text": "你看起來不像普通旅客。",
+              "next": "background",
+              "conditionCode": null
+            },
+            {
+              "text": "【信任交流】確認彼此狀況並承諾並肩作戰（好感度 +12，高好感獲贈急救包）",
+              "next": "v58_trust_node",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "我？他吐了口煙。你叫什麼？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "name_answer",
+              "conditionCode": null
+            },
+            {
+              "text": "先說你的。",
+              "next": "ask_name_persist",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name_persist": {
+          "reply": "你還是先說你的吧。他叼著煙，不看你。名字這東西，在這兒沒那麼要緊。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "name_answer",
+              "conditionCode": null
+            }
+          ]
+        },
+        "name_answer": {
+          "reply": "陸衍。他重複了一遍，像在記什麼。行。記住這名字，別隨便跟人說。",
+          "onVisitFlag": "function(s){s.flags['name_laozhou']=true;}",
+          "options": [
+            {
+              "text": "為什麼不能說？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "你還沒說你叫什麼。",
+              "next": "laozhou_name",
+              "conditionCode": null
+            },
+            {
+              "text": "……算了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "laozhou_name": {
+          "reply": "「老趙」。他不耐煩地擺擺手。當過兩年兵，沒別的。別追問。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "當兵的怎麼會在這裡？",
+              "next": "background",
+              "conditionCode": null
+            },
+            {
+              "text": "說說規矩吧。",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "……哦。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules": {
+          "reply": "規矩？他哼了一聲。這旅館只有一條規矩——進質數的房間。別的，碰都別碰。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼叫質數？",
+              "next": "rules_prime",
+              "conditionCode": null
+            },
+            {
+              "text": "誰定的規矩？",
+              "next": "rules_who",
+              "conditionCode": null
+            },
+            {
+              "text": "違反了會怎樣？",
+              "next": "rules_violate",
+              "conditionCode": null
+            },
+            {
+              "text": "13也是質數，為什麼鎖著？",
+              "next": "room13",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_prime": {
+          "reply": "質數都不懂？他皺眉。除了自己和一，除不盡的。二、三、五、七、十一……數學課都睡覺了？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "13也是質數，為什麼鎖著？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "你怎麼知道這些？",
+              "next": "rules_who",
+              "conditionCode": null
+            },
+            {
+              "text": "……知道了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_who": {
+          "reply": "怎麼知道？他眼神閃了一下。活下來的人都知道。前一批……算了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "前一批怎麼了？",
+              "next": "rules_before",
+              "conditionCode": null
+            },
+            {
+              "text": "不想說就別說。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_before": {
+          "reply": "沒了。他兩個字擲過來。推開一間不該開的門，人就沒了。連聲都沒出。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你親眼看過？",
+              "next": "rules_see",
+              "conditionCode": null
+            },
+            {
+              "text": "那你怎麼活下來的？",
+              "next": "background",
+              "conditionCode": null
+            },
+            {
+              "text": "……",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_see": {
+          "reply": "他沉默了幾秒。看過。所以我勸你，別好奇。煙灰掉在褲腿上，他沒拍。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你怕了。",
+              "next": "fear",
+              "conditionCode": null
+            },
+            {
+              "text": "謝了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_violate": {
+          "reply": "怎樣？他聲音沉下來。你想看？我不攔你。死了別怪我沒說。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "13號房呢？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "我只是問問。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13": {
+          "reply": "13？他左右掃了一眼，壓低聲音。那間……別碰。鎖著不是沒有原因。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼鎖著？",
+              "next": "room13_lock",
+              "conditionCode": null
+            },
+            {
+              "text": "裡面有什麼？",
+              "next": "room13_inside",
+              "conditionCode": null
+            },
+            {
+              "text": "你開過嗎？",
+              "next": "room13_tried",
+              "conditionCode": null
+            },
+            {
+              "text": "……我知道了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_lock": {
+          "reply": "裡頭有什麼我不知道。他搖頭。我只知道，輪到你開的時候，別選它。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "輪到我？什麼意思？",
+              "next": "room13_turn",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_inside": {
+          "reply": "問這麼多幹嘛。他站起來，又坐下。能不看就不看。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你知道裡面有東西。",
+              "next": "room13_know",
+              "conditionCode": null
+            },
+            {
+              "text": "……算了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_know": {
+          "reply": "他盯著你看了半晌，終於從鼻子出氣。知道又怎樣。他別過頭。走開。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "room13_tried": {
+          "reply": "他瞪你。你以為我活膩了？頓了頓。……試過。拉不動。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在怕什麼。",
+              "next": "fear",
+              "conditionCode": null
+            },
+            {
+              "text": "……拉不動？",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_turn": {
+          "reply": "這旅館會逼你選。他聲音硬邦邦的。選錯一次，就完了。懂？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "誰逼？",
+              "next": "room13_who",
+              "conditionCode": null
+            },
+            {
+              "text": "……懂了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_who": {
+          "reply": "我他媽怎麼知道。他突然火大。牆？樓梯？那個笑咪咪的阿凱？",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror": {
+          "reply": "鏡子。他嘴角抽了一下。你看了？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鏡子裡哪裡不對？",
+              "next": "mirror_what",
+              "conditionCode": null
+            },
+            {
+              "text": "我看過，裡面……",
+              "next": "mirror_saw",
+              "conditionCode": null
+            },
+            {
+              "text": "隨便問問。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_what": {
+          "reply": "別盯著看太久。他打斷你。就這樣。別問了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror_saw": {
+          "reply": "他沒說話，手指在膝蓋上敲了兩下。……動得比我慢半拍。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼意思？",
+              "next": "mirror_meaning",
+              "conditionCode": null
+            },
+            {
+              "text": "……我知道了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_meaning": {
+          "reply": "意思就是，他聲音很低。那東西不是你。別確認了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "akai": {
+          "reply": "阿凱？他往旁邊努努嘴，聲音壓低。那小子……你少跟他搭話。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "他怎麼了？",
+              "next": "akai_wrong",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼這麼說？",
+              "next": "akai_wrong",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_wrong": {
+          "reply": "說不上來。他眯眼。笑，嘴裡叼著糖，一副無所謂。可他從來不問規矩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "他本來就知道規矩？",
+              "next": "akai_known",
+              "conditionCode": null
+            },
+            {
+              "text": "你懷疑他是……",
+              "next": "akai_suspect",
+              "conditionCode": null
+            },
+            {
+              "text": "也許他只是心大。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_known": {
+          "reply": "知道？他冷笑。活了這麼久的人，哪個不是提心吊膽？只有他，像來玩的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "也許他運氣好。",
+              "next": "akai_lucky",
+              "conditionCode": null
+            },
+            {
+              "text": "……有道理。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_lucky": {
+          "reply": "運氣？他哼。我當兵的時候，不信運氣。我只信眼睛看到的。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "akai_suspect": {
+          "reply": "他立刻瞪你。別亂說。聲音壓得更低。尤其當著他的面。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "background": {
+          "reply": "當兵的怎麼在這？他嗤笑。睡著了，醒來就在。還能怎麼著。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你有同伴在這嗎？",
+              "next": "background_comrade",
+              "conditionCode": null
+            },
+            {
+              "text": "……行吧。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "background_comrade": {
+          "reply": "他臉繃了一下。……沒有。兩個字，咬得很死。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "fear": {
+          "reply": "我怕？他猛地站起來，椅子劃地一聲。放狗屁。老子什麼沒見過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你手在抖。",
+              "next": "fear_tremble",
+              "conditionCode": null
+            },
+            {
+              "text": "當我沒說。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "fear_tremble": {
+          "reply": "他把手塞進口袋。……抽煙抽多了。轉過身。別再問了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "v58_trust_node": {
+          "reply": "（聽到你的承諾，對方的神色明顯柔和了下來。）「好。在這條迴廊裡，我們互相照應。如果你受了重傷，我會替你擋著，這包急救繃帶你先拿著。」",
+          "onVisitFlag": "function(){\n          addNpcAffinity(k, 12);\n          if(getNpcAffinity(k) >= 75 && !hasItem('trust_bandage_' + k)){\n            addItem('trust_bandage_' + k, NPC_PROFILES[k].name + '的急救包', '高好感度夥伴贈予的醫療包（可分配給自己或隊友恢復 30 HP）。');\n          }\n        }",
+          "options": [
+            {
+              "text": "回到對話",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "suwan": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "她抬頭看你一眼，又低下。……你還在。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_suwan');}"
+            },
+            {
+              "text": "你在這裡待多久了？",
+              "next": "howlong",
+              "conditionCode": null
+            },
+            {
+              "text": "這旅館的規矩你知道嗎？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "13號房是怎麼回事？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "你有沒有注意到鏡子？",
+              "next": "mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "那個人……叼棒棒糖的，是同伴嗎？",
+              "next": "akai",
+              "conditionCode": null
+            },
+            {
+              "text": "你一個人？",
+              "next": "past",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "蘇晚坐在樓梯階上，膝蓋上放著一本沒打開的書。她看了你一眼，又移開。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_suwan');}"
+            },
+            {
+              "text": "你在這裡待多久了？",
+              "next": "howlong",
+              "conditionCode": null
+            },
+            {
+              "text": "這旅館的規矩你知道嗎？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "13號房是怎麼回事？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "你有沒有注意到鏡子？",
+              "next": "mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "那個人……叼棒棒糖的，是同伴嗎？",
+              "next": "akai",
+              "conditionCode": null
+            },
+            {
+              "text": "你一個人？",
+              "next": "past",
+              "conditionCode": null
+            },
+            {
+              "text": "【信任交流】確認彼此狀況並承諾並肩作戰（好感度 +12，高好感獲贈急救包）",
+              "next": "v58_trust_node",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "她看了你三秒。……你先說。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "name_answer",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼我先？",
+              "next": "ask_name_persist",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name_persist": {
+          "reply": "你還是先說吧。她把書翻了一頁，沒看你。問這麼多做什麼。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "name_answer",
+              "conditionCode": null
+            }
+          ]
+        },
+        "name_answer": {
+          "reply": "陸衍。她重複得很輕，像在咀嚼這兩個字。嗯。",
+          "onVisitFlag": "function(s){s.flags['name_suwan']=true;}",
+          "options": [
+            {
+              "text": "你還沒說你叫什麼。",
+              "next": "suwan_name",
+              "conditionCode": null
+            },
+            {
+              "text": "……嗯。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "suwan_name": {
+          "reply": "「蘇晚」。兩個字，沒有語氣。不用記。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼不用記？",
+              "next": "leave",
+              "conditionCode": null
+            },
+            {
+              "text": "……好。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "howlong": {
+          "reply": "夠久了。她翻了一下書，沒看字。久到記不清外面的天。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你見過別人出去嗎？",
+              "next": "leave",
+              "conditionCode": null
+            },
+            {
+              "text": "……我懂了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules": {
+          "reply": "質數房。她沒抬頭。你沒聽別人說？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我想聽你說。",
+              "next": "rules_listen",
+              "conditionCode": null
+            },
+            {
+              "text": "非質數的房間會怎樣？",
+              "next": "rules_death",
+              "conditionCode": null
+            },
+            {
+              "text": "……知道了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_listen": {
+          "reply": "進質數。她重複一遍，像在背課文。別的，別碰。這就是全部。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "誰告訴你的？",
+              "next": "rules_told",
+              "conditionCode": null
+            },
+            {
+              "text": "……多謝。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_told": {
+          "reply": "……前一個人。她書頁停住了。他現在不在了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "他怎麼了？",
+              "next": "rules_gone",
+              "conditionCode": null
+            },
+            {
+              "text": "……抱歉。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_gone": {
+          "reply": "他推錯了門。平靜得像在說天氣。我在走廊盡頭，聽到一聲。就一聲。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你當時為什麼不阻止他？",
+              "next": "rules_stop",
+              "conditionCode": null
+            },
+            {
+              "text": "……",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_stop": {
+          "reply": "我站在那裡。她終於看你。動不了。手腳都動不了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "rules_death": {
+          "reply": "死。一個字。她終於把書闔上。你以為是什麼？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "13號房呢？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "……沒事。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13": {
+          "reply": "13是質數。她說。但它鎖著。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼鎖著？",
+              "next": "room13_why",
+              "conditionCode": null
+            },
+            {
+              "text": "你試過開嗎？",
+              "next": "room13_try",
+              "conditionCode": null
+            },
+            {
+              "text": "……哦。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_why": {
+          "reply": "因為裡面的東西，她聲音很輕，不該放出來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "裡面是什麼？",
+              "next": "room13_inside",
+              "conditionCode": null
+            },
+            {
+              "text": "……知道了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_inside": {
+          "reply": "我不知道。她搖頭。我只知道，上一個試著開它的人，後來不說話了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "他怎麼了？",
+              "next": "room13_after",
+              "conditionCode": null
+            },
+            {
+              "text": "……",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_after": {
+          "reply": "他還在走廊走。她看著樓梯下方。但他已經不是他了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "room13_try": {
+          "reply": "你問我試過沒有？她笑了一下，很短。我活得比你以為的久。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror": {
+          "reply": "鏡子。她站起來。你被它跟上了？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "跟上？什麼意思？",
+              "next": "mirror_follow",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子裡到底是什麼？",
+              "next": "mirror_what",
+              "conditionCode": null
+            },
+            {
+              "text": "沒有。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_follow": {
+          "reply": "你照鏡子的時候，她湊近一步，聲音冷。裡面那個，有沒有慢半拍？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "……有。",
+              "next": "mirror_yes",
+              "conditionCode": null
+            },
+            {
+              "text": "沒有。",
+              "next": "mirror_no",
+              "conditionCode": null
+            },
+            {
+              "text": "我不知道。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_yes": {
+          "reply": "那就別再照了。她退開。下次它不快了，你就出不來了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror_no": {
+          "reply": "她看了你一眼，沒再說話。最好如此。她轉身。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror_what": {
+          "reply": "不是我。她盯著你身後的鏡子。也不是你。別問我是什麼。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "akai": {
+          "reply": "阿凱。她唸這個名字像在含著冰。你覺得他正常？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "他看起來挺開心的。",
+              "next": "akai_happy",
+              "conditionCode": null
+            },
+            {
+              "text": "你察覺什麼了？",
+              "next": "akai_notice",
+              "conditionCode": null
+            },
+            {
+              "text": "……還好。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_happy": {
+          "reply": "這地方，她直視你。誰會開心？",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "akai_notice": {
+          "reply": "他不睡覺。她垂下眼。我看了他三個晚上。他一直在走廊走。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "也許他失眠。",
+              "next": "akai_insomnia",
+              "conditionCode": null
+            },
+            {
+              "text": "……然後？",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_insomnia": {
+          "reply": "他不吃東西，只舔那根糖。她聲音沒有起伏。糖不會化。你注意過嗎？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "……沒有。",
+              "next": "akai_candy",
+              "conditionCode": null
+            },
+            {
+              "text": "也許他藏了別的。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_candy": {
+          "reply": "那根棒棒糖，她轉回頭。我進來那天他就叼著。現在還在。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "leave": {
+          "reply": "出去？她像聽到一個笑話。你以為有出去這回事？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你試過？",
+              "next": "leave_try",
+              "conditionCode": null
+            },
+            {
+              "text": "難道要一直待在這？",
+              "next": "leave_stay",
+              "conditionCode": null
+            },
+            {
+              "text": "……也是。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "leave_try": {
+          "reply": "我同伴有試過。她終於有了表情，很淡。他走了七層樓梯，回到同一個走廊。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "後來呢？",
+              "next": "names_missing",
+              "conditionCode": null
+            },
+            {
+              "text": "……",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "names_missing": {
+          "reply": "後來？她把書翻過一頁，指腹壓著書脊，像在數什麼。我每晚睡以前數人。老趙。阿凱。我自己。一、二、三。她停了一下，聲音更輕。剛來那陣子是四個。第四個叫什麼——她眉頭動了動，像在一間空屋子裡找一把鑰匙。想不起來了。也許本來就沒有第四個。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "leave_stay": {
+          "reply": "待著。她重新打開書。活一天算一天。別指望出口。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "past": {
+          "reply": "一個人？她看著書。曾經不是。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "同伴呢？",
+              "next": "past_comrade",
+              "conditionCode": null
+            },
+            {
+              "text": "……抱歉。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "past_comrade": {
+          "reply": "死了。兩個字。開錯門。我站在旁邊。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你自責？",
+              "next": "past_blame",
+              "conditionCode": null
+            },
+            {
+              "text": "……我不問了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "past_blame": {
+          "reply": "自責有用？她終於冷笑。有用的話，我早死一百次了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "v58_trust_node": {
+          "reply": "（聽到你的承諾，對方的神色明顯柔和了下來。）「好。在這條迴廊裡，我們互相照應。如果你受了重傷，我會替你擋著，這包急救繃帶你先拿著。」",
+          "onVisitFlag": "function(){\n          addNpcAffinity(k, 12);\n          if(getNpcAffinity(k) >= 75 && !hasItem('trust_bandage_' + k)){\n            addItem('trust_bandage_' + k, NPC_PROFILES[k].name + '的急救包', '高好感度夥伴贈予的醫療包（可分配給自己或隊友恢復 30 HP）。');\n          }\n        }",
+          "options": [
+            {
+              "text": "回到對話",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "akai": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "喲！他揮揮棒棒糖。又見啦！",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_akai');}"
+            },
+            {
+              "text": "這是什麼地方？",
+              "next": "where",
+              "conditionCode": null
+            },
+            {
+              "text": "你知道旅館的規矩嗎？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "13號房怎麼了？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子裡好像有東西。",
+              "next": "mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "你一直待在這？",
+              "next": "here",
+              "conditionCode": null
+            },
+            {
+              "text": "你到底是什麼人？",
+              "next": "suspect",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "阿凱靠在走廊牆上，嘴裡叼著草莓棒棒糖，看見你立刻揮手。嗨！新來的？太好了，這裡悶死了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_akai');}"
+            },
+            {
+              "text": "這是什麼地方？",
+              "next": "where",
+              "conditionCode": null
+            },
+            {
+              "text": "你知道旅館的規矩嗎？",
+              "next": "rules",
+              "conditionCode": null
+            },
+            {
+              "text": "13號房怎麼了？",
+              "next": "room13",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子裡好像有東西。",
+              "next": "mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "你一直待在這？",
+              "next": "here",
+              "conditionCode": null
+            },
+            {
+              "text": "你到底是什麼人？",
+              "next": "suspect",
+              "conditionCode": null
+            },
+            {
+              "text": "【信任交流】確認彼此狀況並承諾並肩作戰（好感度 +12，高好感獲贈急救包）",
+              "next": "v58_trust_node",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "我？他把糖抽出來，指著你。你先說你叫什麼！",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "name_answer",
+              "conditionCode": null
+            },
+            {
+              "text": "你先說。",
+              "next": "ask_name_persist",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name_persist": {
+          "reply": "哎呀別客氣嘛！他揮揮手。你先說你先說，我不虧你的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "name_answer",
+              "conditionCode": null
+            }
+          ]
+        },
+        "name_answer": {
+          "reply": "陸衍！他眼睛一亮，把糖又塞回去。好名字好名字，我記住啦！",
+          "onVisitFlag": "function(s){s.flags['name_akai']=true;}",
+          "options": [
+            {
+              "text": "你呢？",
+              "next": "akai_name",
+              "conditionCode": null
+            },
+            {
+              "text": "……隨便你。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "akai_name": {
+          "reply": "「阿凱」！他拍了拍胸口。大家都叫我阿凱。你也這麼叫就好。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在這多久了？",
+              "next": "howlong",
+              "conditionCode": null
+            },
+            {
+              "text": "……好。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "where": {
+          "reply": "這裡啊～他拖長聲音，環顧走廊。旅館唄。房間很多，慢慢逛。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "所有房間都能進嗎？",
+              "next": "tempt_all",
+              "conditionCode": null
+            },
+            {
+              "text": "你住哪間？",
+              "next": "tempt_room",
+              "conditionCode": null
+            },
+            {
+              "text": "……嗯。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "howlong": {
+          "reply": "多久？他愣了一下，撓頭。唔……忘了耶。反正糖果還沒吃完嘛。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "這棒棒糖不會化？",
+              "next": "candy",
+              "conditionCode": null
+            },
+            {
+              "text": "……行。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "candy": {
+          "reply": "化？他笑著舉起糖看了看。不會啊，這糖可耐吃了。你要不要也來一根？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "不用了。",
+              "next": "candy_no",
+              "conditionCode": null
+            },
+            {
+              "text": "……你哪來的糖？",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "candy_no": {
+          "reply": "真可惜。他聳肩。甜的。這地方唯一的好東西。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "rules": {
+          "reply": "規矩？他眨眨眼。什麼規矩？這裡還要規矩？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "聽說只能進質數房。",
+              "next": "rules_prime",
+              "conditionCode": null
+            },
+            {
+              "text": "你都住哪種房間？",
+              "next": "tempt_any",
+              "conditionCode": null
+            },
+            {
+              "text": "……沒什麼。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_prime": {
+          "reply": "質數——他拖長音，像在想。哦～就是那種很挑的數字對吧。他笑。哪有那麼講究。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "不是挑不挑的問題。",
+              "next": "rules_why",
+              "conditionCode": null
+            },
+            {
+              "text": "你住過非質數房間嗎？",
+              "next": "tempt_nonprime",
+              "conditionCode": null
+            },
+            {
+              "text": "……隨便你。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_why": {
+          "reply": "哎呀，別那麼緊張嘛。他揮手。一間房間而已，打開看看又不會怎樣。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你怎麼知道不會怎樣？",
+              "next": "rules_how",
+              "conditionCode": null
+            },
+            {
+              "text": "……也對。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rules_how": {
+          "reply": "我——他張嘴，又停住，像忘記要說什麼。嗯……反正啦。他笑。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "tempt_all": {
+          "reply": "全部都能進啊？他眼睛彎起來。這麼多房間，一間間開，多好玩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "開錯了怎麼辦？",
+              "next": "tempt_wrong",
+              "conditionCode": null
+            },
+            {
+              "text": "……慢慢逛。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "tempt_wrong": {
+          "reply": "錯了？他歪頭。錯……會怎樣？他笑得若無其事。我不知道耶。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "tempt_room": {
+          "reply": "我住啊——他指了指走廊隨便一間。那間。隨便進的。他根本沒看房號。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你看清楚那是幾號？",
+              "next": "tempt_number",
+              "conditionCode": null
+            },
+            {
+              "text": "……隨便。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "tempt_number": {
+          "reply": "幾號？他湊過去看了一眼，笑出來。哎，數字我最頭痛了。反正能開嘛。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "tempt_any": {
+          "reply": "我啊？他舔了舔糖。都住過耶。走到哪睡到哪。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你沒出事過？",
+              "next": "tempt_safe",
+              "conditionCode": null
+            },
+            {
+              "text": "……厲害。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "tempt_safe": {
+          "reply": "出事？他愣了半拍，然後大笑。我命硬啦！放心！",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "tempt_nonprime": {
+          "reply": "非質數——他唸得很開心。哦～你是說那些不能進的？他突然壓低聲音。其實……我試過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "裡面是什麼？",
+              "next": "tempt_inside",
+              "conditionCode": null
+            },
+            {
+              "text": "……別說了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "tempt_inside": {
+          "reply": "裡面啊——他眼珠轉一圈，笑得曖昧。不告訴你。你自己去看嘛。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "room13": {
+          "reply": "13？他壓低聲音，像講秘密。那間鎖著耶。你不覺得，鎖著的東西最想打開嗎？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你想打開？",
+              "next": "room13_want",
+              "conditionCode": null
+            },
+            {
+              "text": "裡面有什麼？",
+              "next": "room13_inside",
+              "conditionCode": null
+            },
+            {
+              "text": "……不想。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room13_want": {
+          "reply": "想啊。他坦白得可愛。可是拉不動。奇怪，我力氣不小的。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "room13_inside": {
+          "reply": "誰知道。他聳肩。也許是寶藏？也許是出口？誰不打開誰知道。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror": {
+          "reply": "鏡子？他說這兩個字的時候，視線飄開了。不知不覺，他已經把身子側過去，背對著走廊盡頭那面鏡子。喔，那個啊。你看過？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鏡子裡的你怪怪的。",
+              "next": "mirror_you",
+              "conditionCode": null
+            },
+            {
+              "text": "裡面是什麼？",
+              "next": "mirror_what",
+              "conditionCode": null
+            },
+            {
+              "text": "你自己……照過鏡子嗎？",
+              "next": "mirror_self",
+              "conditionCode": null
+            },
+            {
+              "text": "隨便看看。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_you": {
+          "reply": "怪怪的？他湊近你，笑得沒心沒肺。哪裡怪？跟我長得不一樣嗎？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鏡子裡的你慢半拍。",
+              "next": "mirror_late",
+              "conditionCode": null
+            },
+            {
+              "text": "……沒什麼。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_late": {
+          "reply": "慢半拍？他認真想了想。哦……或許吧。他又笑。鏡子本來就這樣子啦。他說話的尾音在走廊裡多蕩了一下，像有人隔了半秒，把同一句又輕輕複述了一遍。你回頭。身後沒人。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror_self": {
+          "reply": "我？他愣了一下，棒棒糖在嘴裡轉了半圈。我幹嘛照鏡子。他笑，笑得有點快。長得就這樣子，看了也不會變。他抬起手，像要捋頭髮，手舉到一半又放下了。走吧走吧，別站在這兒。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "mirror_what": {
+          "reply": "鏡子裡啊——他拖長聲音。有另一個世界？你要不要對著它問問話？",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "here": {
+          "reply": "這裡？他環顧四周，笑嘻嘻。挺好的呀。不用上班，不用交房租。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你不想出去？",
+              "next": "here_leave",
+              "conditionCode": null
+            },
+            {
+              "text": "……也是。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "here_leave": {
+          "reply": "出去？他像聽不懂。出去幹嘛？這裡不好嗎？他舔了口糖。再陪我嘛。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "suspect": {
+          "reply": "什麼人？他哈哈大笑。我是人啊！你看，有手有腳，會說話。他戳了戳自己臉頰。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你不怕死嗎？",
+              "next": "suspect_afraid",
+              "conditionCode": null
+            },
+            {
+              "text": "你根本不記得自己怎麼來的。",
+              "next": "suspect_remember",
+              "conditionCode": null
+            },
+            {
+              "text": "……隨便問問。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "suspect_afraid": {
+          "reply": "死？他眨眨眼。死是什麼？他笑得很甜。聽起來好遠喔。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "suspect_remember": {
+          "reply": "怎麼來的……他皺眉，努力想。唔……唔……他突然笑開。忘了！想不起來就算啦！",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "v58_trust_node": {
+          "reply": "（聽到你的承諾，對方的神色明顯柔和了下來。）「好。在這條迴廊裡，我們互相照應。如果你受了重傷，我會替你擋著，這包急救繃帶你先拿著。」",
+          "onVisitFlag": "function(){\n          addNpcAffinity(k, 12);\n          if(getNpcAffinity(k) >= 75 && !hasItem('trust_bandage_' + k)){\n            addItem('trust_bandage_' + k, NPC_PROFILES[k].name + '的急救包', '高好感度夥伴贈予的醫療包（可分配給自己或隊友恢復 30 HP）。');\n          }\n        }",
+          "options": [
+            {
+              "text": "回到對話",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "hotel_landlord": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "（眼皮沒抬，算盤珠子撥了一下。）……又來了。說吧。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "這旅館的房間，有什麼講究嗎？",
+              "next": "ask_rules",
+              "conditionCode": null
+            },
+            {
+              "text": "十三號房為什麼鎖著？",
+              "next": "ask_13",
+              "conditionCode": null
+            },
+            {
+              "text": "樓上那面鏡子，是怎麼回事？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "地下室可以下去嗎？",
+              "next": "ask_basement",
+              "conditionCode": null
+            },
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_hotel_landlord');}"
+            },
+            {
+              "text": "我叫陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": "function(){return !hasFlag('name_hotel_landlord');}"
+            },
+            {
+              "text": "現在……幾點了？",
+              "next": "ask_time",
+              "conditionCode": null
+            },
+            {
+              "text": "十三號房裡住著誰？",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "沒事了。",
+              "next": "end_root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "……嗯。住店？身份證壓在櫃檯，房間自己看門牌。別敲不該敲的門。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "這旅館的房間，有什麼講究嗎？",
+              "next": "ask_rules",
+              "conditionCode": null
+            },
+            {
+              "text": "十三號房為什麼鎖著？",
+              "next": "ask_13",
+              "conditionCode": null
+            },
+            {
+              "text": "樓上那面鏡子，是怎麼回事？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "地下室可以下去嗎？",
+              "next": "ask_basement",
+              "conditionCode": null
+            },
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_hotel_landlord');}"
+            },
+            {
+              "text": "我叫陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": "function(){return !hasFlag('name_hotel_landlord');}"
+            },
+            {
+              "text": "現在……幾點了？",
+              "next": "ask_time",
+              "conditionCode": null
+            },
+            {
+              "text": "十三號房裡住著誰？",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "沒事了。",
+              "next": "end_root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_rules": {
+          "reply": "規矩就是規矩。……門牌號數，看得懂吧？看得懂就不會死。看不懂，活著也沒用。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼意思？哪些房間不能進？",
+              "next": "prime_detail",
+              "conditionCode": null
+            },
+            {
+              "text": "你少裝糊塗，說清楚。",
+              "next": "dodge_rules",
+              "conditionCode": null
+            },
+            {
+              "text": "算了，沒事。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "prime_detail": {
+          "reply": "……背得出來就進不去。背不出來，更進不去。我說過了，規矩就是規矩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "非質數的房間，進去會怎樣？",
+              "next": "death_warn",
+              "conditionCode": null
+            },
+            {
+              "text": "你到底知道什麼？",
+              "next": "dodge_rules",
+              "conditionCode": null
+            },
+            {
+              "text": "不問了。",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "dodge_rules": {
+          "reply": "（眨了眨眼，像沒聽見）……退房時間十二點。過了十二點，我不管。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你們這裡，有誰成功退過房？",
+              "next": "checkout_history",
+              "conditionCode": null
+            },
+            {
+              "text": "我再問一次——十三號房。",
+              "next": "ask_13",
+              "conditionCode": null
+            },
+            {
+              "text": "（離開）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "checkout_history": {
+          "reply": "退房？……（像在回憶）有過。有過人拿著鑰匙走到大門。後來……後來我沒看過他們出去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那他們去哪了？",
+              "next": "where_did_they_go",
+              "conditionCode": null
+            },
+            {
+              "text": "（我知道了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "where_did_they_go": {
+          "reply": "……樓下。或者鏡子。……這個旅館，只有兩個方向。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（兩個方向都是死路）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "death_warn": {
+          "reply": "（慢吞吞地抬眼）……進去的人，從來沒出來過。這還不夠嗎？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那你為什麼不阻止？",
+              "next": "why_not",
+              "conditionCode": null
+            },
+            {
+              "text": "地下室呢？地下室也有規矩？",
+              "next": "ask_basement",
+              "conditionCode": null
+            },
+            {
+              "text": "（不再追問）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_not": {
+          "reply": "阻止？我一個看櫃檯的。……規矩就是規矩。住客自己選的門，自己負責。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你也是被這地方困住的吧？",
+              "next": "trapped",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子那邊呢？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（走開）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "trapped": {
+          "reply": "（沉默很久）……睡吧。年輕人。睡著了就不想了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在這裡待了多久？",
+              "next": "how_long",
+              "conditionCode": null
+            },
+            {
+              "text": "（不再說話）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_long": {
+          "reply": "忘了。……日曆上的日子，不算數。鐘錶上的也不算數。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那什麼才算數？",
+              "next": "what_counts",
+              "conditionCode": null
+            },
+            {
+              "text": "我知道了。",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_counts": {
+          "reply": "（咧嘴，不像笑）……門開了幾次。人少了幾個。就這些。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "十三號房那個女孩——",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "（他不願再說了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_13": {
+          "reply": "（眼神動了一下，又垂下去）十三……鎖著。鑰匙不在我這。從來不在我這。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鑰匙在哪？",
+              "next": "key_where",
+              "conditionCode": null
+            },
+            {
+              "text": "誰把房間鎖起來的？",
+              "next": "who_lock",
+              "conditionCode": null
+            },
+            {
+              "text": "裡面有人嗎？",
+              "next": "inside_13",
+              "conditionCode": null
+            },
+            {
+              "text": "（回到主題）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "key_where": {
+          "reply": "在該在的地方。……不在該在的地方，就找不到。找到了也不該開。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你知道在哪，對吧？",
+              "next": "dodge_key",
+              "conditionCode": null
+            },
+            {
+              "text": "（換個話題）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "dodge_key": {
+          "reply": "（打了個哈欠）……我看你也累了。回去睡吧。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我不困。",
+              "next": "not_tired",
+              "conditionCode": null
+            },
+            {
+              "text": "（他在下逐客令）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "not_tired": {
+          "reply": "（慢吞吞地搖頭）……現在說不困的人，到了半夜都會敲我的門。……敲了也沒用。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "半夜會怎樣？",
+              "next": "midnight",
+              "conditionCode": null
+            },
+            {
+              "text": "（我先回房間）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "midnight": {
+          "reply": "……十二點。鐘一到十二點，走廊就不長這樣了。……你最好別出來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "走廊會變成什麼？",
+              "next": "corridor_changes",
+              "conditionCode": null
+            },
+            {
+              "text": "（我記住了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "corridor_changes": {
+          "reply": "……多一扇門。少一扇門。……門牌號數，會自己換位置。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（所以十二點後不能亂走）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_lock": {
+          "reply": "……上一個住的人。或者上上個。記不清了。鎖上了，就別打開。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼鎖？",
+              "next": "why_lock",
+              "conditionCode": null
+            },
+            {
+              "text": "（繼續追問）",
+              "next": "inside_13",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_lock": {
+          "reply": "因為裡面的東西，出來過一次。……一次就夠了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "出來過的是什麼？",
+              "next": "what_came_out",
+              "conditionCode": null
+            },
+            {
+              "text": "十三號房那個女孩，還活著嗎？",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "（不再問）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_came_out": {
+          "reply": "（搖頭，很慢）……別問。問了我也不會說。規矩就是規矩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鏡子呢？鏡子也有規矩？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（他真的不說了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "inside_13": {
+          "reply": "（盯著檯燈）……有人。一直有人。你敲門，她會應。應了，也別開。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "她是誰？",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼不能開？",
+              "next": "why_not_open",
+              "conditionCode": null
+            },
+            {
+              "text": "（離開櫃檯）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_not_open": {
+          "reply": "開了，她就會出來。……或者，裡面那個，會換人進去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "換誰？",
+              "next": "swap",
+              "conditionCode": null
+            },
+            {
+              "text": "（這暗示太清楚了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "swap": {
+          "reply": "……你說呢？進了那條走廊的人，少一個，十三號房就多一個聲音。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "所以那女孩已經——",
+              "next": "she_dead",
+              "conditionCode": null
+            },
+            {
+              "text": "我懂了。謝謝。",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "she_dead": {
+          "reply": "（很慢地眨眼）……別說出來。說出來，她會聽見。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鏡子裡的，又是什麼？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（安靜地退開）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_mirror": {
+          "reply": "（像背台詞）鏡子……照人。不照鬼。……你照過，對吧。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鏡子裡的不是我。",
+              "next": "not_me",
+              "conditionCode": null
+            },
+            {
+              "text": "誰把鏡子放那裡的？",
+              "next": "who_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子和十三號房有關係？",
+              "next": "mirror_13",
+              "conditionCode": null
+            },
+            {
+              "text": "（不談了）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "not_me": {
+          "reply": "（終於正眼看你）……對。不是你。你看它，它也在看你。別看太久。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "太久會怎樣？",
+              "next": "too_long",
+              "conditionCode": null
+            },
+            {
+              "text": "它想出來？",
+              "next": "want_out_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（這句話夠了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "want_out_mirror": {
+          "reply": "……它不急。它有的是時間。你沒有。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼意思？",
+              "next": "no_time",
+              "conditionCode": null
+            },
+            {
+              "text": "（我懂了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "no_time": {
+          "reply": "你住進來，就開始倒數。……它等得起。你呢？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "倒數到什麼？",
+              "next": "countdown_what",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不想知道）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "countdown_what": {
+          "reply": "……到你分不清哪個是你。那個時候，它就出來了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（原來如此）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "too_long": {
+          "reply": "……它會先學會你的臉。再來，就換它出來，你進去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "進去哪？鏡子裡？",
+              "next": "inside_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "和地下室一樣？",
+              "next": "ask_basement",
+              "conditionCode": null
+            }
+          ]
+        },
+        "inside_mirror": {
+          "reply": "鏡子裡和地下室，是一個地方。……別問我怎麼知道的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你去過？",
+              "next": "he_been",
+              "conditionCode": null
+            },
+            {
+              "text": "（原來如此）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "he_been": {
+          "reply": "（很久沒說話）……出去過一次。出來的，還是不是我，我不記得。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你現在……還是你嗎？",
+              "next": "still_you",
+              "conditionCode": null
+            },
+            {
+              "text": "（他不願再說）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "still_you": {
+          "reply": "（咧嘴，那種不像笑的笑）……規矩就是規矩。我是管理員。這就夠了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（不再追問）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_mirror": {
+          "reply": "放鏡子的人，不在了。……鏡子留下來，比他久。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼要放鏡子？",
+              "next": "why_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（換話題）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_mirror": {
+          "reply": "……照東西用的。有些東西，需要被照住。照住了，才不會滿處跑。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "照住的是什麼？",
+              "next": "what_held",
+              "conditionCode": null
+            },
+            {
+              "text": "和十三號房有關？",
+              "next": "mirror_13",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_held": {
+          "reply": "（低聲）……別說名字。說名字它會應。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我知道了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_13": {
+          "reply": "（點頭，很慢）……鏡子照走廊。走廊連十三。十三連地下室。一條線。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "一條線？什麼意思？",
+              "next": "one_line",
+              "conditionCode": null
+            },
+            {
+              "text": "所以順著鏡子就能找到十三號房？",
+              "next": "mirror_find_13",
+              "conditionCode": null
+            },
+            {
+              "text": "（我先到這）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "one_line": {
+          "reply": "進來的人，走到頭。……鏡子是起點，地下室是盡頭。中間十三。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "走到盡頭會怎樣？",
+              "next": "end_of_line",
+              "conditionCode": null
+            },
+            {
+              "text": "（這地圖我記下了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "end_of_line": {
+          "reply": "……走到盡頭，就不用退房了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "不用退房是什麼意思？",
+              "next": "no_checkout",
+              "conditionCode": null
+            },
+            {
+              "text": "（他笑了一下，我不愛聽）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "no_checkout": {
+          "reply": "永遠留下。……或者，永遠走出去。誰知道。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "有人走出去過嗎？",
+              "next": "anyone_out",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不想知道了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "anyone_out": {
+          "reply": "（搖頭）……我看了這麼多年櫃檯。出去的，我一個都沒見過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那進來的呢？",
+              "next": "who_come_in",
+              "conditionCode": null
+            },
+            {
+              "text": "（謝謝你說這些）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_come_in": {
+          "reply": "一個一個。……背著包，以為是旅館。以為住一晚就能走。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "包括我？",
+              "next": "including_me",
+              "conditionCode": null
+            },
+            {
+              "text": "（我該走了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "including_me": {
+          "reply": "（看了一眼鐘）……包括你。還差幾步，就到你了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（背一涼）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mirror_find_13": {
+          "reply": "……別照著走。照著走，你會先看見自己。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（明白）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_basement": {
+          "reply": "地下室……有鎖。鎖鏽了。……下去的人，沒有上來過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "下面有什麼？",
+              "next": "what_below",
+              "conditionCode": null
+            },
+            {
+              "text": "鎖為什麼鏽了？",
+              "next": "rust_lock",
+              "conditionCode": null
+            },
+            {
+              "text": "和鏡子有什麼關係？",
+              "next": "basement_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（先不問了）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_below": {
+          "reply": "（沉默很久）……比走廊更深的東西。……別下去。這是規矩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你下過？",
+              "next": "he_down",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼規矩不寫在門口？",
+              "next": "why_not_sign",
+              "conditionCode": null
+            },
+            {
+              "text": "（他說的我記住了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_not_sign": {
+          "reply": "寫了，你會看。……不寫，你才會因為好奇下去。……這就是規矩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（規矩是故意的）",
+              "next": "he_down",
+              "conditionCode": null
+            },
+            {
+              "text": "（我懂了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "he_down": {
+          "reply": "（慢慢搖頭）……我不想記得。記得的部分，也不像是我。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我懂了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "rust_lock": {
+          "reply": "鏽了，是因為很久沒開。……也是因為，開過一次就夠。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "上次是誰開的？",
+              "next": "last_open",
+              "conditionCode": null
+            },
+            {
+              "text": "（我明白了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "last_open": {
+          "reply": "……一個女孩。住十三號。下去之後，房間就空了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "十三號房的女孩？",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "她下去做什麼？",
+              "next": "why_her_down",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_her_down": {
+          "reply": "找東西。……找一個不存在的人。後來，她自己也不存在了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（她還在嗎？）",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不敢再聽）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "basement_mirror": {
+          "reply": "鏡子照的，就是地下室。……兩頭都得有人看著。一頭是我，一頭是——",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "一頭是誰？",
+              "next": "other_end",
+              "conditionCode": null
+            },
+            {
+              "text": "（夠了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "other_end": {
+          "reply": "……別問。你以後會自己看見。看見的時候，別認出來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我知道了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "（眨了眨眼）……名字？這裡不需要名字。你叫什麼？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": null
+            },
+            {
+              "text": "憑什麼告訴你？",
+              "next": "refuse_name",
+              "conditionCode": null
+            }
+          ]
+        },
+        "refuse_name": {
+          "reply": "（聳肩）……不說也可以。這裡的人，最後都只剩一個房間號。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "……我叫陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": null
+            },
+            {
+              "text": "（他說得對）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "introduce_yan": {
+          "reply": "陸衍。……嗯。（在一本爛帳本上寫了什麼）陸衍，住幾號？",
+          "onVisitFlag": "function(s){s.flags['name_hotel_landlord']=true;}",
+          "options": [
+            {
+              "text": "你還沒給我房間。",
+              "next": "no_room",
+              "conditionCode": null
+            },
+            {
+              "text": "十三號。",
+              "next": "say_13",
+              "conditionCode": null
+            },
+            {
+              "text": "（他在登記什麼？）",
+              "next": "what_register",
+              "conditionCode": null
+            }
+          ]
+        },
+        "no_room": {
+          "reply": "自己選。……門牌看得懂吧？質數。其他的別碰。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "質數是什麼規矩？",
+              "next": "ask_rules",
+              "conditionCode": null
+            },
+            {
+              "text": "如果選錯了呢？",
+              "next": "wrong_room",
+              "conditionCode": null
+            },
+            {
+              "text": "（我自己看）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "say_13": {
+          "reply": "（筆停住，很久）……十三，不能住。鎖著。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼鎖？",
+              "next": "why_lock",
+              "conditionCode": null
+            },
+            {
+              "text": "我偏要住。",
+              "next": "insist_13",
+              "conditionCode": null
+            },
+            {
+              "text": "（那就換一間）",
+              "next": "no_room",
+              "conditionCode": null
+            }
+          ]
+        },
+        "insist_13": {
+          "reply": "（搖頭，很慢）……鑰匙不在。你敲門，裡面會應。應了，也別開。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "她會應？",
+              "next": "ask_girl",
+              "conditionCode": null
+            },
+            {
+              "text": "（我知道了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_register": {
+          "reply": "（合上帳本）……住客名冊。……你以為為什麼有人進來，有人不出去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "名冊上有誰？",
+              "next": "roster",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不想看）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "roster": {
+          "reply": "……一排名字。很多名字。有些，後面畫了個勾。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "勾是什麼意思？",
+              "next": "checkmark",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不想知道）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "checkmark": {
+          "reply": "……退房了。或者，不用退了。我不分。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "有陸衍嗎？",
+              "next": "my_name_on_list",
+              "conditionCode": null
+            },
+            {
+              "text": "（合上吧）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "my_name_on_list": {
+          "reply": "（翻了一頁，停住）……有了。剛剛寫上的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我還沒死）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "wrong_room": {
+          "reply": "……選錯的人，不會回來問我第二遍。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我記住了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_time": {
+          "reply": "（看了一眼鐘，鐘沒有針）……十二點。永遠十二點。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "永遠十二點？",
+              "next": "always_twelve",
+              "conditionCode": null
+            },
+            {
+              "text": "退房呢？",
+              "next": "checkout",
+              "conditionCode": null
+            },
+            {
+              "text": "（這鐘有問題）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "always_twelve": {
+          "reply": "對。……日升日落，不關這裡的事。我們只認十二點。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "十二點會發生什麼？",
+              "next": "what_at_twelve",
+              "conditionCode": null
+            },
+            {
+              "text": "（我懂了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_at_twelve": {
+          "reply": "……十二點一到，退房的退房，退房的……退房。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在繞什麼？",
+              "next": "still_you",
+              "conditionCode": null
+            },
+            {
+              "text": "（這句話我聽不懂）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "checkout": {
+          "reply": "退房？……拿著鑰匙，走到大門。大門開了，就走出去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "大門會開嗎？",
+              "next": "door_open",
+              "conditionCode": null
+            },
+            {
+              "text": "鑰匙在哪？",
+              "next": "key_where",
+              "conditionCode": null
+            },
+            {
+              "text": "（聽著像騙人）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "door_open": {
+          "reply": "（很久）……有人走過去。門沒開。……後來，走廊裡就多了一個人。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我明白了）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_girl": {
+          "reply": "（終於完全睜開眼）……十三號那個？別跟她說話。數數的那個。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "她在數什麼？",
+              "next": "what_counting",
+              "conditionCode": null
+            },
+            {
+              "text": "她是住客？",
+              "next": "is_guest",
+              "conditionCode": null
+            },
+            {
+              "text": "她死了嗎？",
+              "next": "is_dead",
+              "conditionCode": null
+            },
+            {
+              "text": "（我去找她）",
+              "next": "end_goto_girl",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_counting": {
+          "reply": "……數房間。數腳步。數還剩幾個。數到零，就有人少掉。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "她知道自己是——",
+              "next": "knows_dead",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不想聽了）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "is_guest": {
+          "reply": "住過。……住太久了。久到忘了自己住過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "她在這裡多久了？",
+              "next": "girl_how_long",
+              "conditionCode": null
+            },
+            {
+              "text": "（我去找她）",
+              "next": "end_goto_girl",
+              "conditionCode": null
+            }
+          ]
+        },
+        "girl_how_long": {
+          "reply": "……比我久。或者比我短。這裡的時間，不準。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（她還以為自己活著？）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "is_dead": {
+          "reply": "（把聲音壓得很低）……別說出來。她聽見，會停。停下來，就該換人了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "換誰？",
+              "next": "swap",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不說）",
+              "next": "end_tired",
+              "conditionCode": null
+            }
+          ]
+        },
+        "knows_dead": {
+          "reply": "（搖頭）……她不知道。她要是知道，就不數了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（那我也不說）",
+              "next": "end_back",
+              "conditionCode": null
+            }
+          ]
+        },
+        "end_root": {
+          "reply": "（點點頭，又打瞌睡去了）……嗯。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_tired": {
+          "reply": "（眼皮合上）……規矩就是規矩。睡吧。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_back": {
+          "reply": "（揮揮手，像趕蒼蠅）……走吧走吧。十二點前回來。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_goto_girl": {
+          "reply": "（忽然睜眼，盯著你）……她敲門，你別開。她叫你名字，你別答。",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "hotel_girl": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "（停了一下數數，像認出你。）……你又來了。別打斷我數。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在數什麼？",
+              "next": "what_counting",
+              "conditionCode": null
+            },
+            {
+              "text": "你是誰？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_hotel_girl');}"
+            },
+            {
+              "text": "我叫陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": "function(){return !hasFlag('name_hotel_girl');}"
+            },
+            {
+              "text": "這條走廊為什麼一直有聲音？",
+              "next": "corridor_sound",
+              "conditionCode": null
+            },
+            {
+              "text": "你的房間……為什麼鎖著？",
+              "next": "why_lock_room",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子那邊，你去過嗎？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "地下室呢？",
+              "next": "ask_basement",
+              "conditionCode": null
+            },
+            {
+              "text": "你在這裡待多久了？",
+              "next": "how_long_here",
+              "conditionCode": null
+            },
+            {
+              "text": "（輕聲打斷她）",
+              "next": "be_quiet",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "……三……四……五……（聲音很輕，像怕吵醒什麼）別、別過來。你數你的，我數我的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在數什麼？",
+              "next": "what_counting",
+              "conditionCode": null
+            },
+            {
+              "text": "你是誰？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_hotel_girl');}"
+            },
+            {
+              "text": "我叫陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": "function(){return !hasFlag('name_hotel_girl');}"
+            },
+            {
+              "text": "這條走廊為什麼一直有聲音？",
+              "next": "corridor_sound",
+              "conditionCode": null
+            },
+            {
+              "text": "你的房間……為什麼鎖著？",
+              "next": "why_lock_room",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子那邊，你去過嗎？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "地下室呢？",
+              "next": "ask_basement",
+              "conditionCode": null
+            },
+            {
+              "text": "你在這裡待多久了？",
+              "next": "how_long_here",
+              "conditionCode": null
+            },
+            {
+              "text": "（輕聲打斷她）",
+              "next": "be_quiet",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_counting": {
+          "reply": "數……數門。一間……兩間……三間。數到不該數的，就停。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼叫不該數的？",
+              "next": "wrong_number",
+              "conditionCode": null
+            },
+            {
+              "text": "數完了會怎樣？",
+              "next": "finish_count",
+              "conditionCode": null
+            },
+            {
+              "text": "（她還在繼續數）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "wrong_number": {
+          "reply": "（聲音更小）……非……非那個數字的。不能數。數了，它就來敲門。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "非什麼數字？",
+              "next": "prime_hint",
+              "conditionCode": null
+            },
+            {
+              "text": "誰來敲門？",
+              "next": "who_knocks",
+              "conditionCode": null
+            },
+            {
+              "text": "（我別嚇她）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "prime_hint": {
+          "reply": "……老爺爺說，能進的，是那種……除得盡自己，除不盡別人的。我……我記不太清。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你說的是質數。",
+              "next": "you_say_prime",
+              "conditionCode": null
+            },
+            {
+              "text": "老爺爺是誰？",
+              "next": "old_man",
+              "conditionCode": null
+            },
+            {
+              "text": "（她已經記不清楚了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "you_say_prime": {
+          "reply": "（像被嚇到）……別、別大聲說。說出來，走廊會聽到。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "對不起。",
+              "next": "sorry",
+              "conditionCode": null
+            },
+            {
+              "text": "那十三號房呢？",
+              "next": "room_13",
+              "conditionCode": null
+            }
+          ]
+        },
+        "room_13": {
+          "reply": "（聲音緊了一下）……十三。……十三不能進。它……它不是那種數字。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼不是？十三是質數啊。",
+              "next": "why_not_prime",
+              "conditionCode": null
+            },
+            {
+              "text": "（你住的就是十三號）",
+              "next": "you_live_13",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_not_prime": {
+          "reply": "（搖頭，很快）……不知道。……老爺爺說十三不一樣。鎖著。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我去問他）",
+              "next": "end_leave_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "you_live_13": {
+          "reply": "（愣了一下）……十三？……這是十三號？我……我不知道。我以為這是別的號。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你不認得自己的房間？",
+              "next": "not_recognize_room",
+              "conditionCode": null
+            },
+            {
+              "text": "（她不知道）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "not_recognize_room": {
+          "reply": "……我來的時候，沒看門牌。……走累了，推開一間就進來了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（她以為自己住的是別間）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "old_man": {
+          "reply": "櫃檯那個……打瞌睡的。他什麼都知道。……但他不肯說。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "他跟你說過話？",
+              "next": "talked_to_landlord",
+              "conditionCode": null
+            },
+            {
+              "text": "（我去找他問）",
+              "next": "end_leave_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "talked_to_landlord": {
+          "reply": "（點點頭）……他給我送過水。一次。後來……後來我就沒出去過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼沒出去？",
+              "next": "why_not_leave",
+              "conditionCode": null
+            },
+            {
+              "text": "（她在迴避）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_not_leave": {
+          "reply": "……門外有東西在走。我不敢。……數到它走，我才敢出聲。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "外面走的是什麼？",
+              "next": "what_walks",
+              "conditionCode": null
+            },
+            {
+              "text": "（我陪你等）",
+              "next": "wait_with_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "what_walks": {
+          "reply": "（搖頭，很快）……不知道。不能看。看了，它就會停下來。停在你門口。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "停在門口會怎樣？",
+              "next": "stop_at_door",
+              "conditionCode": null
+            },
+            {
+              "text": "（我知道了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stop_at_door": {
+          "reply": "……敲。三下一停。再三下。……你不開，它就走。你開了——",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "開了會怎樣？",
+              "next": "if_open",
+              "conditionCode": null
+            },
+            {
+              "text": "（她說不下去了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "if_open": {
+          "reply": "（聲音幾乎聽不見）……開了，它就進來。或者……或者換我出去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你出去過嗎？",
+              "next": "did_go_out",
+              "conditionCode": null
+            },
+            {
+              "text": "（這話太涼了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "did_go_out": {
+          "reply": "……出去過一次。回來的時候，走廊不認得我了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼意思？不認得你？",
+              "next": "not_recognized",
+              "conditionCode": null
+            },
+            {
+              "text": "（別再問了）",
+              "next": "end_leave_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "not_recognized": {
+          "reply": "……燈不一樣了。門牌不一樣了。我敲我的門，裡面……裡面不應。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（你已經不是原來的你了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "wait_with_her": {
+          "reply": "（安靜很久）……你也不走？……很少有人陪我數。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你叫什麼名字？",
+              "next": "ask_name",
+              "conditionCode": null
+            },
+            {
+              "text": "你一個人在這裡很久了吧。",
+              "next": "alone_long",
+              "conditionCode": null
+            }
+          ]
+        },
+        "alone_long": {
+          "reply": "……不記得了。我數著數著，就忘了白天晚上。……也忘了我是怎麼來的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你記得來這裡之前的事嗎？",
+              "next": "before_here",
+              "conditionCode": null
+            },
+            {
+              "text": "（她不記得了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "before_here": {
+          "reply": "……有車子。很吵。有人牽我的手。……後來，就只剩走廊了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "牽你手的是誰？",
+              "next": "who_held_hand",
+              "conditionCode": null
+            },
+            {
+              "text": "（別逼她）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_held_hand": {
+          "reply": "（皺眉，像在想）……媽媽？……不，不像。溫度不一樣。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（那不是媽媽）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_knocks": {
+          "reply": "……不知道。不開門，就不知道。開了，就沒機會知道了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我懂）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "finish_count": {
+          "reply": "數完……數完一輪，就要重數。……不重數，就會少一個人。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "少誰？",
+              "next": "missing_one",
+              "conditionCode": null
+            },
+            {
+              "text": "（她在重複一件事）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "missing_one": {
+          "reply": "……不知道。回來數的時候，就發現少了。房間空了。門開著。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那個人去了哪？",
+              "next": "where_gone",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不想聽）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "where_gone": {
+          "reply": "……樓下。地下室那邊。……或者鏡子裡。我不敢看。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "地下室有什麼？",
+              "next": "ask_basement",
+              "conditionCode": null
+            },
+            {
+              "text": "鏡子裡有什麼？",
+              "next": "ask_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（別說了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "（停了一下數數）……名字？……你先說。你叫什麼？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼要我先說？",
+              "next": "why_me_first",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_me_first": {
+          "reply": "……因為我怕我說了，你記不住。……很多人來過，都記不住我。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我叫陸衍。",
+              "next": "introduce_yan",
+              "conditionCode": null
+            },
+            {
+              "text": "（她笑了一下，很淡）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "introduce_yan": {
+          "reply": "陸……衍。（輕輕唸）……好聽。……我叫小滿。他們都叫我小滿。",
+          "onVisitFlag": "function(s){s.flags['name_hotel_girl']=true;}",
+          "options": [
+            {
+              "text": "小滿，你怎麼會在十三號房？",
+              "next": "how_here",
+              "conditionCode": null
+            },
+            {
+              "text": "小滿，你一個人住這裡？",
+              "next": "alone_room",
+              "conditionCode": null
+            },
+            {
+              "text": "（她終於說出名字了）",
+              "next": "remember_name",
+              "conditionCode": null
+            }
+          ]
+        },
+        "remember_name": {
+          "reply": "（點頭）……嗯。你記得就好。……下次來，還叫我小滿。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我會的。",
+              "next": "end_promise",
+              "conditionCode": null
+            },
+            {
+              "text": "下次？你要等到什麼時候？",
+              "next": "when_next",
+              "conditionCode": null
+            }
+          ]
+        },
+        "when_next": {
+          "reply": "……不知道。數到零的時候吧。……數到零，就會有新人來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "新人來了，你就走了？",
+              "next": "new_comes",
+              "conditionCode": null
+            },
+            {
+              "text": "（她不覺得這有什麼）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "new_comes": {
+          "reply": "（歪頭）……走？去哪？……我一直都在這裡啊。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（她不知道自己已經——）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_here": {
+          "reply": "……走進來的。跟你一樣。……走廊很長，我走累了，就進了這間。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那時候門沒鎖？",
+              "next": "door_unlocked",
+              "conditionCode": null
+            },
+            {
+              "text": "你進來後，就出不去了？",
+              "next": "cant_leave",
+              "conditionCode": null
+            }
+          ]
+        },
+        "door_unlocked": {
+          "reply": "（點頭）……沒鎖。後來……後來不知道什麼時候，就鎖上了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你沒試過推門？",
+              "next": "tried_door",
+              "conditionCode": null
+            },
+            {
+              "text": "（門自己鎖上的）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "tried_door": {
+          "reply": "推過。……推不動。外面像頂著什麼。……有時候，外面也在推。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "外面在推？",
+              "next": "outside_pushing",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不問了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "outside_pushing": {
+          "reply": "（聲音發抖）……一下。兩下。……像在數。數到和我一樣，就停了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "和你一樣？",
+              "next": "same_as_you",
+              "conditionCode": null
+            },
+            {
+              "text": "（她在發抖）",
+              "next": "comfort_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "same_as_you": {
+          "reply": "……數到同一個數字。它就……它就以為我是它了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（太涼了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "comfort_her": {
+          "reply": "（停了一下，像在聽你）……你不怕我？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "不怕。",
+              "next": "not_afraid",
+              "conditionCode": null
+            },
+            {
+              "text": "（她很怕）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "not_afraid": {
+          "reply": "（輕輕地笑，很輕）……很久沒人說不怕了。……他們都跑。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你在這多久了，小滿？",
+              "next": "how_long_here",
+              "conditionCode": null
+            },
+            {
+              "text": "（我陪你一會）",
+              "next": "wait_with_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "alone_room": {
+          "reply": "……一開始不是。……後來同房的人走了。就剩我。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "同房的人去哪了？",
+              "next": "roommate_gone",
+              "conditionCode": null
+            },
+            {
+              "text": "（她不記得了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "roommate_gone": {
+          "reply": "……她說她要去退房。……打開門，就沒回來過。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你不出去找她？",
+              "next": "why_not_find",
+              "conditionCode": null
+            },
+            {
+              "text": "（門外有東西）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_not_find": {
+          "reply": "……外面黑。而且……而且我怕出去了，就找不到回來的路。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（這是你的房間啊）",
+              "next": "this_is_your_room",
+              "conditionCode": null
+            },
+            {
+              "text": "（她被困住了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "this_is_your_room": {
+          "reply": "（點頭，又搖頭）……是。也不是。……住久了，就分不清了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（她連這個都分不清了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "cant_leave": {
+          "reply": "……出不去了。門不開。……或者，門開了，外面不是走廊。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "外面是什麼？",
+              "next": "outside_what",
+              "conditionCode": null
+            },
+            {
+              "text": "（她試過）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "outside_what": {
+          "reply": "……別人。……一個和我一樣的人。站在門外，看著我。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "那是你自己。",
+              "next": "that_is_you",
+              "conditionCode": null
+            },
+            {
+              "text": "（別說了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "that_is_you": {
+          "reply": "（退後一步）……你別嚇我。……我不認得她。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我不該說的）",
+              "next": "comfort_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "corridor_sound": {
+          "reply": "（一下子停住數數）……別說。……別說那個聲音。它聽到你說，就會停下。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "停下來會怎樣？",
+              "next": "sound_stops",
+              "conditionCode": null
+            },
+            {
+              "text": "（我閉嘴）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "sound_stops": {
+          "reply": "……停下，就開始敲門。……三下一停。再三下。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "和敲你房門的一樣？",
+              "next": "same_knock",
+              "conditionCode": null
+            },
+            {
+              "text": "（她在發抖）",
+              "next": "comfort_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "same_knock": {
+          "reply": "（點點頭，很快）……一樣。……它在找東西。找不到，就一直敲。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "找什麼？",
+              "next": "looking_for",
+              "conditionCode": null
+            },
+            {
+              "text": "（別說了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "looking_for": {
+          "reply": "……找一個……一個不該在這的人。……我不說了。說了它會換找我。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我懂）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_lock_room": {
+          "reply": "（縮了一下）……為了安全。……鎖著，它進不來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你自己鎖的？",
+              "next": "you_lock",
+              "conditionCode": null
+            },
+            {
+              "text": "裡面除了你還有誰？",
+              "next": "who_inside",
+              "conditionCode": null
+            }
+          ]
+        },
+        "you_lock": {
+          "reply": "……不記得了。……也許是它鎖的。也許，是為了不讓我出去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你想出去嗎？",
+              "next": "want_out",
+              "conditionCode": null
+            },
+            {
+              "text": "（兩種都有可能）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "want_out": {
+          "reply": "（沉默很久）……想。……但我不知道出去了要去哪。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你家在哪？",
+              "next": "where_home",
+              "conditionCode": null
+            },
+            {
+              "text": "（她連家都忘了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "where_home": {
+          "reply": "……有窗戶。……窗戶外面有樹。……樹後面，想不起來了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（別想了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_inside": {
+          "reply": "（看了一眼房間深處）……我。……還有影子。影子有時候不跟我一起動。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼意思？",
+              "next": "shadow_not_you",
+              "conditionCode": null
+            },
+            {
+              "text": "（別看那邊）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "shadow_not_you": {
+          "reply": "……我站著，它走。我坐下，它站著。……我不敢回頭看它。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（那不是你的影子）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_mirror": {
+          "reply": "（聲音突然發緊）……別去看。……那邊的東西，會學你。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "學我？",
+              "next": "learn_you",
+              "conditionCode": null
+            },
+            {
+              "text": "你看過？",
+              "next": "seen_mirror",
+              "conditionCode": null
+            },
+            {
+              "text": "（我知道了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "learn_you": {
+          "reply": "……你抬左手，它慢半拍。你笑，它晚一會才笑。……後來，就換它先。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "換它先是什麼意思？",
+              "next": "it_first",
+              "conditionCode": null
+            },
+            {
+              "text": "（太嚇人了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "it_first": {
+          "reply": "……它先笑，你才跟著笑。……那時候，你已經不知道是你在笑了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我不去看）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "seen_mirror": {
+          "reply": "……看過一次。就一次。……後來我把臉別過去，它還在我背後看我。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "背後？",
+              "next": "behind_you",
+              "conditionCode": null
+            },
+            {
+              "text": "（別說了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "behind_you": {
+          "reply": "（輕聲）……我現在不確定，你面前這個，是我，還是……",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我不敢問）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_basement": {
+          "reply": "（整個人縮起來）……樓下。別提樓下。……樓下的聲音，不一樣。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "怎麼不一樣？",
+              "next": "different_sound",
+              "conditionCode": null
+            },
+            {
+              "text": "你下去過？",
+              "next": "went_down",
+              "conditionCode": null
+            },
+            {
+              "text": "（我不問了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "different_sound": {
+          "reply": "……走廊的聲音，是走過去。樓下的聲音，是……是往上爬。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "爬上來？",
+              "next": "climbing_up",
+              "conditionCode": null
+            },
+            {
+              "text": "（她在發抖）",
+              "next": "comfort_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "climbing_up": {
+          "reply": "……一下一下。很慢。……數著數著，就到門口了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "到門口後呢？",
+              "next": "arrives_door",
+              "conditionCode": null
+            },
+            {
+              "text": "（別說了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "arrives_door": {
+          "reply": "……不敲。……它就站在外面。等你自己以為沒人了，打開——",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我知道了）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "went_down": {
+          "reply": "……走過樓梯口。沒下去。……樓梯口的風，是冷的。從下面吹上來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "冷的風？",
+              "next": "cold_wind",
+              "conditionCode": null
+            },
+            {
+              "text": "（她有分寸）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "cold_wind": {
+          "reply": "……不像風。像有人在下面……呼氣。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（我不下去）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_long_here": {
+          "reply": "（想了很久，忘記數到哪）……一……一個晚上？……很多個晚上？我分不清。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你記得自己是怎麼來的嗎？",
+              "next": "before_here",
+              "conditionCode": null
+            },
+            {
+              "text": "你今年多大？",
+              "next": "how_old",
+              "conditionCode": null
+            },
+            {
+              "text": "（她分不清了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_old": {
+          "reply": "……十二？……十三？……過生日那天，走廊多了一扇門。我就進不出去了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "十三歲生日？",
+              "next": "thirteen_birthday",
+              "conditionCode": null
+            },
+            {
+              "text": "（原來如此）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "thirteen_birthday": {
+          "reply": "（點頭）……嗯。生日快樂，他們說。……後來就沒人來了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（生日變成了禁錮）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "be_quiet": {
+          "reply": "（被打斷，嚇了一跳）……對不起。……我數太大聲了嗎？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "沒有。你繼續。",
+              "next": "continue_counting",
+              "conditionCode": null
+            },
+            {
+              "text": "小滿，你聽過別人叫你名字嗎？",
+              "next": "heard_name",
+              "conditionCode": null
+            }
+          ]
+        },
+        "continue_counting": {
+          "reply": "……六……七……八……（聲音更輕了）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（陪她數一會）",
+              "next": "root",
+              "conditionCode": null
+            },
+            {
+              "text": "（她回到自己的世界了）",
+              "next": "end_leave_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "heard_name": {
+          "reply": "（停住）……誰？……很久沒有人叫我了。……除了老爺爺。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "老爺爺怎麼叫你？",
+              "next": "landlord_calls",
+              "conditionCode": null
+            },
+            {
+              "text": "（我叫你小滿）",
+              "next": "call_her_xiaoman",
+              "conditionCode": null
+            }
+          ]
+        },
+        "landlord_calls": {
+          "reply": "……十三號房。……他都叫我十三號房。不叫名字。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（他把你當房間了）",
+              "next": "end_trail_off",
+              "conditionCode": null
+            }
+          ]
+        },
+        "call_her_xiaoman": {
+          "reply": "（像被嚇到，又像很高興）……小滿。……你再叫一次。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "小滿。",
+              "next": "call_again",
+              "conditionCode": null
+            },
+            {
+              "text": "（她聽到自己的名字很高興）",
+              "next": "end_promise",
+              "conditionCode": null
+            }
+          ]
+        },
+        "call_again": {
+          "reply": "（輕輕笑）……嗯。……我記住了。下次你來，我還在這。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我會來的。",
+              "next": "end_promise",
+              "conditionCode": null
+            }
+          ]
+        },
+        "sorry": {
+          "reply": "（搖頭）……不要緊。……你坐遠一點就好。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼？",
+              "next": "why_far",
+              "conditionCode": null
+            },
+            {
+              "text": "（我坐下）",
+              "next": "wait_with_her",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_far": {
+          "reply": "……我身上涼。……他們說，坐近了會感冒。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（她不知道自己是涼的）",
+              "next": "end_shush",
+              "conditionCode": null
+            }
+          ]
+        },
+        "end_shush": {
+          "reply": "……噓。……走廊有聲音。別說了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_trail_off": {
+          "reply": "（聲音越來越輕，又開始數）……九……十……十一……",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_leave_her": {
+          "reply": "（揮揮手，很小）……走吧。……記得回來叫我。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_promise": {
+          "reply": "（點點頭，繼續數）……十二……十三……十四……",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "library_admin": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "（食指壓在唇上，看了你一眼。）……回來了。小聲。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你是誰？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_library_admin');}"
+            },
+            {
+              "text": "這裡是什麼地方？",
+              "next": "about_place",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼不能出聲？",
+              "next": "about_silence",
+              "conditionCode": null
+            },
+            {
+              "text": "那些書……都是什麼？",
+              "next": "about_books",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "（他從書堆後面抬起眼鏡，食指壓在嘴唇上。）小聲。這裡不收聲音。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你是誰？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_library_admin');}"
+            },
+            {
+              "text": "這裡是什麼地方？",
+              "next": "about_place",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼不能出聲？",
+              "next": "about_silence",
+              "conditionCode": null
+            },
+            {
+              "text": "那些書……都是什麼？",
+              "next": "about_books",
+              "conditionCode": null
+            },
+            {
+              "text": "【信任交流】確認彼此狀況並承諾並肩作戰（好感度 +12，高好感獲贈急救包）",
+              "next": "v58_trust_node",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "（他哼了一聲。）名字？先說你的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我叫陸衍。",
+              "next": "name_luyan",
+              "conditionCode": null
+            },
+            {
+              "text": "憑什麼我先說？",
+              "next": "defy_name",
+              "conditionCode": null
+            }
+          ]
+        },
+        "name_luyan": {
+          "reply": "陸衍。（他默念一遍，像是在查書目。）收好了。這裡記得住所有名字。你的——也一樣。",
+          "onVisitFlag": "function(s){s.flags['name_library_admin']=true;}",
+          "options": [
+            {
+              "text": "那你叫什麼？",
+              "next": "his_name",
+              "conditionCode": null
+            },
+            {
+              "text": "你剛才說，這裡記住所有名字……",
+              "next": "about_books",
+              "conditionCode": null
+            },
+            {
+              "text": "算了。後門在哪？",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "defy_name": {
+          "reply": "（他嘴角扯了一下。）膽子不小。可惜——在這間館裡，出聲的都還回去。你想試？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "……我叫陸衍。",
+              "next": "name_luyan",
+              "conditionCode": null
+            },
+            {
+              "text": "（低頭不說話）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "his_name": {
+          "reply": "名字？（他推了推眼鏡。）編號而已。你問這個做什麼。名字寫在書脊上，不是寫在人身上。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你自己也不記得？",
+              "next": "about_himself",
+              "conditionCode": null
+            },
+            {
+              "text": "後門怎麼走？",
+              "next": "about_door",
+              "conditionCode": null
+            },
+            {
+              "text": "（轉身去看書架）",
+              "next": "about_place",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_place": {
+          "reply": "圖書館。（他頓了頓。）還能是什麼。一排排書，一盞盞燈，靜得能聽見灰塵落地。你要找什麼？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "找一本書。",
+              "next": "find_books",
+              "conditionCode": null
+            },
+            {
+              "text": "我想出去。",
+              "next": "about_door",
+              "conditionCode": null
+            },
+            {
+              "text": "這館外頭呢？",
+              "next": "about_outside",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_silence": {
+          "reply": "出聲會被書架拖走。（他用指甲敲了敲書脊。）聲音一落，那排書就動了。你想被拖進去？一本一生，你賠得起？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "一本……一生？",
+              "next": "about_books",
+              "conditionCode": null
+            },
+            {
+              "text": "那你為什麼可以說話？",
+              "next": "about_himself",
+              "conditionCode": null
+            },
+            {
+              "text": "（點頭，壓低聲音）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_books": {
+          "reply": "每一本。（他抽出一本，又插回去。）封面是名字，內頁是日子。從第一聲啼哭，到最後一口氣。你翻開——就是那個人活過的全部。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "有我的那一本嗎？",
+              "next": "my_book",
+              "conditionCode": null
+            },
+            {
+              "text": "有你的那一本嗎？",
+              "next": "his_book",
+              "conditionCode": null
+            },
+            {
+              "text": "誰寫的？",
+              "next": "who_writes",
+              "conditionCode": null
+            },
+            {
+              "text": "後門跟這些書有關？",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "my_book": {
+          "reply": "（他上下打量你。）陸衍。當然有。第三排，左邊。自己去找——別翻太狠，紙頁脆。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你怎麼知道我叫陸衍？",
+              "next": "know_name",
+              "conditionCode": null
+            },
+            {
+              "text": "第三排左邊……我去看。",
+              "next": "find_books",
+              "conditionCode": null
+            },
+            {
+              "text": "裡面寫到現在了嗎？",
+              "next": "my_book_now",
+              "conditionCode": null
+            }
+          ]
+        },
+        "know_name": {
+          "reply": "（他笑了，笑聲很輕。）你剛才不是自己說的。還是——你以為這裡有人會忘？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "……這地方有點嚇人。",
+              "next": "about_place",
+              "conditionCode": null
+            },
+            {
+              "text": "後門。三本書。告訴我。",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "my_book_now": {
+          "reply": "寫到哪一頁，你就活到哪一頁。（他聳肩。）還沒合起來，說明你還沒翻完。你問我？我又不是執筆的那個。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "誰執筆？",
+              "next": "who_writes",
+              "conditionCode": null
+            },
+            {
+              "text": "（沉默）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "his_book": {
+          "reply": "（他愣了一下，隨即別開臉。）……別翻我那本。規矩。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "什麼規矩？",
+              "next": "his_book_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "你怕什麼？",
+              "next": "about_himself",
+              "conditionCode": null
+            }
+          ]
+        },
+        "his_book_rule": {
+          "reply": "管理員不許讀自己的書。（他聲音更低了。）讀了——就得把館交出來。下一個進來的人，接著坐我這位置。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "下一個……是我？",
+              "next": "im_next",
+              "conditionCode": null
+            },
+            {
+              "text": "後門還是三本書？",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "im_next": {
+          "reply": "（他盯著你，好久。）想走，就走得遠一點。後門——不是每個人都找得到。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "後門到底怎麼開？",
+              "next": "about_door",
+              "conditionCode": null
+            },
+            {
+              "text": "（退後一步）",
+              "next": "end_silence",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_writes": {
+          "reply": "不知道。（他搖頭。）我來的時候，筆就在桌上。墨是滿的。我只負責歸檔。寫——不是我的事。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你來了多久？",
+              "next": "about_himself",
+              "conditionCode": null
+            },
+            {
+              "text": "後門。三本書。",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_himself": {
+          "reply": "（他推眼鏡的手停了一下。）第三任。1993年接的位置。（他聲音低下去。）前一任……是我女兒的父親。媛媛。1987年生，1993年走，六歲。我坐在這位置上，是替他守她。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你也想出去？",
+              "next": "wants_out",
+              "conditionCode": null
+            },
+            {
+              "text": "你剛才能說話……",
+              "next": "about_silence",
+              "conditionCode": null
+            },
+            {
+              "text": "後門。",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "wants_out": {
+          "reply": "出去？（他重複這兩個字，像在認生詞。）媛媛走了之後，這裡就只剩我。出去做什麼——外面沒有她了。我排書，她在書架裡。（他別過臉。）別問了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你不知道外面？",
+              "next": "about_outside",
+              "conditionCode": null
+            },
+            {
+              "text": "（同情地看著他）",
+              "next": "end_pity",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_outside": {
+          "reply": "（他眉頭皺起來。）外面。……雨？太陽？人？（他搖頭。）別跟我說。我聽不得。聽了——書會亂。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你到底在怕什麼？",
+              "next": "about_himself",
+              "conditionCode": null
+            },
+            {
+              "text": "後門。也通外面嗎？",
+              "next": "about_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_door": {
+          "reply": "地毯下面，門在那裡。（他壓低聲音，第一次正眼看你。）五個凹槽。五樣東西。你湊得齊，門才開。湊不齊——就跟灰塵一起留著。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "哪五樣？",
+              "next": "which_books",
+              "conditionCode": null
+            },
+            {
+              "text": "為什麼是五個？",
+              "next": "why_three",
+              "conditionCode": null
+            },
+            {
+              "text": "門在哪一頭？",
+              "next": "where_door",
+              "conditionCode": null
+            }
+          ]
+        },
+        "which_books": {
+          "reply": "不告訴你。（他搖指。）自己找。翻到——自然就知道。封面會燙手。那時候你就懂了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "如果我翻不到呢？",
+              "next": "find_books",
+              "conditionCode": null
+            },
+            {
+              "text": "你幫我找。",
+              "next": "help_find",
+              "conditionCode": null
+            },
+            {
+              "text": "（轉身走向書架）",
+              "next": "find_books",
+              "conditionCode": null
+            }
+          ]
+        },
+        "help_find": {
+          "reply": "我幫你？（他冷笑一聲。）陸衍。我在這裡的工作，是不幫人。你忘了——出聲的都還回去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你嘴硬什麼。",
+              "next": "defy_again",
+              "conditionCode": null
+            },
+            {
+              "text": "……多謝提醒。",
+              "next": "end_silence",
+              "conditionCode": null
+            }
+          ]
+        },
+        "defy_again": {
+          "reply": "（他眼睛眯起來。）嘴硬？我看你是不知道這館裡——最安靜的那個，往往才是最危險的。走開。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（低頭走開）",
+              "next": "end_tired",
+              "conditionCode": null
+            },
+            {
+              "text": "後門的事，我還會回來問。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_three": {
+          "reply": "五個。（他比了五根手指。）不多不少。五樣東西，對應五個凹槽。少一樣，門不認。這是上一批留下的規矩——他們沒走完，就把門拆成了五份。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "上一批是誰？",
+              "next": "door_book",
+              "conditionCode": null
+            },
+            {
+              "text": "五樣東西分別是什麼？",
+              "next": "which_books",
+              "conditionCode": null
+            },
+            {
+              "text": "我去哪找？",
+              "next": "find_books",
+              "conditionCode": null
+            }
+          ]
+        },
+        "door_book": {
+          "reply": "（他點頭。）萬物皆有書。牆有，燈有，後門也有。只不過——門那本，從來沒人翻到最後一頁。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "翻到最後一頁會怎樣？",
+              "next": "end_final",
+              "conditionCode": null
+            },
+            {
+              "text": "（沉默）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "where_door": {
+          "reply": "你找？（他下巴往深處一抬。）最裡頭。第七排。別問我怎麼記得——我記得每一塊磚的書號。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "第七排……我去看看。",
+              "next": "find_books",
+              "conditionCode": null
+            },
+            {
+              "text": "你不陪我？",
+              "next": "about_himself",
+              "conditionCode": null
+            }
+          ]
+        },
+        "find_books": {
+          "reply": "（他揮揮手，像趕一隻蠅。）去吧。翻慢點。翻快了——紙頁會記得你急。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "如果我找到三本？",
+              "next": "which_books",
+              "conditionCode": null
+            },
+            {
+              "text": "（走向深處）",
+              "next": "end_silence",
+              "conditionCode": null
+            }
+          ]
+        },
+        "end_tired": {
+          "reply": "（他重新埋回書堆。）……走吧。別再出聲了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_silence": {
+          "reply": "（他不再看你，只把食指壓回嘴唇。）……",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_pity": {
+          "reply": "（他被你看得渾身不自在，轉身。）看什麼。走。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_final": {
+          "reply": "（他聲音幾乎聽不見。）翻到最後一頁——這館就空了。連你，帶我，帶這些灰。都走。……去吧。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "v58_trust_node": {
+          "reply": "（聽到你的承諾，對方的神色明顯柔和了下來。）「好。在這條迴廊裡，我們互相照應。如果你受了重傷，我會替你擋著，這包急救繃帶你先拿著。」",
+          "onVisitFlag": "function(){\n          addNpcAffinity(k, 12);\n          if(getNpcAffinity(k) >= 75 && !hasItem('trust_bandage_' + k)){\n            addItem('trust_bandage_' + k, NPC_PROFILES[k].name + '的急救包', '高好感度夥伴贈予的醫療包（可分配給自己或隊友恢復 30 HP）。');\n          }\n        }",
+          "options": [
+            {
+              "text": "回到對話",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "hospital_doctor": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "（他靠在走廊牆上，看了你一眼。）……陸衍。又醒了？這是你第幾次重置了？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你是誰？怎麼知道我的名字？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_hospital_doctor');}"
+            },
+            {
+              "text": "你不是醫生……對吧？",
+              "next": "blood",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "（他從牆上站直，白袍皺巴巴的，像好幾天沒換。）別怕。我不是這的員工。我跟你一樣——闖進來的。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你是誰？",
+              "next": "ask_name",
+              "conditionCode": "function(){return !hasFlag('name_hospital_doctor');}"
+            },
+            {
+              "text": "你穿著白袍……",
+              "next": "blood",
+              "conditionCode": null
+            },
+            {
+              "text": "這到底是什麼地方？",
+              "next": "luyan_where",
+              "conditionCode": null
+            },
+            {
+              "text": "【信任交流】確認彼此狀況並承諾並肩作戰（好感度 +12，高好感獲贈急救包）",
+              "next": "v58_trust_node",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "（他伸出手，又縮回去——手背上全是針孔。）林。他們叫我林醫生。我穿這件白袍，是因為穿別的會被護士認出來。我跟你一樣，是從前面五扇門活下來的人。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "五扇門？",
+              "next": "his_name",
+              "conditionCode": null
+            },
+            {
+              "text": "我叫陸衍。",
+              "next": "luyan_where",
+              "conditionCode": null
+            }
+          ]
+        },
+        "his_name": {
+          "reply": "林建國。（他頓了頓。）別記姓，記名字就行——在這裡，名字記太牢會出事。我闖過五扇門。旅館、圖書館、太平間……你現在站的這個，是第六個。",
+          "onVisitFlag": "function(s){s.flags['name_hospital_doctor']=true;}",
+          "options": [
+            {
+              "text": "你活下來了？",
+              "next": "how_long",
+              "conditionCode": null
+            },
+            {
+              "text": "護士是什麼？",
+              "next": "nurse_warn",
+              "conditionCode": null
+            }
+          ]
+        },
+        "luyan_where": {
+          "reply": "陸衍。（他念了一遍，像在記。）好名字。這裡是第六扇門——倒計時醫院。每個人手腕上都有個碼頭，時間到了就重置，什麼都忘。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "重置是什麼感覺？",
+              "next": "reset",
+              "conditionCode": null
+            },
+            {
+              "text": "你穿白袍……",
+              "next": "blood",
+              "conditionCode": null
+            }
+          ]
+        },
+        "reset": {
+          "reply": "重置。（他靠回牆上，聲音平。）就是死一次，再醒過來。物品沒了，記憶沒了，同伴沒了。你以為你剛入院——其實你已經死過十幾次了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "怎麼躲過重置？",
+              "next": "time_up",
+              "conditionCode": null
+            },
+            {
+              "text": "誰在執行重置？",
+              "next": "who_reset",
+              "conditionCode": null
+            }
+          ]
+        },
+        "time_up": {
+          "reply": "躲不過。（他搖頭。）碼頭歸零，鈴響，護士推車進來，給你打一針。醒來就是新的一天。唯一能做的——在時間到之前，找到地下二樓那個東西。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "地下二樓？",
+              "next": "b2",
+              "conditionCode": null
+            },
+            {
+              "text": "護士……",
+              "next": "nurse_warn",
+              "conditionCode": null
+            }
+          ]
+        },
+        "who_reset": {
+          "reply": "不是人執行。（他壓低聲音。）是那台機器。院長留下的記憶提取機。它吃人記憶。護士——只是它伸出來的手。別信護士，她給你打針不是救你，是清空你。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "護士長什麼樣？",
+              "next": "nurse_warn",
+              "conditionCode": null
+            },
+            {
+              "text": "機器在地下二樓？",
+              "next": "b2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "nurse_warn": {
+          "reply": "夜巡護士。（他聲音更低。）穿高跟，皮鞋聲在走廊拖很長。聽到那聲——別出聲，別看她，別答話。她給你打鎮定劑，你就永遠留在這了。我見過三個人被她拖走。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "怎麼分辨她是真是假？",
+              "next": "blood",
+              "conditionCode": null
+            },
+            {
+              "text": "地下二樓有什麼？",
+              "next": "b2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "b2": {
+          "reply": "地下二樓。（他眼睛亮了一下。）機器在那。機器裡關著一個六歲的女孩記憶。她叫媛媛。你在前面的門扉聽過這個名字吧？那不是巧合。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "媛媛是誰？",
+              "next": "yuanyuan",
+              "conditionCode": null
+            },
+            {
+              "text": "怎麼下去？",
+              "next": "how_down",
+              "conditionCode": null
+            }
+          ]
+        },
+        "yuanyuan": {
+          "reply": "1987年生，1993年死。六歲。她爸是這醫院的院長。她死了之後，院長把她記憶存進機器。結果2003年機器失控，開始吃人的記憶。（他停頓。）那個東西——就是她。她在等爸爸。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我能救她嗎？",
+              "next": "save_yy",
+              "conditionCode": null
+            },
+            {
+              "text": "怎麼下去？",
+              "next": "how_down",
+              "conditionCode": null
+            }
+          ]
+        },
+        "save_yy": {
+          "reply": "（他看著你，很久。）我不知道。我闖過五扇門，沒有人到過B2還能回來。你要是下去了——告訴她，林叔叔記得她。（他別過頭。）走吧。碼頭不等人。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你不一起？",
+              "next": "end_tired_doc",
+              "conditionCode": null
+            },
+            {
+              "text": "怎麼下去？",
+              "next": "how_down",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_down": {
+          "reply": "手術室那層，有個鎖著的門。四位數密碼。（他比了個手勢。）答案你自己找——病歷、手術記錄、太平間。別問我。我告訴你的，機器都聽得到。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "謝謝你，前輩。",
+              "next": "end_quiet_doc",
+              "conditionCode": null
+            },
+            {
+              "text": "白袍上的血……",
+              "next": "blood",
+              "conditionCode": null
+            }
+          ]
+        },
+        "blood": {
+          "reply": "（他低頭看了一眼白袍，扯了扯。）血漬。（他笑了一下，很短。）前幾次重置留下的。白袍不是醫生袍——是護士不為難我的偽裝。穿上這個，她當我是這的，不給我打針。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你一直靠這個活著？",
+              "next": "end_tired_doc",
+              "conditionCode": null
+            },
+            {
+              "text": "地下二樓……",
+              "next": "b2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_long": {
+          "reply": "（他算了算，搖頭。）不記得了。重置太多次，我已經記不得自己是第幾輪了。我只記得——前面五扇門，我都活下來了。這第六個，我可能要交代在這。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "為什麼不跑？",
+              "next": "end_shift",
+              "conditionCode": null
+            },
+            {
+              "text": "護士……",
+              "next": "nurse_warn",
+              "conditionCode": null
+            }
+          ]
+        },
+        "end_shift": {
+          "reply": "跑？（他苦笑。）碼頭在手上，跑到哪都一樣重置。唯一的辦法——把那台機器關了。我做不到。也許你可以。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "（點頭）",
+              "next": "end_quiet_doc",
+              "conditionCode": null
+            }
+          ]
+        },
+        "end_tired_doc": {
+          "reply": "（他揮揮手，轉身走回陰影裡。）去吧。別像我一樣，活了五扇門，卻連一個女孩都救不了。",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "end_quiet_doc": {
+          "reply": "（他不再說話，只是靠在牆上，聽著遠處那雙高跟鞋聲慢慢靠近。）……",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "v58_trust_node": {
+          "reply": "（聽到你的承諾，對方的神色明顯柔和了下來。）「好。在這條迴廊裡，我們互相照應。如果你受了重傷，我會替你擋著，這包急救繃帶你先拿著。」",
+          "onVisitFlag": "function(){\n          addNpcAffinity(k, 12);\n          if(getNpcAffinity(k) >= 75 && !hasItem('trust_bandage_' + k)){\n            addItem('trust_bandage_' + k, NPC_PROFILES[k].name + '的急救包', '高好感度夥伴贈予的醫療包（可分配給自己或隊友恢復 30 HP）。');\n          }\n        }",
+          "options": [
+            {
+              "text": "回到對話",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "night_nurse": {
+      "start": "root",
+      "startReturning": "returning",
+      "nodes": {
+        "returning": {
+          "reply": "（她手裡的瓶子差點沒拿穩。）……是你。別站在燈底下。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我不是病人。",
+              "next": "not_patient",
+              "conditionCode": null
+            },
+            {
+              "text": "妳是夜班護士？",
+              "next": "ask_name",
+              "conditionCode": null
+            },
+            {
+              "text": "妳在數什麼？",
+              "next": "counting",
+              "conditionCode": null
+            }
+          ]
+        },
+        "root": {
+          "reply": "（她蹲在二樓樓梯口的推車旁，一只手壓著針劑盤，數玻璃小瓶。聽見腳步，她猛地抬頭，眼睛在口罩上方瞪得很大。）……查房。是查房時間。你是幾床？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我不是病人。",
+              "next": "not_patient",
+              "conditionCode": null
+            },
+            {
+              "text": "妳是夜班護士？",
+              "next": "ask_name",
+              "conditionCode": null
+            },
+            {
+              "text": "妳在數什麼？",
+              "next": "counting",
+              "conditionCode": null
+            }
+          ]
+        },
+        "ask_name": {
+          "reply": "（她點頭，又像在搖頭。）夜巡。每班。（她低聲唸。）白班走了，小夜班走了，就剩我。（她壓低聲。）別告訴別人我在這裡。他聽得見。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "「他」是誰？",
+              "next": "who_he",
+              "conditionCode": null
+            },
+            {
+              "text": "妳的排班表上寫著周敏。",
+              "next": "name_zhoumin",
+              "conditionCode": null
+            },
+            {
+              "text": "妳一個人在這多久了？",
+              "next": "how_long",
+              "conditionCode": null
+            },
+            {
+              "text": "（安靜地聽）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "not_patient": {
+          "reply": "（她眼睛又瞪大了一下，把針盤往胸前抱緊。）不是病人……那你是家屬？（她搖頭，自言自語。）家屬都探完了。三樓那個，家屬去年就不來了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "三樓那個是誰？",
+              "next": "who_he",
+              "conditionCode": null
+            },
+            {
+              "text": "妳在數什麼？",
+              "next": "counting",
+              "conditionCode": null
+            },
+            {
+              "text": "……打擾了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "counting": {
+          "reply": "（她重新低頭數瓶，手指點得很快，卻又停住。）一、二、三……（她皺眉。）剛才是幾？她猛地抬頭看你，像怕你偷了一瓶。你別碰。少一瓶，少一個病人，我就得——她沒說完，把話嚥回去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "少一個會怎樣？",
+              "next": "count_missing",
+              "conditionCode": null
+            },
+            {
+              "text": "妳怕誰？",
+              "next": "afraid",
+              "conditionCode": null
+            },
+            {
+              "text": "我不碰。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "count_missing": {
+          "reply": "（她聲音發抖。）就會有人想起來。想起來……就不對了。她用袖口擦了一下口罩上方的額頭。上一個少了的，是七床。（她忽然壓得更低。）別去找七床。他今晚上會查房。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "「他」是誰？",
+              "next": "who_he",
+              "conditionCode": null
+            },
+            {
+              "text": "妳叫什麼名字？",
+              "next": "name_zhoumin",
+              "conditionCode": "function(){return !hasFlag('name_night_nurse');}"
+            }
+          ]
+        },
+        "who_he": {
+          "reply": "（她環顧走廊，像牆裡長著耳朵。然後她低頭，看了看自己的鞋。一雙高跟鞋。她從來不記得自己什麼時候換上的。）……沒有「他」。（她聲音發抖。）聽到那雙高跟鞋聲——噠、噠、噠，從走廊盡頭過來——那就是我來了。到那時候，別認我。別出聲。我已經不是我了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "妳……",
+              "next": "how_long",
+              "conditionCode": null
+            },
+            {
+              "text": "妳該離開這裡。",
+              "next": "afraid",
+              "conditionCode": null
+            },
+            {
+              "text": "（點頭，不語）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_long": {
+          "reply": "（她張嘴，又停住。手指在針盤邊沿點，像在數年份。）……忘了。日曆撕掉的那一摞，我從來不看。她把最後一瓶藥擺正。你要是能出去，別回頭。回頭看走廊——她聲音輕得像歎息。走廊會多一張床。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我會記得妳。",
+              "next": "root",
+              "conditionCode": null
+            },
+            {
+              "text": "（轉身離開）",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "name_zhoumin": {
+          "reply": "（她身體僵了一下。那個名字……她低頭看自己胸口，名牌早就掉了。你怎麼知道的。她不是在問你。她是在問這條走廊。）……周敏。很久沒人叫了。叫了，就像又要上班似的。",
+          "onVisitFlag": "function(s){s.flags['name_night_nurse']=true;}",
+          "options": [
+            {
+              "text": "妳也該下班了。",
+              "next": "how_long",
+              "conditionCode": null
+            },
+            {
+              "text": "（輕聲叫她）周敏。",
+              "next": "name_echo",
+              "conditionCode": null
+            },
+            {
+              "text": "……抱歉。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "name_echo": {
+          "reply": "（她肩膀抖了一下。隔了半秒，走廊盡頭也很輕地回了一聲：「……敏。」她立刻噤聲，把食指豎在唇前，眼睛紅了。別叫了。別讓他知道——我還在。）",
+          "onVisitFlag": null,
+          "options": []
+        },
+        "afraid": {
+          "reply": "（她把針盤抱得更緊。）怕。她直認不諱。怕也得巡。不巡，就換我躺在七床。她看了你一眼，那眼神不像在看病人，像在看一個隨時會不見的人。你快走。倒數響的時候，別站在燈底下。",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "gatekeeper": {
+      "start": "root",
+      "startReturning": "root",
+      "nodes": {
+        "root": {
+          "reply": "（他提著那盞沒有火的燈，目光落在你手腕的舊痕上。）你走過了旅館、圖書館，還有那座停在六十分鐘的醫院。還有什麼想問的？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你為什麼一直站在這裡？",
+              "next": "why_stand",
+              "conditionCode": null
+            },
+            {
+              "text": "那盞燈為什麼沒有火？",
+              "next": "lamp",
+              "conditionCode": null
+            },
+            {
+              "text": "門後的 03:17 究竟是什麼？",
+              "next": "about_317",
+              "conditionCode": null
+            }
+          ]
+        },
+        "why_stand": {
+          "reply": "因為總有人在三扇門走完之後，不知道該往哪邁步。我替上一任站著，直到有人願意把門關上，或者把燈接過去。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "上一任是誰？",
+              "next": "prev_guard",
+              "conditionCode": null
+            },
+            {
+              "text": "回到剛才的問題",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "prev_guard": {
+          "reply": "一個和你一樣在凌晨算過質數的人。他走進門裡的時候，終於不皺眉了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "原來如此。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "lamp": {
+          "reply": "火不在燈裡，在走過門的人身上。你若還記得那些名字——蘇晚、媛媛、周敏、林建國——燈芯自然會亮。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "我記得他們。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "about_317": {
+          "reply": "那是你倒下的時刻，也是所有迴廊開始摺疊的原點。再往前走，去海裡，或者去最頂層的觀測站——你會親眼看到那杯還沒灑完的咖啡。",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "tide_echo": {
+      "start": "root",
+      "startReturning": "root",
+      "nodes": {
+        "root": {
+          "reply": "（他站在水面之上，手插在口袋裡，朝你笑了笑。）怎麼，還想核對我們兩個的人生哪裡不一樣？",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "你那條路，導師的論文過了嗎？",
+              "next": "thesis",
+              "conditionCode": null
+            },
+            {
+              "text": "你有沒有遇見蘇晚和媛媛？",
+              "next": "companions",
+              "conditionCode": null
+            },
+            {
+              "text": "怎樣才能在海裡呼吸？",
+              "next": "breathe",
+              "conditionCode": null
+            }
+          ]
+        },
+        "thesis": {
+          "reply": "過了。但那天凌晨三點十七分，我一樣在桌前醒不過來。那條偏離的質數曲線，不是算錯——是迴廊在向我們打招呼。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "原來哪條路都會來到這裡。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "companions": {
+          "reply": "見過。所以我才留在這片海裡，替每一個倒帶的人看著燈塔。有些遺憾不必改寫，看完就夠了。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "謝謝你。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "breathe": {
+          "reply": "別把這片海當成要逃出去的陷阱。當你承認那些沒打出的電話、沒走的路也是你的一部分，水就不會嗆著你了。",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "obs_chen": {
+      "start": "root",
+      "startReturning": "root",
+      "nodes": {
+        "root": {
+          "reply": "（投影在監視器藍光中微微閃爍，老教授推了推眼鏡。）陸衍，你終於走到觀測站了。我就知道你會順著那條偏離曲線找過來。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "老師，您也進過迴廊？",
+              "next": "mentor_past",
+              "conditionCode": null
+            },
+            {
+              "text": "那條質數分佈曲線到底代表什麼？",
+              "next": "prime_curve",
+              "conditionCode": null
+            },
+            {
+              "text": "怎樣才能讓時間走到 03:18？",
+              "next": "how_318",
+              "conditionCode": null
+            }
+          ]
+        },
+        "mentor_past": {
+          "reply": "三十年前我就來過一次。那時候還沒有倒計時醫院，只有第一扇門。我把提示留在你的代碼註釋裡，希望有一天你能算完它。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "難怪您說這方向「有價值但難出成果」。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "prime_curve": {
+          "reply": "每一個偏離預期的質數點，都是一扇正在呼吸的門。2、3、5、7、11、13……而第 7 個質數，正是這座觀測站的校準基準。",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "第 7 個質數……我記住了。",
+              "next": "root",
+              "conditionCode": null
+            }
+          ]
+        },
+        "how_318": {
+          "reply": "別把觀測站當成最後的牢籠。去主機校準偏離值，去屋頂把分界頻率調到 0318，然後推開那扇分界門——咖啡涼了，該泡一杯新的了。",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "tram_conductor": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "「請出示車票。」沈默推了推帽簷，「這班車只載還有遺憾的人。你看車窗對面——那個你，比你更想下車。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「我在這輛車上剪了三十年的票。有的人把對面的自己撞碎了，結果下車時只剩半個影子。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「03:28 是唯一一次雙軌重合的時刻。如果你去過車廂連接處的密室，那把制動扳手能救你們兩個。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「站點每次發車都會重新洗牌，但終點永遠是駕駛室。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「拿著這張『列車長通行證』吧。到了駕駛室，它能幫你穩住儀表。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "tram_mirror_you": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "（車窗對面的你把掌心貼在玻璃上，聲音直接傳進你腦海。）「為什麼每次都是你選安全的那條路，而我要替你去踩所有的陷阱？」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「在旅館裡你沒開 2 號門，是我替你開了；在圖書館你沒出聲，是我替你喊了出來。我們本來就是同一個人。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「到了終點站，別丟下我。只要我們生命同步，就能一起走出地鐵口。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "tram_girl": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "林雙緊緊抓著紅圍巾：「你有看見我姊姊嗎？她跟我在同一個月台上車，卻進了對面那班電車。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「原來我們不是雙胞胎……她就是鏡子裡的我，對不對？」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「謝謝你陪我說話。這張反光書籤給你，看著它就不會被車窗晃花了眼。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "tram_tuner": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "宋弦摘下一邊耳機：「聽，鐵軌的震動是 +3、+5、+7、+11……這是一條用質數鋪成的軌道。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「只要算準 03:28 的共振點，兩列電車就不會相撞，而是像和弦一樣疊在一起。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「這枚調音笛給你，危急時吹響它能穩定心神。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "tram_oldman": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "老人摸索著膝上的時刻表：「眼睛看不見也好，至少不會被車窗對面的倒影嚇著。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「年輕人，第四個問題的開關在 4 號座底下，別被說假話的孩子騙了。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「願你到站時天已經亮了。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "tram_sleeper": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "西裝男迷迷糊糊地睜開眼：「到站了嗎？我還在趕凌晨三點十七分的報告……」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「千萬別在車上睡死過去，睡著了就永遠下不了車了。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「我口袋裡這包薄荷糖給你提神。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "tram_vendor": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "阿婆掀開竹籃上的白布：「買瓶水吧，車廂裡乾得很。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「前幾班車有個穿白連帽衫的姑娘，買了兩瓶水，說一瓶留給叫陸衍的人。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「那姑娘留下的這瓶水，阿婆拿給你。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "buffet_chef": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "主廚老陳擦拭著銀盤：「歡迎光臨。這裡的每道菜都是一段真實的人生，請細嚼慢嚥。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「很多人進來時餓壞了，見什麼吃什麼，結果撐死在長桌旁，自己也變成了菜。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「八分飽是最好的狀態。去後廚冷庫看看吧，密碼是 35，那裡有我留給你們的家常食譜。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "child_self": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "十二歲的你抬起頭，眼神清澈卻倔強：「你是長大後的我？那你算完那條質數曲線了嗎？」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「我們長大後是不是變得很孤單？連喝咖啡都是一個人在實驗室喝。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「不過沒關係，現在你身邊有蘇晚、老趙他們了。把這架紙飛機拿去吧！」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "classmate_lin": {
+      "start": "stage1",
+      "startReturning": "stage1",
+      "nodes": {
+        "stage1": {
+          "reply": "同桌林小滿把鉛筆盒往中間推了推：「喂，陸衍，黑板上的附加題答案是 5 啦，別發呆了！」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "深入交談（推進對話階段 I → II，好感度 +8）",
+              "next": "stage2",
+              "conditionCode": null
+            },
+            {
+              "text": "詢問關於這扇門扉的隱藏規則",
+              "next": "stage_rule",
+              "conditionCode": null
+            },
+            {
+              "text": "冷淡質疑對方的動機（好感度 -10）",
+              "next": "stage_cold",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage2": {
+          "reply": "「你今天怪怪的，說話像個二十幾歲的大人一樣。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "傾聽對方不為人知的過去（階段 II → III，好感度 +10）",
+              "next": "stage3",
+              "conditionCode": null
+            },
+            {
+              "text": "返回上一話題",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage3": {
+          "reply": "「這塊幸運橡皮擦送你，寫錯的答案擦掉重寫就好了！」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "【高好感專屬】請求對方的信物與支援（需好感度 >= 70）",
+              "next": "stage_high",
+              "conditionCode": "function(){ return getNpcAffinity(npcKey) >= 70; }"
+            },
+            {
+              "text": "結束深談",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_rule": {
+          "reply": "「記住，這裡的每一條規則都有一道給清醒者留的後門。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "明白了",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_cold": {
+          "reply": "（對方的眼神冷了下來，往後退了半步，顯然對你的戒心更重了。）",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "緩和語氣道歉（好感度 +5）",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        },
+        "stage_high": {
+          "reply": "「既然是你，這件東西交給你我最放心。萬一遇到危險，我會替你擋下來。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "鄭重道謝",
+              "next": "stage1",
+              "conditionCode": null
+            }
+          ]
+        }
+      }
+    },
+    "cinema_seller": {
+      "start": "s1",
+      "startReturning": "s1",
+      "nodes": {
+        "s1": {
+          "reply": "「想看愛情片？那我偏給你驚悚廳的票。人生不也是這樣嗎，你從來拿不到劇本寫好的那張票。」 「記住，中途離場是對電影最大的不敬，影評人會把你的分數扣光。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "「我明白你的逆向規則了，謝謝提醒。」（好感 +15）",
+              "next": "s2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "s2": {
+          "reply": "林默微微一怔，嘴角揚起一絲笑意：「看來今晚終於來了一位真正的影迷。」",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "cinema_cleaner": {
+      "start": "s1",
+      "startReturning": "s1",
+      "nodes": {
+        "s1": {
+          "reply": "「地上這些發光的爆米花，全都是觀眾看電影時掉出來的笑聲與眼淚。」 「去把 A、B、C、D 四廳的片尾膠卷都帶到頂層放映室吧，那裡有真正的早場陽光。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "幫老陳一起收拾散落的膠卷盒（好感 +15）",
+              "next": "s2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "s2": {
+          "reply": "老陳拍了拍你的肩膀：「好孩子，待會兒要是遇到危險，後巷消防梯隨時為你留著。」",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "cinema_ghost": {
+      "start": "s1",
+      "startReturning": "s1",
+      "nodes": {
+        "s1": {
+          "reply": "「噓……別大聲說話。上一場就是因為我在驚悚廳回了頭，才永遠留在了 7 排 G 座。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "「這次散場時，我會連你的份一起走出去。」（好感 +15）",
+              "next": "s2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "s2": {
+          "reply": "沈影透明的眼眶泛起微光：「謝謝你，陸衍。」",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "zoo_panda": {
+      "start": "s1",
+      "startReturning": "s1",
+      "nodes": {
+        "s1": {
+          "reply": "「竹筍要挑晨露還沒乾的最脆。小時候的你哭起來鼻子紅紅的，現在倒是學會把心事藏在心裡了。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "摸摸團團隔著玻璃的爪印（好感 +15，人性 +5）",
+              "next": "s2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "s2": {
+          "reply": "團團晃了晃圓耳朵：「別忘了回家的時間，午夜十二點前要走回正門喔。」",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "zoo_lion": {
+      "start": "s1",
+      "startReturning": "s1",
+      "nodes": {
+        "s1": {
+          "reply": "「恐懼的氣味隔著十丈遠都能聞到。但你的眼睛裡有光，像極了當年把你扛在肩上的那個男人。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "向獅王行禮致意（好感 +15）",
+              "next": "s2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "s2": {
+          "reply": "阿斯蘭低吼一聲，替你讓開了通往深處的道路。",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    },
+    "zoo_keeper": {
+      "start": "s1",
+      "startReturning": "s1",
+      "nodes": {
+        "s1": {
+          "reply": "「動物比人類誠實多了。你餵牠們一口食物，牠們就還你一段你以為早就弄丟的童年。」",
+          "onVisitFlag": null,
+          "options": [
+            {
+              "text": "詢問關於 1999 年兒童半價票的下落（好感 +15）",
+              "next": "s2",
+              "conditionCode": null
+            }
+          ]
+        },
+        "s2": {
+          "reply": "「集齊六個展區的記憶碎片，那張票自然會在你手心浮現。」",
+          "onVisitFlag": null,
+          "options": []
+        }
+      }
+    }
+  },
+  "NPC_DIALOGUES": {
+    "cinema_seller": {
+      "name": "售票員林默",
+      "role": "潮汐電影院售票員",
+      "lines": [
+        "「想看愛情片？那我偏給你驚悚廳的票。人生不也是這樣嗎，你從來拿不到劇本寫好的那張票。」",
+        "「記住，中途離場是對電影最大的不敬，影評人會把你的分數扣光。」"
+      ],
+      "choices": [
+        {
+          "text": "「我明白你的逆向規則了，謝謝提醒。」（好感 +15）",
+          "reply": "林默微微一怔，嘴角揚起一絲笑意：「看來今晚終於來了一位真正的影迷。」"
+        }
+      ]
+    },
+    "cinema_cleaner": {
+      "name": "清潔工老陳",
+      "role": "銀幕守夜人",
+      "lines": [
+        "「地上這些發光的爆米花，全都是觀眾看電影時掉出來的笑聲與眼淚。」",
+        "「去把 A、B、C、D 四廳的片尾膠卷都帶到頂層放映室吧，那裡有真正的早場陽光。」"
+      ],
+      "choices": [
+        {
+          "text": "幫老陳一起收拾散落的膠卷盒（好感 +15）",
+          "reply": "老陳拍了拍你的肩膀：「好孩子，待會兒要是遇到危險，後巷消防梯隨時為你留著。」"
+        }
+      ]
+    },
+    "cinema_ghost": {
+      "name": "鄰座觀眾沈影",
+      "role": "上一場觀眾的殘影",
+      "lines": [
+        "「噓……別大聲說話。上一場就是因為我在驚悚廳回了頭，才永遠留在了 7 排 G 座。」"
+      ],
+      "choices": [
+        {
+          "text": "「這次散場時，我會連你的份一起走出去。」（好感 +15）",
+          "reply": "沈影透明的眼眶泛起微光：「謝謝你，陸衍。」"
+        }
+      ]
+    },
+    "zoo_panda": {
+      "name": "老熊貓團團",
+      "role": "熊貓區長者",
+      "lines": [
+        "「竹筍要挑晨露還沒乾的最脆。小時候的你哭起來鼻子紅紅的，現在倒是學會把心事藏在心裡了。」"
+      ],
+      "choices": [
+        {
+          "text": "摸摸團團隔著玻璃的爪印（好感 +15，人性 +5）",
+          "reply": "團團晃了晃圓耳朵：「別忘了回家的時間，午夜十二點前要走回正門喔。」"
+        }
+      ]
+    },
+    "zoo_lion": {
+      "name": "獅王阿斯蘭",
+      "role": "獅子區霸主",
+      "lines": [
+        "「恐懼的氣味隔著十丈遠都能聞到。但你的眼睛裡有光，像極了當年把你扛在肩上的那個男人。」"
+      ],
+      "choices": [
+        {
+          "text": "向獅王行禮致意（好感 +15）",
+          "reply": "阿斯蘭低吼一聲，替你讓開了通往深處的道路。"
+        }
+      ]
+    },
+    "zoo_keeper": {
+      "name": "夜間飼育員",
+      "role": "午夜守園人",
+      "lines": [
+        "「動物比人類誠實多了。你餵牠們一口食物，牠們就還你一段你以為早就弄丟的童年。」"
+      ],
+      "choices": [
+        {
+          "text": "詢問關於 1999 年兒童半價票的下落（好感 +15）",
+          "reply": "「集齊六個展區的記憶碎片，那張票自然會在你手心浮現。」"
+        }
+      ]
+    }
+  }
+}

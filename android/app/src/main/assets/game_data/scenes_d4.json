@@ -1,0 +1,770 @@
+{
+  "prologue": {
+    "id": "prologue",
+    "room": "—",
+    "roomName": "白光盡頭",
+    "sceneId": "4-序章",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你以為自己會再醒在那間白色房間。</p>",
+      "<p>塑膠床，自動販賣機，一張空椅子，牆上一塊寫著倒數的黑板。每次都是這樣。上一段路結束，下一張公告貼出來，七十二小時，或者六十分鐘。</p>",
+      "<p>這次沒有。</p>",
+      "<p>你睜開眼的時候，沒有床。天花板不是白的——是沒顏色的，像一張被擦乾淨的紙。沒有倒數，沒有冰冷的低語，沒有門憑空長出來的聲音。</p>",
+      "<p>你站在一片空裡。前後左右，都像走廊，又都不是走廊。</p>",
+      "<p>腳下有地。你低頭，看見地上有一圈很淺的印——像被什麼東西，一圈一圈，走了很多年。</p>",
+      "<p>你這次走了很遠。旅館的鏡子，圖書館的書架，醫院停在 00:00 的鐘。三段路走完，你以為自己會聽到一句「通關」。</p>",
+      "<p>什麼都沒有。只有很安靜的聲音，從四面八方過來：是門。一扇、一扇、又一扇，都在你看不見的縫裡，輕輕呼吸。</p>",
+      "<p>你認出來了。你一直在它們之間走，這是第一次，走到「之間」本身。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "沿著那圈淺印，走到中心去",
+        "next": "heart",
+        "personality": {
+          "calm": 5
+        }
+      },
+      {
+        "text": "在掌心裡掂一掂那把沒有齒的鑰",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "heart": {
+    "id": "heart",
+    "room": "∞",
+    "roomName": "迴廊心臟",
+    "sceneId": "4-心臟",
+    "mapZone": "heart",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你站到那圈印的正中央。</p>",
+      "<p>這裡不是走廊，是走廊的「心臟」。沒有盡頭，也沒有開始。牆不存在——或者說，四面牆都是門。</p>",
+      "<p>你左邊一扇老木門，門牌是 13。你認得。右邊一扇門，門上沒有牌，只刻了一個字：靜。背後靠裡一點，是一扇塑膠門，門牌的位置停著一塊停擺的電子鐘：60:00。</p>",
+      "<p>三扇門你都推開過。推開過三次，或更多次——你不確定。</p>",
+      "<p>正前方，是一扇大得多的門。沒有門牌，沒有把手。門中央刻著一個你很熟的符號：∞。</p>",
+      "<p>大門旁站著一個人。深色長外套，半張臉在影子裡，手裡提一盞沒有火的燈。他沒有看你。他看起來，像已經站在那裡等了很多年。</p>"
+    ],
+    "textReturn": [
+      "<p>你回到心臟。三扇舊門安靜地待在原處，像三件被疊好的舊外套。</p>",
+      "<p>大門前那個人還站在那裡。燈還是沒有火。</p>"
+    ],
+    "choices": [
+      {
+        "text": "走左邊那扇老木門（門牌 13）",
+        "next": "old_mirror",
+        "personality": {
+          "cautious": 3
+        }
+      },
+      {
+        "text": "走右邊那扇刻著「靜」的門",
+        "next": "old_library",
+        "personality": {
+          "cautious": 3
+        }
+      },
+      {
+        "text": "走靠後那扇停擺的塑膠門（60:00）",
+        "next": "old_hospital",
+        "personality": {
+          "cautious": 3
+        }
+      },
+      {
+        "text": "蹲下身，細看地上那圈刻痕",
+        "next": "threshold_mark"
+      },
+      {
+        "text": "繞到大門側邊那張空椅子",
+        "next": "chair"
+      },
+      {
+        "text": "直接走向大門前那個人",
+        "next": "gate"
+      },
+      {
+        "text": "走到角落那道爬上天花板的細縫前",
+        "next": "crack"
+      },
+      {
+        "text": "仰視那張沒有顏色的「天花板」",
+        "next": null,
+        "observe": "你抬頭。沒有天花板——上面是很多門，一扇疊著一扇，遠到看不見盡頭。每一扇門都透著一點光。你數到第十七扇的時候，數錯了，只好重來。原來從心臟往上看，門也是無窮的。"
+      },
+      {
+        "text": "走到角落那扇沒有門牌的門前",
+        "next": "unnumbered",
+        "hasCondition": true
+      },
+      {
+        "text": "拼合散落在心臟地面的「舊門殘響星陣」（小遊戲）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "crack": {
+    "id": "crack",
+    "room": "∞",
+    "roomName": "牆上的縫",
+    "sceneId": "4-心臟·縫隙",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>心臟的牆不存在，但牆縫存在。</p>",
+      "<p>一道很細的裂縫，從地面爬到你眼睛的高度，縫裡滲出一點白光。你把耳朵貼上去。</p>",
+      "<p>縫裡有聲音。很遠，像隔了很多堵牆：算盤珠子，翻書紙頁，儀器「滴」的一聲。</p>",
+      "<p>是你走過的三段路。它們沒有消失——它們只是縮小了，縮在這道縫裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "把耳朵再貼近一點",
+        "next": null,
+        "useless": true,
+        "flavor": "一個很輕的童聲夾在儀器聲裡，只說了半句：「……爸爸？」你直起身。縫又合上了一點。"
+      },
+      {
+        "text": "離開這道縫",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "unnumbered": {
+    "id": "unnumbered",
+    "room": "∞",
+    "roomName": "沒有門牌的門",
+    "sceneId": "4-心臟·迴",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>這扇門沒有牌。門縫裡滲出的，是你走過太多次的那條白走廊。</p>",
+      "<p>你認得這條路。你走過不止一次。每次走完，都有人把你放回起點，把一部分記憶擦掉，再給你一次機會。</p>",
+      "<p>門後傳來自己的腳步聲。像很久很久以前的你，還在第一扇 13 號門前猶豫。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "推開它看看",
+        "next": null,
+        "useless": true,
+        "flavor": "門後是空的。空得很乾淨——像一次重置之前的畫面。你輕輕把門帶上。這次你不打算再回去了。"
+      },
+      {
+        "text": "離開",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "threshold_mark": {
+    "id": "threshold_mark",
+    "room": "∞",
+    "roomName": "地板上的刻痕",
+    "sceneId": "4-心臟·門數",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你蹲下。那圈淺印不是印——是刻出來的。</p>",
+      "<p>一個角上，十三道短痕。旁邊一個被磨平的「靜」字。再過去，是六十分鐘那樣一格一格的刻線。</p>",
+      "<p>三組記號擺在一起，像三個排好隊的門。刻痕中間有一行更淺的小字，是用指甲寫的：</p>",
+      "<p class=\"system-msg\">「三扇門扉，三扇你親手推開的門。不是房間，不是走廊——是『門』。數一數，到今天為止，你一共推開過幾扇。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "把那個數字說出來",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "回到心臟",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "old_mirror": {
+    "id": "old_mirror",
+    "room": "13",
+    "roomName": "鏡子舊處",
+    "sceneId": "4-舊門·鏡",
+    "mapZone": "old_mirror",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>木門推開，裡面不是旅館。是旅館走廊的最後一眼，被裝進了一面鏡子裡。</p>",
+      "<p>鏡子還立在那裡。鏡框磨得發亮。</p>",
+      "<p>鏡裡沒有你。</p>",
+      "<p>鏡子深處站著那個「你」——阿凱的輪廓，又不像阿凱，像你自己，在某個分叉裡長成的另一個人。它看見你，沒有說假話。它只是抬起手，朝你很慢地揮了一下。</p>",
+      "<p>這一次，你沒有攔它。</p>"
+    ],
+    "textReturn": [
+      "<p>鏡子空了。那個「你」走了，走得很乾淨，像從來沒有存在過。</p>"
+    ],
+    "choices": [
+      {
+        "text": "走近一步，看看鏡深處",
+        "next": "mirror_self"
+      },
+      {
+        "text": "退回心臟",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "mirror_self": {
+    "id": "mirror_self",
+    "room": "13",
+    "roomName": "鏡深處",
+    "sceneId": "4-舊門·訣別",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你走到鏡子跟前。鏡面是溫的。</p>",
+      "<p>那個「你」也走近。兩張臉貼著同一層玻璃。你看見它眼底那點一直以來的、說謊說出來的疲倦。</p>",
+      "<p>它開口。沒有聲音，但你讀得出唇形：「謝謝你沒殺我。」</p>",
+      "<p>然後它轉身，走進鏡子更深的地方，沒有回頭。鏡面漸漸只剩下你自己——這一次，鏡裡那個人是你，不是別人。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "退回心臟",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "old_library": {
+    "id": "old_library",
+    "room": "靜",
+    "roomName": "書架舊處",
+    "sceneId": "4-舊門·書",
+    "mapZone": "old_library",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>推開這扇門，先聞到的是舊紙張的味道。</p>",
+      "<p>沒有圖書館。只有一道書架的影子，牆一樣立在那裡，架上一本書攤開著。</p>",
+      "<p>你走過去。攤開的那一頁，是你的那本——寫著你這輩子沒做的飯、沒打的電話、沒說出口的對不起。</p>",
+      "<p>書頁自己翻了一頁。下一頁是空的。</p>",
+      "<p>腳邊有東西輕輕蹭過。你低頭——什麼都沒有。也許本來就不需要有。</p>"
+    ],
+    "textReturn": [
+      "<p>書架安靜地立著。那本書還攤在空的那一頁。</p>"
+    ],
+    "choices": [
+      {
+        "text": "把書輕輕合上，放回原處",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回心臟",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "old_hospital": {
+    "id": "old_hospital",
+    "room": "60:00",
+    "roomName": "病房舊處",
+    "sceneId": "4-舊門·鐘",
+    "mapZone": "old_hospital",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>塑膠門推開，先聽見的是儀器的靜默——那種壞掉之後、一直沒人拔電源的「嗡」。</p>",
+      "<p>沒有醫院。只有一張空床，床頭卡上是個你不認得的名字。輸液架上掛一隻停了的錶。</p>",
+      "<p>錶針停在三點十七分。</p>",
+      "<p>床腳邊，水杯底下壓著一隻紙摺的小貓。摺得很拙劣，角對角，邊對邊——是孩子的手藝。</p>",
+      "<p>你站了一會。空床安靜地等著誰，像一直在等。</p>"
+    ],
+    "textReturn": [
+      "<p>床還是空的。錶還是停在三點十七分。紙貓還在水杯底下。</p>"
+    ],
+    "choices": [
+      {
+        "text": "把紙貓從水杯底下抽出來，放進口袋",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回心臟",
+        "next": "heart"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "chair": {
+    "id": "chair",
+    "room": "∞",
+    "roomName": "大門側邊",
+    "sceneId": "4-門前·椅",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>大門左側，一張椅子。木的，坐的地方磨出了一層包漿——很多很多人，在這裡坐過。</p>",
+      "<p>椅面上疊著一件多餘的深色外套，疊得整整齊齊，像隨時有人要接。</p>",
+      "<p>你在椅子邊站了一會。遠處那三扇舊門安靜地呼吸。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "坐下，歇一口氣",
+        "next": null,
+        "useless": true,
+        "flavor": "椅面是溫的。你坐了大概一口氣那麼久，又站起來。這裡沒有什麼好休息的——你已經不走了。"
+      },
+      {
+        "text": "走向大門前那個人",
+        "next": "gate"
+      },
+      {
+        "text": "退回心臟",
+        "next": "heart"
+      },
+      {
+        "text": "開啟木椅下方的「守門人燈芯密室」（隱藏密室）",
+        "next": "d4_secret_watchtower"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "gate": {
+    "id": "gate",
+    "room": "∞",
+    "roomName": "門前",
+    "sceneId": "4-大門",
+    "mapZone": "gate",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>大門比你想的高。門面是啞光的，看不出木頭還是石頭，正中央那個 ∞ 刻得很深。</p>",
+      "<p>守門人就站在門邊。他終於正眼看你了。眼神不凶，也不和氣——是那種站了很多年、看過太多人的眼神。</p>",
+      "<p>「來了。」他說。聲音像很久沒開口的人。「三扇都走過了？」</p>",
+      "<p>你點頭。</p>",
+      "<p>「那就，問吧。」他說，「我只回答三個。問完，門是你的。」</p>"
+    ],
+    "textReturn": [
+      "<p>大門前，守門人還站在原處。他看你回來，略一點頭。</p>"
+    ],
+    "choices": [
+      {
+        "text": "問：你是誰？",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "問：這裡是哪裡？",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "問：我……死了嗎？",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "把那個時間，輕聲說給門聽",
+        "next": "gate_time"
+      },
+      {
+        "text": "轉向那扇門",
+        "next": "choice_hall",
+        "personality": {
+          "calm": 5
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "退回心臟",
+        "next": "heart"
+      },
+      {
+        "text": "替守門人收攏飄散的「六門記憶殘片」（小遊戲）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "【隱藏結局 · 永恆】將 9 枚碎片排在門前卻不推門，凝結此刻的永恆",
+        "next": "d4_end_v61_eternity"
+      },
+      {
+        "text": "拆開那封沒有郵戳的信",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "gate_time": {
+    "id": "gate_time",
+    "room": "∞",
+    "roomName": "門環",
+    "sceneId": "4-大門·時刻",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>大門沒有把手。代替把手的，是一隻銅環，被摸得發亮。</p>",
+      "<p>你的手指碰上銅環的時候，它涼了一下，像一隻半睜的眼。</p>",
+      "<p class=\"system-msg\">門沒有聲音，但你「聽」見了一句很輕的話：</p>",
+      "<p>「你倒下的那個凌晨，是幾點？說對了，我就認得你。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "把那個時間說出來",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "回到守門人那裡",
+        "next": "gate"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "choice_hall": {
+    "id": "choice_hall",
+    "room": "∞",
+    "roomName": "抉擇廳",
+    "sceneId": "4-抉擇",
+    "mapZone": "choice",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你轉向大門。門，不知什麼時候裂開了一道縫。</p>",
+      "<p>縫裡沒有光，也沒有黑——是一種很安靜的「待決」。所有走法都在這道縫前攤開了。</p>",
+      "<p>守門人往側邊讓了一步。他不替你選。</p>",
+      "<p class=\"system-msg\">這一次，沒有倒數，沒有規則，沒有系統。門只問你：你要怎麼走？</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "退後，轉身，走回來時的那扇門",
+        "next": "end_cycle",
+        "personality": {
+          "cautious": -5
+        }
+      },
+      {
+        "text": "放下手。承認那杯咖啡早就涼了",
+        "next": "end_release",
+        "personality": {
+          "calm": 10
+        }
+      },
+      {
+        "text": "接過守門人手裡那盞燈",
+        "next": "end_handoff",
+        "personality": {
+          "cautious": 5
+        }
+      },
+      {
+        "text": "攥緊拳頭，砸向門心",
+        "next": "end_shatter",
+        "danger": true,
+        "personality": {
+          "cautious": -15
+        }
+      },
+      {
+        "text": "在門邊蹲下，為門後那個還沒醒的人留一道縫",
+        "next": "end_lantern",
+        "personality": {
+          "altruism": 15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "憑三段記憶，對自己點頭",
+        "next": "end_return",
+        "personality": {
+          "calm": 10
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "把手掌，貼上門中央那道「沒有縫的縫」",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回心臟，再走一趟",
+        "next": "heart"
+      },
+      {
+        "text": "【隱藏結局 · 永恆】集齊 9 枚碎片後收回雙手，選擇「不開門」留在永恆之光中",
+        "next": "d4_end_v61_eternity"
+      },
+      {
+        "text": "【真結局】以「不滅燈芯」點亮守門人之燈，跨越迴廊心臟",
+        "next": "d4_end_true_keepers",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "end_cycle": {
+    "id": "end_cycle",
+    "room": "—",
+    "roomName": "退回",
+    "sceneId": "4-結局·迴",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你退後，轉身。來時那扇門還開著一條縫。</p>",
+      "<p>你邁進去。</p>",
+      "<p>門在你背後合上的聲音，很輕。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "end_release": {
+    "id": "end_release",
+    "room": "∞",
+    "roomName": "放下",
+    "sceneId": "4-結局·釋",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在門前站了很久。</p>",
+      "<p>然後你彎下腰，把那杯想像中灑出來的咖啡，輕輕擦乾。</p>",
+      "<p>三點十七分，你沒有站起來。這次你承認了。以後，也不用再站起來。</p>",
+      "<p>門裡面是很溫的光。你走進去，沒有回頭。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "end_handoff": {
+    "id": "end_handoff",
+    "room": "∞",
+    "roomName": "守燈",
+    "sceneId": "4-結局·守",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你伸出手。守門人愣了一下，把那盞沒有火的燈遞了過來。</p>",
+      "<p>燈芯在你手裡，亮了一下。很弱，但有了。</p>",
+      "<p>他解下那件疊在椅子上的外套，遞給你。然後他走進門裡——那是他這麼多年，第一次不是以守門人的身份走進去。</p>",
+      "<p>你站回他剛才的位置。燈還亮著。下一個人，很快會來。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "end_shatter": {
+    "id": "end_shatter",
+    "room": "—",
+    "roomName": "砸",
+    "sceneId": "4-結局·碎",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你攥緊拳頭，砸上去。</p>",
+      "<p>門整片地碎開。不是裂——是像玻璃那樣，安靜地、整片地碎。</p>",
+      "<p>碎片後面沒有房間，沒有走廊。是一種很安靜的黑。</p>",
+      "<p>你想：原來門後什麼都沒有。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "end_lantern": {
+    "id": "end_lantern",
+    "room": "∞",
+    "roomName": "留燈",
+    "sceneId": "4-結局·引",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在門邊蹲下身。</p>",
+      "<p>你不知道門後是誰。也許是那個還在四樓寫下名字、等爸爸的小女孩；也許是別的、你叫不出名字的誰。</p>",
+      "<p>你用指尖把那道縫，輕輕挑寬了一點。</p>",
+      "<p>你從口袋裡摸出那隻紙摺的小貓，放在縫口。又向守門人那盞燈借了一點火，點在旁邊。</p>",
+      "<p>「路在這邊。」你說。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "end_return": {
+    "id": "end_return",
+    "room": "∞",
+    "roomName": "歸",
+    "sceneId": "4-結局·和",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>鏡子裡的那個你，走了。</p>",
+      "<p>書架上的那本書，合上了。</p>",
+      "<p>病房的那張床，空著，不再等誰。</p>",
+      "<p>你對自己點了點頭。像跟一個很久不見、終於碰上面的自己，打了個招呼。</p>",
+      "<p>原來出口，不是逃離那三個地方。是跟它們和解。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "end_true": {
+    "id": "end_true",
+    "room": "∞",
+    "roomName": "無盡",
+    "sceneId": "4-結局·真",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>九枚碎片在你口袋裡同時發燙。</p>",
+      "<p>你把它們倒出來。它們浮在半空，一枚一枚，慢慢排成一個無窮符號。</p>",
+      "<p>門沒有開。門本身，開始亮了起來——像它本來就是光的一部分。</p>",
+      "<p>守門人這一次沒有看你。他看著門後頭，很輕地說：「原來，你都看完了。」</p>",
+      "<p>他停了一下。</p>",
+      "<p>「連這個，也是。」</p>",
+      "<p>門縫裡傳來很輕的聲音：像鍵盤敲到一半，像咖啡杯被放下，像一份論文終於按下保存。</p>",
+      "<p>「這一次，不用再推門了。」那個聲音說，「你可以關上它。」</p>",
+      "<p>你伸出手，輕輕把門帶上。</p>",
+      "<p>縫裡透出的最後一句話是：「晚安，陸衍。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d4_end_v61_eternity": {
+    "id": "d4_end_v61_eternity",
+    "room": "∞",
+    "roomName": "不開門的圓滿 · 永恆",
+    "sceneId": "4-隱藏·永恆",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>九枚迴廊碎片在你掌心拼合成完整的無窮徽記，大門上的鎖孔已經完全對齊，只差輕輕一推。</p>",
+      "<p>然而你收回了手，把九枚碎片輕輕放在門檻上，<strong>選擇了不開門</strong>。</p>",
+      "<p>守門人愣了片刻，隨即露出了釋然的微笑：「原來如此……推開門是為了離開，而不推開門，是因為你已經在這裡找到了安寧。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d4_secret_watchtower": {
+    "id": "d4_secret_watchtower",
+    "room": "燈",
+    "roomName": "守門人的燈芯密室（密室）",
+    "sceneId": "4-隱藏密室",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你從守門人木椅下方的暗格走進「燈芯密室」。這裡存放著九枚迴廊碎片的共鳴母石，只要觸碰即可點亮那盞沒有火的燈。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "點亮「守門人母石」（直接滿足第四扇門真結局條件）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回守門人的椅子",
+        "next": "chair"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d4_end_true_keepers": {
+    "id": "d4_end_true_keepers",
+    "room": "門",
+    "roomName": "提燈同行 · 跨越心臟",
+    "sceneId": "4-真結局II",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你用「不滅燈芯」點亮了守門人的提燈。三扇舊門的陰影同時化作溫暖的路標，你與守門人一同邁出了迴廊心臟。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

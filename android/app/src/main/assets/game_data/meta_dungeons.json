@@ -1,0 +1,2802 @@
+[
+  {
+    "id": 1,
+    "name": "質數旅館",
+    "index": "第 一 扇 門",
+    "bgNum": "13",
+    "tagline": "一座只有質數房間的旅館。每一扇門後面都是一個房間，每一個房間裡都有一個謎題。你需要在黎明之前找到出口。",
+    "clearedKey": "wuxian-first-cleared",
+    "savePrefix": "prime-hotel-save",
+    "roomNum": "13",
+    "subText": "無 盡 迴 廊 · 第 一 扇 門",
+    "ruleText": "",
+    "startScene": "prelude",
+    "hasParty": true,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 24,
+    "achDefs": [
+      {
+        "id": "ach_mirror",
+        "name": "鏡中真相",
+        "desc": "發現鏡子背後的秘密",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_dual",
+        "name": "雙面",
+        "desc": "體驗兩種鏡結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_golden",
+        "name": "金色鑰匙",
+        "desc": "找到金色鑰匙",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_basement",
+        "name": "地下室",
+        "desc": "下到地下室",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_trade",
+        "name": "交易",
+        "desc": "和管理員做交易",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_backdoor",
+        "name": "後門",
+        "desc": "找到後門",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_admin",
+        "name": "管理員的客人",
+        "desc": "成為管理員的貴客",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_puzzles",
+        "name": "解謎者",
+        "desc": "解開所有謎題",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d1_painter",
+        "name": "畫布之後",
+        "desc": "掀開走廊那幅油畫，找到畫後的夾層",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d1_prime_knock",
+        "name": "十一響",
+        "desc": "敲出質數的節奏，打開不存在的 0 號門",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_d1",
+        "name": "質數行者",
+        "desc": "在第一扇門通過「質數尋路 · 走廊迷陣」小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v58_suwan_arc",
+        "name": "巷口陽春麵之約",
+        "desc": "完成蘇晚個人支線故事弧",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v58_zhao_arc",
+        "name": "老兵的打火機",
+        "desc": "完成老趙個人支線故事弧",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v58_akai_arc",
+        "name": "第四名真人",
+        "desc": "完成阿凱個人支線故事弧",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d1_cosmos",
+        "name": "質數宇宙",
+        "desc": "解鎖第 1 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d2_voice",
+        "name": "聲音叛變",
+        "desc": "解鎖第 2 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d3_zero",
+        "name": "零分鐘",
+        "desc": "解鎖第 3 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d4_eternity",
+        "name": "永恆",
+        "desc": "解鎖第 4 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d5_deep",
+        "name": "深海歸鄉",
+        "desc": "解鎖第 5 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d6_still",
+        "name": "靜止",
+        "desc": "解鎖第 6 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d7_vanish",
+        "name": "鏡像消失",
+        "desc": "解鎖第 7 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d8_full200",
+        "name": "永遠吃飽",
+        "desc": "解鎖第 8 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d9_grown",
+        "name": "長大了",
+        "desc": "解鎖第 9 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d10_curtain",
+        "name": "謝幕",
+        "desc": "解鎖第 10 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_d11_exhibit",
+        "name": "成為展品",
+        "desc": "解鎖第 11 扇門 隱藏結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_homeward_traveler",
+        "name": "歸途旅人",
+        "desc": "收集全部支線信物",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_stress_master",
+        "name": "情緒管理大師",
+        "desc": "壓力值從 0 到 100 再回到 0",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_pacifist",
+        "name": "和平主義者",
+        "desc": "不殺任何敵人通關",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_charmer",
+        "name": "萬人迷",
+        "desc": "全 NPC 好感度滿分",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_perseverance",
+        "name": "堅持",
+        "desc": "每日挑戰連續 30 天",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_collector",
+        "name": "收藏家",
+        "desc": "收藏室全開",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_outsider",
+        "name": "門外之人",
+        "desc": "不進入任何門扉，留在主選單 10 分鐘",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_d12_single",
+        "name": "回聲初探",
+        "desc": "回聲電梯單樓通關",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_ng_no_item",
+        "name": "純粹輪迴",
+        "desc": "不使用道具通關二周目",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_all_relics_used",
+        "name": "物盡其用",
+        "desc": "全信物用過（四種支線信物全部使用過）",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_outsider_max",
+        "name": "門外知己",
+        "desc": "門外之人好感滿並獲得全知之眼",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_d13_trust_all",
+        "name": "與己和解",
+        "desc": "在《鏡子迷宮》中選擇信任鏡中的自己達成結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_d13_shatter_all",
+        "name": "碎鏡前行",
+        "desc": "在《鏡子迷宮》中選擇打碎鏡面達成結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_all_seeing_eye_win",
+        "name": "全知破敵",
+        "desc": "持有「全知之眼」並在戰鬥中擊破敵人弱點",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_all_7_items_used",
+        "name": "百寶戰術家",
+        "desc": "在戰鬥中累計使用過全部 7 種弱點道具",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_fast_combat_clear",
+        "name": "電光石火",
+        "desc": "開啟「快速戰鬥」模式贏得一場遭遇戰",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_quick_resume",
+        "name": "未完之門",
+        "desc": "使用主選單「繼續上次」按鈕重返上次的門扉與場景",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_notebook_jumper",
+        "name": "越界手札",
+        "desc": "透過筆記本快捷跳轉功能直接切換門扉",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_skip_reveal",
+        "name": "熟門熟路",
+        "desc": "跳過主選單的門扉揭曉動畫",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_prime_architect",
+        "name": "質數建築師",
+        "desc": "在第一扇門《質數旅館》解鎖第 24 個隱藏真結局「第 17 號觀測室」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_tarot_reader",
+        "name": "命運占卜師",
+        "desc": "在萬象聖所中結契或抽取阿爾卡納命運牌陣",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_synergy_master",
+        "name": "雙生共鳴者",
+        "desc": "啟動任一組「雙生遺物神話共鳴聖印」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_tower_challenger",
+        "name": "破塔行者",
+        "desc": "在萬門試煉塔中擊破任一層守門人",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_tower_conqueror",
+        "name": "十四層霸主",
+        "desc": "擊破萬門試煉塔全部 14 層守門人",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_first_combat",
+        "name": "第一次戰鬥勝利",
+        "desc": "在輕量遭遇戰中首次擊敗或說服敵人",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_stress_100",
+        "name": "壓力 100 崩潰",
+        "desc": "在壓力值達到 100% 時選擇「崩潰選項」觸發理智斷裂結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_first_jigsaw",
+        "name": "拼滿第一幅拼圖",
+        "desc": "在迴廊手札完成 3×3 記憶碎片水墨拼圖",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_enchant",
+        "name": "永恆微光",
+        "desc": "在輪迴商店或物品欄為任一物品附加永久附魔",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "prelude",
+      "inventory": [
+        {
+          "id": "lighter",
+          "name": "打火機",
+          "desc": "點燃高溫火焰灼燒精密齒輪（對【機械敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        },
+        {
+          "id": "oxygen_tank",
+          "name": "氧氣瓶",
+          "desc": "釋放純氧氣流衝擊水體生物並恢復自身 20 HP（對【水下敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        },
+        {
+          "id": "magnet",
+          "name": "磁鐵",
+          "desc": "強磁力直接奪走敵人兵刃並削弱其攻擊力（對【持武器敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        },
+        {
+          "id": "recorder",
+          "name": "錄音筆",
+          "desc": "錄下敵人執念話語並反向播放震懾心神（對【有台詞敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        },
+        {
+          "id": "street_lamp",
+          "name": "路燈",
+          "desc": "點亮迴廊路燈破除黑影隱匿（對【隱身敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        },
+        {
+          "id": "camphor",
+          "name": "樟腦丸",
+          "desc": "揮發強烈樟腦氣霧驅散蟲群（對【蟲類敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        },
+        {
+          "id": "ice_cube",
+          "name": "冰塊",
+          "desc": "投擲極寒冰晶凍結敵人行動一回合（對【火屬性敵人】效果 ×2，非弱點 ×0.5）",
+          "usage": "combat"
+        }
+      ],
+      "flags": {
+        "_consumedCombatItems": {}
+      },
+      "hp": 100,
+      "party": 4,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "lobby",
+          "name": "旅館大廳",
+          "explored": false,
+          "current": true,
+          "scene": "lobby",
+          "summary": "登記入住的地方。管理員在櫃檯後面撥算盤，房客各懷心事。"
+        },
+        {
+          "id": "room13",
+          "name": "13號房",
+          "explored": false,
+          "current": false,
+          "scene": "lobby",
+          "summary": "被鎖著的房間。13是質數，但老趙說別進。"
+        },
+        {
+          "id": "hallway",
+          "name": "走廊",
+          "explored": false,
+          "current": false,
+          "scene": "corridor",
+          "summary": "兩側都是質數房間的門。紙條上寫著：質數會騙人。"
+        },
+        {
+          "id": "stairs",
+          "name": "樓梯",
+          "explored": false,
+          "current": false,
+          "scene": "lobby",
+          "summary": "連接各樓層。往下走，是空的。"
+        },
+        {
+          "id": "basement",
+          "name": "地下室",
+          "explored": false,
+          "current": false,
+          "scene": "basement",
+          "summary": "潮濕陰暗。牆上有刮痕，像有人在這裡撓過。"
+        },
+        {
+          "id": "mirror",
+          "name": "鏡子房間",
+          "explored": false,
+          "current": false,
+          "scene": "lobby",
+          "summary": "鏡子裡的東西會跟著你。別盯太久。"
+        },
+        {
+          "id": "admin",
+          "name": "管理員室",
+          "explored": false,
+          "current": false,
+          "scene": "manager",
+          "summary": "管理員的地方。可以做交易，但代價不小。"
+        },
+        {
+          "id": "exit",
+          "name": "後門",
+          "explored": false,
+          "current": false,
+          "scene": "lobby",
+          "summary": "通往外面的出口。帶上你該帶的東西再走。"
+        }
+      ],
+      "partyMembers": [
+        {
+          "id": "suwan",
+          "name": "蘇晚",
+          "hp": 100,
+          "maxHp": 100,
+          "alive": true
+        },
+        {
+          "id": "laozhou",
+          "name": "老趙",
+          "hp": 100,
+          "maxHp": 100,
+          "alive": true
+        },
+        {
+          "id": "akai",
+          "name": "阿凱",
+          "hp": 100,
+          "maxHp": 100,
+          "alive": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 2,
+    "name": "沉默圖書館",
+    "index": "第 二 扇 門",
+    "bgNum": "靜",
+    "tagline": "一座沒有聲音的圖書館。書架上的每一本書，都記錄著一個人的一生。規則只有一條：不能大聲說話。",
+    "clearedKey": "wuxian-second-cleared",
+    "savePrefix": "silent-library-save",
+    "roomNum": "靜",
+    "subText": "無 盡 迴 廊 · 第 二 扇 門",
+    "ruleText": "請 保 持 安 靜",
+    "startScene": "prologue",
+    "hasParty": true,
+    "hasCountdown": false,
+    "hasAdmin": true,
+    "endingsTotal": 28,
+    "achDefs": [
+      {
+        "id": "ach_lib_silent",
+        "name": "死寂",
+        "desc": "在書架區保持完全安靜",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_voice",
+        "name": "出聲",
+        "desc": "打破沉默",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_cat",
+        "name": "三隻貓",
+        "desc": "找到所有關於貓的線索",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_admin",
+        "name": "管理員",
+        "desc": "和管理員對話",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_forbidden",
+        "name": "禁書區",
+        "desc": "進入禁書區",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_truth",
+        "name": "圖書館真相",
+        "desc": "發現圖書館的秘密",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_alone",
+        "name": "獨自",
+        "desc": "一個人通關",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_bad",
+        "name": "沉默",
+        "desc": "體驗沉默結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_mirror",
+        "name": "鏡中之書",
+        "desc": "讀到鏡子主題的那本書，明白圖書館本身就是一面鏡",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_puzzles",
+        "name": "索書號",
+        "desc": "解開杜威分類法的鐵盒謎題",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_yuanyuan",
+        "name": "地毯下",
+        "desc": "在管理員口中拼出媛媛的真相",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lib_trade",
+        "name": "以物換話",
+        "desc": "把日記或電影票押給管理員，換出他沒說過的真話",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d2_whisper",
+        "name": "耳語的人",
+        "desc": "在迴音走道裡，全程沒有出一聲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d2_deleted",
+        "name": "被刪的書",
+        "desc": "找到黑書架牆縫後，那本被颳掉名字的書",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_d2",
+        "name": "無聲歸檔人",
+        "desc": "在第二扇門通過「無聲歸檔 · 禁書封印」小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "prologue",
+      "inventory": [],
+      "flags": {},
+      "hp": 100,
+      "party": 4,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "adminQuestions": 3,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "entrance",
+          "name": "入口大廳",
+          "explored": false,
+          "current": true,
+          "scene": "lobby",
+          "summary": "進入圖書館的地方。規則只有一條：保持安靜。"
+        },
+        {
+          "id": "bookshelf",
+          "name": "書架區",
+          "explored": false,
+          "current": false,
+          "scene": "bookshelf",
+          "summary": "書架上的每本書都記錄著一個人的一生。別出聲。"
+        },
+        {
+          "id": "corridor",
+          "name": "長走廊",
+          "explored": false,
+          "current": false,
+          "scene": "corridor_left",
+          "summary": "安靜得能聽見自己的呼吸。有人在盡頭走動。"
+        },
+        {
+          "id": "reading",
+          "name": "閱覽室",
+          "explored": false,
+          "current": false,
+          "scene": "reading_room",
+          "summary": "有人在這裡看書。他們不出聲，也不抬頭。"
+        },
+        {
+          "id": "archive",
+          "name": "檔案區",
+          "explored": false,
+          "current": false,
+          "scene": "bookshelf_right",
+          "summary": "存放舊檔案的地方。1987年的線索在這裡。"
+        },
+        {
+          "id": "fiction",
+          "name": "小說區",
+          "explored": false,
+          "current": false,
+          "scene": "fiction_zone",
+          "summary": "小說區的書都不是小說。每一本都是真的。"
+        },
+        {
+          "id": "reference",
+          "name": "參考區",
+          "explored": false,
+          "current": false,
+          "scene": "reference_zone",
+          "summary": "參考書籍擺滿了架。你想找的東西不在這裡。"
+        },
+        {
+          "id": "admin",
+          "name": "管理員室",
+          "explored": false,
+          "current": false,
+          "scene": "admin_deal",
+          "summary": "管理員只給你三個問題。別問錯。"
+        },
+        {
+          "id": "forbidden",
+          "name": "禁書區",
+          "explored": false,
+          "current": false,
+          "scene": "forbidden_zone",
+          "summary": "不許進入的區域。書架在這裡長出了牆。"
+        },
+        {
+          "id": "basement",
+          "name": "地下書庫",
+          "explored": false,
+          "current": false,
+          "scene": "basement",
+          "summary": "圖書館最深的地方。所有被刪掉的記憶都在這裡。"
+        },
+        {
+          "id": "exit",
+          "name": "出口",
+          "explored": false,
+          "current": false,
+          "scene": "lobby",
+          "summary": "離開的門。帶上你該帶的書。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 3,
+    "name": "倒計時醫院",
+    "index": "第 三 扇 門",
+    "bgNum": "60:00",
+    "tagline": "一座廢棄的醫院。每個受困者都有一個倒計時，時間到了會重置。你需要在時間耗盡之前找到出口——用藥品，用病歷，用記憶。",
+    "clearedKey": "wuxian-third-cleared",
+    "savePrefix": "countdown-hospital-save",
+    "roomNum": "60:00",
+    "subText": "無 盡 迴 廊 · 第 三 扇 門",
+    "ruleText": "時 間 正 在 流 逝",
+    "startScene": "prologue",
+    "hasParty": false,
+    "hasCountdown": true,
+    "hasAdmin": false,
+    "endingsTotal": 19,
+    "achDefs": [
+      {
+        "id": "ach_yuanyuan",
+        "name": "媛媛",
+        "desc": "了解媛媛的故事",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_truth",
+        "name": "真相",
+        "desc": "發現全部真相",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_nurse",
+        "name": "夜巡",
+        "desc": "打傷夜巡護士",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_fourth",
+        "name": "四樓",
+        "desc": "探訪所有四樓病房",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_morgue",
+        "name": "第十四格",
+        "desc": "打開太平間N格",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_lin",
+        "name": "林醫生",
+        "desc": "完成林醫生支線",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_xiaoyu",
+        "name": "小雨",
+        "desc": "完成小雨支線",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_machine",
+        "name": "記憶提取機",
+        "desc": "找到記憶提取機",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_waiting",
+        "name": "等",
+        "desc": "在四樓寫下自己的名字",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d3_names",
+        "name": "牆下的名字",
+        "desc": "讀出404牆板下十四個人的名字",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d3_service",
+        "name": "幕後",
+        "desc": "找到記憶主機後面的散熱間",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_d3",
+        "name": "穩脈仁心",
+        "desc": "在第三扇門通過「心電穩壓 · 記憶脈衝」小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "prologue",
+      "inventory": [],
+      "flags": {},
+      "hp": 100,
+      "countdown": 60,
+      "resetCount": 0,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "lobby",
+          "name": "醫院大廳",
+          "explored": false,
+          "current": true,
+          "scene": "entrance",
+          "summary": "荒廢的醫院。燈還在閃。倒計時開始了。"
+        },
+        {
+          "id": "pharmacy",
+          "name": "藥房",
+          "explored": false,
+          "current": false,
+          "scene": "pharmacy",
+          "summary": "還有沒過期的藥品。止痛、抗生素、鎮定劑，自己選。"
+        },
+        {
+          "id": "internal",
+          "name": "內科",
+          "explored": false,
+          "current": false,
+          "scene": "internal_med",
+          "summary": "病人在這裡看病。後來他們都消失了，身體還在。"
+        },
+        {
+          "id": "surgery",
+          "name": "外科",
+          "explored": false,
+          "current": false,
+          "scene": "surgery",
+          "summary": "手術室附近的走廊。地上有劃痕。"
+        },
+        {
+          "id": "or",
+          "name": "手術室/ICU",
+          "explored": false,
+          "current": false,
+          "scene": "icu",
+          "summary": "媛媛在ICU這張床上等過爸爸。本子上還有字跡。"
+        },
+        {
+          "id": "ward4",
+          "name": "四樓住院部",
+          "explored": false,
+          "current": false,
+          "scene": "ward4_floor",
+          "summary": "401病房的老病人記得他兒子。他記了很多年。"
+        },
+        {
+          "id": "office",
+          "name": "院長辦公室",
+          "explored": false,
+          "current": false,
+          "scene": "director_office",
+          "summary": "院長留下了一封信和一把鑰匙。拜託你給媛媛一個了斷。"
+        },
+        {
+          "id": "morgue",
+          "name": "太平間",
+          "explored": false,
+          "current": false,
+          "scene": "morgue",
+          "summary": "第14格。周敏把自己推了進去，留了一支針劑。"
+        },
+        {
+          "id": "basement",
+          "name": "B2記憶核心",
+          "explored": false,
+          "current": false,
+          "scene": "basement_entrance",
+          "summary": "吃記憶的東西在這裡。它在等它的爸爸。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "name": "無盡之間",
+    "index": "第 四 扇 門",
+    "bgNum": "∞",
+    "tagline": "",
+    "clearedKey": "wuxian-fourth-cleared",
+    "savePrefix": "infinite-core-save",
+    "roomNum": "∞",
+    "subText": "無 盡 迴 廊 · 第 四 扇 門",
+    "ruleText": "門 後 沒 有 規 則",
+    "startScene": "prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 9,
+    "achDefs": [
+      {
+        "id": "ach_d4_heart",
+        "name": "心臟",
+        "desc": "第一次站到迴廊的中心",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d4_triptych",
+        "name": "三扇舊門",
+        "desc": "重訪鏡、書架與病房三扇舊門",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d4_guardian",
+        "name": "守門人",
+        "desc": "聽守門人說完三句話",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d4_doormath",
+        "name": "門數",
+        "desc": "解開地板上那道後設謎題",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d4_lantern",
+        "name": "留燈",
+        "desc": "為門後沉睡的人留一道縫",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d4_true",
+        "name": "無盡之門",
+        "desc": "看見所有的門之後，走進真結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v5_first_relic",
+        "name": "初次迴光",
+        "desc": "找到第一件迴光遺物",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v5_relic_all",
+        "name": "拾光者",
+        "desc": "集齊全部八件迴光遺物",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v5_first_seal",
+        "name": "鑄印",
+        "desc": "獲得第一枚傳承之印",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v5_seal_all",
+        "name": "滿印之人",
+        "desc": "集齊全部六枚傳承之印",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_d4",
+        "name": "拾憶守門人",
+        "desc": "在第四扇門通過「舊門殘響 · 記憶配對」小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "prologue",
+      "inventory": [],
+      "flags": {},
+      "hp": 100,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "heart",
+          "name": "迴廊心臟",
+          "explored": false,
+          "current": true,
+          "scene": "heart",
+          "summary": "所有門之間的縫。站在這裡，能聽見每扇門另一面的呼吸。"
+        },
+        {
+          "id": "old_mirror",
+          "name": "舊鏡之門",
+          "explored": false,
+          "current": false,
+          "scene": "old_mirror",
+          "summary": "門牌是 13。鏡子還在，但鏡子裡的那個人已經不住了。"
+        },
+        {
+          "id": "old_library",
+          "name": "舊書架之門",
+          "explored": false,
+          "current": false,
+          "scene": "old_library",
+          "summary": "門上只有一個「靜」字。空氣裡還是舊紙張的味道。"
+        },
+        {
+          "id": "old_hospital",
+          "name": "舊病房之門",
+          "explored": false,
+          "current": false,
+          "scene": "old_hospital",
+          "summary": "門牌停在 60:00。床腳邊壓著一隻紙摺的小貓。"
+        },
+        {
+          "id": "gate",
+          "name": "大門前",
+          "explored": false,
+          "current": false,
+          "scene": "gate",
+          "summary": "沒有門牌，只有一個無窮符號。守門人站在那裡，已經站了很久。"
+        },
+        {
+          "id": "choice",
+          "name": "抉擇廳",
+          "explored": false,
+          "current": false,
+          "scene": "choice_hall",
+          "summary": "門縫裂開之後，所有走法都攤開在這裡。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "name": "第零號觀測室",
+    "index": "第 十 四 扇 門",
+    "bgNum": "03:18",
+    "tagline": "一切始於凌晨 03:17 的實驗室質數曲線，也將在此迎來 03:18 的最終證明。匯聚十三扇門的記憶與羈絆，鍛造通往真實黎明的第零號門扉。",
+    "clearedKey": "wuxian-fourteenth-cleared",
+    "savePrefix": "zero-observatory-save",
+    "roomNum": "03:18",
+    "subText": "無 盡 迴 廊 · 第 十 四 扇 門（終焉大聖堂）",
+    "ruleText": "將 03:17 的偏離曲線收斂至 03:18 的破曉",
+    "startScene": "d14_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 14,
+    "achDefs": [
+      {
+        "id": "ach_v70_d14_enter",
+        "name": "重返 03:17",
+        "desc": "踏入第十四扇門《第零號觀測室：萬門鍛造者》",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_d14_console",
+        "name": "曲線收斂",
+        "desc": "解開第零號觀測室的黎曼質數主控台謎題",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_d14_echoes",
+        "name": "四重回響",
+        "desc": "在記憶長廊與蘇晚、老趙、陳姐、門外之人的殘響全數共鳴",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_d14_forge",
+        "name": "萬門鍛造者",
+        "desc": "在第零號核心完成萬門星圖的最終校準",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_d14_true_dawn",
+        "name": "03:18 的咖啡香",
+        "desc": "達成第十四扇門真結局「03:18 的第一縷晨光」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v70_d14_all_home",
+        "name": "無一人遺落",
+        "desc": "達成第十四扇門大團圓真結局「萬門同歸」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "dungeonId": 14,
+      "currentScene": "d14_prologue",
+      "hp": 100,
+      "maxHp": 100,
+      "stress": 0,
+      "inventory": [],
+      "flags": {},
+      "notes": [
+        "【第零號觀測室】主控台校準碼為 10 以內前四個質數（2357），時空檔案庫破曉時刻為 0318。"
+      ],
+      "history": [],
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "實驗室原點",
+          "name": "實驗室原點",
+          "explored": true,
+          "current": true
+        },
+        {
+          "id": "主控演算台",
+          "name": "主控演算台",
+          "explored": false,
+          "current": false
+        },
+        {
+          "id": "同伴殘響長廊",
+          "name": "同伴殘響長廊",
+          "explored": false,
+          "current": false
+        },
+        {
+          "id": "時空檔案庫",
+          "name": "時空檔案庫",
+          "explored": false,
+          "current": false
+        },
+        {
+          "id": "萬門鍛造爐",
+          "name": "萬門鍛造爐",
+          "explored": false,
+          "current": false
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "name": "迴光之海",
+    "index": "第 五 扇 門",
+    "bgNum": "≈",
+    "tagline": "收容所有未選擇的路。",
+    "clearedKey": "wuxian-fifth-cleared",
+    "savePrefix": "v5-tide-save",
+    "roomNum": "≈",
+    "subText": "沉 没 之 海 · 第 五 扇 門",
+    "ruleText": "海 會 漲 ， 也 會 退",
+    "startScene": "d5_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 9,
+    "achDefs": [
+      {
+        "id": "ach_d5_sink",
+        "name": "沉沒",
+        "desc": "第一次沉入迴光之海",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d5_tidepushed",
+        "name": "弄潮",
+        "desc": "在潮井推動過一次潮汐",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d5_rewind",
+        "name": "倒帶",
+        "desc": "用迴光粒迴溯上一個選擇",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d5_unchosen",
+        "name": "未選之路",
+        "desc": "看過兩扇你當初沒推開的門",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d5_tidewatcher",
+        "name": "聽海人",
+        "desc": "解開海底潮鐘與燈塔迴聲之數",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d5_true",
+        "name": "迴光",
+        "desc": "看見迴光之海的盡頭",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v53_arcana_first",
+        "name": "初窺門扉之占",
+        "desc": "抽取第一張門扉占卜命運牌",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v53_arcana_all",
+        "name": "十二門占卜師",
+        "desc": "集齊全部十二張門扉占卜命運牌",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_d5",
+        "name": "引潮人",
+        "desc": "在第五扇門通過「潮汐導流 · 迴光水脈」小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d5_prologue",
+      "inventory": [],
+      "flags": {},
+      "hp": 100,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "tide": "still",
+      "echo": 3,
+      "trail": [],
+      "mapZones": [
+        {
+          "id": "d5_shore",
+          "name": "汐岸",
+          "explored": false,
+          "current": true,
+          "scene": "d5_shore",
+          "summary": "海邊一道退不出的沙。潮水在這裡決定下一步。"
+        },
+        {
+          "id": "d5_well",
+          "name": "潮井",
+          "explored": false,
+          "current": false,
+          "scene": "d5_well",
+          "summary": "井裡沒有水，只有海的心搏。伸手進去，就能推動潮汐。"
+        },
+        {
+          "id": "d5_seabed",
+          "name": "退潮海床",
+          "explored": false,
+          "current": false,
+          "scene": "d5_seabed",
+          "summary": "退潮才露出的海底。兩扇半沉的門，門後是你沒選的路。"
+        },
+        {
+          "id": "d5_raft",
+          "name": "浮光筏",
+          "explored": false,
+          "current": false,
+          "scene": "d5_raft",
+          "summary": "漲潮才浮起的光。一座燈塔，和一個做了不同選擇的你。"
+        },
+        {
+          "id": "d5_deep",
+          "name": "海心",
+          "explored": false,
+          "current": false,
+          "scene": "d5_deepgate",
+          "summary": "海最深的縫。所有未說出口的時刻，都沉在這裡。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "name": "終焉觀測站",
+    "index": "第 六 扇 門",
+    "bgNum": "03:17",
+    "tagline": "凌晨 03:17 與 03:18 之間的夾縫觀測站。調校六道門扉的共振頻率，推開破曉之門。",
+    "clearedKey": "wuxian-sixth-cleared",
+    "savePrefix": "v53-observatory-save",
+    "roomNum": "03:17",
+    "subText": "零 號 夾 縫 · 第 六 扇 門",
+    "ruleText": "秒 針 停 在 03:17",
+    "startScene": "d6_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 9,
+    "achDefs": [
+      {
+        "id": "ach_d6_enter",
+        "name": "零號夾縫",
+        "desc": "踏入第六扇門「終焉觀測站」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d6_coffee",
+        "name": "未涼之咖啡",
+        "desc": "在觀測站書桌前觸碰那杯停在 03:17 的咖啡",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d6_prime",
+        "name": "第七個質數",
+        "desc": "解開質數偏離主機的校準謎題",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d6_frequency",
+        "name": "破曉波段",
+        "desc": "將天線塔調諧至 03:18 的破曉頻率",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d6_voices",
+        "name": "門後的回音",
+        "desc": "聽完監視牆上蘇晚與媛媛留下的兩段波段",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d6_dawn",
+        "name": "03:18 的破曉",
+        "desc": "推開分界門，抵達真結局「03:18 的破曉」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d6_symphony",
+        "name": "六門共鳴",
+        "desc": "在終焉觀測站合成五門記憶回聲，抵達隱藏結局「六門共鳴」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v54_resonance",
+        "name": "迴光共鳴",
+        "desc": "在門扉中發動一次「門扉共鳴」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v54_trial_first",
+        "name": "初試鋒芒",
+        "desc": "完成任意一項「迴廊試煉」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "v54_trial_master",
+        "name": "六門試煉官",
+        "desc": "完成全部六項「迴廊試煉」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_d6",
+        "name": "破曉調諧師",
+        "desc": "在第六扇門通過「破曉調諧 · 03:18 雙波共振」小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_mg_all",
+        "name": "萬門機關師",
+        "desc": "通關全部六個章節的劇情互動小遊戲",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_d6_records",
+        "name": "導師的病歷",
+        "desc": "進入第六扇門隱藏區「觀測者病歷室」揭開陳教授過去",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d6_prologue",
+      "inventory": [],
+      "flags": {},
+      "hp": 100,
+      "maxHp": 100,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "echo": 3,
+      "trail": [],
+      "mapZones": [
+        {
+          "id": "d6_hub",
+          "name": "中央觀測大廳",
+          "explored": false,
+          "current": true,
+          "scene": "d6_hub",
+          "summary": "環形監視牆圍成的觀測大廳，秒針停在 03:17。"
+        },
+        {
+          "id": "d6_desk",
+          "name": "實驗室原點書桌",
+          "explored": false,
+          "current": false,
+          "scene": "d6_desk",
+          "summary": "那張放著三本書、兩疊論文與傾倒咖啡杯的書桌。"
+        },
+        {
+          "id": "d6_server",
+          "name": "質數偏離主機",
+          "explored": false,
+          "current": false,
+          "scene": "d6_server",
+          "summary": "持續運算質數分佈曲線的機櫃，等待第 7 個質數校準。"
+        },
+        {
+          "id": "d6_roof",
+          "name": "無星之頂天線塔",
+          "explored": false,
+          "current": false,
+          "scene": "d6_roof",
+          "summary": "觀測站頂層的發射塔，可向所有門扉發送頻率。"
+        },
+        {
+          "id": "d6_threshold",
+          "name": "03:18 分界門",
+          "explored": false,
+          "current": false,
+          "scene": "d6_threshold",
+          "summary": "通往下一分鐘的門扉。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "name": "鏡像電車",
+    "index": "第 七 扇 門",
+    "bgNum": "03:17",
+    "tagline": "一輛不斷行駛的地下電車，每到一站會重演你上一次選擇的「鏡像」——左頁是你，右頁是車窗裡的鏡像你，兩邊生命連動。",
+    "clearedKey": "wuxian-seventh-cleared",
+    "savePrefix": "v58-tram-save",
+    "roomNum": "⇄",
+    "subText": "雙 軌 迴 廊 · 第 七 扇 門",
+    "ruleText": "車 窗 裡 的 你 ， 永 遠 做 相反 的 選 擇",
+    "startScene": "d7_prologue",
+    "hasParty": true,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 17,
+    "achDefs": [
+      {
+        "id": "ach_d7_board",
+        "name": "午夜乘車人",
+        "desc": "登上永不停歇的地下「鏡像電車」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d7_mirror",
+        "name": "反轉時刻表",
+        "desc": "解開鏡像電車的三道核心謎題（鏡像解謎、時間表拼圖、身份交換）",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d7_sync",
+        "name": "雙軌同調",
+        "desc": "在正側與鏡像 HP 差值不超過 10 的狀態下抵達終點站",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d7_true",
+        "name": "零號月台的破曉",
+        "desc": "解鎖鏡像電車真結局「雙軌合一 · 走出地鐵口」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_d7_reverse",
+        "name": "坐過站的鏡像人",
+        "desc": "進入第七扇門隱藏區「反向車站」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d7_prologue",
+      "inventory": [],
+      "flags": {
+        "stationOrder": [
+          "d7_st_hotel",
+          "d7_st_hospital",
+          "d7_st_library"
+        ],
+        "stationIdx": 0
+      },
+      "hp": 100,
+      "maxHp": 100,
+      "mirrorHp": 100,
+      "party": 4,
+      "stress": 0,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "d7_car1",
+          "name": "第一車廂·正軌座",
+          "explored": false,
+          "current": true,
+          "scene": "d7_hub",
+          "summary": "車窗映出對向並行的鏡像列車，列車長沈默在車頭檢票。"
+        },
+        {
+          "id": "d7_st1",
+          "name": "第一站·倒影月台",
+          "explored": false,
+          "current": false,
+          "scene": "d7_st_hotel",
+          "summary": "重演質數旅館反面選擇的地下月台。"
+        },
+        {
+          "id": "d7_st2",
+          "name": "第二站·無聲月台",
+          "explored": false,
+          "current": false,
+          "scene": "d7_st_library",
+          "summary": "重演沉默圖書館反面選擇的地下月台。"
+        },
+        {
+          "id": "d7_st3",
+          "name": "第三站·急診月台",
+          "explored": false,
+          "current": false,
+          "scene": "d7_st_hospital",
+          "summary": "重演倒計時醫院反面選擇的地下月台。"
+        },
+        {
+          "id": "d7_cab",
+          "name": "駕駛室·雙軌交匯",
+          "explored": false,
+          "current": false,
+          "scene": "d7_cab",
+          "summary": "兩列電車即將併軌的終點分岔口。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "name": "無盡自助餐",
+    "index": "第 八 扇 門",
+    "bgNum": "80%",
+    "tagline": "一間永遠吃不飽也永遠不打烊的午夜餐廳。每道菜都記錄著一位客人的一生，吃下去會短暫獲得對方的記憶與加成，但飽食度超過 100% 將萬劫不復。",
+    "clearedKey": "wuxian-eighth-cleared",
+    "savePrefix": "v58-buffet-save",
+    "roomNum": "飽",
+    "subText": "記 憶 饗 宴 · 第 八 扇 門",
+    "ruleText": "每 道 菜 都 是 一 個 人 的 一 生 · 吃 太 多 會 撐 死",
+    "startScene": "d8_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 10,
+    "achDefs": [
+      {
+        "id": "ach_d8_enter",
+        "name": "午夜食客",
+        "desc": "走進永遠營業的「無盡自助餐」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d8_taste",
+        "name": "百味人生",
+        "desc": "在無盡自助餐品嚐 3 道記載客人一生的料理並獲得其記憶",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d8_full",
+        "name": "暴食之誡",
+        "desc": "飽食度達到 100% 觸發撐死結局，或精準控制在 80%–95% 之間離席",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d8_true",
+        "name": "最後一碗家常麵",
+        "desc": "與蘇晚或主廚共享隱藏料理，解鎖無盡自助餐真結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_all_buffet",
+        "name": "吃過所有自助餐菜色",
+        "desc": "品嚐無盡自助餐主廳與甜點區的各類記憶菜色",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_d8_dessert",
+        "name": "餐後甜點時間",
+        "desc": "進入第八扇門隱藏區「甜點區」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d8_prologue",
+      "inventory": [],
+      "flags": {
+        "satiety": 0,
+        "dishesEaten": 0,
+        "menuSeed": 321
+      },
+      "hp": 100,
+      "maxHp": 100,
+      "satiety": 0,
+      "stress": 0,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "d8_hall",
+          "name": "長桌取餐區",
+          "explored": false,
+          "current": true,
+          "scene": "d8_hub",
+          "summary": "擺滿記憶料理的百米長桌，飽食度計顯示在餐盤邊緣。"
+        },
+        {
+          "id": "d8_kitchen",
+          "name": "後廚冷庫",
+          "explored": false,
+          "current": false,
+          "scene": "d8_kitchen",
+          "summary": "主廚老陳封存「未被認領的人生」的後廚。"
+        },
+        {
+          "id": "d8_cashier",
+          "name": "結帳櫃檯",
+          "explored": false,
+          "current": false,
+          "scene": "d8_cashier",
+          "summary": "唯有飽食度恰到好處並結清記憶帳單者方可離席。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "name": "小學 1999",
+    "index": "第 九 扇 門 · DLC",
+    "bgNum": "1999",
+    "tagline": "1999年盛夏的六年三班教室、操場、福利社與校刊編輯室。你知道長大後的標準答案，但十二歲的你有著「童年選擇偏誤」。",
+    "clearedKey": "wuxian-ninth-cleared",
+    "savePrefix": "v58-school1999-save",
+    "roomNum": "99",
+    "subText": "懷 舊 夾 縫 · 第 九 扇 門 (DLC)",
+    "ruleText": "你 知 道 長 大 後 的 答 案 ， 但 小 時 候 的 你 不 會 那 樣 選",
+    "startScene": "d9_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 10,
+    "achDefs": [
+      {
+        "id": "ach_d9_bell",
+        "name": "1999年的上課鐘",
+        "desc": "踏入 歸途篇章「小學 1999」的懷舊教室",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d9_bias",
+        "name": "戰勝童年偏誤",
+        "desc": "克服「童年選擇偏誤」，替十二歲的自己做出不留遺憾的決定",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d9_true",
+        "name": "千禧年前夕的紙飛機",
+        "desc": "解鎖小學 1999 真結局「飛過 1999 的夏天」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_d9_editor",
+        "name": "千禧年特刊主編",
+        "desc": "在第九扇門「校刊編輯部」完成採訪與頭版定稿",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d9_prologue",
+      "inventory": [],
+      "flags": {
+        "childBias": 60
+      },
+      "hp": 100,
+      "maxHp": 100,
+      "stress": 0,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "d9_class",
+          "name": "六年三班教室",
+          "explored": false,
+          "current": true,
+          "scene": "d9_classroom",
+          "summary": "黑板右上角寫著值日生名字，吊扇在頭頂吱呀轉動。"
+        },
+        {
+          "id": "d9_playground",
+          "name": "紅土操場",
+          "explored": false,
+          "current": false,
+          "scene": "d9_playground",
+          "summary": "蟬鳴震耳的操場與單槓，小時候的阿凱與同桌小滿在樹蔭下。"
+        },
+        {
+          "id": "d9_store",
+          "name": "合作社福利社",
+          "explored": false,
+          "current": false,
+          "scene": "d9_store",
+          "summary": "賣著冬瓜茶、蘋果麵包與彈珠汽水的鐵窗福利社。"
+        },
+        {
+          "id": "d9_magazine",
+          "name": "校刊編輯室",
+          "explored": false,
+          "current": false,
+          "scene": "d9_magazine",
+          "summary": "油印機散發著油墨香，存放著《1999世紀末校刊》原稿。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "name": "潮汐電影院",
+    "index": "第 十 扇 門",
+    "bgNum": "24mm",
+    "tagline": "午夜十二點的地下電影院，每張票根都會把你送進一部正在放映的電影。驚悚廳不能回頭、愛情廳必須告白、武俠廳必須拔刀、科幻廳必須解開因果。",
+    "clearedKey": "wuxian-tenth-cleared",
+    "savePrefix": "v59-cinema-save",
+    "roomNum": "FILM",
+    "subText": "午 夜 膠 卷 · 第 十 扇 門",
+    "ruleText": "電 影 裡 的 規 則 ， 就 是 你 的 現 實",
+    "startScene": "d10_prologue",
+    "hasParty": true,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 13,
+    "achDefs": [
+      {
+        "id": "ach_d10_enter",
+        "name": "午夜早場票",
+        "desc": "踏入第十扇門「潮汐電影院」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d10_no_lookback",
+        "name": "絕不回頭",
+        "desc": "在 A 廳驚悚片全程遵守「不能回頭」規則生還",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d10_confess",
+        "name": "銀幕告白者",
+        "desc": "在 B 廳愛情片完成真心告白並取得膠卷",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d10_critic",
+        "name": "滿分影評人",
+        "desc": "在影評人評分達到 95 分以上完成潮汐電影院",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d10_cinephile",
+        "name": "資深影迷",
+        "desc": "看完 A/B/C/D 四部電影並解鎖真結局「資深影迷」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_all_movies",
+        "name": "看過所有電影院電影",
+        "desc": "在潮汐電影院完整看過 A/B/C/D 四廳電影",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d10_prologue",
+      "inventory": [],
+      "flags": {
+        "moviesCleared": 0
+      },
+      "hp": 100,
+      "maxHp": 100,
+      "criticScore": 80,
+      "stress": 0,
+      "party": 3,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "d10_lobby",
+          "name": "售票大廳·霓虹廊",
+          "explored": true,
+          "current": true,
+          "scene": "d10_hub",
+          "summary": "售票員林默在玻璃窗後微笑，清潔工老陳正在清掃發光的爆米花。"
+        },
+        {
+          "id": "d10_halla",
+          "name": "A 廳·驚悚片《背後有人》",
+          "explored": false,
+          "current": false,
+          "scene": "d10_hall_a",
+          "summary": "規則：絕對不能回頭。"
+        },
+        {
+          "id": "d10_hallb",
+          "name": "B 廳·愛情片《潮水退去之前》",
+          "explored": false,
+          "current": false,
+          "scene": "d10_hall_b",
+          "summary": "規則：必須說出真心告白。"
+        },
+        {
+          "id": "d10_hallc",
+          "name": "C 廳·武俠片《斷刀客》",
+          "explored": false,
+          "current": false,
+          "scene": "d10_hall_c",
+          "summary": "規則：拔刀迎戰，退縮即死。"
+        },
+        {
+          "id": "d10_halld",
+          "name": "D 廳·科幻片《第0317次因果》",
+          "explored": false,
+          "current": false,
+          "scene": "d10_hall_d",
+          "summary": "規則：校準光束與邏輯悖論。"
+        },
+        {
+          "id": "d10_booth",
+          "name": "頂層放映室",
+          "explored": false,
+          "current": false,
+          "scene": "d10_projection",
+          "summary": "四部膠卷匯聚的終極剪輯台。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "name": "動物園 23:00",
+    "index": "第 十 一 扇 門",
+    "bgNum": "ZOO",
+    "tagline": "晚上十一點閉園後的市立動物園，所有動物都會開口說話，而且牠們都記得你小時候來過的樣子。午夜十二點廣播響起前沒回到入口，就會成為新的展品。",
+    "clearedKey": "wuxian-eleventh-cleared",
+    "savePrefix": "v59-zoo-save",
+    "roomNum": "23:00",
+    "subText": "午 夜 獸 語 · 第 十 一 扇 門",
+    "ruleText": "午 夜 十 二 點 前 未 回 入 口 者 ， 將 成 為 新 展 品",
+    "startScene": "d11_prologue",
+    "hasParty": false,
+    "hasCountdown": true,
+    "hasAdmin": false,
+    "endingsTotal": 11,
+    "achDefs": [
+      {
+        "id": "ach_d11_enter",
+        "name": "閉園後的遊客",
+        "desc": "在 23:00 踏入第十一扇門「動物園 23:00」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d11_panda",
+        "name": "七歲的冰棒",
+        "desc": "餵食熊貓「團團」並找回第一枚童年記憶碎片",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d11_feed_all",
+        "name": "午夜飼育員",
+        "desc": "在動物園 23:00 餵食過全部 6 個園區的動物",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d11_beast",
+        "name": "褪去人名之夜",
+        "desc": "在人性值低於 25 時觸發特殊「動物結局」",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_d11_true",
+        "name": "1999兒童半價票",
+        "desc": "找齊六枚童年記憶碎片並在午夜 12 點前保持人性達成真結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v59_all_animals",
+        "name": "餵過所有動物",
+        "desc": "在動物園 23:00 餵食過全部六個展區的動物",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d11_prologue",
+      "inventory": [
+        {
+          "id": "zoo_feed_bag",
+          "name": "飼育員綜合飼料袋",
+          "desc": "裝著竹筍、鮮肉、銀鱗小魚、葵花籽、晨露嫩葉與方糖的飼料袋。",
+          "usage": ""
+        }
+      ],
+      "flags": {
+        "childhoodFrags": 0,
+        "zonesFed": 0
+      },
+      "hp": 100,
+      "maxHp": 100,
+      "humanity": 100,
+      "countdown": 60,
+      "stress": 0,
+      "textIndex": 0,
+      "puzzleCallback": null,
+      "puzzleAnswer": null,
+      "puzzleAttempts": 0,
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      },
+      "notes": [],
+      "history": [],
+      "personality": {
+        "calm": 50,
+        "altruism": 50,
+        "cautious": 50
+      },
+      "mapZones": [
+        {
+          "id": "d11_gate",
+          "name": "正門旋轉柵欄·飼料站",
+          "explored": true,
+          "current": true,
+          "scene": "d11_hub",
+          "summary": "距離午夜 24:00 閉園廣播僅剩 60 分鐘，必須在鐘響前趕回此處。"
+        },
+        {
+          "id": "d11_panda",
+          "name": "熊貓區·竹林玻璃房",
+          "explored": false,
+          "current": false,
+          "scene": "d11_panda",
+          "summary": "老熊貓「團團」正坐在月光下等一根脆竹筍。"
+        },
+        {
+          "id": "d11_lion",
+          "name": "獅子區·荒原獸欄",
+          "explored": false,
+          "current": false,
+          "scene": "d11_lion",
+          "summary": "獨眼獅王「阿斯蘭」記得你父親的肩膀。"
+        },
+        {
+          "id": "d11_aquarium",
+          "name": "水族館·深藍海底隧道",
+          "explored": false,
+          "current": false,
+          "scene": "d11_aquarium",
+          "summary": "鬼蝠魟與海豚「藍月」在頭頂游過。"
+        },
+        {
+          "id": "d11_aviary",
+          "name": "鳥園·百鳥鐵網穹頂",
+          "explored": false,
+          "current": false,
+          "scene": "d11_aviary",
+          "summary": "白葵花鸚鵡「雪球」模仿著 1999 年的說話聲。"
+        },
+        {
+          "id": "d11_reptile",
+          "name": "爬行動物區·溫室迷霧",
+          "explored": false,
+          "current": false,
+          "scene": "d11_reptile",
+          "summary": "百歲陸龜「玄武」背甲上刻著時間拼圖。"
+        },
+        {
+          "id": "d11_haunted",
+          "name": "鬼屋區·廢棄標本館",
+          "explored": false,
+          "current": false,
+          "scene": "d11_haunted",
+          "summary": "夜間飼育員在這裡擦拭空置的第 13 號玻璃展櫃。"
+        }
+      ]
+    }
+  },
+  {
+    "id": 12,
+    "name": "回聲電梯",
+    "index": "第 十 二 扇 門 · 終 焉",
+    "bgNum": "12F",
+    "tagline": "New Game+ 中走完第 6 扇門後解鎖。電梯裡有 12 個按鈕，每按一樓進入一個平行時空。",
+    "clearedKey": "wuxian-twelfth-cleared",
+    "savePrefix": "v61-elevator-save",
+    "roomNum": "12F",
+    "subText": "二 周 目 隱 藏 終 章 · 第 十 二 扇 門",
+    "ruleText": "十 二 道 樓 層 ， 十 二 個 平 行 時 空 的 回 聲",
+    "startScene": "d12_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 12,
+    "achDefs": [
+      {
+        "id": "ach_v61_parallel_12",
+        "name": "平行時空",
+        "desc": "解鎖回聲電梯全部 12 樓",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v61_fate_weaver",
+        "name": "命運織者",
+        "desc": "New Game+ 通關",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d12_prologue",
+      "hp": 100,
+      "maxHp": 100,
+      "stress": 0,
+      "inventory": [],
+      "flags": {},
+      "history": [],
+      "notes": [
+        "【回聲電梯】按下 1F–12F 任一樓層按鈕，即可踏入對應的平行時空路線；收齊全部 12 樓可解鎖「平行時空」成就與「命運織者」稱號。"
+      ],
+      "mapZones": [
+        {
+          "id": "d12_cab",
+          "name": "回聲電梯 · 轎廂控制盤",
+          "explored": true,
+          "current": true
+        },
+        {
+          "id": "d12_parallel",
+          "name": "十二重平行時空迴廊",
+          "explored": true,
+          "current": false
+        }
+      ],
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      }
+    }
+  },
+  {
+    "id": 13,
+    "name": "鏡子迷宮",
+    "index": "第 十 三 扇 門 · 萬 鏡",
+    "bgNum": "13M",
+    "tagline": "New Game+ 通關《回聲電梯》後解鎖。每面鏡子都是一個平行世界的你，選擇信任或打碎鏡子（共 15 個結局）。",
+    "clearedKey": "wuxian-thirteenth-cleared",
+    "savePrefix": "v62-mirror-maze-save",
+    "roomNum": "13M",
+    "subText": "二 周 目 終 極 迴 廊 · 第 十 三 扇 門",
+    "ruleText": "每 面 鏡 子 都 是 平 行 世 界 的 你 —— 選 擇 信 任 或 打 碎 鏡 子",
+    "startScene": "d13_prologue",
+    "hasParty": false,
+    "hasCountdown": false,
+    "hasAdmin": false,
+    "endingsTotal": 15,
+    "achDefs": [
+      {
+        "id": "ach_v62_d13_first_clear",
+        "name": "破鏡旅人",
+        "desc": "首次通關第十三扇門《鏡子迷宮》",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_d13_all_endings",
+        "name": "萬鏡之主",
+        "desc": "解鎖《鏡子迷宮》全部 15 個結局",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      },
+      {
+        "id": "ach_v62_d13_true_one",
+        "name": "無門之門",
+        "desc": "解鎖《鏡子迷宮》第 15 終極結局【萬鏡歸一】",
+        "icon": "",
+        "hidden": false,
+        "secret": false
+      }
+    ],
+    "initState": {
+      "currentScene": "d13_prologue",
+      "hp": 100,
+      "maxHp": 100,
+      "stress": 0,
+      "inventory": [],
+      "flags": {},
+      "history": [],
+      "notes": [
+        "【鏡子迷宮】迷宮中共有 7 面平行世界之鏡（各含「信任」與「打碎」2 種結局，共 14 結局）與中央第 15 終極結局【萬鏡歸一 · 無門之門】。"
+      ],
+      "mapZones": [
+        {
+          "id": "d13_entry",
+          "name": "鏡子迷宮 · 門外迴廊",
+          "explored": true,
+          "current": true
+        },
+        {
+          "id": "d13_hall",
+          "name": "萬鏡中樞 · 七重平行鏡廳",
+          "explored": true,
+          "current": false
+        },
+        {
+          "id": "d13_core",
+          "name": "迷宮之心 · 無門之門",
+          "explored": true,
+          "current": false
+        }
+      ],
+      "inheritance": {
+        "mirror_defeated": false,
+        "golden_key": false,
+        "basement_knowledge": false,
+        "traded_admin": false,
+        "alone_escape": false,
+        "trusted": false,
+        "lost_limb": false,
+        "admin_guest": false,
+        "chen_survived": false,
+        "laozhou_survived": false,
+        "suwan_survived": false,
+        "xiaoyu_survived": false,
+        "yuanyuan_carried": false,
+        "memory_kept": false,
+        "memory_deleted": false,
+        "first_cleared": false,
+        "second_cleared": false,
+        "third_cleared": false,
+        "ng_plus": false,
+        "deathCount": 0,
+        "memoryFragments": [],
+        "loopCount": 0
+      }
+    }
+  }
+]

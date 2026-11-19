@@ -1,0 +1,470 @@
+{
+  "d8_prologue": {
+    "id": "d8_prologue",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 旋轉門",
+    "sceneId": "8-序章",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p class=\"v60-prologue-why\"><strong>【歸途紀事 · 它為什麼存在】</strong><br>從電車下車後走進的一站。餐廳老闆認識你小時候。每道菜是某個主線NPC的記憶。</p>",
+      "<p>黃銅旋轉門後是一間燈火通明、香氣四溢卻安靜得詭異的西式自助餐廳。</p>",
+      "<p>百米長桌上整齊擺放著一排排銀質保溫餐盤，每揭開一個蓋子，裡面飄出的不是蒸氣，而是一段活生生的人類記憶。</p>",
+      "<p class=\"system-msg\">迴廊低語：你已踏入第八扇門「無盡自助餐」。<br>規則說明：每品嚐一道菜，將讀取該客人 200 字的微型一生並獲得對應狀態加成，同時累積「飽食度」。當飽食度達到 100% 時將直接撐死於餐桌旁；飽食度介於 65%–95% 之間方可前往櫃檯結帳離席。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "拿起空白瓷盤，走向長桌取餐區",
+        "next": "d8_hub",
+        "personality": {
+          "calm": 5
+        }
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_hub": {
+    "id": "d8_hub",
+    "room": "餐",
+    "roomName": "百米長桌 · 取餐區",
+    "sceneId": "8-取餐區",
+    "mapZone": "d8_hall",
+    "mood": "mystery",
+    "npc": [
+      "buffet_chef",
+      "suwan"
+    ],
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "品嚐《1998年的糖醋排骨》（飽食度 +25% · +15 HP · 利他 +8）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "品嚐《03:17 的冷萃黑咖啡》（飽食度 +15% · 冷靜 +12 · 看破幻覺）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "品嚐《無聲冬瓜盅》（飽食度 +20% · +20 HP · 壓力 -15）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "品嚐《碎裂的檸檬棒棒糖》（飽食度 +15% · 閃避陷阱 · 謹慎 +10（微酸扣 5 HP））",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "品嚐《急診室夜班烤吐司》（飽食度 +30% · +10 HP · 獲得「餐刀鑰匙」線索）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "品嚐《蘇晚的半碗陽春麵》（飽食度 +25% · +25 HP · 解鎖真結局關鍵記憶）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "使用「催吐檸檬水」消化 15% 飽食度（每局一次）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "前往「後廚冷庫」查看食材來源",
+        "next": "d8_kitchen"
+      },
+      {
+        "text": "前往「結帳櫃檯」準備離席",
+        "next": "d8_cashier"
+      },
+      {
+        "text": "【P6 信物升級 · 票根】憑電車票根向老闆免費點一道「隱藏菜」（回復全部 HP）",
+        "next": "d8_v61_free_hidden_dish",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 永遠吃飽】開啟大胃王極限盛宴，將飽食度直接推上 200% 以上",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "掀開絲絨帷幕進入「甜點區」隱藏菜單（含 300 道微型人生故事）",
+        "next": "d8_dessert_zone"
+      },
+      {
+        "text": "【支線連貫 7→8】向餐廳老闆出示「鏡像電車票根」申請餐費打折（並凝結記憶碎片）",
+        "next": "d8_v60_ticket_discount",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d8_kitchen": {
+    "id": "d8_kitchen",
+    "room": "廚",
+    "roomName": "後廚冷庫 · 記憶切配間",
+    "sceneId": "8-後廚",
+    "mapZone": "d8_kitchen",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你推開寫著「閒人免進」的雙向彈簧門。後廚裡沒有魚肉蔬果，只有一排排貼著年份標籤的玻璃罐，裡面裝著發光的記憶高湯。</p>",
+      "<p>冷庫門上有一道「配方比例鎖」：唯有調出最溫暖的一碗湯，才能打開通往主廚私房菜單的暗格。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "解開「記憶高湯比例鎖」（密碼謎題）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "返回長桌取餐區",
+        "next": "d8_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d8_cashier": {
+    "id": "d8_cashier",
+    "room": "帳",
+    "roomName": "結帳櫃檯 · 記憶天平",
+    "sceneId": "8-結帳台",
+    "mapZone": "d8_cashier",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【真結局】拿出「主廚的家常食譜」，與蘇晚分食那半碗陽春麵後推門離席",
+        "next": "d8_end_true",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局二】在飽食度精準控制在 80%–95% 時簽下自己的真名結帳",
+        "next": "d8_end_true_perfect",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局三】將所有品嚐過的記憶食譜抄錄成冊，交還給主廚換取後門鑰匙",
+        "next": "d8_end_true_archivist",
+        "hasCondition": true
+      },
+      {
+        "text": "飽食度達標（>=60%），正常支付記憶硬幣離席（普通結局）",
+        "next": "d8_end_normal",
+        "hasCondition": true
+      },
+      {
+        "text": "一口未吃（飽食度 0%），忍受飢餓直接推門離開（逃過一劫·空腹行者）",
+        "next": "d8_end_fasting",
+        "hasCondition": true
+      },
+      {
+        "text": "飽食度不足（1%–59%），留下自己的一段童年記憶抵帳離開（逃過一劫）",
+        "next": "d8_end_pawn",
+        "hasCondition": true
+      },
+      {
+        "text": "返回長桌繼續取餐",
+        "next": "d8_hub"
+      },
+      {
+        "text": "掀翻長桌，企圖強闖餐廳正門（壞結局·成為食材）",
+        "next": "d8_end_ingredient",
+        "danger": true
+      },
+      {
+        "text": "前往「甜點區」品嚐餐後隱藏甜點",
+        "next": "d8_dessert_zone"
+      },
+      {
+        "text": "【支線連貫 7→8 · 票根打折結帳】憑「鏡像電車票根」以半價門檻（飽食度 ≥ 40%）優惠結帳離席",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d8_end_true": {
+    "id": "d8_end_true",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你與蘇晚在櫃檯旁分食了那碗溫熱的陽春麵。所有的苦澀、遺憾與等待都在熱湯裡化開。旋轉門外不再是冰冷的迴廊，而是飄著細雨的夜市街口。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_true_perfect": {
+    "id": "d8_end_true_perfect",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你既沒有抗拒他人的記憶，也沒有被貪婪吞沒。天平穩穩停在正中央，主廚向你深深鞠躬，為你推開了通往黎明的雕花大門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_true_archivist": {
+    "id": "d8_end_true_archivist",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將幾位客人的悲歡離合完整記錄下來。主廚接過食譜時眼眶微紅：「謝謝你記得他們的味道。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_normal": {
+    "id": "d8_end_normal",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你結清了帳單，帶著幾段不屬於你的溫暖記憶走出了旋轉門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_fasting": {
+    "id": "d8_end_fasting",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你滴水未沾，沒有被任何人的記憶同化，餓著肚子卻目光清明地走出了餐廳。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_pawn": {
+    "id": "d8_end_pawn",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>因為還沒吃飽，你留下了自己一個無關緊要的夏日午後作為餐費，平安離開了餐廳。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_overeat": {
+    "id": "d8_end_overeat",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>當飽食度衝破 100% 的瞬間，無數陌生人的一生在你的腦海與胃袋裡同時炸開。你倒在銀製餐盤旁，變成了長桌上的下一道新菜。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_ingredient": {
+    "id": "d8_end_ingredient",
+    "room": "饗",
+    "roomName": "無盡自助餐 · 終局",
+    "sceneId": "8-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>後廚的陰影將你拖進了切配間。第二天，長桌上多了一道寫著你名字的冷盤。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_v61_forever_full": {
+    "id": "d8_end_v61_forever_full",
+    "room": "200%",
+    "roomName": "百味歸一 · 永遠吃飽",
+    "sceneId": "8-隱藏·永遠吃飽",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>餐桌上的盤子疊起了高塔，你的<strong>飽食度突破了 200%</strong>！</p>",
+      "<p>就在天平指針轉過兩圈的瞬間，胃部的沉重感突然化作一股溫暖柔和的暖流。主廚老陳驚嘆地摘下廚師帽向你致敬：「能在無盡自助餐吃到 200% 還面不改色的，你是頭一個！從今往後，你永遠吃飽了！」</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_v61_free_hidden_dish": {
+    "id": "d8_v61_free_hidden_dish",
+    "room": "隱",
+    "roomName": "主廚私房 · 免費隱藏菜（票根升級）",
+    "sceneId": "8-票根隱藏菜",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你拿出那張從鏡像電車帶來的<strong>「票根」</strong>。餐廳老闆眼睛一亮，立刻端出一盅不在菜單上的私房隱藏菜——<strong>《歸途破曉清雞湯》</strong>！</p>",
+      "<p>「憑電車票根，這道隱藏菜完全免費！」溫潤鮮美的熱湯入喉，你身上的所有傷勢與疲憊瞬間一掃而空！</p>",
+      "<p class=\"inherit-note\">【P6 支線信物升級生效：票根】<br>• 免費品嚐隱藏菜，<strong>生命值已回復全部 HP（100%）</strong>！<br>• 物品欄中的「鏡像電車票根」狀態已更新為【已使用】（反灰）。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "向老闆道謝，返回自助餐主廳",
+        "next": "d8_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_dessert_zone": {
+    "id": "d8_dessert_zone",
+    "room": "甜",
+    "roomName": "無盡自助餐 · 隱藏甜點區",
+    "sceneId": "8-甜點區",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你推開絲絨帷幕後的玻璃門，走進散發著香草與焦糖甜香的<strong>「隱藏甜點區」</strong>。冰櫃裡陳列著三道只為真正食客準備的記憶甜點，旁邊還放著記載了 <strong>300 道食客微型人生故事</strong> 的《無盡食客總錄》。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "品嚐隱藏甜點《初戀青檸塔》（壓力歸零，飽食度 +5，解鎖甜點真結局旗標）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "翻閱並隨機品嚐《300 道微型人生故事菜單》（解鎖「美食家」與全菜色收集）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【甜點區真結局】手持「甜點主廚的純金小匙」完美結束盛宴",
+        "next": "d8_end_sweet_finale",
+        "hasCondition": true
+      },
+      {
+        "text": "返回中央取餐大廳",
+        "next": "d8_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_end_sweet_finale": {
+    "id": "d8_end_sweet_finale",
+    "room": "饗",
+    "roomName": "甜點區的最後一道人生",
+    "sceneId": "8-甜點結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>餐後的甜點為整場漫長的記憶盛宴畫下了最溫柔的句點。主廚親自為你拉開餐廳大門，晨光與咖啡香一同迎面撲來。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d8_v60_ticket_discount": {
+    "id": "d8_v60_ticket_discount",
+    "room": "折",
+    "roomName": "無盡自助餐 · 老老闆的半價人情",
+    "sceneId": "8-票根打折",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你從大衣口袋裡掏出那張在<strong>「鏡像電車」</strong>上撿到的票根，放在結帳天平旁。</p>",
+      "<p>餐廳老闆（主廚老陳）愣了一下，摘下老花眼鏡仔細端詳著票根上的齒孔，臉上露出恍然又慈祥的笑意：「原來你是搭那班裂縫電車下來的啊……小陸衍，你還記得嗎？你十二歲那年放學下大雨迷了路，也是跑進我這間店裡避雨，我給你煮了一碗熱湯麵。」</p>",
+      "<p>老闆用紅筆在你的帳單上重重畫了一個「五折」的勾，並從保溫櫃最底層取出一枚散發著微光的琥珀色結晶遞給你：「既然有電車票根，今天這頓算你半價！這枚<strong>『自助餐記憶碎片』</strong>裡封存著蘇晚、老周他們在主線裡的記憶，你待會兒順著路走回 1999 年的小學時，拿給十二歲的自己看看吧。」</p>",
+      "<p class=\"inherit-note\">【支線連貫 7→8 生效：票根打折】<br>• 飽食度負擔立即減輕 15%，生命值回復 +20，且結帳離席所需的最低飽食度門檻打折降至 40%！<br>• 同時獲得下一關連貫信物【8→9 自助餐記憶碎片】！</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "向餐廳老闆道謝，收下「自助餐記憶碎片」與打折帳單",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

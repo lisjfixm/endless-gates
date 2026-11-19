@@ -58,6 +58,10 @@ python3 -m http.server 8000
 - 結局總數：52（副本1: 17 / 副本2: 22 / 副本3: 13）
 - 成就總數：29
 
+## Android 版
+
+`android/` 目錄為原生 Android 專案（Jetpack Compose、AGP 9.1.1、minSdk 26 / targetSdk 36）。以 Android Studio 開啟 `android/` 目錄同步後建置；根目錄的網頁版內容維持不變。
+
 ## License
 
 本項目僅供個人學習與娛樂使用。

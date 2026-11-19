@@ -1,0 +1,445 @@
+{
+  "d12_prologue": {
+    "id": "d12_prologue",
+    "room": "0F",
+    "roomName": "回聲電梯 · 零號基準層",
+    "sceneId": "12-序章",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>當你在二周目（New Game+）再次跨越終焉觀測站的分界門時，走廊盡頭那扇從未開啟過的黃銅升降梯緩緩亮起了燈。</p>",
+      "<p>門楣上方刻著四個字：<strong>《回聲電梯》</strong>。</p>",
+      "<p>你走進鋪著深紅絨毯的電梯轎廂。右側的黃銅控制盤上整齊排列著 <strong>1F 到 12F 共 12 枚發光按鈕</strong>——每一枚按鈕背後，都連接著一個「如果當初沒有遺憾」的平行時空。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走到電梯控制盤前，選擇要前往的平行時空樓層（1F–12F）",
+        "next": "d12_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d12_hub": {
+    "id": "d12_hub",
+    "room": "12F",
+    "roomName": "回聲電梯 · 十二樓層控制盤",
+    "sceneId": "12-電梯主控",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>電梯轎廂安靜地懸浮在時間夾縫中央。控制盤上的 12 顆黃銅按鈕散發著溫潤的金光，等待你按下樓層。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "按下【1F · 質數黎明時空】按鈕（進入第 1 平行時空）",
+        "next": "d12_floor_1"
+      },
+      {
+        "text": "按下【2F · 有聲圖書館時空】按鈕（進入第 2 平行時空）",
+        "next": "d12_floor_2"
+      },
+      {
+        "text": "按下【3F · 康復出院時空】按鈕（進入第 3 平行時空）",
+        "next": "d12_floor_3"
+      },
+      {
+        "text": "按下【4F · 向日葵庭院時空】按鈕（進入第 4 平行時空）",
+        "next": "d12_floor_4"
+      },
+      {
+        "text": "按下【5F · 晴空海岸時空】按鈕（進入第 5 平行時空）",
+        "next": "d12_floor_5"
+      },
+      {
+        "text": "按下【6F · 03:18 實驗室時空】按鈕（進入第 6 平行時空）",
+        "next": "d12_floor_6"
+      },
+      {
+        "text": "按下【7F · 雙軌地面車站時空】按鈕（進入第 7 平行時空）",
+        "next": "d12_floor_7"
+      },
+      {
+        "text": "按下【8F · 街坊團圓食堂時空】按鈕（進入第 8 平行時空）",
+        "next": "d12_floor_8"
+      },
+      {
+        "text": "按下【9F · 1999 盛夏放學時空】按鈕（進入第 9 平行時空）",
+        "next": "d12_floor_9"
+      },
+      {
+        "text": "按下【10F · 早場喜劇電影時空】按鈕（進入第 10 平行時空）",
+        "next": "d12_floor_10"
+      },
+      {
+        "text": "按下【11F · 週日正午動物園時空】按鈕（進入第 11 平行時空）",
+        "next": "d12_floor_11"
+      },
+      {
+        "text": "按下【12F · 萬門之頂 · 命運織者】按鈕（進入第 12 平行時空）",
+        "next": "d12_floor_12"
+      },
+      {
+        "text": "【一鍵巡禮全部 12 樓平行時空】同時按下 1F–12F 全部按鈕，收束十二重命運（解鎖「平行時空」與「命運織者」）",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_1": {
+    "id": "d12_floor_1",
+    "room": "1F",
+    "roomName": "1F · 質數黎明時空",
+    "sceneId": "12-1F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>1F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 1 樓打開。這裡的質數旅館沒有吞噬人的鏡子，蘇晚正站在大廳櫃檯前向你招手，門外是清晨六點的陽光與熱氣騰騰的陽春麵攤。</p>",
+      "<p class=\"inherit-note\">【已收錄第 1 樓平行時空結局：第一層平行時空：沒有鏡子的晨光旅館】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_2": {
+    "id": "d12_floor_2",
+    "room": "2F",
+    "roomName": "2F · 有聲圖書館時空",
+    "sceneId": "12-2F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>2F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 2 樓打開。午後的陽光灑滿閱覽室，人們正輕聲朗讀著詩集。老周戴著老花眼鏡在借書台後微笑，小宇在書架間奔跑。</p>",
+      "<p class=\"inherit-note\">【已收錄第 2 樓平行時空結局：第二層平行時空：朗讀聲中的圖書館】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_3": {
+    "id": "d12_floor_3",
+    "room": "3F",
+    "roomName": "3F · 康復出院時空",
+    "sceneId": "12-3F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>3F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 3 樓打開。走廊牆上的時鐘正常走動，林建國醫生提著剛買的排骨準備回家做紅燒肉，小媛媛抱著布偶貓蹦跳著跟在爸爸身後。</p>",
+      "<p class=\"inherit-note\">【已收錄第 3 樓平行時空結局：第三層平行時空：準時下班的醫院】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_4": {
+    "id": "d12_floor_4",
+    "room": "4F",
+    "roomName": "4F · 向日葵庭院時空",
+    "sceneId": "12-4F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>4F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 4 樓打開。無盡之間化作了一座盛開的向日葵庭院，守門人把提燈掛在樹枝上，為你倒了一杯溫熱的清茶。</p>",
+      "<p class=\"inherit-note\">【已收錄第 4 樓平行時空結局：第四層平行時空：守門人的午後茶敘】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_5": {
+    "id": "d12_floor_5",
+    "room": "5F",
+    "roomName": "5F · 晴空海岸時空",
+    "sceneId": "12-5F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>5F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 5 樓打開。迴光之海化作蔚藍的晴空海岸，那隻紙摺的小貓在浪花邊追逐蝴蝶，所有未選擇的路都成了風景。</p>",
+      "<p class=\"inherit-note\">【已收錄第 5 樓平行時空結局：第五層平行時空：退潮後的星光沙灘】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_6": {
+    "id": "d12_floor_6",
+    "room": "6F",
+    "roomName": "6F · 03:18 實驗室時空",
+    "sceneId": "12-6F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>6F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 6 樓打開。大學實驗室裡，陳教授笑著拍拍你的肩膀，祝賀你的質數分佈論文順利通過審查，桌上的咖啡散發著醇香。</p>",
+      "<p class=\"inherit-note\">【已收錄第 6 樓平行時空結局：第六層平行時空：論文發表的清晨】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_7": {
+    "id": "d12_floor_7",
+    "room": "7F",
+    "roomName": "7F · 雙軌地面車站時空",
+    "sceneId": "12-7F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>7F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 7 樓打開。鏡像電車駛出了地下隧道，車窗對面的另一個你向你舉杯致意，列車在開滿櫻花的地面月台緩緩靠站。</p>",
+      "<p class=\"inherit-note\">【已收錄第 7 樓平行時空結局：第七層平行時空：駛向地面的早班電車】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_8": {
+    "id": "d12_floor_8",
+    "room": "8F",
+    "roomName": "8F · 街坊團圓食堂時空",
+    "sceneId": "12-8F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>8F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 8 樓打開。主廚老陳端出熱騰騰的糖醋排骨與家常麵，蘇晚、老趙、阿凱與林醫生圍坐在大圓桌旁，留了正中央的位子給你。</p>",
+      "<p class=\"inherit-note\">【已收錄第 8 樓平行時空結局：第八層平行時空：永不打烊的團圓飯】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_9": {
+    "id": "d12_floor_9",
+    "room": "9F",
+    "roomName": "9F · 1999 盛夏放學時空",
+    "sceneId": "12-9F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>9F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 9 樓打開。1999 年的放學鐘聲響起，十二歲的你與林小滿把印好的校刊裝進書包，在橘紅色的夕陽下並肩跑回家。</p>",
+      "<p class=\"inherit-note\">【已收錄第 9 樓平行時空結局：第九層平行時空：千禧年前夕的晚霞】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_10": {
+    "id": "d12_floor_10",
+    "room": "10F",
+    "roomName": "10F · 早場喜劇電影時空",
+    "sceneId": "12-10F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>10F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 10 樓打開。潮汐電影院的大廳燈光明亮，售票員林默遞給你一桶焦糖爆米花，四個影廳同時放映著圓滿的喜劇結局。</p>",
+      "<p class=\"inherit-note\">【已收錄第 10 樓平行時空結局：第十層平行時空：售票員林默的早場票】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_11": {
+    "id": "d12_floor_11",
+    "room": "11F",
+    "roomName": "11F · 週日正午動物園時空",
+    "sceneId": "12-11F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>11F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯在 11 樓打開。正午的動物園充滿孩童的笑聲，老熊貓團團嚼著新鮮竹葉，獅王阿斯蘭在暖陽下慵懶地打著哈欠。</p>",
+      "<p class=\"inherit-note\">【已收錄第 11 樓平行時空結局：第十一層平行時空：陽光下的百獸樂園】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d12_floor_12": {
+    "id": "d12_floor_12",
+    "room": "12F",
+    "roomName": "12F · 萬門之頂 · 命運織者",
+    "sceneId": "12-12F",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了電梯控制盤上的 <strong>12F</strong> 按鈕。伴隨著清脆的銅鈴聲，電梯門緩緩向兩側滑開——</p>",
+      "<p>電梯抵達最高層 12 樓。天台之上沒有牆壁，十二道平行時空的星河在你腳下交匯。你握住所有門扉的鑰匙，成為編織無盡命運的旅人。</p>",
+      "<p class=\"inherit-note\">【已收錄第 12 樓平行時空結局：第十二層終極時空：收束萬門的命運織者】<br>你可以返回電梯轎廂繼續探索其他樓層，或在此時空完成本局終章結算。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "返回《回聲電梯》轎廂，繼續按其他樓層按鈕（保留已探索紀錄）",
+        "next": "d12_hub"
+      },
+      {
+        "text": "踏出電梯門，以此平行時空作為本局最終結局結算",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

@@ -1,0 +1,666 @@
+{
+  "d7_prologue": {
+    "id": "d7_prologue",
+    "room": "⇄",
+    "roomName": "地下鐵 · 零號月台",
+    "sceneId": "7-序章",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p class=\"v60-prologue-why\"><strong>【歸途紀事 · 它為什麼存在】</strong><br>觀測站調校到一半，時間裂縫打開，電車是裂縫裡溢出的記憶列車。車上坐的都是你在主線裡見過的人。</p>",
+      "<p>地鐵進站的風把你大衣的下擺吹得獵獵作響。</p>",
+      "<p>隧道壁上貼著慘白的馬賽克磚，站牌上沒有站名，只有一個水平翻轉的符號：「⇄」。</p>",
+      "<p>一列老舊的銀灰色地下電車緩緩停在月台邊。車門滑開的瞬間，你看見車窗玻璃對面並排停著另一列一模一樣的電車——裡面的「你」正抬起左手，而你抬起的是右手。</p>",
+      "<p class=\"system-msg\">迴廊低語：你已踏入第七扇門「鏡像電車」。<br>核心規則：左頁是你所在的「正軌車廂」，右頁是車窗對面的「鏡像車廂」。每當你做出穩妥的決定，鏡像的你就會做出相反的冒險決定；兩邊生命值互相連動。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "踏進第一車廂，查看車窗對面的鏡像",
+        "next": "d7_hub",
+        "personality": {
+          "calm": 5
+        }
+      },
+      {
+        "text": "低頭看腳下的黃色警戒線",
+        "next": null,
+        "useless": true,
+        "flavor": "警戒線上的字是反著印的：「請勿跨越鏡面」。"
+      },
+      {
+        "text": "【隱藏結局 · 鏡像消失】故意不撿任何票根，空手直接踏入電車深處",
+        "next": "d7_end_v61_mirror_vanish"
+      },
+      {
+        "text": "【支線連貫 7→8】撿起腳邊從時間裂縫飄落的「鏡像電車票根」",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_hub": {
+    "id": "d7_hub",
+    "room": "01",
+    "roomName": "第一車廂 · 雙軌座",
+    "sceneId": "7-車廂樞紐",
+    "mapZone": "d7_car1",
+    "mood": "mystery",
+    "npc": [
+      "tram_conductor",
+      "tram_mirror_you",
+      "tram_girl",
+      "tram_tuner",
+      "tram_oldman",
+      "tram_sleeper",
+      "tram_vendor"
+    ],
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "前往下一站（站點隨機洗牌：第一站）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "解開隔間門上的「鏡像文字鎖」（謎題一：鏡像解謎）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "拼合散落的「時刻表碎片」（謎題二：時間表拼圖）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "走進車廂連接處的「暗門密室」（需持有黃金鑰匙或雙軌銅幣）",
+        "next": "d7_secret_coupler",
+        "hasCondition": true
+      },
+      {
+        "text": "前往車頭「駕駛室 · 雙軌交匯」",
+        "next": "d7_cab",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 鏡像消失】丟下所有車票存根，以「不帶票根上車」之姿解除鏡像投影",
+        "next": "d7_end_v61_mirror_vanish"
+      },
+      {
+        "text": "故意不下車坐過站，駛入鏡像世界的「反向車站」",
+        "next": "d7_reverse_station"
+      },
+      {
+        "text": "【支線連貫 7→8】查看座位下閃著微光的「鏡像電車票根」",
+        "next": "d7_v60_ticket_pickup",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d7_secret_coupler": {
+    "id": "d7_secret_coupler",
+    "room": "密",
+    "roomName": "車廂連接處 · 夾縫密室",
+    "sceneId": "7-隱藏密室",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你用鑰匙旋開兩節車廂風擋之間的檢修窄門。門後不是鐵軌，而是一間不到兩坪的信號員值班室。</p>",
+      "<p>牆上掛著歷代列車長的懷錶，桌上放著一只未拆封的「緊急制動扳手」。你在抽屜底層找到了一頁蘇晚留下的車票存根。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "收起「緊急制動扳手」並修復鏡像裂痕（雙側 HP +20）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回第一車廂",
+        "next": "d7_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_st_hotel": {
+    "id": "d7_st_hotel",
+    "room": "站I",
+    "roomName": "第一站 · 倒影旅館月台",
+    "sceneId": "7-第一站",
+    "mapZone": "d7_st1",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "敲擊車窗提醒鏡像，分擔一半虛空衝擊（正側 HP -10，保住鏡像 HP）",
+        "next": null,
+        "personality": {
+          "altruism": 10
+        },
+        "hasAction": true
+      },
+      {
+        "text": "拉上車窗遮光簾，任由鏡像獨自承受反噬（鏡像 HP -30）",
+        "next": null,
+        "personality": {
+          "cautious": 10,
+          "altruism": -10
+        },
+        "hasAction": true
+      },
+      {
+        "text": "強行在第一站跳車逃往月台暗道",
+        "next": "d7_end_jump1",
+        "danger": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d7_st_library": {
+    "id": "d7_st_library",
+    "room": "站II",
+    "roomName": "第二站 · 喧囂書庫月台",
+    "sceneId": "7-第二站",
+    "mapZone": "d7_st2",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "將車廂廣播切換為靜音頻段，替鏡像消音（正側 HP -10）",
+        "next": null,
+        "personality": {
+          "calm": 10
+        },
+        "hasAction": true
+      },
+      {
+        "text": "趁鏡像吸引管理員注意，搜刮月台遺落的記憶書頁",
+        "next": null,
+        "personality": {
+          "cautious": 5
+        },
+        "hasAction": true
+      },
+      {
+        "text": "推開車門走進喧囂書庫深處",
+        "next": "d7_end_noise",
+        "danger": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d7_st_hospital": {
+    "id": "d7_st_hospital",
+    "room": "站III",
+    "roomName": "第三站 · 逆時鐘急診月台",
+    "sceneId": "7-第三站",
+    "mapZone": "d7_st3",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "解開「身份交換鎖」（謎題三：身份交換），與鏡像短暫互換位置阻止格式化",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "返回第一車廂整理裝備",
+        "next": "d7_hub"
+      },
+      {
+        "text": "任由鏡像按下格式化按鈕",
+        "next": "d7_end_format",
+        "danger": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d7_cab": {
+    "id": "d7_cab",
+    "room": "終",
+    "roomName": "駕駛室 · 雙軌交匯點",
+    "sceneId": "7-終局抉擇",
+    "mapZone": "d7_cab",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【真結局】使用「緊急制動扳手」與「完整時刻表」鎖定雙軌同步，與鏡像合而為一",
+        "next": "d7_end_true",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局二】將雙軌銅幣嵌入控制台，讓兩列電車同時駛入黎明月台",
+        "next": "d7_end_true_dawn",
+        "hasCondition": true
+      },
+      {
+        "text": "【真結局三】與紅圍巾少女林雙、蘇晚合力拉下雙重氣閥，打開零號地面出口",
+        "next": "d7_end_true_companions",
+        "hasCondition": true
+      },
+      {
+        "text": "將正側列車全速推進，獨自駛出隧道（普通結局·正軌生還）",
+        "next": "d7_end_normal_self"
+      },
+      {
+        "text": "鬆開操縱桿，把駛出隧道的機會讓給車窗對面的鏡像（普通結局·成全倒影）",
+        "next": "d7_end_normal_mirror"
+      },
+      {
+        "text": "拉下緊急煞車，讓列車停在兩站之間的靜謐隧道（逃過一劫·停駐夾縫）",
+        "next": "d7_end_survive_brake"
+      },
+      {
+        "text": "接過剪票員沈默的制帽，成為下一任鏡像列車長（普通結局·守車人）",
+        "next": "d7_end_conductor"
+      },
+      {
+        "text": "與調音師宋弦一起將列車頻率調回 03:17（隱藏結局·迴聲車廂）",
+        "next": "d7_end_tuner"
+      },
+      {
+        "text": "跟隨盲眼老人走下鐵軌旁的老舊維修梯（逃過一劫·舊道微光）",
+        "next": "d7_end_oldman"
+      },
+      {
+        "text": "打破車窗玻璃，試圖徒手抓住對面的鏡像（壞結局·玻璃碎裂）",
+        "next": "d7_end_shatter",
+        "danger": true
+      },
+      {
+        "text": "切斷兩節車廂的耦合器，任由後車廂脫軌（壞結局·脫軌深淵）",
+        "next": "d7_end_derail",
+        "danger": true
+      },
+      {
+        "text": "在駕駛室睡著，隨著列車進入永恆環線（壞結局·環線終身）",
+        "next": "d7_end_loop",
+        "danger": true
+      },
+      {
+        "text": "拉動逆軌轉轍器，將列車駛向「反向車站」",
+        "next": "d7_reverse_station"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": true
+  },
+  "d7_end_true": {
+    "id": "d7_end_true",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你用緊急制動扳手鎖死雙軌差速，03:28 的鐘聲敲響時，左右兩列電車像光影般重疊。車窗上的玻璃消失了，對面的鏡像向你點了點頭，化作你眼底的一道微光。你推開地鐵站的旋轉鐵柵門，清晨微涼的晨風吹在臉上。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_true_dawn": {
+    "id": "d7_end_true_dawn",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>雙軌銅幣在控制台中央高速旋轉，兩列電車並排衝出隧道口。陽光落在鐵軌上，你看見自己所有的遺憾與選擇都被妥善安放在另一條平行軌道上。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_true_companions": {
+    "id": "d7_end_true_companions",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>蘇晚與林雙一左一右幫你穩住氣閥。當列車穩穩停靠在地面站台時，車門向兩側敞開，你們沒有一個人掉隊。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_normal_self": {
+    "id": "d7_end_normal_self",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你推到底部加速桿，正側列車搶先半個車身衝過分岔口。後視鏡裡，對向列車隱沒在隧道黑暗中。你活著走出了月台。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_normal_mirror": {
+    "id": "d7_end_normal_mirror",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你鬆開了手。對向車廂裡的「你」怔怔地看著你，隨後替你駛向了地面。你知道世界上還有一個自己正在陽光下呼吸。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_survive_brake": {
+    "id": "d7_end_survive_brake",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>刺耳的煞車火花在隧道裡亮起。列車停在了不屬於任何一站的靜謐區間，你推開逃生窗，順著通風井爬回了迴廊。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_conductor": {
+    "id": "d7_end_conductor",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你戴上那頂深藍色的列車長制帽，接過打孔鉗。沈默笑著走下了車，而你將繼續守望下一批登上鏡像電車的旅人。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_tuner": {
+    "id": "d7_end_tuner",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>宋弦撥響了音叉，鐵軌的震動化作柔和的弦樂。你們走進原本不存在的第十二節車廂，那裡擺滿了所有乘客最珍貴的舊物。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_oldman": {
+    "id": "d7_end_oldman",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>盲眼老人用拐杖敲擊枕木，帶你穿過廢棄的地下防空連通道，從一處老舊的街角人孔蓋爬了出去。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_jump1": {
+    "id": "d7_end_jump1",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在列車尚未停穩時強行跳上倒影月台，卻發現月台沒有出口，只有一列列呼嘯而過卻永不停靠的空車。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_noise": {
+    "id": "d7_end_noise",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你走進燃燒的書庫月台，無數反寫的鉛字從紙頁上飛起，將你的名字徹底塗抹。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_format": {
+    "id": "d7_end_format",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>鏡像按下了格式化按鈕。你手裡的車票變成了白紙，你也忘了自己要搭車去哪裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_shatter": {
+    "id": "d7_end_shatter",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>車窗碎裂的瞬間，狂暴的地下氣流將正側與鏡像同時捲入雙軌之間的縫隙。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_derail": {
+    "id": "d7_end_derail",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>失去後車廂配重的電車在彎道處猛烈傾覆，車頭燈在黑暗中劃出最後一道弧線。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_loop": {
+    "id": "d7_end_loop",
+    "room": "⇄",
+    "roomName": "鏡像電車 · 終點",
+    "sceneId": "7-結局",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在搖晃的車廂裡沉沉睡去。列車駛入沒有終點的環狀軌道，永遠在 03:17 與 03:18 之間打轉。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_v61_mirror_vanish": {
+    "id": "d7_end_v61_mirror_vanish",
+    "room": "空",
+    "roomName": "無票之車 · 鏡像消失",
+    "sceneId": "7-隱藏·鏡像消失",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你攤開空無一物的雙手，<strong>不帶任何票根</strong>直接走進了電車最前方的駕駛室。</p>",
+      "<p>驗票機發出一聲輕響：「無票乘客——因果對稱解除。」車窗玻璃上的倒影慢慢淡去，對面車廂的鏡像世界徹底消失，電車載著唯一的你駛向了地面出口。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_reverse_station": {
+    "id": "d7_reverse_station",
+    "room": "反",
+    "roomName": "反向車站 · 鏡像世界的同一站",
+    "sceneId": "7-反向車站",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>電車沒有在終點站停下，而是呼嘯著穿過一道水幕般的鏡面隧道——你因為故意坐過站，駛入了鏡像世界的同一座車站：<strong>「反向車站」</strong>。</p>",
+      "<p>月台上的所有時鐘都在逆時針旋轉，站牌上的文字左右顛倒。車窗對面的「鏡像陸衍」正站在月台長椅旁對你伸出手：「在正軌世界你錯過了下車的時機，但在反向車站，我們可以把彼此未走完的路拼成完整的圓。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "與鏡像世界的自己交換「反向月台車票」（正側與鏡像 HP 同步回滿）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【反向車站真結局】持「反向車站月台票」走出鏡像世界的地面出口",
+        "next": "d7_end_reverse_world",
+        "hasCondition": true
+      },
+      {
+        "text": "搭乘回程列車返回第一車廂",
+        "next": "d7_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_end_reverse_world": {
+    "id": "d7_end_reverse_world",
+    "room": "鏡",
+    "roomName": "反向車站：鏡像世界的歸人",
+    "sceneId": "7-反向結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你握著反向車站月台票走上階梯。在這個鏡像世界裡，所有曾經遺憾錯過的同伴都平安活在陽光下，向剛走出地鐵口的你揮手微笑。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d7_v60_ticket_pickup": {
+    "id": "d7_v60_ticket_pickup",
+    "room": "票",
+    "roomName": "第一車廂 · 座位夾縫的票根",
+    "sceneId": "7-連貫票根",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你在靠窗座位底下拾起一張印著銀色齒孔的<strong>「鏡像電車票根」</strong>。</p>",
+      "<p>車票正面印著「03:17 觀測站裂縫線 → 終點：回家路上」，背面則蓋著一枚帶著濃郁湯香的暗紅色印章：</p>",
+      "<p class=\"inherit-note\">【支線連貫信物 7→8：鏡像電車票根】<br>「憑本車票存根，下車後前往下一站《無盡自助餐》結帳可享歸途半價打折優惠，並可向餐廳老闆換取主線同伴的記憶結晶。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "將「鏡像電車票根」妥善收進大衣口袋，返回第一車廂",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "無盡之門",
+  "description": "一場沒有盡頭的逃亡——融合14扇門扉、數百場景與多重結局的暗黑懸疑文字冒險遊戲。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

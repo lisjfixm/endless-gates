@@ -1,0 +1,677 @@
+{
+  "d6_prologue": {
+    "id": "d6_prologue",
+    "room": "03:17",
+    "roomName": "03:17 的夾縫",
+    "sceneId": "6-序章",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>從迴光之海浮上來的時候，你聽見了一聲極輕的「咔噠」。</p>",
+      "<p>不是門鎖，也不是鐘擺——是秒針卡在齒輪裡，想跳往下一格卻沒能跳過去的聲音。</p>",
+      "<p>你睜開眼。頭頂不是白色天花板，也不是無盡的門，而是一座高聳的圓頂觀測站。成百上千台舊式CRT監視器繞成一圈，每一台螢幕都在播放你走過的地方：13 號房的銅牌、停在 3:15 的閱覽室掛鐘、B2 閃爍的 98.7%、心臟處的 ∞、以及潮井翻動的浪。</p>",
+      "<p>而在圓頂正中央，擺著一張你再熟悉不過的舊書桌。</p>",
+      "<p>桌上三本書，兩疊論文。一隻馬克杯剛剛傾倒，褐色的咖啡正懸在半空，離鍵盤只有一寸，像被按下了暫停。</p>",
+      "<p class=\"system-msg\">當前座標：零號夾縫 · 終焉觀測站。<br>系統時間：03:17:59（停滯中）。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走向圓頂中央的觀測大廳",
+        "next": "d6_hub",
+        "personality": {
+          "calm": 5
+        }
+      },
+      {
+        "text": "低頭看自己的手腕",
+        "next": null,
+        "useless": true,
+        "flavor": "手腕上的舊錶面不再走動，只有一行緩慢閃爍的微光：「WAITING FOR 03:18...」。"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_hub": {
+    "id": "d6_hub",
+    "room": "03:17",
+    "roomName": "中央觀測大廳",
+    "sceneId": "6-大廳",
+    "mapZone": "d6_hub",
+    "mood": "mystery",
+    "npc": "obs_chen",
+    "npcs": [],
+    "text": [
+      "<p>你站在中央觀測大廳。環形監視牆發出的幽藍冷光映在地面上，將你的影子拉成六道，分別指向六個方向。</p>",
+      "<p>書桌旁站著一道半透明的身影——花白頭髮、舊毛衣、金絲眼鏡。是你博士班的導師，陳教授。他正低頭看著螢幕上那條偏離預期的質數分佈曲線。</p>",
+      "<p>大廳北側是「五扇門的監視牆」，東側是「質數偏離主機」與「第零號檔案櫃」，西側有鐵梯通往「無星之頂與天線塔」，而正南方立著一扇刻著「03:18」的分界門。</p>"
+    ],
+    "textReturn": [
+      "<p>你回到中央觀測大廳。監視牆的藍光安靜地流淌，那滴懸在半空的咖啡依然停在離鍵盤一寸的地方。</p>"
+    ],
+    "choices": [
+      {
+        "text": "走近那張傾倒咖啡的實驗室書桌",
+        "next": "d6_desk",
+        "personality": {
+          "calm": 3
+        }
+      },
+      {
+        "text": "查看北側「五扇門的監視牆」",
+        "next": "d6_monitors",
+        "personality": {
+          "altruism": 3
+        }
+      },
+      {
+        "text": "前往東側「質數偏離主機」",
+        "next": "d6_server",
+        "personality": {
+          "cautious": 5
+        }
+      },
+      {
+        "text": "翻閱「第零號檔案櫃」與休眠艙記錄",
+        "next": "d6_archive",
+        "personality": {
+          "cautious": 3
+        }
+      },
+      {
+        "text": "攀上西側鐵梯，前往「無星之頂與天線塔」",
+        "next": "d6_roof",
+        "personality": {
+          "calm": 5
+        }
+      },
+      {
+        "text": "走向刻著「03:18」的分界門",
+        "next": "d6_threshold"
+      },
+      {
+        "text": "觀察四周",
+        "next": null,
+        "observe": "你環視整座圓頂觀測站。監視牆共有六組主波段，對應質數旅館、沉默圖書館、倒計時醫院、無盡之間、迴光之海，以及你腳下的零號夾縫。陳教授的投影旁放著一本打開的教案，上面用紅筆寫著：「第 7 個質數是校準起點；破曉的時刻是四位波段碼。」"
+      },
+      {
+        "text": "操作中央主控台的「03:18 雙波諧振儀」（小遊戲）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "【隱藏結局 · 靜止】切斷 03:18 進位電路，將世界永久定格於 3:17",
+        "next": "d6_end_v61_stillness"
+      },
+      {
+        "text": "推開暗門進入「觀測者病歷室」（解鎖陳教授過去）",
+        "next": "d6_observer_records"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_desk": {
+    "id": "d6_desk",
+    "room": "03:17",
+    "roomName": "傾倒的咖啡與手稿",
+    "sceneId": "6-書桌",
+    "mapZone": "d6_desk",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你走到自己的書桌前。懸在半空的咖啡液滴映出你現在的臉——比倒下那天瘦了一點，眼神卻定了許多。</p>",
+      "<p>螢幕上，你跑了六個小時的 Python 腳本停在第 317 行。那條偏離預期的曲線下面，有一行你自己都忘了是什麼時候敲進去的註釋：</p>",
+      "<p class=\"system-msg\"># 如果質數是門牌，第 7 個質數（2, 3, 5, 7, 11, 13 之後）就是觀測站的基準鍵。</p>",
+      "<p>桌角壓著你未完成的畢業論文末頁，還有那隻裂了一道細紋的舊馬克杯。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "拾起那隻裂紋馬克杯（迴光遺物）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "抽走論文末頁的手稿（迴光遺物）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      },
+      {
+        "text": "回到中央觀測大廳",
+        "next": "d6_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_monitors": {
+    "id": "d6_monitors",
+    "room": "03:17",
+    "roomName": "五扇門的監視牆",
+    "sceneId": "6-監視牆",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>監視牆前排著一列撥桿與耳機插孔。大多數頻道只有沙沙的雪花，但有兩個波段的指示燈正閃著微弱的琥珀光。</p>",
+      "<p>一號波段標註著「旅館·走廊外」；三號波段標註著「醫院·大榕樹下」。旁邊還有一個紅色的「全頻段強行切斷」開關。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "戴上耳機，接入一號波段（蘇晚的留言）",
+        "next": "d6_echo_suwan",
+        "personality": {
+          "altruism": 5
+        }
+      },
+      {
+        "text": "戴上耳機，接入三號波段（紙飛機的航線）",
+        "next": "d6_echo_yuanyuan",
+        "personality": {
+          "altruism": 5
+        }
+      },
+      {
+        "text": "按下紅色的「全頻段強行切斷」開關",
+        "next": "d6_end_static",
+        "danger": true,
+        "personality": {
+          "cautious": -15
+        }
+      },
+      {
+        "text": "退回中央觀測大廳",
+        "next": "d6_hub"
+      },
+      {
+        "text": "調諧監視牆的「破曉載波濾波器」（小遊戲）",
+        "next": null,
+        "hasCondition": true,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_echo_suwan": {
+    "id": "d6_echo_suwan",
+    "room": "03:17",
+    "roomName": "一號波段·蘇晚的留言",
+    "sceneId": "6-波段·壹",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>耳機裡先是一陣風聲，接著傳來蘇晚很輕、卻很穩的聲音：</p>",
+      "<p>「陸衍，如果你能聽到這段波段，說明你已經走到我們所有人前面了。」</p>",
+      "<p>「在旅館的時候，你說第一個答案往往是謊言；到了這裡，別再懷疑自己了。外面的天快亮了，我們都在門外等你。」</p>",
+      "<p>波段最後是一聲清脆的門鈴響，隨即歸於安靜。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "摘下耳機，回到監視牆前",
+        "next": "d6_monitors"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_echo_yuanyuan": {
+    "id": "d6_echo_yuanyuan",
+    "room": "03:17",
+    "roomName": "三號波段·紙飛機的航線",
+    "sceneId": "6-波段·參",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>三號波段裡傳來蟬鳴與樹葉摩挲的沙沙聲。一個六歲小女孩的聲音在麥克風旁小聲數數：</p>",
+      "<p>「紙飛機飛過一樓、二樓、三樓……飛過圖書館的書架，飛到海面上啦。」</p>",
+      "<p>「大哥哥，爸爸說三點十七分太黑了，要調到三點十八分，太陽才會出來。你別忘了呀——0、3、1、8！」</p>",
+      "<p>你把「0318」四個數字記在心裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "摘下耳機，回到監視牆前",
+        "next": "d6_monitors"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_server": {
+    "id": "d6_server",
+    "room": "03:17",
+    "roomName": "質數偏離主機",
+    "sceneId": "6-主機",
+    "mapZone": "d6_server",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>東側的機櫃發出低沉的蜂鳴。主螢幕上，那條質數分佈曲線在 x = 13 之後出現了一道缺口。</p>",
+      "<p class=\"system-msg\">【主機校準程序】<br>已確認安全質數序列：2, 3, 5, 7, 11, 13。<br>請輸入緊隨 13 之後的下一個質數（第 7 個質數），以完成偏離曲線閉合。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "輸入第 7 個質數完成校準",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "強行用隨機亂數覆寫主機核心",
+        "next": "d6_end_overwrite",
+        "danger": true,
+        "personality": {
+          "cautious": -15
+        }
+      },
+      {
+        "text": "回到中央觀測大廳",
+        "next": "d6_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_archive": {
+    "id": "d6_archive",
+    "room": "03:17",
+    "roomName": "第零號檔案櫃",
+    "sceneId": "6-檔案",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>檔案櫃旁立著一具透明的醫療休眠艙，銘牌上刻著你的名字：「陸衍 · 編號 007」。</p>",
+      "<p>你翻開艙蓋旁的臨床日誌：原來在實驗室倒下後，急救車在凌晨 03:17 將你送入搶救室。你經歷的五扇門扉，正是大腦在 03:17 到 03:18 這一分鐘內，與所有瀕死意識共鳴構築的「無盡迴廊」。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走近休眠艙，查看心電監護波形",
+        "next": "d6_capsule"
+      },
+      {
+        "text": "回到中央觀測大廳",
+        "next": "d6_hub"
+      },
+      {
+        "text": "啟動「記憶回聲合成機」（五門座標共鳴）",
+        "next": "d6_echo_console"
+      },
+      {
+        "text": "查閱封存的「觀測者病歷（OBSERVER-001）」",
+        "next": "d6_observer_records"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_capsule": {
+    "id": "d6_capsule",
+    "room": "03:17",
+    "roomName": "休眠艙「陸衍」",
+    "sceneId": "6-休眠艙",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>監護儀上的心率維持在每分鐘 53 次——53 也是一個質數。</p>",
+      "<p>艙壁上貼著一張便簽，字跡像極了林建國醫生：「生命體徵穩定。只要患者本人的意識願意跨過 03:18，就能自主甦醒。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "把這張便簽收進記憶，退回檔案櫃前",
+        "next": "d6_archive"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_roof": {
+    "id": "d6_roof",
+    "room": "03:17",
+    "roomName": "無星之頂與天線塔",
+    "sceneId": "6-屋頂",
+    "mapZone": "d6_roof",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你爬上鐵梯，推開天窗。屋頂上方沒有星星，只有一輪巨大的、停在「03:17」的金色星盤。</p>",
+      "<p>天線塔的控制台設有一組四位數頻率轉盤，上面刻著：「輸入破曉時刻的四位數字（時兩位、分兩位），向所有迴廊發送黎明信號。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "轉動頻率轉盤，輸入四位數破曉頻率",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "回到中央觀測大廳",
+        "next": "d6_hub"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_threshold": {
+    "id": "d6_threshold",
+    "room": "03:18",
+    "roomName": "03:18 分界門",
+    "sceneId": "6-分界門",
+    "mapZone": "d6_threshold",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你站在刻著「03:18」的分界門前。門縫裡透出的不再是慘白的走廊燈，而是帶著露水與青草氣息的晨光。</p>",
+      "<p>你走過了質數旅館、沉默圖書館、倒計時醫院、無盡之間與迴光之海。現在，這扇門等你做出最後的決定。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "推開分界門，迎向 03:18 的破曉（真結局）",
+        "next": "d6_end_dawn",
+        "personality": {
+          "calm": 15,
+          "altruism": 15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "把畫著貓的紙飛機從門縫放飛出去",
+        "next": "d6_end_paperplane",
+        "personality": {
+          "altruism": 10
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "啟動天線廣播，為所有困在門裡的人引路",
+        "next": "d6_end_broadcast",
+        "personality": {
+          "altruism": 15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "留在觀測站，接替陳教授看守這片夾縫",
+        "next": "d6_end_observer",
+        "personality": {
+          "calm": 10
+        }
+      },
+      {
+        "text": "退回中央觀測大廳再做準備",
+        "next": "d6_hub"
+      },
+      {
+        "text": "將「六門共鳴磁帶」接入分界門擴音器（隱藏結局·六門共鳴）",
+        "next": "d6_end_symphony",
+        "personality": {
+          "altruism": 15,
+          "calm": 15
+        },
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 靜止】鎖死觀測站石英鐘擺，讓時間永遠停在 3:17",
+        "next": "d6_end_v61_stillness"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_end_static": {
+    "id": "d6_end_static",
+    "room": "—",
+    "roomName": "白噪音",
+    "sceneId": "6-結局·噪",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你按下了全頻段切斷開關。成百上千台監視器同時熄滅，只剩下一片刺耳的白噪音。</p>",
+      "<p>沒有了波段定位，觀測站的座標瞬間坍縮。你感覺自己化作了螢幕上的一粒雪花點，永遠停在了 03:17 的雜訊裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_overwrite": {
+    "id": "d6_end_overwrite",
+    "room": "—",
+    "roomName": "覆寫失敗",
+    "sceneId": "6-結局·覆",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你強行向主機輸入隨機亂數。質數曲線瞬間崩潰，整個觀測站的燈光轉為刺目的血紅。</p>",
+      "<p>系統強制執行回滾——你眼前的書桌、監視牆與分界門同時碎裂，倒計時再次回到第一扇 13 號門前。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_observer": {
+    "id": "d6_end_observer",
+    "room": "03:17",
+    "roomName": "守望 03:17",
+    "sceneId": "6-結局·守",
+    "mapZone": "",
+    "mood": "melancholy",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你沒有推開分界門。你走回圓頂中央，在書桌前坐下。</p>",
+      "<p>陳教授的投影欣慰地拍了拍你的肩，漸漸消散在藍光中。從今天起，由你來看著這一百面螢幕，替每一個迷路的旅者在暗處留一盞提示的燈。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_broadcast": {
+    "id": "d6_end_broadcast",
+    "room": "03:18",
+    "roomName": "向所有門廣播",
+    "sceneId": "6-結局·廣播",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將破曉頻率接入全頻道廣播。監視牆上的每一扇門——旅館的 1 號門、圖書館地毯下的暗門、醫院的花園大門——同時亮起了溫暖的晨光。</p>",
+      "<p>你看見那些被困在迴廊裡的身影一個接一個走了出去，自己也隨著最後一道電波邁出了分界門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_paperplane": {
+    "id": "d6_end_paperplane",
+    "room": "03:18",
+    "roomName": "飛出窗外的紙飛機",
+    "sceneId": "6-結局·紙飛機",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你把那架畫著歪歪扭扭小貓的紙飛機，順著分界門的晨風輕輕一推。</p>",
+      "<p>紙飛機穿過 03:17 的夾縫，掠過大榕樹的枝頭，穩穩落進了清晨的陽光裡。你跟著它邁出門檻，身後的觀測站安靜地合上了門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_dawn": {
+    "id": "d6_end_dawn",
+    "room": "03:18",
+    "roomName": "03:18 的破曉",
+    "sceneId": "6-真結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>分界門緩緩敞開。牆上的電子鐘終於跳過了那漫長的一秒——</p>",
+      "<p class=\"system-msg\">03:18:00。</p>",
+      "<p>[glow]那滴懸在半空的咖啡沒有落在鍵盤上。你的手指穩穩扶住了馬克杯的杯柄。咖啡還是溫的。</p>",
+      "<p>窗外不再是純白或漆黑的迴廊，天際線泛起魚肚白，清晨的第一縷陽光穿過實驗室的百葉窗，落在那條已經收斂完成的質數分佈曲線上。</p>",
+      "<p>桌上的手機震動了一下。螢幕亮起，是一條新訊息：「陸衍，天亮了，出來吃早飯吧。——蘇晚」</p>",
+      "<p>你保存好代碼，關掉螢幕，推開實驗室的門，走進了清晨的風裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_echo_console": {
+    "id": "d6_echo_console",
+    "room": "03:17",
+    "roomName": "記憶回聲合成機",
+    "sceneId": "6-回聲機",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>第零號檔案櫃深處，立著一台銅管與真空管交錯的「記憶回聲合成機」。</p>",
+      "<p>面板上刻著五道門扉的題銘：「第一扇門的初始門牌（兩位數）＋第三扇門牆板下的無名者人數（兩位數）」。</p>",
+      "<p>只要輸入這組四位數共鳴碼，就能將前五扇門扉殘留的回聲合成為一卷完整的磁帶。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "輸入四位數五門共鳴碼",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "退回第零號檔案櫃",
+        "next": "d6_archive"
+      }
+    ],
+    "hasOnEnter": false,
+    "hasGetText": false
+  },
+  "d6_end_symphony": {
+    "id": "d6_end_symphony",
+    "room": "03:18",
+    "roomName": "六門共鳴",
+    "sceneId": "6-隱藏結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你把「六門共鳴磁帶」推入分界門側邊的擴音槽。</p>",
+      "<p>[glow]磁輪轉動。整座觀測站的百面螢幕同時退去了雪花，化作六道清澈的金色光束，匯聚在 03:18 的門扉上。</p>",
+      "<p>你聽見老趙爽朗地笑了一聲，聽見陳姐合上課本，聽見林建國輕聲叫出女兒的名字，聽見媛媛的紙飛機掠過海面。</p>",
+      "<p>所有走過門的人，都在這一刻抵達了屬於他們的清晨。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_v61_stillness": {
+    "id": "d6_end_v61_stillness",
+    "room": "03:17",
+    "roomName": "琥珀時刻 · 永遠的 03:17",
+    "sceneId": "6-隱藏·靜止",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>站在分界門的主控台前，你看著那顆即將跳向 03:18 的石英鐘擺，伸手按下了「絕對鎖定」開關。</p>",
+      "<p><strong>03:17:00。</strong></p>",
+      "<p>你讓時間永遠停在了 3:17。半空中的咖啡液滴、窗外掠過的夜鳥、以及百面監視器裡同伴們的笑臉，全部定格成了一幅永不褪色的靜止畫卷。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_observer_records": {
+    "id": "d6_observer_records",
+    "room": "病",
+    "roomName": "觀測者病歷室（陳教授檔案）",
+    "sceneId": "6-觀測者病歷",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你推開資料室最深處貼著封條的鐵門，走進塵封已久的「觀測者病歷室」。桌上攤開著編號 <strong>OBSERVER-001：陳景明教授</strong> 的臨床與觀測病歷。</p>",
+      "<p class=\"narration\">「1993 年 11 月，我在安康醫院見證了記憶提取機的失控。為了不讓我的學生陸衍在三十年後獨自面對崩塌的迴廊，我自願簽下《第一觀測者留守書》，將自己的意識錨定在 03:17 的觀測站主機裡，替後來者守住那道質數波段。」</p>",
+      "<p>病歷夾層裡放著一枚泛黃的「導師懷錶齒輪」與陳教授親筆批註的畢業論文扉頁。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "拾取「導師懷錶齒輪」並閱讀陳教授最後的批註（解鎖陳教授過去與新真結局）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【真結局擴充】帶著「陳教授的觀測者病歷」與師恩傳承走向破曉波段",
+        "next": "d6_end_prof_legacy",
+        "hasCondition": true
+      },
+      {
+        "text": "返回終焉觀測站大廳",
+        "next": "d6_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d6_end_prof_legacy": {
+    "id": "d6_end_prof_legacy",
+    "room": "師",
+    "roomName": "導師的病歷與傳承之燈",
+    "sceneId": "6-病歷真結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將《觀測者病歷》輕輕合上，在主機終端輸入了陳教授當年的實驗室代號。螢幕那頭的導師欣慰地點了點頭，三十年的孤獨守望終於在此刻交棒，兩代學者的腳步一同邁向了 03:18 的晨光。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}

@@ -1,0 +1,556 @@
+{
+  "d10_prologue": {
+    "id": "d10_prologue",
+    "room": "票",
+    "roomName": "潮汐電影院 · 午夜售票處",
+    "sceneId": "10-序章",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p class=\"v60-prologue-why\"><strong>【歸途紀事 · 它為什麼存在】</strong><br>放學路上經過的電影院。四個廳分別是你四條主線路線的如果當初。</p>",
+      "<p>潮水般的膠卷轉動聲從地底傳來。你站在「潮汐電影院」復古的紅絨布大廳中央，頭頂的燈箱寫著四行鮮紅的排片表：</p>",
+      "<p class=\"narration\">【A 廳 · 驚悚片《背後有人》：觀影期間嚴禁回頭】<br>【B 廳 · 愛情片《潮水退去之前》：散場前必須完成告白】<br>【C 廳 · 武俠片《斷刀客》：江湖恩怨，必須拔刀應戰】<br>【D 廳 · 科幻片《第 0317 次因果》：唯有邏輯能解開光束悖論】</p>",
+      "<p>銅窗後的<strong>售票員林默</strong>抬起頭，帽簷下是一雙沒有瞳孔的銀幕眼睛：「先生，午夜場一旦進場，電影裡的規則就是你的現實。如果中途離場，影評人會扣除你的評分——低於零分的人，會被剪進廢片桶裡。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "走進售票大廳，觀察三名影院人物與四座影廳入口",
+        "next": "d10_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_hub": {
+    "id": "d10_hub",
+    "room": "廳",
+    "roomName": "潮汐電影院 · 中央紅絨走廊",
+    "sceneId": "10-大廳",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [
+      "cinema_seller",
+      "cinema_cleaner",
+      "cinema_ghost"
+    ],
+    "text": [
+      "<p>大廳地毯散發著海鹽與焦糖爆米花的氣味。<strong>售票員林默</strong>故意把你點的票根換成別廳的票；<strong>清潔工老陳</strong>拄著掃帚低聲提醒你：「別被銀幕騙了，只有集齊四廳的片尾膠卷，才看得見真正的出口。」</p>",
+      "<p>而在走廊長椅上，<strong>鄰座觀眾沈影</strong>半透明的身影正翻看著一本破舊的《午夜場影評手冊》。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "向售票員要「B廳票」（逆向規則：獲得 A廳《背後有人》驚悚票並進場）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "向售票員要「A廳票」（逆向規則：獲得 B廳《潮水退去之前》愛情票並進場）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "進入 C 廳 · 武俠片《斷刀客》（規則：必須打架／拔刀迎戰）",
+        "next": "d10_hall_c"
+      },
+      {
+        "text": "進入 D 廳 · 科幻片《第 0317 次因果》（規則：邏輯與反射謎題）",
+        "next": "d10_hall_d"
+      },
+      {
+        "text": "前往頂層「放映室」（查看結算與結局分歧）",
+        "next": "d10_projection"
+      },
+      {
+        "text": "【P6 信物升級 · 校刊】憑小學校刊選隱藏場次（跳過一個結局分支並直通四廳全覽）",
+        "next": "d10_v61_magazine_skip",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 謝幕】四個影廳全部看完後，站上中央銀幕舞台鞠躬謝幕",
+        "next": "d10_end_v61_curtain_call"
+      },
+      {
+        "text": "【支線連貫 9→10】拿出小學寫的《1999校刊》向售票員林默換取「隱藏場次票」並進入第零廳",
+        "next": "d10_v60_hidden_hall",
+        "hasCondition": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_hall_a": {
+    "id": "d10_hall_a",
+    "room": "A廳",
+    "roomName": "A 廳 · 驚悚片《背後有人》",
+    "sceneId": "10-A廳",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [
+      "cinema_ghost"
+    ],
+    "text": [
+      "<p>銀幕亮起慘白的光，畫面裡正是你此刻坐著的第 7 排座位。冰冷的呼吸聲貼在你的後頸上，耳邊傳來熟悉的聲音：「陸衍，你掉了一把鑰匙在後面，回頭看看呀……」</p>",
+      "<p>鄰座觀眾沈影死死抓住你的手腕：「別回頭！驚悚片的鐵則是——回頭的人會立刻成為第一個死者！」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【遵守規則】死死盯住前方銀幕，利用手錶玻璃反光確認身後並熬到片尾字幕",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【中途離場】推開安全門逃回大廳（影評人評分 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【違反規則】忍不住轉過頭去看身後的人影",
+        "next": "d10_end_lookback"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_hall_b": {
+    "id": "d10_hall_b",
+    "room": "B廳",
+    "roomName": "B 廳 · 愛情片《潮水退去之前》",
+    "sceneId": "10-B廳",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>銀幕上是黃昏的海堤，海風吹起白連帽衫的衣角。電影的女主角轉過身看著你，眼神與第一扇門的蘇晚如出一轍。</p>",
+      "<p>字幕浮現：【規則提示：在潮水完全退去前，主角必須說出那句從未說出口的真心話，否則本片將永遠卡在遺憾的死循環。】</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【遵守規則 · 真心告白】「無論門後還有多少次輪迴，我都想和妳一起去吃巷口那碗陽春麵。」",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【中途離場】沉默低頭走出影廳（影評人評分 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【違反規則】到了劇終仍一言不發，任由海浪吞沒台詞",
+        "next": "d10_end_unspoken"
+      },
+      {
+        "text": "【隱藏分歧】放棄回到現實，永遠留在這部溫柔的電影裡",
+        "next": "d10_end_eternal_screen"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_hall_c": {
+    "id": "d10_hall_c",
+    "room": "C廳",
+    "roomName": "C 廳 · 武俠片《斷刀客》",
+    "sceneId": "10-C廳",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>竹林夜雨傾盆而下，銀幕裡的刀光直接劈開了第四面牆！一名戴著斗笠的「膠卷刀客」從銀幕躍下舞台，刀尖直指你的咽喉。</p>",
+      "<p>【C 廳鐵則：江湖路窄，唯拔刀迎戰者可活，跪地求饒者死！】</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【遵守規則 · 拔刀迎戰】拾起前排座椅下的道具古刀，進入「遭遇戰」正面對決！",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【中途離場】棄刀翻出窗外逃離（影評人評分 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【違反規則】丟下武器束手就擒",
+        "next": "d10_end_coward"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_hall_d": {
+    "id": "d10_hall_d",
+    "room": "D廳",
+    "roomName": "D 廳 · 科幻片《第 0317 次因果》",
+    "sceneId": "10-D廳",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>D 廳是一座環形太空艙銀幕。畫面中央的量子放映機因為鏡片偏折而陷入無限時間迴圈。</p>",
+      "<p>清潔工老陳在門邊提醒：「科幻片講究的是嚴密邏輯。你必須調整反射鏡的角度，把放映光束導引到終點接收器，才能讓時間從 03:17 跨入 03:18。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【遵守規則 · 反射謎題】啟動光學反射鏡校準儀，導引光線破除因果悖論",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【中途離場】放棄解謎走出 D 廳（影評人評分 -25）",
+        "next": null,
+        "hasAction": true
+      },
+      {
+        "text": "【違反規則】強行扯斷量子放映機電源線",
+        "next": "d10_end_paradox"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_projection": {
+    "id": "d10_projection",
+    "room": "映",
+    "roomName": "潮汐電影院 · 頂層放映室",
+    "sceneId": "10-放映室",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [
+      "cinema_cleaner",
+      "cinema_seller"
+    ],
+    "text": [
+      "<p>你推開頂層放映室的鐵門。老舊的雙機放映機正嗡嗡運轉，窗外能看見清晨六點即將破曉的城市天際線。</p>",
+      "<p>清潔工老陳摘下帽子，露出溫和的笑容：「你手裡的膠卷與影評人評分，決定了這部名為《無盡之門》的電影將如何落幕。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "【真結局 · 資深影迷】將 A/B/C/D 四部片尾膠卷合一放映（需四廳全通且影評分 ≥ 90）",
+        "next": "d10_end_cinephile",
+        "hasCondition": true
+      },
+      {
+        "text": "【隱藏結局 · 導演剪輯版】持有至少 3 枚膠卷，親手在剪輯台上改寫最終字幕",
+        "next": "d10_end_director",
+        "hasCondition": true
+      },
+      {
+        "text": "【普通結局 · 早場陽光】觀看過至少 2 部電影，推開散場大門走出影院",
+        "next": "d10_end_dawn",
+        "hasCondition": true
+      },
+      {
+        "text": "【生還結局 · 剪斷膠卷】用剪刀直接剪斷主放映機膠卷逃生",
+        "next": "d10_end_cut_reel"
+      },
+      {
+        "text": "【生還結局 · 清潔工後門】跟隨清潔工老陳從員工消防梯離開",
+        "next": "d10_end_cleaner"
+      },
+      {
+        "text": "【生還結局 · 替換座位】將票根交給鄰座幽靈沈影，替他走回人間",
+        "next": "d10_end_ghost_seat"
+      },
+      {
+        "text": "返回中央紅絨走廊繼續觀影",
+        "next": "d10_hub"
+      },
+      {
+        "text": "【隱藏結局 · 謝幕】放映結束，拉下紅絨帷幕完成終場謝幕",
+        "next": "d10_end_v61_curtain_call"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_cinephile": {
+    "id": "d10_end_cinephile",
+    "room": "終",
+    "roomName": "四廳全通的破曉長鏡頭",
+    "sceneId": "10-真結局",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>四卷 35mm 膠卷在放映機上完美銜接：驚悚的勇氣、愛情的坦誠、武俠的果決與科幻的理性融為一道金色的長鏡頭。售票員林默、清潔工老陳與鄰座觀眾沈影同時向你脫帽致敬，影院大門敞開，清晨的第一縷陽光灑滿長街。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_director": {
+    "id": "d10_end_director",
+    "room": "導",
+    "roomName": "剪輯台上的造物主",
+    "sceneId": "10-結局10",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你坐在剪輯台前，把所有的悲劇鏡頭全部剪除，接上了重逢與破曉的畫面。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_eternal_screen": {
+    "id": "d10_end_eternal_screen",
+    "room": "幕",
+    "roomName": "永遠停駐的海堤黃昏",
+    "sceneId": "10-結局11",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你沒有走出 B 廳，而是跨過銀幕邊框，走進了那片永遠不會退潮的溫柔海堤。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_dawn": {
+    "id": "d10_end_dawn",
+    "room": "晨",
+    "roomName": "散場後的早場陽光",
+    "sceneId": "10-結局1",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>片尾字幕升起，燈光亮起。你握著半截票根走出地下影院，外頭已是車水馬龍的早晨。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_lookback": {
+    "id": "d10_end_lookback",
+    "room": "亡",
+    "roomName": "A廳：回頭的定格畫面",
+    "sceneId": "10-結局2",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你終究還是回了頭。銀幕上的鏡頭瞬間拉近，你的臉被永遠定格在黑白菲林的第 317 格。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_unspoken": {
+    "id": "d10_end_unspoken",
+    "room": "憾",
+    "roomName": "B廳：未能說出口的台詞",
+    "sceneId": "10-結局3",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>潮水退盡，銀幕陷入漆黑。你因為始終沒有開口告白，被永遠困在了 NG 重拍的循環裡。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_coward": {
+    "id": "d10_end_coward",
+    "room": "刃",
+    "roomName": "C廳：死於刀下的路人甲",
+    "sceneId": "10-結局4",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>在武俠片裡放棄拔刀的人，連姓名都不會出現在演職員表上。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_paradox": {
+    "id": "d10_end_paradox",
+    "room": "亂",
+    "roomName": "D廳：因果悖論抹消",
+    "sceneId": "10-結局5",
+    "mapZone": "",
+    "mood": "terror",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>強行切斷量子放映機引發了因果崩塌，你的時間線被徹底擦除。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_walkout": {
+    "id": "d10_end_walkout",
+    "room": "零",
+    "roomName": "零分影評人的廢片桶",
+    "sceneId": "10-結局6",
+    "mapZone": "",
+    "mood": "danger",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>因為多次中途離場，你的影評人評分跌破零分。售票員嘆了口氣，將你的票根剪碎進了廢片桶。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_cut_reel": {
+    "id": "d10_end_cut_reel",
+    "room": "剪",
+    "roomName": "剪斷膠卷的逃生者",
+    "sceneId": "10-結局7",
+    "mapZone": "",
+    "mood": "tension",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你趁放映機過熱時剪斷主膠卷，在銀幕起火前衝出了緊急出口。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_ghost_seat": {
+    "id": "d10_end_ghost_seat",
+    "room": "座",
+    "roomName": "7 排 G 座的傳承",
+    "sceneId": "10-結局8",
+    "mapZone": "",
+    "mood": "mystery",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你將自己的出場票送給鄰座幽靈沈影，兩人在散場的人潮中並肩走出了旋轉門。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_cleaner": {
+    "id": "d10_end_cleaner",
+    "room": "梯",
+    "roomName": "清潔工的後門鑰匙",
+    "sceneId": "10-結局9",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>老陳用掃帚柄頂開後巷鐵門：「快走吧，下一場午夜秀要開始了。」</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_end_v61_curtain_call": {
+    "id": "d10_end_v61_curtain_call",
+    "room": "幕",
+    "roomName": "四廳全覽 · 終場謝幕",
+    "sceneId": "10-隱藏·謝幕",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>A 廳的驚悚、B 廳的告白、C 廳的刀光、D 廳的星海——<strong>四個廳的電影你已經全部看完</strong>。</p>",
+      "<p>深紅色的天鵝絨帷幕緩緩落下，整座潮汐電影院亮起了溫暖的謝幕燈光。售票員林默站在走道盡頭為你鼓掌，你向著銀幕上走過的所有歲月深深鞠躬，完成了這場盛大的謝幕。</p>"
+    ],
+    "textReturn": null,
+    "choices": [],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_v61_magazine_skip": {
+    "id": "d10_v61_magazine_skip",
+    "room": "跳",
+    "roomName": "校刊特映 · 隱藏場次跳過結局分支（校刊升級）",
+    "sceneId": "10-校刊跳過分支",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你向售票員林默出示了《1999年小學校刊》。林默微笑著在票根上蓋下「特映直通章」：「既然你有這本童年校刊，我就直接為你開啟<strong>隱藏場次</strong>，幫你跳過繁瑣的單廳結局分支，直接視為四廳全覽！」</p>",
+      "<p class=\"inherit-note\">【P6 支線信物升級生效：校刊】<br>• 已選取隱藏場次並直接跳過一個結局分支（A/B/C/D 四廳全數標記為已看完，影評分直升 100）！<br>• 物品欄中的「1999年小學校刊」狀態已更新為【已使用】（反灰）。</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "直接登台進入【隱藏結局 · 謝幕】（四廳全部看完）",
+        "next": "d10_end_v61_curtain_call"
+      },
+      {
+        "text": "返回電影院大廳自由選擇結局路線",
+        "next": "d10_hub"
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  },
+  "d10_v60_hidden_hall": {
+    "id": "d10_v60_hidden_hall",
+    "room": "零廳",
+    "roomName": "第零廳 · 四條主線的「如果當初」",
+    "sceneId": "10-隱藏場次",
+    "mapZone": "",
+    "mood": "safe",
+    "npc": null,
+    "npcs": [],
+    "text": [
+      "<p>你持著由《1999年小學校刊》換來的<strong>「隱藏場次票」</strong>，推開紅絨布走廊盡頭那扇沒有標號的暗門——<strong>「第零廳」</strong>。</p>",
+      "<p>銀幕上同時分割出四格溫暖的畫面，放映著你四條主線路線的「如果當初」：如果沒有 03:17 的事故，你與蘇晚在巷口麵攤並肩吃著宵夜、老周在圖書館門口曬著太陽看報紙、陳教授在大學講台上笑著宣布下課。</p>",
+      "<p><strong>售票員林默</strong>悄無聲息地走到你身旁坐下，帽簷下的銀幕雙眼映著柔和的光：「謝謝你把 1999 年的校刊帶來，讓我記起了自己還沒成為售票員之前的名字。等這場電影散場後，你繞遠路經過『市立動物園』回家時，我會在閉園的動物園裡等你，給你一件能平安到家的信物。」</p>",
+      "<p class=\"inherit-note\">【支線連貫 9→10 & 10→11 達成】<br>• 觀賞隱藏場次《如果當初》：影評人評分 +20（直接獲得滿分級肯定），並視同額外收集一枚萬用膠卷共鳴！<br>• 已與售票員林默立下【10→11 售票員的約定】：他將在第十一扇門「動物園 23:00」出現並贈予你專屬道具！</p>"
+    ],
+    "textReturn": null,
+    "choices": [
+      {
+        "text": "與售票員林默約定在動物園相見，帶著溫暖的餘韻返回影院大廳",
+        "next": null,
+        "hasAction": true
+      }
+    ],
+    "hasOnEnter": true,
+    "hasGetText": false
+  }
+}
